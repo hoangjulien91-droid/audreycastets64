@@ -3,6 +3,8 @@ import "./globals.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import Script from "next/script";
 import ErrorReporter from "@/components/ErrorReporter";
+import { getStoredTheme, applyTheme } from "@/lib/utils";
+import { useEffect } from "react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,8 +16,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    // Initialize theme on client
+    const stored = getStoredTheme();
+    applyTheme(stored ?? "system");
+  }, []);
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <ErrorReporter />
         <Script

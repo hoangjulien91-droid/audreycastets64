@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { applyTheme, getStoredTheme, storeTheme, type ThemeName } from "@/lib/utils";
 
 const navLinks = [
   { href: "/", label: "Accueil" },
@@ -20,6 +21,7 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<ThemeName>("system");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -37,6 +39,20 @@ export default function Header() {
       document.body.style.overflow = 'auto';
     }
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    const stored = getStoredTheme() ?? "system";
+    setTheme(stored);
+  }, []);
+
+  useEffect(() => {
+    applyTheme(theme);
+    storeTheme(theme);
+  }, [theme]);
+
+  const cycleTheme = () => {
+    setTheme((prev) => (prev === "system" ? "light" : prev === "light" ? "dark" : "system"));
+  };
 
   return (
     <>
@@ -83,7 +99,24 @@ export default function Header() {
               ))}
             </nav>
 
-            <div className="hidden items-center lg:flex">
+            <div className="hidden items-center gap-2 lg:flex">
+              <button
+                onClick={cycleTheme}
+                aria-label="Changer le thème"
+                className="p-2 rounded-xl transition-all duration-200 hover:bg-primary/10 text-primary"
+                title={theme === "system" ? "Thème système" : theme === "light" ? "Mode clair" : "Mode sombre"}
+              >
+                {/* Simple icon switch */}
+                {theme === "dark" ? (
+                  <Moon className="h-5 w-5" />
+                ) : theme === "light" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <div className="h-5 w-5 grid place-items-center">
+                    <div className="h-3 w-3 rounded-full bg-[var(--color-accent-link)]" />
+                  </div>
+                )}
+              </button>
               <Link
                 href="/contact"
                 className="inline-flex transform items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary via-pink-500 to-pink-600 px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-105"
@@ -113,7 +146,7 @@ export default function Header() {
           />
           
           {/* Menu Panel */}
-          <div className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-white shadow-2xl animate-slide-in-right">
+          <div className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-white dark:bg-[#0F172A] shadow-2xl animate-slide-in-right">
             <div className="flex flex-col h-full">
               {/* Header du menu */}
               <div className="flex items-center justify-between px-6 h-16 border-b border-gray-100">
@@ -128,13 +161,31 @@ export default function Header() {
                   </div>
                   <span className="text-lg font-bold text-primary font-display">Audrey Castets</span>
                 </Link>
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="p-2 rounded-xl hover:bg-gray-100 transition-colors"
-                  aria-label="Fermer le menu"
-                >
-                  <X className="h-6 w-6 text-gray-700" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={cycleTheme}
+                    aria-label="Changer le thème"
+                    className="p-2 rounded-xl transition-colors hover:bg-gray-100 dark:hover:bg-white/5"
+                    title={theme === "system" ? "Thème système" : theme === "light" ? "Mode clair" : "Mode sombre"}
+                  >
+                    {theme === "dark" ? (
+                      <Moon className="h-5 w-5 text-gray-700 dark:text-gray-200" />
+                    ) : theme === "light" ? (
+                      <Sun className="h-5 w-5 text-gray-700" />
+                    ) : (
+                      <div className="h-5 w-5 grid place-items-center">
+                        <div className="h-3 w-3 rounded-full bg-[var(--color-accent-link)]" />
+                      </div>
+                    )}
+                  </button>
+                  <button
+                    onClick={() => setIsMenuOpen(false)}
+                    className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
+                    aria-label="Fermer le menu"
+                  >
+                    <X className="h-6 w-6 text-gray-700 dark:text-gray-200" />
+                  </button>
+                </div>
               </div>
               
               {/* Navigation */}
@@ -147,8 +198,8 @@ export default function Header() {
                       className={cn(
                         "flex items-center w-full rounded-xl py-3.5 px-4 text-base font-medium transition-all duration-200",
                         pathname === link.href
-                          ? "bg-gradient-to-r from-primary/10 to-pink-500/10 text-primary font-semibold shadow-sm border-l-4 border-primary"
-                          : "text-gray-700 hover:bg-gray-50 hover:text-primary"
+                          ? "bg-gradient-to-r from-[var(--color-accent-link)]/10 to-primary/10 text-primary font-semibold shadow-sm border-l-4 border-primary"
+                          : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary"
                       )}
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -159,10 +210,10 @@ export default function Header() {
               </nav>
               
               {/* CTA Button */}
-              <div className="p-6 border-t border-gray-100 bg-gradient-to-br from-pink-50 to-white">
+              <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gradient-to-br from-[var(--color-accent-link)]/5 to-white dark:from-white/5 dark:to-transparent">
                 <Link
                   href="/contact"
-                  className="flex items-center justify-center w-full rounded-xl bg-gradient-to-r from-primary via-pink-500 to-pink-600 py-4 text-base font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="flex items-center justify-center w-full rounded-xl bg-[var(--color-accent-link)] hover:bg-[var(--color-accent-link-hover)] py-4 text-base font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Prendre RDV
