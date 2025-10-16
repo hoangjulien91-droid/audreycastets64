@@ -215,7 +215,7 @@ export async function POST(request: NextRequest) {
     try {
       const confirmationHtml = getConfirmationEmailHtml(name);
       const confirmationResult = await sendEmail({
-        from: 'Audrey Castets <onboarding@resend.dev>',
+        from: 'Audrey Castets <contact@audreycastets.fr>',
         to: email,
         subject: '✨ Confirmation de réception - Audrey Castets',
         html: confirmationHtml,
@@ -242,7 +242,7 @@ export async function POST(request: NextRequest) {
 
       const adminEmail = process.env.ADMIN_EMAIL || 'julien.hoang@gmail.com';
       const notificationResult = await sendEmail({
-        from: 'Notifications <onboarding@resend.dev>',
+        from: 'Notifications <contact@audreycastets.fr>',
         to: adminEmail,
         subject: `🔔 Nouveau message de ${name}`,
         html: adminHtml,
