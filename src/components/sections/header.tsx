@@ -1,12 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { Menu, X, Moon, Sun } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { applyTheme, getStoredTheme, storeTheme, type ThemeName } from "@/lib/utils";
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Menu, X, Moon, Sun } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { applyTheme, getStoredTheme, storeTheme, type ThemeName } from "@/lib/utils"
+import { motion } from "framer-motion"
+
+const Logo = () => (
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-8 w-8 sm:h-10 sm:w-10 text-primary transition-transform duration-300 group-hover:scale-110"
+  >
+    <rect width="40" height="40" rx="8" fill="currentColor" fillOpacity="0.1" />
+    <path d="M13.62 28H11L18.5 12H21.5L29 28H26.38L24.5 23.4H15.5L13.62 28ZM16.38 21H23.62L20 14.2L16.38 21Z" fill="currentColor" />
+  </svg>
+)
 
 const navLinks = [
   { href: "/", label: "Accueil" },
@@ -16,190 +30,138 @@ const navLinks = [
   { href: "/tarifs", label: "Tarifs" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
-];
+]
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<ThemeName>("system");
-  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [theme, setTheme] = useState<ThemeName>("system")
+  const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isMenuOpen]);
+    const handleScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
-    const stored = getStoredTheme() ?? "system";
-    setTheme(stored);
-  }, []);
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto"
+  }, [isMenuOpen])
 
   useEffect(() => {
-    applyTheme(theme);
-    storeTheme(theme);
-  }, [theme]);
+    const stored = getStoredTheme() ?? "system"
+    setTheme(stored)
+  }, [])
+
+  useEffect(() => {
+    applyTheme(theme)
+    storeTheme(theme)
+  }, [theme])
 
   const cycleTheme = () => {
-    setTheme((prev) => (prev === "system" ? "light" : prev === "light" ? "dark" : "system"));
-  };
+    setTheme((prev) => (prev === "system" ? "light" : prev === "light" ? "dark" : "system"))
+  }
 
   return (
     <>
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled ? "bg-white/98 backdrop-blur-md shadow-lg border-b border-gray-100" : "bg-white/95 backdrop-blur-sm shadow-sm",
+          scrolled ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm" : "bg-background/95"
         )}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 sm:h-20 items-center justify-between">
-            <Link href="/" className="group flex items-center space-x-2 sm:space-x-3">
-              <div className="relative h-10 w-10 sm:h-[45px] sm:w-[45px] flex-shrink-0">
-                <Image
-                  src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-744259-next-339017-logo-audrey-DTe7Xile-1.png?"
-                  alt="Logo Audrey Castets"
-                  width={45}
-                  height={45}
-                  className="object-contain transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-              <span className="text-lg sm:text-xl md:text-2xl font-bold text-primary transition-colors group-hover:text-pink-600 font-display">
-                Audrey Castets
-              </span>
-            </Link>
+        <div
+          className={cn(
+            "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-300",
+            scrolled ? "h-16 sm:h-20" : "h-20 sm:h-24"
+          )}
+        >
+          <Link href="/" className="group flex items-center gap-2 sm:gap-3">
+            <Logo />
+            <span className="text-lg sm:text-xl md:text-2xl font-bold text-foreground transition-colors group-hover:text-primary font-display">
+              Audrey Castets
+            </span>
+          </Link>
 
-            <nav className="hidden items-center space-x-1 lg:flex">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "relative rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary",
-                    pathname === link.href
-                      ? "text-primary font-semibold"
-                      : "text-gray-700 hover:bg-primary/5"
-                  )}
-                >
-                  {link.label}
-                  {pathname === link.href && (
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-primary to-pink-500 rounded-full"></div>
-                  )}
-                </a>
-              ))}
-            </nav>
-
-            <div className="hidden items-center gap-2 lg:flex">
-              <button
-                onClick={cycleTheme}
-                aria-label="Changer le thème"
-                className="p-2 rounded-xl transition-all duration-200 hover:bg-primary/10 text-primary"
-                title={theme === "system" ? "Thème système" : theme === "light" ? "Mode clair" : "Mode sombre"}
-              >
-                {/* Simple icon switch */}
-                {theme === "dark" ? (
-                  <Moon className="h-5 w-5" />
-                ) : theme === "light" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <div className="h-5 w-5 grid place-items-center">
-                    <div className="h-3 w-3 rounded-full bg-[var(--color-accent-link)]" />
-                  </div>
-                )}
-              </button>
+          <nav className="hidden items-center gap-1 lg:flex">
+            {navLinks.map((link) => (
               <Link
-                href="/contact"
-                className="inline-flex transform items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary via-pink-500 to-pink-600 px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:scale-105"
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "relative rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 hover:text-primary",
+                  pathname === link.href ? "text-primary" : "text-muted-foreground hover:bg-primary/5"
+                )}
               >
-                Prendre RDV
+                {link.label}
+                {pathname === link.href && (
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                    layoutId="underline"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                )}
               </Link>
-            </div>
+            ))}
+          </nav>
 
+          <div className="hidden items-center gap-2 lg:flex">
             <button
-              className="p-2 rounded-xl transition-all duration-200 hover:bg-primary/10 lg:hidden"
-              aria-label="Ouvrir le menu"
-              onClick={() => setIsMenuOpen(true)}
+              onClick={cycleTheme}
+              aria-label="Changer le thème"
+              className="p-2 rounded-full transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10"
+              title={theme === "system" ? "Thème système" : theme === "light" ? "Mode clair" : "Mode sombre"}
             >
-              <Menu className="h-6 w-6 text-primary" />
+              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </button>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90"
+            >
+              Prendre RDV
+            </Link>
           </div>
+
+          <button
+            className="p-2 rounded-lg transition-all duration-200 hover:bg-primary/10 lg:hidden text-primary"
+            aria-label="Ouvrir le menu"
+            onClick={() => setIsMenuOpen(true)}
+          >
+            <Menu className="h-6 w-6" />
+          </button>
         </div>
       </header>
-      
-      {/* Mobile Menu Overlay - Fixed avec z-index élevé */}
+
       {isMenuOpen && (
         <div className="fixed inset-0 z-[100] lg:hidden">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-            onClick={() => setIsMenuOpen(false)}
-          />
-          
-          {/* Menu Panel */}
-          <div className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-white dark:bg-[#0F172A] shadow-2xl animate-slide-in-right">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
+          <div className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-background shadow-2xl animate-slide-in-right">
             <div className="flex flex-col h-full">
-              {/* Header du menu */}
-              <div className="flex items-center justify-between px-6 h-16 border-b border-gray-100">
-                <Link href="/" className="flex items-center space-x-2" onClick={() => setIsMenuOpen(false)}>
-                  <div className="relative h-10 w-10">
-                    <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-744259-next-339017-logo-audrey-DTe7Xile-1.png?"
-                      alt="Logo Audrey Castets"
-                      width={40}
-                      height={40}
-                    />
-                  </div>
+              <div className="flex items-center justify-between px-4 h-16 sm:h-20 border-b border-border">
+                <Link href="/" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+                  <Logo />
                   <span className="text-lg font-bold text-primary font-display">Audrey Castets</span>
                 </Link>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={cycleTheme}
-                    aria-label="Changer le thème"
-                    className="p-2 rounded-xl transition-colors hover:bg-gray-100 dark:hover:bg-white/5"
-                    title={theme === "system" ? "Thème système" : theme === "light" ? "Mode clair" : "Mode sombre"}
-                  >
-                    {theme === "dark" ? (
-                      <Moon className="h-5 w-5 text-gray-700 dark:text-gray-200" />
-                    ) : theme === "light" ? (
-                      <Sun className="h-5 w-5 text-gray-700" />
-                    ) : (
-                      <div className="h-5 w-5 grid place-items-center">
-                        <div className="h-3 w-3 rounded-full bg-[var(--color-accent-link)]" />
-                      </div>
-                    )}
-                  </button>
-                  <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
-                    aria-label="Fermer le menu"
-                  >
-                    <X className="h-6 w-6 text-gray-700 dark:text-gray-200" />
-                  </button>
-                </div>
+                <button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="p-2 rounded-lg hover:bg-muted transition-colors"
+                  aria-label="Fermer le menu"
+                >
+                  <X className="h-6 w-6 text-muted-foreground" />
+                </button>
               </div>
-              
-              {/* Navigation */}
-              <nav className="flex-1 overflow-y-auto px-4 py-8">
-                <div className="space-y-2">
+
+              <nav className="flex-1 overflow-y-auto p-4">
+                <div className="space-y-1">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       className={cn(
-                        "flex items-center w-full rounded-xl py-3.5 px-4 text-base font-medium transition-all duration-200",
-                        pathname === link.href
-                          ? "bg-gradient-to-r from-[var(--color-accent-link)]/10 to-primary/10 text-primary font-semibold shadow-sm border-l-4 border-primary"
-                          : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary"
+                        "flex items-center w-full rounded-lg py-3 px-4 text-base font-medium transition-colors",
+                        pathname === link.href ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
                       )}
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -208,12 +170,11 @@ export default function Header() {
                   ))}
                 </div>
               </nav>
-              
-              {/* CTA Button */}
-              <div className="p-6 border-t border-gray-100 dark:border-gray-800 bg-gradient-to-br from-[var(--color-accent-link)]/5 to-white dark:from-white/5 dark:to-transparent">
+
+              <div className="p-4 border-t border-border">
                 <Link
                   href="/contact"
-                  className="flex items-center justify-center w-full rounded-xl bg-[var(--color-accent-link)] hover:bg-[var(--color-accent-link-hover)] py-4 text-base font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="flex items-center justify-center w-full rounded-lg bg-primary py-3 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Prendre RDV
@@ -224,5 +185,5 @@ export default function Header() {
         </div>
       )}
     </>
-  );
+  )
 }
