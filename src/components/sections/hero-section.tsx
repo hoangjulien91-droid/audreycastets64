@@ -61,12 +61,13 @@ export default function HeroSection() {
           <motion.div className="lg:col-span-5 xl:col-span-6 h-80 lg:h-full" variants={imageVariants}>
             <div className="relative w-full h-full rounded-3xl shadow-2xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1544383835-bda2bc66a22d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&auto=format&fit=crop&w=1600"
                 alt="Un espace de thérapie serein et accueillant"
                 fill
                 className="object-cover"
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
             </div>
