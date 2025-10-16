@@ -3,8 +3,7 @@ import "./globals.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import Script from "next/script";
 import ErrorReporter from "@/components/ErrorReporter";
-import { getStoredTheme, applyTheme } from "@/lib/utils";
-import { useEffect } from "react";
+import ThemeInitializer from "@/components/ThemeInitializer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,16 +15,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    // Initialize theme on client
-    const stored = getStoredTheme();
-    applyTheme(stored ?? "system");
-  }, []);
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <ErrorReporter />
+        <ThemeInitializer />
         <Script
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
           strategy="afterInteractive"
