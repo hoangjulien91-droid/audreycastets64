@@ -1,70 +1,76 @@
-import React from 'react';
-import { Sparkles, Lock, User, Award } from 'lucide-react';
+"use client";
+
+import { motion } from "framer-motion";
+import { HeartHandshake, Puzzle, Scale, BrainCircuit } from "lucide-react";
+import React from "react";
 
 const values = [
   {
-    icon: Lock,
-    title: "Confidentialité Absolue",
-    description: "Secret professionnel garanti. Vos échanges restent strictement confidentiels dans un cadre sécurisé et bienveillant.",
-    gradient: "from-pink-500 to-rose-500",
+    icon: <HeartHandshake className="h-10 w-10 text-[var(--color-accent-link)]" />,
+    title: "Bienveillance & Non-jugement",
+    description:
+      "Chaque parcours est unique. Je vous accueille dans un espace sécurisé où votre histoire est entendue avec respect et sans aucun jugement.",
   },
   {
-    icon: User,
-    title: "Approche Personnalisée",
-    description: "Chaque accompagnement est unique, adapté à votre personnalité, vos besoins et vos objectifs spécifiques.",
-    gradient: "from-purple-500 to-pink-500",
+    icon: <Puzzle className="h-10 w-10 text-[var(--color-accent-link)]" />,
+    title: "Approche Intégrative",
+    description:
+      "J'utilise une combinaison d'outils et de techniques (TCC, psychodynamique) pour créer une thérapie sur-mesure, adaptée à vos besoins spécifiques.",
   },
   {
-    icon: Award,
-    title: "Expertise Reconnue",
-    description: "Formation continue, méthodes validées scientifiquement et expertise en TCC et psychologie du travail.",
-    gradient: "from-pink-500 to-rose-500",
-  }
+    icon: <Scale className="h-10 w-10 text-[var(--color-accent-link)]" />,
+    title: "Éthique & Confidentialité",
+    description:
+      "Le respect du secret professionnel est absolu. Notre relation thérapeutique est bâtie sur la confiance et un cadre déontologique strict.",
+  },
+  {
+    icon: <BrainCircuit className="h-10 w-10 text-[var(--color-accent-link)]" />,
+    title: "Collaboration Active",
+    description:
+      "Vous êtes l'expert de votre propre vie. Nous travaillons ensemble, en partenariat, pour définir et atteindre vos objectifs de mieux-être.",
+  },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+  },
+};
 
-const ValueCard = ({ icon: Icon, title, description, gradient }: {
-  icon: React.ElementType,
-  title: string,
-  description: string,
-  gradient: string,
-}) => (
-  <div className="group relative">
-    <div className="relative bg-white rounded-[1.5rem] p-8 lg:p-12 text-center shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 h-full">
-      <div className="relative mx-auto mb-8 w-16 h-16">
-        <div className={`absolute inset-0 bg-gradient-to-br ${gradient} rounded-full blur-xl opacity-60`}></div>
-        <div className={`relative w-full h-full bg-gradient-to-br ${gradient} rounded-full flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform duration-300`}>
-          <Icon className="w-8 h-8 text-white" />
-        </div>
-      </div>
-      <h3 className="font-display text-2xl font-bold text-foreground mb-4">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed">
-        {description}
-      </p>
-    </div>
-  </div>
-);
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
 const ValuesSection = () => {
   return (
-    <section id="engagements" className="py-20 md:py-24 bg-background">
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="mx-auto mb-8 w-16 h-16 bg-accent rounded-full flex items-center justify-center">
-            <Sparkles className="w-8 h-8 text-primary" />
-          </div>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Mes Valeurs & Engagements
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Des principes forts qui guident chaque accompagnement pour votre réussite.
-          </p>
+    <section id="engagements" className="py-20 sm:py-28 bg-background">
+      <div className="container">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-base font-semibold leading-7 text-[var(--color-accent-link)]">Mon engagement</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-display">Les piliers de mon accompagnement</h2>
+          <p className="mt-6 text-lg leading-8 text-text-secondary">Ma pratique est guidée par des principes fondamentaux qui garantissent une thérapie de qualité, humaine et respectueuse.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
-            <ValueCard key={index} {...value} />
+
+        <motion.div
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+        >
+          {values.map((value) => (
+            <motion.div key={value.title} variants={itemVariants} className="flex flex-col items-start text-left">
+              <div className="p-3 rounded-full bg-[var(--color-accent-link)]/10 ring-8 ring-[var(--color-accent-link)]/5 mb-6">
+                {value.icon}
+              </div>
+              <h3 className="text-xl font-semibold leading-7 text-foreground">{value.title}</h3>
+              <p className="mt-2 text-base leading-7 text-text-secondary">{value.description}</p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
