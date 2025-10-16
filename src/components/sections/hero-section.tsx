@@ -30,8 +30,9 @@ export default function HeroSection() {
       <div className="container relative z-10 pt-24 pb-12 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
-          initial="hidden"
-          animate="visible"
+          initial={false}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           variants={containerVariants}
         >
           <div className="lg:col-span-7 xl:col-span-6 text-center lg:text-left">
@@ -41,7 +42,7 @@ export default function HeroSection() {
             <motion.h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-foreground" variants={itemVariants}>
               Un espace pour vous, une écoute pour avancer
             </motion.h1>
-            <motion.p className="mt-6 text-lg text-text-secondary max-w-xl mx-auto lg:mx-0" variants={itemVariants}>
+            <motion.p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0" variants={itemVariants}>
               Je vous accompagne avec bienveillance dans les moments clés de votre vie. Ensemble, explorons les chemins vers un mieux-être durable.
             </motion.p>
             <motion.div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4" variants={itemVariants}>
