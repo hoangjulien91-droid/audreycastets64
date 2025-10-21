@@ -19,7 +19,10 @@ import {
   Award,
   UserCheck,
   ClipboardList,
-  Lightbulb
+  Lightbulb,
+  Cloud,
+  Smile,
+  FileCheck
 } from "lucide-react";
 import Link from "next/link";
 
@@ -229,6 +232,18 @@ export default function ServicesPage() {
                     color: "secondary-purple"
                   },
                   {
+                    icon: <Cloud className="w-6 h-6" />,
+                    title: "Dépression",
+                    description: "Accompagnement thérapeutique pour sortir de la dépression. Travail sur les pensées négatives, la motivation et la reconstruction du plaisir au quotidien.",
+                    color: "primary"
+                  },
+                  {
+                    icon: <Smile className="w-6 h-6" />,
+                    title: "Confiance et estime de soi",
+                    description: "Renforcement de la confiance en soi et de l'estime personnelle. Travail sur l'image de soi, l'affirmation et la valorisation de ses capacités.",
+                    color: "secondary-purple"
+                  },
+                  {
                     icon: <TrendingUp className="w-6 h-6" />,
                     title: "Burn-out et épuisement professionnel",
                     description: "Accompagnement spécialisé pour prévenir et traiter l'épuisement professionnel. Stratégies de récupération et de prévention de la rechute.",
@@ -247,10 +262,16 @@ export default function ServicesPage() {
                     color: "primary"
                   },
                   {
+                    icon: <FileCheck className="w-6 h-6" />,
+                    title: "Bilan de compétences",
+                    description: "Accompagnement structuré pour identifier vos compétences, valeurs et motivations. Clarification de votre projet professionnel et orientation de carrière.",
+                    color: "secondary-purple"
+                  },
+                  {
                     icon: <Briefcase className="w-6 h-6" />,
                     title: "Reconversion professionnelle",
                     description: "Accompagnement dans votre réflexion de changement de carrière. Bilan de compétences, clarification de projet, gestion du stress lié au changement.",
-                    color: "secondary-purple"
+                    color: "primary"
                   }
                 ].map((service, index) => (
                   <div
