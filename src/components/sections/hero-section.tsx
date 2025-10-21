@@ -82,7 +82,7 @@ export default function HeroSection() {
             >
               <Heart className="w-6 h-6 text-primary fill-primary" />
               <p className="text-xl sm:text-2xl font-semibold text-primary">
-                Psychologue du Travail
+                Psychologue du Travail et TCC
               </p>
             </motion.div>
 
