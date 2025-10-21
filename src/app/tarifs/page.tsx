@@ -16,7 +16,8 @@ import {
   Info,
   FileText,
   Handshake,
-  Calendar
+  Calendar,
+  MapPin
 } from "lucide-react";
 
 export default function TarifsPage() {
@@ -135,6 +136,12 @@ export default function TarifsPage() {
                         <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-foreground/80">
                           Consultation en cabinet ou en visio
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-foreground/80">
+                          Déplacement à domicile dans les 20km
                         </span>
                       </li>
                       <li className="flex items-start gap-3">
