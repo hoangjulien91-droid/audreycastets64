@@ -332,12 +332,6 @@ export default function ServicesPage() {
                     color: "secondary-purple"
                   },
                   {
-                    icon: <ClipboardList className="w-6 h-6" />,
-                    title: "Audit et diagnostic organisationnel",
-                    description: "Analyse approfondie du climat social, des conditions de travail et des facteurs de bien-être. Rapport détaillé avec recommandations.",
-                    color: "primary"
-                  },
-                  {
                     icon: <Users className="w-6 h-6" />,
                     title: "Cellule d'écoute et soutien psychologique",
                     description: "Mise en place d'espaces d'écoute confidentiels pour les salariés. Intervention en cas de crise ou d'événement traumatique.",
