@@ -325,7 +325,7 @@ export default function QuiSuisJePage() {
 
                 <div className="mt-8 pt-8 border-t border-border">
                   <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">Numéro ADELI :</strong> [Numéro] • <strong className="text-foreground">RPPS :</strong> [Numéro]
+                    <strong className="text-foreground">Numéro ADELI :</strong> 409307198 • <strong className="text-foreground">RPPS :</strong> 10009709337
                   </p>
                 </div>
               </div>
