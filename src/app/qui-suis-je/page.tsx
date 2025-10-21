@@ -53,7 +53,7 @@ export default function QuiSuisJePage() {
                 </div>
 
                 <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                  Audrey <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-pink-500 to-secondary-purple">Castets</span>
+                  Audrey <span className="text-primary">Castets</span>
                 </h1>
 
                 <div className="flex items-center gap-2.5 mb-6">
