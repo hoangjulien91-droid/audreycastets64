@@ -3,9 +3,8 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Moon, Sun } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { applyTheme, getStoredTheme, storeTheme, type ThemeName } from "@/lib/utils"
 import { motion } from "framer-motion"
 
 const Logo = () => (
@@ -35,7 +34,6 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [theme, setTheme] = useState<ThemeName>("system")
   const pathname = usePathname()
 
   useEffect(() => {
@@ -48,26 +46,15 @@ export default function Header() {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto"
   }, [isMenuOpen])
 
-  useEffect(() => {
-    const stored = getStoredTheme() ?? "system"
-    setTheme(stored)
-  }, [])
-
-  useEffect(() => {
-    applyTheme(theme)
-    storeTheme(theme)
-  }, [theme])
-
-  const cycleTheme = () => {
-    setTheme((prev) => (prev === "system" ? "light" : prev === "light" ? "dark" : "system"))
-  }
-
   return (
     <>
-      <header
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm" : "bg-background/95"
+          scrolled ? "glass-effect border-b border-border shadow-lg" : "bg-background/95 backdrop-blur-sm"
         )}
       >
         <div
@@ -108,17 +95,9 @@ export default function Header() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <button
-              onClick={cycleTheme}
-              aria-label="Changer le thème"
-              className="p-2 rounded-full transition-all duration-200 text-muted-foreground hover:text-primary hover:bg-primary/10"
-              title={theme === "system" ? "Thème système" : theme === "light" ? "Mode clair" : "Mode sombre"}
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:scale-105 shadow-md hover:shadow-lg"
             >
               Prendre RDV
             </Link>
@@ -132,12 +111,22 @@ export default function Header() {
             <Menu className="h-6 w-6" />
           </button>
         </div>
-      </header>
+      </motion.header>
 
       {isMenuOpen && (
         <div className="fixed inset-0 z-[100] lg:hidden">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
-          <div className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-background shadow-2xl animate-slide-in-right">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm" 
+            onClick={() => setIsMenuOpen(false)} 
+          />
+          <motion.div 
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            transition={{ type: "spring", damping: 30, stiffness: 300 }}
+            className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-background shadow-2xl"
+          >
             <div className="flex flex-col h-full">
               <div className="flex items-center justify-between px-4 h-16 sm:h-20 border-b border-border">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
@@ -155,18 +144,24 @@ export default function Header() {
 
               <nav className="flex-1 overflow-y-auto p-4">
                 <div className="space-y-1">
-                  {navLinks.map((link) => (
-                    <Link
+                  {navLinks.map((link, idx) => (
+                    <motion.div
                       key={link.href}
-                      href={link.href}
-                      className={cn(
-                        "flex items-center w-full rounded-lg py-3 px-4 text-base font-medium transition-colors",
-                        pathname === link.href ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
-                      )}
-                      onClick={() => setIsMenuOpen(false)}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.05 }}
                     >
-                      {link.label}
-                    </Link>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "flex items-center w-full rounded-lg py-3 px-4 text-base font-medium transition-colors",
+                          pathname === link.href ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
+                        )}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.div>
                   ))}
                 </div>
               </nav>
@@ -174,14 +169,14 @@ export default function Header() {
               <div className="p-4 border-t border-border">
                 <Link
                   href="/contact"
-                  className="flex items-center justify-center w-full rounded-lg bg-primary py-3 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                  className="flex items-center justify-center w-full rounded-lg bg-primary py-3 text-base font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:scale-[1.02]"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Prendre RDV
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </>

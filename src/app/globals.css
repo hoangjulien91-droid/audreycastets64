@@ -1,3 +1,6 @@
+/* Updated: 2025-10-21T23:33:55.772Z */
+/* Updated: 2025-10-21T23:32:41.505Z */
+/* Updated: 2025-10-16T22:21:54.451Z */
 /* Updated: 2025-10-16T13:32:08.694Z */
 /* Updated: 2025-10-16T10:59:56.791Z */
 /* Updated: 2025-10-16T10:32:00.460Z */
@@ -15,115 +18,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
-@custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Shadcn/UI colors - Palette sobre, élégante et professionnelle */
-  --color-background: #F8FAFC; /* slate-50 */
-  --color-foreground: #0F172A; /* slate-900 */
+  /* Design System - Psychologue Professionnel */
+  --color-background: #FDFCFB;
+  --color-foreground: #1A1A1A;
 
   --color-card: #FFFFFF;
-  --color-card-foreground: #0F172A;
+  --color-card-foreground: #1A1A1A;
 
   --color-popover: #FFFFFF;
-  --color-popover-foreground: #0F172A;
+  --color-popover-foreground: #1A1A1A;
 
-  --color-primary: #334155; /* slate-700 */
+  --color-primary: #8B7A98; /* Mauve doux professionnel */
   --color-primary-foreground: #FFFFFF;
 
-  --color-secondary: #E5E7EB; /* gray-200 */
-  --color-secondary-foreground: #0F172A;
+  --color-secondary: #D4C5D9; /* Lavande claire */
+  --color-secondary-foreground: #1A1A1A;
 
-  --color-muted: #F1F5F9; /* slate-100 */
-  --color-muted-foreground: #475569; /* slate-600 */
+  --color-muted: #F5F3F7;
+  --color-muted-foreground: #6B6B6B;
 
-  --color-accent: #E2E8F0; /* slate-200 */
-  --color-accent-foreground: #0F172A;
+  --color-accent: #E8DFF0; /* Accent doux */
+  --color-accent-foreground: #1A1A1A;
 
-  --color-destructive: #DC2626; /* red-600 */
+  --color-destructive: #DC2626;
   --color-destructive-foreground: #FFFFFF;
 
-  --color-border: #E5E7EB;
-  --color-input: #E2E8F0;
-  --color-ring: #334155;
+  --color-border: #E8E4EC;
+  --color-input: #F5F3F7;
+  --color-ring: #8B7A98;
 
-  --color-chart-1: #334155; /* primary neutral */
-  --color-chart-2: #0EA5E9; /* sky-500 */
-  --color-chart-3: #10B981; /* emerald-500 */
-  --color-chart-4: #64748B; /* slate-500 */
-  --color-chart-5: #94A3B8; /* slate-400 */
+  /* Custom Design Colors */
+  --color-primary-soft: #A594B3;
+  --color-accent-teal: #5FABA6;
+  --color-warm-beige: #F9F7F4;
 
-  --color-sidebar: #F9FAFB; /* gray-50 */
-  --color-sidebar-foreground: #111827; /* gray-900 */
-  --color-sidebar-primary: #334155; /* matches primary */
-  --color-sidebar-primary-foreground: #FFFFFF;
-  --color-sidebar-accent: #E5E7EB; /* gray-200 */
-  --color-sidebar-accent-foreground: #111827;
-  --color-sidebar-border: #D1D5DB; /* gray-300 */
-  --color-sidebar-ring: #334155;
-
-  /* Custom Design System Colors - Alignées sur la nouvelle palette */
-  --color-primary-pink: #334155; /* conservé pour compat, pointé vers primaire neutre */
-  --color-secondary-purple: #0EA5E9; /* accent plus subtil */
-  --color-background-base: #F8FAFC;
-  --color-background-white: #FFFFFF;
-  --color-text-primary: #0F172A;
-  --color-text-secondary: #475569;
-  --color-border-divider: #E5E7EB;
-  --color-pink-light-bg: #E2E8F0; /* ex-rose -> accent neutre */
-  --color-purple-light-bg: #F1F5F9; /* violet clair -> slate-100 */
-  --color-success-accent: #10B981;
-
-  /* Custom Design System Typography */
+  /* Typography */
   --font-display: "Playfair Display", serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
 
-  /* Shadcn/UI Radii - Plus arrondis pour douceur */
+  /* Radii */
   --radius-lg: 1.5rem;
   --radius-md: 1rem;
   --radius-sm: 0.75rem;
 
-  /* Shadcn/UI Animations */
+  /* Animations */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
   }
   @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
   }
   
-  @keyframes slide-in-right {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
   }
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -131,12 +94,6 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-border);
-  }
-}
-
-@layer utilities {
-  body {
-    font-family: var(--font-body);
   }
 }
 
@@ -161,23 +118,7 @@
     --border: var(--color-border);
     --input: var(--color-input);
     --ring: var(--color-ring);
-    --chart-1: var(--color-chart-1);
-    --chart-2: var(--color-chart-2);
-    --chart-3: var(--color-chart-3);
-    --chart-4: var(--color-chart-4);
-    --chart-5: var(--color-chart-5);
     --radius: var(--radius-lg);
-    --sidebar-background: var(--color-sidebar);
-    --sidebar-foreground: var(--color-sidebar-foreground);
-    --sidebar-primary: var(--color-sidebar-primary);
-    --sidebar-primary-foreground: var(--color-sidebar-primary-foreground);
-    --sidebar-accent: var(--color-sidebar-accent);
-    --sidebar-accent-foreground: var(--color-sidebar-accent-foreground);
-    --sidebar-border: var(--color-sidebar-border);
-    --sidebar-ring: var(--color-sidebar-ring);
-    /* Accent link colors (light mode) */
-    --color-accent-link: #0D9488; /* teal-600 */
-    --color-accent-link-hover: #0B7667; /* teal-700 */
   }
 
   body {
@@ -189,6 +130,7 @@
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.1;
+    letter-spacing: -0.02em;
   }
 
   h2 {
@@ -196,6 +138,7 @@
     font-size: 2.75rem;
     font-weight: 700;
     line-height: 1.2;
+    letter-spacing: -0.01em;
   }
 
   h3 {
@@ -208,24 +151,7 @@
   p {
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.6;
-  }
-
-  .text-lg-body {
-    font-size: 1.125rem;
-    font-weight: 400;
     line-height: 1.7;
-  }
-
-  .text-sm {
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.5;
-  }
-
-  .text-badge {
-    font-size: 0.875rem;
-    font-weight: 500;
   }
 
   .container {
@@ -243,11 +169,11 @@
     }
     
     h1 {
-      font-size: 4rem;
+      font-size: 4.5rem;
     }
 
     h2 {
-      font-size: 3rem;
+      font-size: 3.5rem;
     }
   }
 
@@ -259,77 +185,34 @@
   }
 }
 
-/* Dark theme variables */
-@layer base {
-  .dark {
-    --background: #0B1220; /* deep slate/navy for elegant dark */
-    --foreground: #E5E7EB; /* gray-200 */
-
-    --card: #0F172A; /* slate-900 */
-    --card-foreground: #E5E7EB;
-
-    --popover: #0F172A;
-    --popover-foreground: #E5E7EB;
-
-    --primary: #CBD5E1; /* slate-300 */
-    --primary-foreground: #0B1220;
-
-    --secondary: #111827; /* gray-900 */
-    --secondary-foreground: #E5E7EB;
-
-    --muted: #0F172A;
-    --muted-foreground: #94A3B8; /* slate-400 */
-
-    --accent: #111827;
-    --accent-foreground: #E5E7EB;
-
-    --destructive: #EF4444;
-    --destructive-foreground: #0B1220;
-
-    --border: #1F2937; /* slate-800 */
-    --input: #1F2937;
-    --ring: #CBD5E1; /* match primary */
-
-    --chart-1: #CBD5E1;
-    --chart-2: #38BDF8; /* sky-400 */
-    --chart-3: #34D399; /* emerald-400 */
-    --chart-4: #94A3B8;
-    --chart-5: #64748B;
-
-    --sidebar-background: #0C1426;
-    --sidebar-foreground: #E5E7EB;
-    --sidebar-primary: #334155;
-    --sidebar-primary-foreground: #FFFFFF;
-    --sidebar-accent: #111827;
-    --sidebar-accent-foreground: #E5E7EB;
-    --sidebar-border: #1F2937;
-    --sidebar-ring: #CBD5E1;
-
-    /* Accent link colors (dark mode) */
-    --color-accent-link: #2DD4BF; /* teal-400 */
-    --color-accent-link-hover: #14B8A6; /* teal-500 */
-  }
-}
-
 @layer utilities {
-  .animate-slide-in-right {
-    animation: slide-in-right 0.3s ease-out forwards;
+  body {
+    font-family: var(--font-body);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
-/* Link styling with elegant accent; respects dark mode variables */
-@layer base {
-  a {
-    color: var(--color-accent-link);
-    text-underline-offset: 4px;
-    transition: color 150ms ease;
-  }
-  a:hover {
-    color: var(--color-accent-link-hover);
-  }
-}
-
-/* Hide Next.js error overlay portal */
+/* Hide Next.js error overlay */
 nextjs-portal {
   display: none !important;
 }
