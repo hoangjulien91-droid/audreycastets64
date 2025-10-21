@@ -37,7 +37,7 @@ export default function HeroSection() {
         >
           <div className="lg:col-span-7 xl:col-span-6 text-center lg:text-left">
             <motion.p className="text-base font-semibold text-[var(--color-accent-link)] tracking-wider" variants={itemVariants}>
-              Audrey Castets - Psychologue Clinicienne
+              Audrey Castets - Psychologue
             </motion.p>
             <motion.h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-foreground" variants={itemVariants}>
               Un espace pour vous, une écoute pour avancer
