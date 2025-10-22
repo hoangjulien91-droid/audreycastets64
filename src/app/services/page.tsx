@@ -92,7 +92,7 @@ export default function ServicesPage() {
         {/* Hero Section with Breadcrumb - Parallax Effect */}
         <motion.section 
           style={{ opacity }}
-          className="relative overflow-hidden bg-gradient-to-br from-[#FFF5F8] via-[#FDF8F6] to-[#FFE3EC] py-16 md:py-24"
+          className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50/30 to-background py-16 md:py-24"
         >
           {/* Animated Background Blobs with Glow */}
           <div className="absolute inset-0 pointer-events-none opacity-30">
@@ -109,7 +109,7 @@ export default function ServicesPage() {
               initial="initial"
               animate="animate"
               transition={{ delay: 1 }}
-              className="absolute bottom-20 left-20 w-96 h-96 bg-secondary-purple/20 rounded-full blur-3xl"
+              className="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
             />
           </div>
 
@@ -136,7 +136,7 @@ export default function ServicesPage() {
               variants={staggerContainer}
               className="max-w-5xl mx-auto text-center"
             >
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 glass-effect rounded-full border border-primary/20 shadow-lg mb-6">
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 bg-pink-100 rounded-full border border-primary/20 shadow-sm mb-6">
                 <motion.div
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
@@ -150,7 +150,7 @@ export default function ServicesPage() {
 
               <motion.h1 variants={fadeInUp} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
                 Des accompagnements <motion.span 
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-pink-500 to-secondary-purple"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-primary"
                   animate={{
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   }}
@@ -176,7 +176,7 @@ export default function ServicesPage() {
                     key={index}
                     variants={fadeInUp}
                     whileHover={{ scale: 1.1, boxShadow: "0 10px 30px rgba(139, 122, 152, 0.3)" }}
-                    className="inline-flex items-center gap-2 px-4 py-2 glass-effect rounded-full border border-primary/20 shadow-sm"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-pink-200/50 shadow-sm"
                   >
                     <span className="text-primary">{item.icon}</span>
                     <span className="text-sm font-medium text-foreground">
@@ -301,7 +301,7 @@ export default function ServicesPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="py-16 md:py-20 bg-gradient-to-r from-primary via-pink-500 to-secondary-purple relative overflow-hidden"
+          className="py-16 md:py-20 bg-gradient-to-r from-primary via-purple-500 to-primary relative overflow-hidden"
         >
           {/* Animated glow effects */}
           <motion.div
@@ -380,7 +380,7 @@ function AnimatedServicesCards() {
       className="py-16 md:py-24 bg-white relative overflow-hidden"
     >
       {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
         <motion.div 
           animate={{
             x: [0, 50, 0],
@@ -388,7 +388,7 @@ function AnimatedServicesCards() {
             scale: [1, 1.1, 1],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 bg-pink-200/60 rounded-full blur-3xl"
         />
         <motion.div 
           animate={{
@@ -397,7 +397,7 @@ function AnimatedServicesCards() {
             scale: [1, 1.2, 1],
           }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/80 rounded-full blur-3xl"
+          className="absolute bottom-0 left-0 w-96 h-96 bg-purple-200/60 rounded-full blur-3xl"
         />
       </div>
       
@@ -546,7 +546,7 @@ function AnimatedServicesCards() {
 }
 
 // Component for animated service details
-function AnimatedServiceDetails({ title, subtitle, services, bgColor = "gradient-to-br from-[#FDF8F6] to-white" }: any) {
+function AnimatedServiceDetails({ title, subtitle, services, bgColor = "gradient-to-br from-pink-50 to-white" }: any) {
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   return (
@@ -560,11 +560,11 @@ function AnimatedServiceDetails({ title, subtitle, services, bgColor = "gradient
       <div className="container mx-auto px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div variants={fadeInUp} className="text-center mb-12">
-            <span className={`${title === "Professionnels" ? "text-secondary-purple" : "text-primary"} text-sm font-semibold uppercase tracking-wide mb-3 block`}>
+            <span className={`${title === "Professionnels" ? "text-purple-600" : "text-primary"} text-sm font-semibold uppercase tracking-wide mb-3 block`}>
               {subtitle}
             </span>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Services pour les <span className={title === "Professionnels" ? "text-secondary-purple" : "text-primary"}>{title}</span>
+              Services pour les <span className={title === "Professionnels" ? "text-purple-600" : "text-primary"}>{title}</span>
             </h2>
           </motion.div>
 
@@ -582,8 +582,8 @@ function AnimatedServiceDetails({ title, subtitle, services, bgColor = "gradient
                 <motion.div 
                   className={`w-12 h-12 bg-gradient-to-br ${
                     service.color === 'primary' 
-                      ? 'from-primary to-pink-600' 
-                      : 'from-secondary-purple to-purple-600'
+                      ? 'from-primary to-pink-400' 
+                      : 'from-purple-500 to-purple-600'
                   } rounded-xl flex items-center justify-center text-white mb-4`}
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
@@ -615,7 +615,7 @@ function AnimatedPracticalInfo() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={staggerContainer}
-      className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white"
+      className="py-16 md:py-24 bg-gradient-to-br from-pink-50 to-white"
     >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
@@ -631,7 +631,7 @@ function AnimatedPracticalInfo() {
           <motion.div 
             variants={fadeInUp}
             whileHover={{ y: -5, boxShadow: "0 30px 80px rgba(139, 122, 152, 0.15)" }}
-            className="glass-effect rounded-3xl shadow-xl p-8 md:p-12 border border-primary/10"
+            className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-12 border border-pink-200/50"
           >
             <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               {[
@@ -658,7 +658,7 @@ function AnimatedPracticalInfo() {
                   className="text-center"
                 >
                   <motion.div 
-                    className="w-14 h-14 bg-pink-light-bg rounded-xl flex items-center justify-center mx-auto mb-4"
+                    className="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mx-auto mb-4"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
