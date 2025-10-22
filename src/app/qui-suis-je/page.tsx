@@ -23,11 +23,11 @@ export default function QuiSuisJePage() {
       
       <main className="pt-20">
         {/* Hero Section with Breadcrumb */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF5F8] via-[#FDF8F6] to-[#FFE3EC] py-16 md:py-24">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24">
           {/* Background decorative elements */}
           <div className="absolute inset-0 pointer-events-none opacity-30">
-            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary-purple/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-[#D4C5D9]/40 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#A594B3]/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
           </div>
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -45,7 +45,7 @@ export default function QuiSuisJePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left Content */}
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-primary/20 shadow-sm mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
                   <Sparkles className="w-4 h-4 text-primary animate-pulse" />
                   <span className="text-sm font-medium text-primary">
                     Mon parcours & expertise
@@ -69,22 +69,22 @@ export default function QuiSuisJePage() {
 
                 {/* Quick Stats */}
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-primary/10 shadow-md">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-pink-600 rounded-full mb-2 mx-auto">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md">
+                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto">
                       <Award className="w-6 h-6 text-white" />
                     </div>
                     <p className="text-2xl font-bold text-primary text-center">+5 ans</p>
                     <p className="text-xs text-muted-foreground text-center">Expérience</p>
                   </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-primary/10 shadow-md">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-secondary-purple to-purple-600 rounded-full mb-2 mx-auto">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md">
+                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-full mb-2 mx-auto">
                       <Users className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-2xl font-bold text-secondary-purple text-center">200+</p>
+                    <p className="text-2xl font-bold text-primary text-center">200+</p>
                     <p className="text-xs text-muted-foreground text-center">Accompagnements</p>
                   </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-primary/10 shadow-md">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-pink-600 rounded-full mb-2 mx-auto">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md">
+                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto">
                       <Star className="w-6 h-6 text-white" />
                     </div>
                     <p className="text-2xl font-bold text-primary text-center">95%</p>
@@ -96,14 +96,14 @@ export default function QuiSuisJePage() {
               {/* Right Image */}
               <div className="flex justify-center lg:justify-end">
                 <div className="relative group">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-primary via-pink-400 to-secondary-purple opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700"></div>
+                  <div className="absolute -inset-6 bg-gradient-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98] opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700"></div>
                   <div className="relative">
                     <Image
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg"
                       alt="Audrey Castets - Psychologue du Travail"
                       width={500}
                       height={500}
-                      className="w-72 h-72 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] object-cover rounded-full shadow-2xl ring-8 ring-white/60 group-hover:ring-primary/30 transition-all duration-500"
+                      className="w-72 h-72 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] object-cover rounded-full shadow-2xl ring-8 ring-white/60 group-hover:ring-[#D4C5D9]/40 transition-all duration-500"
                       priority
                     />
                   </div>
@@ -134,7 +134,7 @@ export default function QuiSuisJePage() {
                 {/* Formation */}
                 <div className="flex gap-6 group">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-pink-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <GraduationCap className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -149,7 +149,7 @@ export default function QuiSuisJePage() {
                 {/* Expérience */}
                 <div className="flex gap-6 group">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-secondary-purple to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Briefcase className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -164,7 +164,7 @@ export default function QuiSuisJePage() {
                 {/* International */}
                 <div className="flex gap-6 group">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-pink-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Globe className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -181,7 +181,7 @@ export default function QuiSuisJePage() {
         </section>
 
         {/* Ma Philosophie Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white">
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -193,7 +193,7 @@ export default function QuiSuisJePage() {
                 </h2>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-primary/10">
+              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-[#D4C5D9]/30">
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   Pour moi, chaque personne est unique et mérite un accompagnement sur mesure. Je crois profondément en une approche bienveillante, sans jugement, où l'écoute active et l'empathie sont au cœur de ma pratique.
                 </p>
@@ -227,37 +227,37 @@ export default function QuiSuisJePage() {
                   icon: <Target className="w-8 h-8" />,
                   title: "Thérapies Cognitivo-Comportementales (TCC)",
                   description: "Approche pragmatique pour identifier et modifier les pensées négatives et comportements inadaptés.",
-                  color: "from-primary to-pink-600"
+                  color: "from-[#A594B3] to-[#8B7A98]"
                 },
                 {
                   icon: <Heart className="w-8 h-8" />,
                   title: "EFT (Emotional Freedom Techniques)",
                   description: "Technique de libération émotionnelle pour réduire le stress et les traumatismes émotionnels.",
-                  color: "from-secondary-purple to-purple-600"
+                  color: "from-[#C5B8D0] to-[#A594B3]"
                 },
                 {
                   icon: <Briefcase className="w-8 h-8" />,
                   title: "Psychologie du Travail",
                   description: "Accompagnement des transitions professionnelles, reconversion, burn-out et équilibre vie pro/perso.",
-                  color: "from-primary to-pink-600"
+                  color: "from-[#A594B3] to-[#8B7A98]"
                 },
                 {
                   icon: <Users className="w-8 h-8" />,
                   title: "Interventions en entreprise",
                   description: "Diagnostic RPS, tests SOSIE, ateliers de prévention du stress et cohésion d'équipe.",
-                  color: "from-secondary-purple to-purple-600"
+                  color: "from-[#C5B8D0] to-[#A594B3]"
                 },
                 {
                   icon: <BookOpen className="w-8 h-8" />,
                   title: "Orientation professionnelle",
                   description: "Bilan de compétences, aide à la décision et construction de projet professionnel.",
-                  color: "from-primary to-pink-600"
+                  color: "from-[#A594B3] to-[#8B7A98]"
                 },
                 {
                   icon: <Award className="w-8 h-8" />,
                   title: "Développement personnel",
                   description: "Confiance en soi, gestion des émotions, affirmation de soi et relations interpersonnelles.",
-                  color: "from-secondary-purple to-purple-600"
+                  color: "from-[#C5B8D0] to-[#A594B3]"
                 }
               ].map((specialty, index) => (
                 <div
@@ -280,7 +280,7 @@ export default function QuiSuisJePage() {
         </section>
 
         {/* Déontologie Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white">
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -334,7 +334,7 @@ export default function QuiSuisJePage() {
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-pink-500 to-secondary-purple">
+        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]">
           <div className="container mx-auto px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
