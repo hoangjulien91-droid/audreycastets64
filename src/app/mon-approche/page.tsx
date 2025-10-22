@@ -23,11 +23,11 @@ export default function MonApprochePage() {
       
       <main className="pt-20">
         {/* Hero Section with Breadcrumb */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF5F8] via-[#FDF8F6] to-[#FFE3EC] py-16 md:py-24">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24">
           {/* Background decorative elements */}
-          <div className="absolute inset-0 pointer-events-none opacity-30">
-            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary-purple/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute inset-0 pointer-events-none opacity-20">
+            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-[#D4C5D9]/40 rounded-full blur-3xl animate-blob"></div>
+            <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#A594B3]/30 rounded-full blur-3xl animate-blob" style={{ animationDelay: '1s' }}></div>
           </div>
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -43,7 +43,7 @@ export default function MonApprochePage() {
 
             {/* Hero Content */}
             <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-primary/20 shadow-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
                 <Sparkles className="w-4 h-4 text-primary animate-pulse" />
                 <span className="text-sm font-medium text-primary">
                   Méthodologie & Valeurs
@@ -51,7 +51,7 @@ export default function MonApprochePage() {
               </div>
 
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Mon <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-pink-500 to-secondary-purple">Approche</span>
+                Mon <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">Approche</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
@@ -68,7 +68,7 @@ export default function MonApprochePage() {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 shadow-sm"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 shadow-sm"
                   >
                     <span className="text-primary">{item.icon}</span>
                     <span className="text-sm font-medium text-foreground">
@@ -102,30 +102,30 @@ export default function MonApprochePage() {
                   icon: <Heart className="w-8 h-8" />,
                   title: "Écoute active et bienveillance",
                   description: "Un espace sécurisé, sans jugement, où vous pouvez vous exprimer librement. Je suis là pour vous écouter, vous comprendre et vous accompagner avec empathie.",
-                  color: "from-primary to-pink-600"
+                  color: "from-[#A594B3] to-[#8B7A98]"
                 },
                 {
                   icon: <Target className="w-8 h-8" />,
                   title: "Approche orientée solutions",
                   description: "Nous travaillons ensemble sur des objectifs concrets et réalisables. Chaque séance vise à vous donner des outils pratiques pour avancer.",
-                  color: "from-secondary-purple to-purple-600"
+                  color: "from-[#C5B8D0] to-[#A594B3]"
                 },
                 {
                   icon: <Users className="w-8 h-8" />,
                   title: "Accompagnement personnalisé",
                   description: "Chaque personne est unique. J'adapte mes méthodes à votre personnalité, votre contexte et vos besoins spécifiques pour un accompagnement sur mesure.",
-                  color: "from-primary to-pink-600"
+                  color: "from-[#A594B3] to-[#8B7A98]"
                 },
                 {
                   icon: <Shield className="w-8 h-8" />,
                   title: "Confidentialité absolue",
                   description: "Le secret professionnel est garanti. Tout ce qui se dit en séance reste strictement confidentiel, dans le respect du code de déontologie.",
-                  color: "from-secondary-purple to-purple-600"
+                  color: "from-[#C5B8D0] to-[#A594B3]"
                 }
               ].map((principle, index) => (
                 <div
                   key={index}
-                  className="group bg-white rounded-2xl p-8 border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-white rounded-2xl p-8 border border-[#D4C5D9]/30 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className={`w-16 h-16 bg-gradient-to-br ${principle.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     {principle.icon}
@@ -143,7 +143,7 @@ export default function MonApprochePage() {
         </section>
 
         {/* Méthodologies Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white">
           <div className="container mx-auto px-6 lg:px-8">
             <div className="text-center mb-12">
               <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
@@ -162,7 +162,7 @@ export default function MonApprochePage() {
               <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-primary">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-primary to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
                       <Brain className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -198,10 +198,10 @@ export default function MonApprochePage() {
 
             {/* EFT Section */}
             <div className="max-w-5xl mx-auto mb-12">
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-secondary-purple">
+              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-[#8B7A98]">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-secondary-purple to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg">
                       <Zap className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export default function MonApprochePage() {
                     <h3 className="text-2xl font-bold text-foreground mb-2">
                       EFT (Emotional Freedom Techniques)
                     </h3>
-                    <p className="text-secondary-purple font-semibold mb-4">
+                    <p className="text-primary font-semibold mb-4">
                       Technique de libération émotionnelle rapide et efficace
                     </p>
                   </div>
@@ -227,7 +227,7 @@ export default function MonApprochePage() {
                     "Technique simple à pratiquer en autonomie"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-secondary-purple flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                       <p className="text-muted-foreground">{item}</p>
                     </div>
                   ))}
@@ -240,7 +240,7 @@ export default function MonApprochePage() {
               <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-primary">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-primary to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
                       <Lightbulb className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -305,7 +305,7 @@ export default function MonApprochePage() {
                   title: "Premier entretien (gratuit - 15 min)",
                   description: "Nous faisons connaissance et vous me présentez votre situation. J'évalue vos besoins et je vous propose un plan d'accompagnement adapté. Aucun engagement à ce stade.",
                   icon: <Users className="w-6 h-6" />,
-                  color: "secondary-purple"
+                  color: "secondary"
                 },
                 {
                   number: "03",
@@ -319,28 +319,26 @@ export default function MonApprochePage() {
                   title: "Suivi et autonomie",
                   description: "Au fil des séances, vous gagnez en autonomie avec des outils concrets. Nous évaluons régulièrement vos progrès et ajustons l'accompagnement si nécessaire.",
                   icon: <TrendingUp className="w-6 h-6" />,
-                  color: "secondary-purple"
+                  color: "secondary"
                 }
               ].map((step, index) => (
                 <div
                   key={index}
-                  className="group bg-white rounded-2xl p-6 md:p-8 border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-white rounded-2xl p-6 md:p-8 border border-[#D4C5D9]/30 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-6">
                     <div className="flex-shrink-0">
                       <div className={`w-16 h-16 bg-gradient-to-br ${
                         step.color === 'primary' 
-                          ? 'from-primary to-pink-600' 
-                          : 'from-secondary-purple to-purple-600'
+                          ? 'from-[#A594B3] to-[#8B7A98]' 
+                          : 'from-[#C5B8D0] to-[#A594B3]'
                       } rounded-2xl flex items-center justify-center text-white shadow-lg`}>
                         {step.icon}
                       </div>
                     </div>
                     <div className="flex-grow">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className={`text-sm font-bold ${
-                          step.color === 'primary' ? 'text-primary' : 'text-secondary-purple'
-                        }`}>
+                        <span className="text-sm font-bold text-primary">
                           {step.number}
                         </span>
                         <h3 className="text-xl font-bold text-foreground">
@@ -359,7 +357,7 @@ export default function MonApprochePage() {
         </section>
 
         {/* Ce qui me différencie Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white">
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -371,7 +369,7 @@ export default function MonApprochePage() {
                 </h2>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-primary/10">
+              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-[#D4C5D9]/30">
                 <div className="space-y-6">
                   {[
                     {
@@ -396,7 +394,7 @@ export default function MonApprochePage() {
                     }
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-pink-light-bg rounded-xl flex items-center justify-center">
+                      <div className="flex-shrink-0 w-12 h-12 bg-[#F3E8F0] rounded-xl flex items-center justify-center">
                         {item.icon}
                       </div>
                       <div>
@@ -412,7 +410,7 @@ export default function MonApprochePage() {
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-pink-500 to-secondary-purple">
+        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]">
           <div className="container mx-auto px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">

@@ -27,11 +27,11 @@ export default function TarifsPage() {
       
       <main className="pt-20">
         {/* Hero Section with Breadcrumb */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF5F8] via-[#FDF8F6] to-[#FFE3EC] py-16 md:py-24">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24">
           {/* Background decorative elements */}
-          <div className="absolute inset-0 pointer-events-none opacity-30">
-            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary-purple/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute inset-0 pointer-events-none opacity-20">
+            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-[#D4C5D9]/40 rounded-full blur-3xl animate-blob"></div>
+            <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#A594B3]/30 rounded-full blur-3xl animate-blob" style={{ animationDelay: '1s' }}></div>
           </div>
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -47,7 +47,7 @@ export default function TarifsPage() {
 
             {/* Hero Content */}
             <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-primary/20 shadow-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
                 <Sparkles className="w-4 h-4 text-primary animate-pulse" />
                 <span className="text-sm font-medium text-primary">
                   Tarifs Transparents
@@ -55,7 +55,7 @@ export default function TarifsPage() {
               </div>
 
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Des tarifs <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-pink-500 to-secondary-purple">transparents</span> adaptés à vos besoins
+                Des tarifs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">transparents</span> adaptés à vos besoins
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
@@ -72,7 +72,7 @@ export default function TarifsPage() {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 shadow-sm"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 shadow-sm"
                   >
                     <span className="text-primary">{item.icon}</span>
                     <span className="text-sm font-medium text-foreground">
@@ -87,9 +87,9 @@ export default function TarifsPage() {
 
         {/* Pricing Cards Section */}
         <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/80 rounded-full blur-3xl"></div>
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#E8DFF0] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#D4C5D9] rounded-full blur-3xl"></div>
           </div>
           
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -105,13 +105,13 @@ export default function TarifsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto mb-12">
               {/* Card 1: Particuliers */}
               <div className="group relative">
-                <div className="absolute inset-0 bg-pink-500/5 group-hover:bg-pink-500/10 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
-                <div className="relative h-full bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl border border-primary/10 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2">
-                  <div className="h-2 bg-gradient-to-r from-pink-500 to-rose-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#F3E8F0]/40 to-[#E8DFF0]/30 group-hover:from-[#F3E8F0]/60 group-hover:to-[#E8DFF0]/50 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
+                <div className="relative h-full bg-white rounded-3xl border border-[#D4C5D9]/30 shadow-[0_4px_24px_rgba(139,122,152,0.08)] hover:shadow-[0_8px_32px_rgba(139,122,152,0.12)] transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2">
+                  <div className="h-2 bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]"></div>
                   <div className="p-8 md:p-10">
                     <div className="relative mb-6">
-                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl blur-xl opacity-50"></div>
-                      <div className="relative w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl blur-xl opacity-30"></div>
+                      <div className="relative w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                         <Heart className="w-8 h-8 text-white" />
                       </div>
                     </div>
@@ -120,7 +120,7 @@ export default function TarifsPage() {
                     </h3>
                     <div className="mb-6">
                       <div className="flex items-baseline gap-2 mb-2">
-                        <span className="text-5xl font-bold text-primary">65€</span>
+                        <span className="text-5xl font-bold text-primary">55€</span>
                         <span className="text-muted-foreground text-lg">/ séance</span>
                       </div>
                       <p className="text-sm text-muted-foreground">Séance d'environ 50 minutes</p>
@@ -165,7 +165,7 @@ export default function TarifsPage() {
                     </ul>
                     <a
                       href="/#contact"
-                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
                     >
                       Prendre rendez-vous
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -176,22 +176,22 @@ export default function TarifsPage() {
 
               {/* Card 2: Professionnels */}
               <div className="group relative">
-                <div className="absolute inset-0 bg-purple-500/5 group-hover:bg-purple-500/10 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
-                <div className="relative h-full bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl border border-purple-500/10 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2">
-                  <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#E8DFF0]/40 to-[#F3E8F0]/30 group-hover:from-[#E8DFF0]/60 group-hover:to-[#F3E8F0]/50 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
+                <div className="relative h-full bg-white rounded-3xl border border-[#D4C5D9]/30 shadow-[0_4px_24px_rgba(139,122,152,0.08)] hover:shadow-[0_8px_32px_rgba(139,122,152,0.12)] transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2">
+                  <div className="h-2 bg-gradient-to-r from-[#8B7A98] via-[#A594B3] to-[#C5B8D0]"></div>
                   <div className="p-8 md:p-10">
                     <div className="relative mb-6">
-                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-50"></div>
-                      <div className="relative w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl blur-xl opacity-30"></div>
+                      <div className="relative w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                         <Building2 className="w-8 h-8 text-white" />
                       </div>
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-purple-600 transition-colors">
+                    <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-primary transition-colors">
                       Professionnels
                     </h3>
                     <div className="mb-6">
                       <div className="flex items-baseline gap-2 mb-2">
-                        <span className="text-4xl font-bold text-secondary-purple">Sur devis</span>
+                        <span className="text-4xl font-bold text-primary">Sur devis</span>
                       </div>
                       <p className="text-sm text-muted-foreground">Tarif adapté à vos besoins</p>
                     </div>
@@ -229,7 +229,7 @@ export default function TarifsPage() {
                     </ul>
                     <a
                       href="/#contact"
-                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-[#8B7A98] to-[#A594B3] text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
                     >
                       Demander un devis
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -240,7 +240,7 @@ export default function TarifsPage() {
             </div>
 
             {/* Info Banner */}
-            <div className="max-w-4xl mx-auto bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl p-6 md:p-8 border border-primary/20">
+            <div className="max-w-4xl mx-auto bg-gradient-to-r from-[#F3E8F0] to-[#E8DFF0] rounded-2xl p-6 md:p-8 border border-[#D4C5D9]/30">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
                   <Info className="w-6 h-6 text-primary" />
@@ -259,7 +259,7 @@ export default function TarifsPage() {
         </section>
 
         {/* Remboursements Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white">
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -283,7 +283,7 @@ export default function TarifsPage() {
                     icon: <Building2 className="w-6 h-6" />,
                     title: "Comités d'entreprise",
                     description: "Certains CE prennent en charge tout ou partie des consultations psychologiques. N'hésitez pas à vous renseigner auprès de votre entreprise.",
-                    color: "secondary-purple"
+                    color: "secondary"
                   },
                   {
                     icon: <FileText className="w-6 h-6" />,
@@ -295,17 +295,17 @@ export default function TarifsPage() {
                     icon: <Handshake className="w-6 h-6" />,
                     title: "Situations particulières",
                     description: "Si vous rencontrez des difficultés financières, n'hésitez pas à m'en parler. Des solutions peuvent être envisagées selon votre situation.",
-                    color: "secondary-purple"
+                    color: "secondary"
                   }
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="group bg-white rounded-2xl p-6 border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    className="group bg-white rounded-2xl p-6 border border-[#D4C5D9]/30 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
                     <div className={`w-12 h-12 bg-gradient-to-br ${
                       item.color === 'primary' 
-                        ? 'from-primary to-pink-600' 
-                        : 'from-secondary-purple to-purple-600'
+                        ? 'from-[#A594B3] to-[#8B7A98]' 
+                        : 'from-[#C5B8D0] to-[#A594B3]'
                     } rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
                       {item.icon}
                     </div>
@@ -319,7 +319,7 @@ export default function TarifsPage() {
                 ))}
               </div>
 
-              <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-primary/10">
+              <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-[#D4C5D9]/30">
                 <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                   <BadgeCheck className="w-6 h-6 text-primary" />
                   À savoir
@@ -362,7 +362,7 @@ export default function TarifsPage() {
                 </h2>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-primary/10">
+              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-[#D4C5D9]/30">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                   {[
                     {
@@ -382,7 +382,7 @@ export default function TarifsPage() {
                     }
                   ].map((item, index) => (
                     <div key={index} className="text-center">
-                      <div className="w-14 h-14 bg-pink-light-bg rounded-xl flex items-center justify-center mx-auto mb-4">
+                      <div className="w-14 h-14 bg-[#F3E8F0] rounded-xl flex items-center justify-center mx-auto mb-4">
                         {item.icon}
                       </div>
                       <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
@@ -391,7 +391,7 @@ export default function TarifsPage() {
                   ))}
                 </div>
 
-                <div className="border-t border-border pt-8">
+                <div className="border-t border-[#D4C5D9]/30 pt-8">
                   <h3 className="text-xl font-bold text-foreground mb-4">Politique d'annulation</h3>
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
@@ -420,7 +420,7 @@ export default function TarifsPage() {
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-pink-500 to-secondary-purple">
+        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]">
           <div className="container mx-auto px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
