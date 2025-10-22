@@ -377,10 +377,10 @@ function AnimatedServicesCards() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={staggerContainer}
-      className="py-16 md:py-24 bg-white relative overflow-hidden"
+      className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white relative overflow-hidden"
     >
       {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <motion.div 
           animate={{
             x: [0, 50, 0],
@@ -388,7 +388,7 @@ function AnimatedServicesCards() {
             scale: [1, 1.1, 1],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 right-0 w-96 h-96 bg-pink-200/60 rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-96 h-96 bg-[#F3E8F0] rounded-full blur-3xl"
         />
         <motion.div 
           animate={{
@@ -397,7 +397,7 @@ function AnimatedServicesCards() {
             scale: [1, 1.2, 1],
           }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 left-0 w-96 h-96 bg-purple-200/60 rounded-full blur-3xl"
+          className="absolute bottom-0 left-0 w-96 h-96 bg-[#E8DFF0] rounded-full blur-3xl"
         />
       </div>
       
@@ -415,10 +415,10 @@ function AnimatedServicesCards() {
           {/* Card 1: Pour les Particuliers */}
           <motion.div variants={fadeInUp} className="group relative">
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-rose-500/10 rounded-3xl blur-xl"
+              className="absolute inset-0 bg-gradient-to-br from-[#F3E8F0]/40 to-[#E8DFF0]/30 rounded-3xl blur-xl"
               animate={{
                 scale: [1, 1.05, 1],
-                opacity: [0.5, 0.8, 0.5],
+                opacity: [0.4, 0.6, 0.4],
               }}
               transition={{ duration: 3, repeat: Infinity }}
             />
@@ -426,20 +426,20 @@ function AnimatedServicesCards() {
               variants={cardHover}
               initial="rest"
               whileHover="hover"
-              className="relative h-full glass-effect rounded-3xl border border-primary/20 shadow-lg overflow-hidden"
+              className="relative h-full glass-effect rounded-3xl border border-[#D4C5D9]/30 shadow-lg overflow-hidden"
               style={{
-                boxShadow: "0 10px 40px rgba(236, 72, 153, 0.1)",
+                boxShadow: "0 10px 40px rgba(139, 122, 152, 0.08)",
               }}
             >
-              <div className="h-2 bg-gradient-to-r from-pink-500 to-rose-500"></div>
+              <div className="h-2 bg-gradient-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98]"></div>
               <div className="p-8 md:p-10">
                 <motion.div 
                   className="relative mb-6"
                   whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl blur-xl opacity-50"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl blur-xl opacity-40"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
                     <Heart className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
@@ -465,9 +465,9 @@ function AnimatedServicesCards() {
                   ))}
                 </ul>
                 <motion.div 
-                  whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(236, 72, 153, 0.4)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(139, 122, 152, 0.25)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-2xl shadow-md cursor-pointer"
+                  className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
                 >
                   Voir les détails
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -479,10 +479,10 @@ function AnimatedServicesCards() {
           {/* Card 2: Pour les Professionnels */}
           <motion.div variants={fadeInUp} className="group relative">
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-3xl blur-xl"
+              className="absolute inset-0 bg-gradient-to-br from-[#E8DFF0]/40 to-[#F3E8F0]/30 rounded-3xl blur-xl"
               animate={{
                 scale: [1, 1.05, 1],
-                opacity: [0.5, 0.8, 0.5],
+                opacity: [0.4, 0.6, 0.4],
               }}
               transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
             />
@@ -490,24 +490,24 @@ function AnimatedServicesCards() {
               variants={cardHover}
               initial="rest"
               whileHover="hover"
-              className="relative h-full glass-effect rounded-3xl border border-purple-500/20 shadow-lg overflow-hidden"
+              className="relative h-full glass-effect rounded-3xl border border-[#D4C5D9]/30 shadow-lg overflow-hidden"
               style={{
-                boxShadow: "0 10px 40px rgba(168, 85, 247, 0.1)",
+                boxShadow: "0 10px 40px rgba(139, 122, 152, 0.08)",
               }}
             >
-              <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+              <div className="h-2 bg-gradient-to-r from-[#8B7A98] via-[#A594B3] to-[#C5B8D0]"></div>
               <div className="p-8 md:p-10">
                 <motion.div 
                   className="relative mb-6"
                   whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-50"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl blur-xl opacity-40"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg">
                     <Users className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
-                <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-purple-600 transition-colors">
+                <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-primary transition-colors">
                   Pour les Professionnels
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">
@@ -529,9 +529,9 @@ function AnimatedServicesCards() {
                   ))}
                 </ul>
                 <motion.div 
-                  whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(168, 85, 247, 0.4)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(139, 122, 152, 0.25)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-2xl shadow-md cursor-pointer"
+                  className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#8B7A98] to-[#A594B3] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
                 >
                   Voir les détails
                   <ArrowRight className="w-5 h-5 ml-2" />
