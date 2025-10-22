@@ -79,11 +79,11 @@ export default function ContactPage() {
       
       <main className="pt-20">
         {/* Hero Section with Breadcrumb */}
-        <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-white">
+        <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background">
           {/* Background Effects */}
-          <div className="absolute inset-0 bg-gradient-to-br from-pink-100/40 via-purple-100/30 to-transparent" />
-          <div className="absolute top-0 right-0 w-96 h-96 bg-pink-200/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#F3E8F0]/40 via-[#E8DFF0]/30 to-transparent" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4C5D9]/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#A594B3]/15 rounded-full blur-3xl" />
           
           <div className="container mx-auto px-4 relative z-10">
             {/* Breadcrumb */}
@@ -96,14 +96,14 @@ export default function ContactPage() {
             </nav>
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-pink-200/50 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30">
               <Sparkles className="w-4 h-4 text-[var(--color-primary)] animate-pulse" />
               <span className="text-sm font-medium text-[var(--color-primary)]">Contact</span>
             </div>
 
             {/* Hero Title */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-[var(--color-text-primary)]" style={{ fontFamily: 'var(--font-display)' }}>
-              Prenons <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary-purple)] bg-clip-text text-transparent">contact</span>
+              Prenons <span className="bg-gradient-to-r from-[var(--color-primary)] to-[#A594B3] bg-clip-text text-transparent">contact</span>
             </h1>
             
             <p className="text-lg md:text-xl text-[var(--color-text-secondary)] max-w-3xl mb-10">
@@ -112,20 +112,20 @@ export default function ContactPage() {
 
             {/* Key Features Badges */}
             <div className="flex flex-wrap gap-3">
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-pink-200/50 text-sm text-[var(--color-text-primary)]">
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 text-sm text-[var(--color-text-primary)]">
                 <CheckCircle className="w-4 h-4 inline mr-2 text-[var(--color-primary)]" />
                 Réponse sous 24h
               </div>
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-purple-200/50 text-sm text-[var(--color-text-primary)]">
-                <CheckCircle className="w-4 h-4 inline mr-2 text-[var(--color-secondary-purple)]" />
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#A594B3]/30 text-sm text-[var(--color-text-primary)]">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-[#A594B3]" />
                 Premier entretien offert
               </div>
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-pink-200/50 text-sm text-[var(--color-text-primary)]">
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 text-sm text-[var(--color-text-primary)]">
                 <CheckCircle className="w-4 h-4 inline mr-2 text-[var(--color-primary)]" />
                 Confidentialité absolue
               </div>
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-purple-200/50 text-sm text-[var(--color-text-primary)]">
-                <CheckCircle className="w-4 h-4 inline mr-2 text-[var(--color-secondary-purple)]" />
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#A594B3]/30 text-sm text-[var(--color-text-primary)]">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-[#A594B3]" />
                 Sans engagement
               </div>
             </div>
@@ -148,9 +148,9 @@ export default function ContactPage() {
 
                 {/* Contact Cards */}
                 <div className="space-y-6 mb-12">
-                  <div className="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl border border-pink-100 hover:shadow-lg transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#F3E8F0] to-white p-6 rounded-2xl border border-[#D4C5D9]/30 hover:shadow-lg transition-all duration-300">
                     <div className="flex items-start gap-4">
-                      <div className="bg-gradient-to-br from-[var(--color-primary)] to-pink-400 p-3 rounded-xl shadow-lg">
+                      <div className="bg-gradient-to-br from-[var(--color-primary)] to-[#A594B3] p-3 rounded-xl shadow-lg">
                         <Phone className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -167,16 +167,16 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl border border-purple-100 hover:shadow-lg transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#E8DFF0] to-white p-6 rounded-2xl border border-[#A594B3]/30 hover:shadow-lg transition-all duration-300">
                     <div className="flex items-start gap-4">
-                      <div className="bg-gradient-to-br from-[var(--color-secondary-purple)] to-purple-400 p-3 rounded-xl shadow-lg">
+                      <div className="bg-gradient-to-br from-[#A594B3] to-[#8B7A98] p-3 rounded-xl shadow-lg">
                         <Mail className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-[var(--color-text-primary)] mb-1">
                           Email
                         </h3>
-                        <a href="mailto:contact@audrey-castets.fr" className="text-[var(--color-secondary-purple)] hover:underline font-medium">
+                        <a href="mailto:contact@audrey-castets.fr" className="text-[#A594B3] hover:underline font-medium">
                           contact@audrey-castets.fr
                         </a>
                         <p className="text-sm text-[var(--color-text-secondary)] mt-1">
@@ -186,9 +186,9 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-pink-50 to-white p-6 rounded-2xl border border-pink-100 hover:shadow-lg transition-all duration-300">
+                  <div className="bg-gradient-to-br from-[#F3E8F0] to-white p-6 rounded-2xl border border-[#D4C5D9]/30 hover:shadow-lg transition-all duration-300">
                     <div className="flex items-start gap-4">
-                      <div className="bg-gradient-to-br from-[var(--color-primary)] to-pink-400 p-3 rounded-xl shadow-lg">
+                      <div className="bg-gradient-to-br from-[var(--color-primary)] to-[#A594B3] p-3 rounded-xl shadow-lg">
                         <MapPin className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -204,7 +204,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Additional Features */}
-                <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-purple-100">
+                <div className="bg-gradient-to-br from-[#E8DFF0] to-[#F3E8F0] p-8 rounded-3xl border border-[#D4C5D9]/30">
                   <h3 className="text-xl font-bold mb-6 text-[var(--color-text-primary)]">
                     Pourquoi me contacter ?
                   </h3>
@@ -225,7 +225,7 @@ export default function ContactPage() {
 
                     <div className="flex items-start gap-3">
                       <div className="bg-white p-2 rounded-lg mt-1">
-                        <MessageCircle className="w-5 h-5 text-[var(--color-secondary-purple)]" />
+                        <MessageCircle className="w-5 h-5 text-[#A594B3]" />
                       </div>
                       <div>
                         <h4 className="font-semibold text-[var(--color-text-primary)] mb-1">
@@ -257,7 +257,7 @@ export default function ContactPage() {
               {/* Right Column - Contact Form */}
               <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-10 border-t-4 border-t-[var(--color-primary)] sticky top-24">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="bg-gradient-to-br from-[var(--color-primary)] to-pink-400 p-3 rounded-xl">
+                  <div className="bg-gradient-to-br from-[var(--color-primary)] to-[#A594B3] p-3 rounded-xl">
                     <Send className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: 'var(--font-display)' }}>
@@ -362,7 +362,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-[var(--color-primary)] to-pink-500 text-white py-4 px-6 rounded-full font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-[var(--color-primary)] to-[#A594B3] text-white py-4 px-6 rounded-full font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -387,8 +387,8 @@ export default function ContactPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-pink-500 via-pink-400 to-purple-500 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-500/80 to-purple-500/80" />
+        <section className="py-20 bg-gradient-to-br from-[var(--color-primary)] via-[#A594B3] to-[var(--color-primary)] relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/90 to-[#A594B3]/90" />
           <div className="container mx-auto px-4 text-center relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
               <Sparkles className="w-4 h-4 text-white animate-pulse" />
