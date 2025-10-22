@@ -1,3 +1,6 @@
+"use client";
+
+import { Metadata } from "next";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -18,451 +21,680 @@ import {
   MessageCircle,
   Award,
   UserCheck,
-  ClipboardList,
   Lightbulb,
   Cloud,
   Smile,
   FileCheck
 } from "lucide-react";
 import Link from "next/link";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
+import { useRef } from "react";
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const cardHover = {
+  rest: { scale: 1, rotateY: 0 },
+  hover: { 
+    scale: 1.03, 
+    y: -8,
+    transition: { duration: 0.3, ease: "easeOut" }
+  }
+};
+
+const glowPulse = {
+  initial: { opacity: 0.5, scale: 0.8 },
+  animate: {
+    opacity: [0.5, 0.8, 0.5],
+    scale: [0.8, 1.1, 0.8],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+};
 
 export default function ServicesPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div ref={containerRef} className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-20">
-        {/* Hero Section with Breadcrumb */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF5F8] via-[#FDF8F6] to-[#FFE3EC] py-16 md:py-24">
-          {/* Background decorative elements */}
+        {/* Hero Section with Breadcrumb - Parallax Effect */}
+        <motion.section 
+          style={{ opacity }}
+          className="relative overflow-hidden bg-gradient-to-br from-[#FFF5F8] via-[#FDF8F6] to-[#FFE3EC] py-16 md:py-24"
+        >
+          {/* Animated Background Blobs with Glow */}
           <div className="absolute inset-0 pointer-events-none opacity-30">
-            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary-purple/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <motion.div 
+              style={{ y: y1 }}
+              variants={glowPulse}
+              initial="initial"
+              animate="animate"
+              className="absolute top-20 right-20 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl"
+            />
+            <motion.div 
+              style={{ y: y2 }}
+              variants={glowPulse}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: 1 }}
+              className="absolute bottom-20 left-20 w-96 h-96 bg-secondary-purple/20 rounded-full blur-3xl"
+            />
           </div>
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
             {/* Breadcrumb */}
-            <div className="mb-8">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
+            >
               <Breadcrumb 
                 items={[
                   { label: "Accueil", href: "/" },
                   { label: "Mes Services" }
                 ]} 
               />
-            </div>
+            </motion.div>
 
             {/* Hero Content */}
-            <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-primary/20 shadow-sm mb-6">
-                <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+            <motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              className="max-w-5xl mx-auto text-center"
+            >
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 glass-effect rounded-full border border-primary/20 shadow-lg mb-6">
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                >
+                  <Sparkles className="w-4 h-4 text-primary" />
+                </motion.div>
                 <span className="text-sm font-medium text-primary">
                   Mes Services
                 </span>
-              </div>
+              </motion.div>
 
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Des accompagnements <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-pink-500 to-secondary-purple">personnalisés</span>
-              </h1>
+              <motion.h1 variants={fadeInUp} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                Des accompagnements <motion.span 
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-pink-500 to-secondary-purple"
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{ duration: 5, repeat: Infinity }}
+                >
+                  personnalisés
+                </motion.span>
+              </motion.h1>
 
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
+              <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
                 Des accompagnements personnalisés pour particuliers et professionnels, alliant expertise clinique et approche bienveillante pour des résultats durables.
-              </p>
+              </motion.p>
 
-              {/* Key Features Pills */}
-              <div className="flex flex-wrap gap-3 justify-center">
+              {/* Key Features Pills with Sequential Animation */}
+              <motion.div variants={staggerContainer} className="flex flex-wrap gap-3 justify-center">
                 {[
                   { icon: <Heart className="w-4 h-4" />, label: "TCC & EFT" },
                   { icon: <Users className="w-4 h-4" />, label: "Psychologie du Travail" },
                   { icon: <Target className="w-4 h-4" />, label: "Accompagnement RH" },
                   { icon: <Shield className="w-4 h-4" />, label: "Confidentiel" }
                 ].map((item, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-primary/20 shadow-sm"
+                    variants={fadeInUp}
+                    whileHover={{ scale: 1.1, boxShadow: "0 10px 30px rgba(139, 122, 152, 0.3)" }}
+                    className="inline-flex items-center gap-2 px-4 py-2 glass-effect rounded-full border border-primary/20 shadow-sm"
                   >
                     <span className="text-primary">{item.icon}</span>
                     <span className="text-sm font-medium text-foreground">
                       {item.label}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Services Cards Section */}
-        <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/80 rounded-full blur-3xl"></div>
-          </div>
-          
-          <div className="container mx-auto px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-12">
-              <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
-                Deux approches complémentaires
-              </span>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Choisissez l'accompagnement <span className="text-primary">qui vous correspond</span>
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
-              {/* Card 1: Pour les Particuliers */}
-              <div className="group relative">
-                <div className="absolute inset-0 bg-pink-500/5 group-hover:bg-pink-500/10 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
-                <div className="relative h-full bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl border border-primary/10 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2">
-                  <div className="h-2 bg-gradient-to-r from-pink-500 to-rose-500"></div>
-                  <div className="p-8 md:p-10">
-                    <div className="relative mb-6">
-                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl blur-xl opacity-50"></div>
-                      <div className="relative w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                        <Heart className="w-8 h-8 text-white" />
-                      </div>
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-primary transition-colors">
-                      Pour les Particuliers
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      Thérapie Cognitive et Comportementale (TCC) et EFT (Emotional Freedom Techniques) pour vous accompagner dans vos difficultés personnelles et développer des stratégies d'adaptation efficaces.
-                    </p>
-                    <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-3">
-                        <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground/80">
-                          Gestion du stress et de l'anxiété
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground/80">
-                          EFT - Techniques de libération émotionnelle
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground/80">
-                          Burn-out et épuisement professionnel
-                        </span>
-                      </li>
-                    </ul>
-                    <div className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                      Voir les détails
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2: Pour les Professionnels */}
-              <div className="group relative">
-                <div className="absolute inset-0 bg-purple-500/5 group-hover:bg-purple-500/10 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
-                <div className="relative h-full bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl border border-purple-500/10 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2">
-                  <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                  <div className="p-8 md:p-10">
-                    <div className="relative mb-6">
-                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-50"></div>
-                      <div className="relative w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                        <Users className="w-8 h-8 text-white" />
-                      </div>
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-purple-600 transition-colors">
-                      Pour les Professionnels
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      Expertise en psychologie du travail et ressources humaines pour accompagner les organisations : prévention des RPS, recrutement, tests de personnalité et amélioration du bien-être au travail.
-                    </p>
-                    <ul className="space-y-3 mb-8">
-                      <li className="flex items-start gap-3">
-                        <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground/80">
-                          Diagnostic des risques psychosociaux
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground/80">
-                          Recrutement et tests SOSIE
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3">
-                        <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground/80">
-                          Ateliers de prévention du stress
-                        </span>
-                      </li>
-                    </ul>
-                    <div className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
-                      Voir les détails
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Services Cards Section - With Glassmorphism */}
+        <AnimatedServicesCards />
 
         {/* Détails Services Particuliers */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
-                  Accompagnement individuel
-                </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Services pour les <span className="text-primary">Particuliers</span>
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  {
-                    icon: <Brain className="w-6 h-6" />,
-                    title: "Thérapies Cognitivo-Comportementales (TCC)",
-                    description: "Approche structurée pour identifier et modifier les pensées et comportements inadaptés. Efficace pour l'anxiété, la dépression, les phobies.",
-                    color: "primary"
-                  },
-                  {
-                    icon: <Zap className="w-6 h-6" />,
-                    title: "EFT (Emotional Freedom Techniques)",
-                    description: "Technique psycho-corporelle combinant stimulation de points d'acupression et travail cognitif pour libérer les émotions négatives rapidement.",
-                    color: "secondary-purple"
-                  },
-                  {
-                    icon: <Cloud className="w-6 h-6" />,
-                    title: "Dépression",
-                    description: "Accompagnement thérapeutique pour sortir de la dépression. Travail sur les pensées négatives, la motivation et la reconstruction du plaisir au quotidien.",
-                    color: "primary"
-                  },
-                  {
-                    icon: <Smile className="w-6 h-6" />,
-                    title: "Confiance et estime de soi",
-                    description: "Renforcement de la confiance en soi et de l'estime personnelle. Travail sur l'image de soi, l'affirmation et la valorisation de ses capacités.",
-                    color: "secondary-purple"
-                  },
-                  {
-                    icon: <TrendingUp className="w-6 h-6" />,
-                    title: "Burn-out et épuisement professionnel",
-                    description: "Accompagnement spécialisé pour prévenir et traiter l'épuisement professionnel. Stratégies de récupération et de prévention de la rechute.",
-                    color: "primary"
-                  },
-                  {
-                    icon: <Target className="w-6 h-6" />,
-                    title: "Gestion du stress et de l'anxiété",
-                    description: "Techniques concrètes pour gérer le stress quotidien, l'anxiété généralisée et les attaques de panique. Outils pratiques et durables.",
-                    color: "secondary-purple"
-                  },
-                  {
-                    icon: <Lightbulb className="w-6 h-6" />,
-                    title: "Développement personnel",
-                    description: "Travail sur la confiance en soi, l'estime de soi, la gestion des émotions et l'affirmation de soi pour mieux vivre au quotidien.",
-                    color: "primary"
-                  },
-                  {
-                    icon: <FileCheck className="w-6 h-6" />,
-                    title: "Bilan de compétences",
-                    description: "Accompagnement structuré pour identifier vos compétences, valeurs et motivations. Clarification de votre projet professionnel et orientation de carrière.",
-                    color: "secondary-purple"
-                  },
-                  {
-                    icon: <Briefcase className="w-6 h-6" />,
-                    title: "Reconversion professionnelle",
-                    description: "Accompagnement dans votre réflexion de changement de carrière. Bilan de compétences, clarification de projet, gestion du stress lié au changement.",
-                    color: "primary"
-                  }
-                ].map((service, index) => (
-                  <div
-                    key={index}
-                    className="group bg-white rounded-2xl p-6 border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className={`w-12 h-12 bg-gradient-to-br ${
-                      service.color === 'primary' 
-                        ? 'from-primary to-pink-600' 
-                        : 'from-secondary-purple to-purple-600'
-                    } rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      {service.icon}
-                    </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <AnimatedServiceDetails 
+          title="Particuliers"
+          subtitle="Accompagnement individuel"
+          services={[
+            {
+              icon: <Brain className="w-6 h-6" />,
+              title: "Thérapies Cognitivo-Comportementales (TCC)",
+              description: "Approche structurée pour identifier et modifier les pensées et comportements inadaptés. Efficace pour l'anxiété, la dépression, les phobies.",
+              color: "primary"
+            },
+            {
+              icon: <Zap className="w-6 h-6" />,
+              title: "EFT (Emotional Freedom Techniques)",
+              description: "Technique psycho-corporelle combinant stimulation de points d'acupression et travail cognitif pour libérer les émotions négatives rapidement.",
+              color: "secondary-purple"
+            },
+            {
+              icon: <Cloud className="w-6 h-6" />,
+              title: "Dépression",
+              description: "Accompagnement thérapeutique pour sortir de la dépression. Travail sur les pensées négatives, la motivation et la reconstruction du plaisir au quotidien.",
+              color: "primary"
+            },
+            {
+              icon: <Smile className="w-6 h-6" />,
+              title: "Confiance et estime de soi",
+              description: "Renforcement de la confiance en soi et de l'estime personnelle. Travail sur l'image de soi, l'affirmation et la valorisation de ses capacités.",
+              color: "secondary-purple"
+            },
+            {
+              icon: <TrendingUp className="w-6 h-6" />,
+              title: "Burn-out et épuisement professionnel",
+              description: "Accompagnement spécialisé pour prévenir et traiter l'épuisement professionnel. Stratégies de récupération et de prévention de la rechute.",
+              color: "primary"
+            },
+            {
+              icon: <Target className="w-6 h-6" />,
+              title: "Gestion du stress et de l'anxiété",
+              description: "Techniques concrètes pour gérer le stress quotidien, l'anxiété généralisée et les attaques de panique. Outils pratiques et durables.",
+              color: "secondary-purple"
+            },
+            {
+              icon: <Lightbulb className="w-6 h-6" />,
+              title: "Développement personnel",
+              description: "Travail sur la confiance en soi, l'estime de soi, la gestion des émotions et l'affirmation de soi pour mieux vivre au quotidien.",
+              color: "primary"
+            },
+            {
+              icon: <FileCheck className="w-6 h-6" />,
+              title: "Bilan de compétences",
+              description: "Accompagnement structuré pour identifier vos compétences, valeurs et motivations. Clarification de votre projet professionnel et orientation de carrière.",
+              color: "secondary-purple"
+            },
+            {
+              icon: <Briefcase className="w-6 h-6" />,
+              title: "Reconversion professionnelle",
+              description: "Accompagnement dans votre réflexion de changement de carrière. Bilan de compétences, clarification de projet, gestion du stress lié au changement.",
+              color: "primary"
+            }
+          ]}
+        />
 
         {/* Détails Services Professionnels */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <span className="text-secondary-purple text-sm font-semibold uppercase tracking-wide mb-3 block">
-                  Accompagnement en entreprise
-                </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Services pour les <span className="text-secondary-purple">Professionnels</span>
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
-                  {
-                    icon: <Shield className="w-6 h-6" />,
-                    title: "Prévention des Risques Psychosociaux (RPS)",
-                    description: "Diagnostic organisationnel, identification des facteurs de risque, plan d'action sur mesure pour améliorer la qualité de vie au travail.",
-                    color: "secondary-purple"
-                  },
-                  {
-                    icon: <UserCheck className="w-6 h-6" />,
-                    title: "Recrutement et évaluation",
-                    description: "Tests de personnalité SOSIE, entretiens structurés, évaluation des soft skills pour des recrutements réussis et pertinents.",
-                    color: "primary"
-                  },
-                  {
-                    icon: <MessageCircle className="w-6 h-6" />,
-                    title: "Ateliers de prévention du stress",
-                    description: "Formations et ateliers collectifs sur la gestion du stress, la communication, la cohésion d'équipe et le bien-être au travail.",
-                    color: "secondary-purple"
-                  },
-                  {
-                    icon: <Users className="w-6 h-6" />,
-                    title: "Cellule d'écoute et soutien psychologique",
-                    description: "Mise en place d'espaces d'écoute confidentiels pour les salariés. Intervention en cas de crise ou d'événement traumatique.",
-                    color: "secondary-purple"
-                  },
-                  {
-                    icon: <Award className="w-6 h-6" />,
-                    title: "Formation management et RH",
-                    description: "Formation des managers à la détection des signaux de souffrance, au management bienveillant et à la prévention du burn-out.",
-                    color: "primary"
-                  }
-                ].map((service, index) => (
-                  <div
-                    key={index}
-                    className="group bg-white rounded-2xl p-6 border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className={`w-12 h-12 bg-gradient-to-br ${
-                      service.color === 'primary' 
-                        ? 'from-primary to-pink-600' 
-                        : 'from-secondary-purple to-purple-600'
-                    } rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      {service.icon}
-                    </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <AnimatedServiceDetails 
+          title="Professionnels"
+          subtitle="Accompagnement en entreprise"
+          bgColor="white"
+          services={[
+            {
+              icon: <Shield className="w-6 h-6" />,
+              title: "Prévention des Risques Psychosociaux (RPS)",
+              description: "Diagnostic organisationnel, identification des facteurs de risque, plan d'action sur mesure pour améliorer la qualité de vie au travail.",
+              color: "secondary-purple"
+            },
+            {
+              icon: <UserCheck className="w-6 h-6" />,
+              title: "Recrutement et évaluation",
+              description: "Tests de personnalité SOSIE, entretiens structurés, évaluation des soft skills pour des recrutements réussis et pertinents.",
+              color: "primary"
+            },
+            {
+              icon: <MessageCircle className="w-6 h-6" />,
+              title: "Ateliers de prévention du stress",
+              description: "Formations et ateliers collectifs sur la gestion du stress, la communication, la cohésion d'équipe et le bien-être au travail.",
+              color: "secondary-purple"
+            },
+            {
+              icon: <Users className="w-6 h-6" />,
+              title: "Cellule d'écoute et soutien psychologique",
+              description: "Mise en place d'espaces d'écoute confidentiels pour les salariés. Intervention en cas de crise ou d'événement traumatique.",
+              color: "secondary-purple"
+            },
+            {
+              icon: <Award className="w-6 h-6" />,
+              title: "Formation management et RH",
+              description: "Formation des managers à la détection des signaux de souffrance, au management bienveillant et à la prévention du burn-out.",
+              color: "primary"
+            }
+          ]}
+        />
 
         {/* Modalités pratiques */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
-                  Informations pratiques
-                </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Modalités de <span className="text-primary">consultation</span>
-                </h2>
-              </div>
-
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-primary/10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                  {[
-                    {
-                      icon: <Phone className="w-6 h-6 text-primary" />,
-                      title: "Premier entretien offert",
-                      text: "15 minutes pour échanger sur vos besoins"
-                    },
-                    {
-                      icon: <Clock className="w-6 h-6 text-primary" />,
-                      title: "Réponse sous 24h",
-                      text: "Je m'engage à vous répondre rapidement"
-                    },
-                    {
-                      icon: <Shield className="w-6 h-6 text-primary" />,
-                      title: "Confidentialité absolue",
-                      text: "Secret professionnel garanti"
-                    }
-                  ].map((item, index) => (
-                    <div key={index} className="text-center">
-                      <div className="w-14 h-14 bg-pink-light-bg rounded-xl flex items-center justify-center mx-auto mb-4">
-                        {item.icon}
-                      </div>
-                      <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.text}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="border-t border-border pt-8">
-                  <h3 className="text-xl font-bold text-foreground mb-4">Formats de consultation</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <p className="text-muted-foreground"><span className="font-semibold text-foreground">En cabinet :</span> Consultations en présentiel dans un cadre chaleureux et confidentiel</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <p className="text-muted-foreground"><span className="font-semibold text-foreground">En visio :</span> Séances en ligne via plateforme sécurisée pour plus de flexibilité</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <p className="text-muted-foreground"><span className="font-semibold text-foreground">En entreprise :</span> Interventions sur site pour les prestations professionnelles</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <AnimatedPracticalInfo />
 
         {/* CTA Final */}
-        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-pink-500 to-secondary-purple">
-          <div className="container mx-auto px-6 lg:px-8 text-center">
+        <motion.section 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="py-16 md:py-20 bg-gradient-to-r from-primary via-pink-500 to-secondary-purple relative overflow-hidden"
+        >
+          {/* Animated glow effects */}
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 4, repeat: Infinity }}
+            className="absolute top-0 left-1/4 w-96 h-96 bg-white/20 rounded-full blur-3xl"
+          />
+          
+          <div className="container mx-auto px-6 lg:px-8 text-center relative z-10">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="font-display text-3xl md:text-4xl font-bold text-white mb-6"
+              >
                 Prêt(e) à démarrer votre accompagnement ?
-              </h2>
-              <p className="text-white/90 text-lg mb-8">
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-white/90 text-lg mb-8"
+              >
                 Prenons contact pour échanger sur vos besoins et trouver ensemble la solution la plus adaptée à votre situation.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+              </motion.p>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center"
+              >
+                <motion.a
                   href="/#contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-primary bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(0,0,0,0.2)" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-primary bg-white rounded-full shadow-xl"
                 >
                   Prendre contact
                   <ArrowRight className="w-5 h-5" />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="/mon-approche"
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full border-2 border-white hover:bg-white/30 transition-all duration-300"
+                  whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.3)" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white glass-effect rounded-full border-2 border-white"
                 >
                   Découvrir mon approche
-                </a>
-              </div>
+                </motion.a>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       <Footer />
     </div>
+  );
+}
+
+// Component for animated service cards
+function AnimatedServicesCards() {
+  const { ref, isInView } = useInView({ threshold: 0.2 });
+
+  return (
+    <motion.section 
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={staggerContainer}
+      className="py-16 md:py-24 bg-white relative overflow-hidden"
+    >
+      {/* Animated background blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+        <motion.div 
+          animate={{
+            x: [0, 50, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl"
+        />
+        <motion.div 
+          animate={{
+            x: [0, -50, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/80 rounded-full blur-3xl"
+        />
+      </div>
+      
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <motion.div variants={fadeInUp} className="text-center mb-12">
+          <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
+            Deux approches complémentaires
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Choisissez l'accompagnement <span className="text-primary">qui vous correspond</span>
+          </h2>
+        </motion.div>
+
+        <motion.div variants={staggerContainer} className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
+          {/* Card 1: Pour les Particuliers */}
+          <motion.div variants={fadeInUp} className="group relative">
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-rose-500/10 rounded-3xl blur-xl"
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.5, 0.8, 0.5],
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+            <motion.div 
+              variants={cardHover}
+              initial="rest"
+              whileHover="hover"
+              className="relative h-full glass-effect rounded-3xl border border-primary/20 shadow-lg overflow-hidden"
+              style={{
+                boxShadow: "0 10px 40px rgba(236, 72, 153, 0.1)",
+              }}
+            >
+              <div className="h-2 bg-gradient-to-r from-pink-500 to-rose-500"></div>
+              <div className="p-8 md:p-10">
+                <motion.div 
+                  className="relative mb-6"
+                  whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl blur-xl opacity-50"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center shadow-lg">
+                    <Heart className="w-8 h-8 text-white" />
+                  </div>
+                </motion.div>
+                <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-primary transition-colors">
+                  Pour les Particuliers
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Thérapie Cognitive et Comportementale (TCC) et EFT (Emotional Freedom Techniques) pour vous accompagner dans vos difficultés personnelles et développer des stratégies d'adaptation efficaces.
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {["Gestion du stress et de l'anxiété", "EFT - Techniques de libération émotionnelle", "Burn-out et épuisement professionnel"].map((item, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-start gap-3"
+                    >
+                      <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-foreground/80">{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+                <motion.div 
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(236, 72, 153, 0.4)" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold rounded-2xl shadow-md cursor-pointer"
+                >
+                  Voir les détails
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Card 2: Pour les Professionnels */}
+          <motion.div variants={fadeInUp} className="group relative">
+            <motion.div 
+              className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-3xl blur-xl"
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.5, 0.8, 0.5],
+              }}
+              transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+            />
+            <motion.div 
+              variants={cardHover}
+              initial="rest"
+              whileHover="hover"
+              className="relative h-full glass-effect rounded-3xl border border-purple-500/20 shadow-lg overflow-hidden"
+              style={{
+                boxShadow: "0 10px 40px rgba(168, 85, 247, 0.1)",
+              }}
+            >
+              <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+              <div className="p-8 md:p-10">
+                <motion.div 
+                  className="relative mb-6"
+                  whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-50"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                </motion.div>
+                <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-purple-600 transition-colors">
+                  Pour les Professionnels
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Expertise en psychologie du travail et ressources humaines pour accompagner les organisations : prévention des RPS, recrutement, tests de personnalité et amélioration du bien-être au travail.
+                </p>
+                <ul className="space-y-3 mb-8">
+                  {["Diagnostic des risques psychosociaux", "Recrutement et tests SOSIE", "Ateliers de prévention du stress"].map((item, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-start gap-3"
+                    >
+                      <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-foreground/80">{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+                <motion.div 
+                  whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(168, 85, 247, 0.4)" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-2xl shadow-md cursor-pointer"
+                >
+                  Voir les détails
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </motion.section>
+  );
+}
+
+// Component for animated service details
+function AnimatedServiceDetails({ title, subtitle, services, bgColor = "gradient-to-br from-[#FDF8F6] to-white" }: any) {
+  const { ref, isInView } = useInView({ threshold: 0.1 });
+
+  return (
+    <motion.section 
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={staggerContainer}
+      className={`py-16 md:py-24 bg-${bgColor}`}
+    >
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <span className={`${title === "Professionnels" ? "text-secondary-purple" : "text-primary"} text-sm font-semibold uppercase tracking-wide mb-3 block`}>
+              {subtitle}
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Services pour les <span className={title === "Professionnels" ? "text-secondary-purple" : "text-primary"}>{title}</span>
+            </h2>
+          </motion.div>
+
+          <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {services.map((service: any, index: number) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                whileHover={{ 
+                  y: -8, 
+                  boxShadow: "0 20px 60px rgba(139, 122, 152, 0.2)" 
+                }}
+                className="group bg-white rounded-2xl p-6 border border-border shadow-md transition-all duration-300"
+              >
+                <motion.div 
+                  className={`w-12 h-12 bg-gradient-to-br ${
+                    service.color === 'primary' 
+                      ? 'from-primary to-pink-600' 
+                      : 'from-secondary-purple to-purple-600'
+                  } rounded-xl flex items-center justify-center text-white mb-4`}
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {service.icon}
+                </motion.div>
+                <h3 className="text-lg font-bold text-foreground mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {service.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </motion.section>
+  );
+}
+
+// Component for animated practical info
+function AnimatedPracticalInfo() {
+  const { ref, isInView } = useInView({ threshold: 0.3 });
+
+  return (
+    <motion.section 
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={staggerContainer}
+      className="py-16 md:py-24 bg-gradient-to-br from-[#FDF8F6] to-white"
+    >
+      <div className="container mx-auto px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <motion.div variants={fadeInUp} className="text-center mb-12">
+            <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
+              Informations pratiques
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Modalités de <span className="text-primary">consultation</span>
+            </h2>
+          </motion.div>
+
+          <motion.div 
+            variants={fadeInUp}
+            whileHover={{ y: -5, boxShadow: "0 30px 80px rgba(139, 122, 152, 0.15)" }}
+            className="glass-effect rounded-3xl shadow-xl p-8 md:p-12 border border-primary/10"
+          >
+            <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              {[
+                {
+                  icon: <Phone className="w-6 h-6 text-primary" />,
+                  title: "Premier entretien offert",
+                  text: "15 minutes pour échanger sur vos besoins"
+                },
+                {
+                  icon: <Clock className="w-6 h-6 text-primary" />,
+                  title: "Réponse sous 24h",
+                  text: "Je m'engage à vous répondre rapidement"
+                },
+                {
+                  icon: <Shield className="w-6 h-6 text-primary" />,
+                  title: "Confidentialité absolue",
+                  text: "Secret professionnel garanti"
+                }
+              ].map((item, index) => (
+                <motion.div 
+                  key={index} 
+                  variants={fadeInUp}
+                  whileHover={{ scale: 1.05 }}
+                  className="text-center"
+                >
+                  <motion.div 
+                    className="w-14 h-14 bg-pink-light-bg rounded-xl flex items-center justify-center mx-auto mb-4"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {item.icon}
+                  </motion.div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.text}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <div className="border-t border-border pt-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Formats de consultation</h3>
+              <motion.div variants={staggerContainer} className="space-y-3">
+                {[
+                  { label: "En cabinet", desc: "Consultations en présentiel dans un cadre chaleureux et confidentiel" },
+                  { label: "En visio", desc: "Séances en ligne via plateforme sécurisée pour plus de flexibilité" },
+                  { label: "En entreprise", desc: "Interventions sur site pour les prestations professionnelles" }
+                ].map((format, i) => (
+                  <motion.div 
+                    key={i}
+                    variants={fadeInUp}
+                    whileHover={{ x: 10 }}
+                    className="flex items-start gap-3"
+                  >
+                    <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p className="text-muted-foreground">
+                      <span className="font-semibold text-foreground">{format.label} :</span> {format.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </motion.section>
   );
 }

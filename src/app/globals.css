@@ -63,9 +63,9 @@
   --gradient-accent: linear-gradient(135deg, #5FABA6 0%, #7BC4BF 100%);
   --gradient-soft: linear-gradient(135deg, #F3E8F0 0%, #E8DFF0 100%);
 
-  /* Typography */
-  --font-display: "Playfair Display", serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  /* Typography - Use next/font variables */
+  --font-display: var(--font-playfair), "Playfair Display", serif;
+  --font-body: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
 
   /* Radii */
   --radius-lg: 1.5rem;
