@@ -1,3 +1,4 @@
+/* Updated: 2025-10-21T23:52:42.970Z */
 /* Updated: 2025-10-21T23:33:55.772Z */
 /* Updated: 2025-10-21T23:32:41.505Z */
 /* Updated: 2025-10-16T22:21:54.451Z */
@@ -20,7 +21,7 @@
 @import "tw-animate-css";
 
 @theme {
-  /* Design System - Psychologue Professionnel */
+  /* Design System - Psychologue Professionnel - Harmonisé */
   --color-background: #FDFCFB;
   --color-foreground: #1A1A1A;
 
@@ -49,10 +50,18 @@
   --color-input: #F5F3F7;
   --color-ring: #8B7A98;
 
-  /* Custom Design Colors */
+  /* Custom Design Colors - Palette harmonisée */
   --color-primary-soft: #A594B3;
+  --color-primary-light: #C5B8D0;
   --color-accent-teal: #5FABA6;
+  --color-accent-teal-light: #7BC4BF;
   --color-warm-beige: #F9F7F4;
+  --color-warm-pink: #F3E8F0;
+  
+  /* Gradient colors */
+  --gradient-primary: linear-gradient(135deg, #8B7A98 0%, #A594B3 100%);
+  --gradient-accent: linear-gradient(135deg, #5FABA6 0%, #7BC4BF 100%);
+  --gradient-soft: linear-gradient(135deg, #F3E8F0 0%, #E8DFF0 100%);
 
   /* Typography */
   --font-display: "Playfair Display", serif;
@@ -84,6 +93,43 @@
   @keyframes shimmer {
     0% { background-position: -1000px 0; }
     100% { background-position: 1000px 0; }
+  }
+
+  @keyframes blob {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1); 
+    }
+    25% { 
+      transform: translate(20px, -50px) scale(1.1); 
+    }
+    50% { 
+      transform: translate(-20px, 20px) scale(0.9); 
+    }
+    75% { 
+      transform: translate(50px, 50px) scale(1.05); 
+    }
+  }
+
+  @keyframes sparkle {
+    0%, 100% { 
+      transform: rotate(0deg) scale(1);
+      opacity: 1;
+    }
+    50% { 
+      transform: rotate(180deg) scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% { 
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
   }
 }
 
@@ -198,6 +244,18 @@
     animation: shimmer 2s linear infinite;
   }
 
+  .animate-blob {
+    animation: blob 7s ease-in-out infinite;
+  }
+
+  .animate-sparkle {
+    animation: sparkle 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
   .glass-effect {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
@@ -209,6 +267,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #8B7A98 0%, #A594B3 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, #5FABA6 0%, #7BC4BF 100%);
+  }
+
+  .gradient-soft {
+    background: linear-gradient(135deg, #F3E8F0 0%, #E8DFF0 100%);
   }
 }
 

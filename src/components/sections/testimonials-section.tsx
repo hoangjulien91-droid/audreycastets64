@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -67,62 +68,130 @@ export default function TestimonialsSection() {
   }, [api]);
 
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+    <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+      {/* Floating quote decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-5">
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10"
+        >
+          <Quote className="w-32 h-32 text-primary" />
+        </motion.div>
+        <motion.div
+          animate={{ 
+            y: [0, 20, 0],
+            rotate: [0, -5, 0]
+          }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-20 right-10"
+        >
+          <Quote className="w-40 h-40 text-accent-teal" />
+        </motion.div>
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4"
+          >
             Témoignages
-          </span>
+          </motion.span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
             Ils me font{" "}
-            <span className="bg-gradient-to-r from-primary to-rose-400 bg-clip-text text-transparent">
-              confiance
-            </span>
+            <span className="gradient-text">confiance</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Découvrez les retours de personnes que j'ai eu le plaisir d'accompagner.
           </p>
-        </div>
+        </motion.div>
 
         <Carousel setApi={setApi} opts={{ loop: true }} className="w-full max-w-6xl mx-auto">
           <CarouselContent className="-ml-6">
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index} className="pl-6 basis-full md:basis-1/2 lg:basis-1/3">
-                <div className="h-full p-1">
-                  <div className="bg-card text-card-foreground rounded-3xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-primary/10 flex flex-col h-full">
-                    <div className="flex items-center gap-1 mb-6">
+                <motion.div 
+                  className="h-full p-1"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (index % 3) * 0.1 }}
+                >
+                  <motion.div 
+                    className="bg-card text-card-foreground rounded-3xl p-8 border border-primary/10 flex flex-col h-full relative overflow-hidden"
+                    whileHover={{ 
+                      y: -8,
+                      boxShadow: "0 20px 40px rgba(139, 122, 152, 0.15)"
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-2xl" />
+                    
+                    <div className="flex items-center gap-1 mb-6 relative z-10">
                       {Array(5)
                         .fill(0)
                         .map((_, i) => (
-                          <Star key={i} className="w-5 h-5 text-primary fill-primary" />
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ 
+                              type: "spring",
+                              stiffness: 200,
+                              delay: i * 0.05 
+                            }}
+                          >
+                            <Star className="w-5 h-5 text-primary fill-primary" />
+                          </motion.div>
                         ))}
                     </div>
-                    <blockquote className="text-muted-foreground italic leading-relaxed mb-8 flex-grow">
+
+                    <blockquote className="text-muted-foreground italic leading-relaxed mb-8 flex-grow relative z-10">
                       "{testimonial.quote}"
                     </blockquote>
-                    <div className="flex items-center gap-4 mt-auto">
-                      <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center text-primary font-bold text-xl flex-shrink-0">
+
+                    <motion.div 
+                      className="flex items-center gap-4 mt-auto relative z-10"
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="w-14 h-14 rounded-full gradient-soft flex items-center justify-center text-primary font-bold text-xl flex-shrink-0 shadow-md">
                         {testimonial.initial}
                       </div>
                       <div>
                         <p className="font-bold text-foreground">{testimonial.name}</p>
                         <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                       </div>
-                    </div>
-                  </div>
-                </div>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
               </CarouselItem>
             ))}
           </CarouselContent>
 
           <div className="flex items-center justify-center gap-3 mt-12">
             {Array.from({ length: count }).map((_, index) => (
-              <button
+              <motion.button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`h-2.5 w-2.5 rounded-full transition-colors duration-300 ${
-                  current === index ? "bg-primary" : "bg-primary/20 hover:bg-primary/40"
+                className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                  current === index ? "bg-primary w-8" : "bg-primary/20 hover:bg-primary/40"
                 }`}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
                 aria-label={`Aller au témoignage ${index + 1}`}
               />
             ))}

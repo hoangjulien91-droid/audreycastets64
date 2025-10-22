@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 const faqData = [
   {
@@ -53,34 +54,64 @@ const faqData = [
 
 const FaqSection = () => {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-12">
+    <section className="py-20 bg-white relative overflow-hidden">
+      {/* Animated blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute top-20 right-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-blob" />
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-accent-teal/15 rounded-full blur-3xl animate-blob" style={{ animationDelay: '3s' }} />
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Questions Fréquentes
+            Questions <span className="gradient-text">Fréquentes</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Retrouvez les réponses aux questions les plus courantes
           </p>
-        </div>
+        </motion.div>
+
         <div className="max-w-4xl mx-auto">
           <Accordion type="single" collapsible className="w-full space-y-4">
             {faqData.map((item, index) => (
-              <AccordionItem
+              <motion.div
                 key={index}
-                value={`item-${index}`}
-                className="border rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-md"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
               >
-                <AccordionTrigger className="flex w-full items-center justify-between p-6 font-semibold text-lg text-left hover:bg-accent/20 rounded-2xl transition-colors [&[data-state=open]>svg]:rotate-180">
-                  {item.question}
-                  <ChevronDown className="h-5 w-5 shrink-0 text-primary transition-transform duration-200" />
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-6 pt-0">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {item.answer}
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
+                <AccordionItem
+                  value={`item-${index}`}
+                  className="border rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-md overflow-hidden"
+                >
+                  <AccordionTrigger className="flex w-full items-center justify-between p-6 font-semibold text-lg text-left hover:bg-accent/10 rounded-2xl transition-colors group [&[data-state=open]>svg]:rotate-180">
+                    {item.question}
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown className="h-5 w-5 shrink-0 text-primary transition-transform duration-300" />
+                    </motion.div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6 pt-0">
+                    <motion.p 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-muted-foreground leading-relaxed"
+                    >
+                      {item.answer}
+                    </motion.p>
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
             ))}
           </Accordion>
         </div>
