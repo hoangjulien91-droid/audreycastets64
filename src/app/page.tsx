@@ -13,6 +13,8 @@ import Footer from '@/components/sections/footer';
 import { OrganizationJsonLd, LocalBusinessJsonLd, PersonJsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
 
+export const revalidate = 3600; // Revalidate every hour
+
 export const metadata: Metadata = {
   title: 'Audrey Castets - Psychologue du Travail | TCC & EFT',
   description: 'Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé pour particuliers et professionnels. Gestion du stress, burn-out, reconversion professionnelle.',

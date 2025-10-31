@@ -18,6 +18,8 @@ import {
   Zap
 } from "lucide-react";
 
+export const revalidate = 3600; // Revalidate every hour
+
 export const metadata: Metadata = {
   title: 'Mon Approche Thérapeutique - TCC, EFT & Psychologie du Travail',
   description: 'Une approche thérapeutique centrée sur la personne, alliant TCC, EFT et psychologie du travail pour des résultats concrets et durables. Découvrez ma méthodologie.',

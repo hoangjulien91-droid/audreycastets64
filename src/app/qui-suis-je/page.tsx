@@ -18,6 +18,8 @@ import {
   Star
 } from "lucide-react";
 
+export const revalidate = 3600; // Revalidate every hour
+
 export const metadata: Metadata = {
   title: 'Qui suis-je ? Audrey Castets - Psychologue du Travail',
   description: 'Découvrez mon parcours, mes formations et mon approche en psychologie du travail. Plus de 5 ans d\'expérience en TCC, EFT et accompagnement professionnel.',

@@ -22,6 +22,8 @@ import {
   MapPin
 } from "lucide-react";
 
+export const revalidate = 3600; // Revalidate every hour
+
 export const metadata: Metadata = {
   title: 'Tarifs - Consultations & Services Psychologie du Travail',
   description: 'Tarifs transparents : 55€ la séance pour particuliers. Devis personnalisé pour professionnels. Premier entretien gratuit. Possibilité de remboursement mutuelle.',

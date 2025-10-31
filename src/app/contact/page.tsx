@@ -1,12 +1,11 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
 import { ChevronRight, Sparkles, Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2, CheckCircle } from 'lucide-react';
 import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';
+
+export const revalidate = 3600; // Revalidate every hour
 
 export const metadata: Metadata = {
   title: 'Contact - Prendre Rendez-vous avec Audrey Castets',
