@@ -450,7 +450,7 @@ function AnimatedServicesCards() {
                   Thérapie Cognitive et Comportementale (TCC) et EFT (Emotional Freedom Techniques) pour vous accompagner dans vos difficultés personnelles et développer des stratégies d'adaptation efficaces.
                 </p>
                 <ul className="space-y-3 mb-8">
-                  {["Gestion du stress et de l'anxiété", "EFT - Techniques de libération émotionnelle", "Burn-out et épuisement professionnel"].map((item, i) => (
+                  {["Thérapies Cognitivo-Comportementales (TCC)", "Gestion du stress et de l'anxiété", "EFT - Techniques de libération émotionnelle", "Burn-out et épuisement professionnel"].map((item, i) => (
                     <motion.li 
                       key={i}
                       initial={{ opacity: 0, x: -20 }}
@@ -464,14 +464,16 @@ function AnimatedServicesCards() {
                     </motion.li>
                   ))}
                 </ul>
-                <motion.div 
-                  whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(139, 122, 152, 0.25)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
-                >
-                  Voir les détails
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </motion.div>
+                <Link href="/mon-approche">
+                  <motion.div 
+                    whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(139, 122, 152, 0.25)" }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
+                  >
+                    En savoir plus
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </motion.div>
+                </Link>
               </div>
             </motion.div>
           </motion.div>
