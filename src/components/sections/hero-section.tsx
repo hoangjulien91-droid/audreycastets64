@@ -70,8 +70,7 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl sm:text-6xl lg:text-7xl font-bold font-display text-foreground mb-6 leading-tight"
             >
-              Audrey{" "}
-              <span className="gradient-text">Castets</span>
+              Audrey Castets
             </motion.h1>
 
             <motion.div
