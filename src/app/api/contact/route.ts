@@ -1,5 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@supabase/supabase-js';
+
+// Create Supabase client with service_role key for server-side operations
+const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  }
+);
 
 // Helper function to send emails via Resend API directly
 async function sendEmail({
@@ -161,7 +173,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Insert into Supabase database
-    const { data: contactData, error: dbError } = await supabase
+    const { data: contactData, error: dbError } = await supabaseAdmin
       .from('contact_submissions')
       .insert({
         name,
@@ -241,7 +253,7 @@ export async function POST(request: NextRequest) {
     // Logger l'envoi des emails dans Supabase
     if (contactData?.id) {
       try {
-        await supabase
+        await supabaseAdmin
           .from('contact_submissions')
           .update({
             email_sent_confirmation: emailsSent.confirmation,
