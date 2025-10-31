@@ -1,22 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-
-// Create Supabase admin client for server-side operations
-function getSupabaseAdmin() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  
-  if (!supabaseUrl || !supabaseServiceKey) {
-    throw new Error('Missing Supabase environment variables');
-  }
-  
-  return createClient(supabaseUrl, supabaseServiceKey, {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false
-    }
-  });
-}
+import { supabase } from '@/lib/supabase';
 
 // Helper function to send emails via Resend API directly
 async function sendEmail({
@@ -177,24 +160,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insert into Supabase
-    const supabaseAdmin = getSupabaseAdmin();
-    const { data: contactData, error: dbError } = await supabaseAdmin
+    // Insert into Supabase database
+    const { data: contactData, error: dbError } = await supabase
       .from('contact_submissions')
-      .insert([
-        {
-          name,
-          email,
-          phone: phone || null,
-          message,
-          service_type: service_type || null,
-          read: false,
-        },
-      ])
-      .select();
+      .insert({
+        name,
+        email,
+        phone: phone || null,
+        message,
+        service_type: service_type || null,
+        read: false,
+      })
+      .select()
+      .single();
 
     if (dbError) {
-      console.error('Supabase error:', dbError);
+      console.error('Database error:', dbError);
       return NextResponse.json(
         { error: 'Erreur lors de l\'enregistrement de votre message' },
         { status: 500 }
@@ -258,16 +239,16 @@ export async function POST(request: NextRequest) {
     }
 
     // Logger l'envoi des emails dans Supabase
-    if (contactData && contactData[0]) {
+    if (contactData?.id) {
       try {
-        await supabaseAdmin
+        await supabase
           .from('contact_submissions')
           .update({
             email_sent_confirmation: emailsSent.confirmation,
             email_sent_notification: emailsSent.notification,
             email_sent_at: new Date().toISOString(),
           })
-          .eq('id', contactData[0].id);
+          .eq('id', contactData.id);
       } catch (logError) {
         console.error('❌ Erreur lors du logging des emails:', logError);
       }
