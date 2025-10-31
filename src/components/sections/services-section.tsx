@@ -97,7 +97,7 @@ const ServicesSection = () => {
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                   <Link
-                    href="/services-particuliers"
+                    href="/services"
                     className="group/btn inline-flex items-center justify-center w-full px-6 py-6 gradient-primary text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
                   >
                     En savoir plus
@@ -167,7 +167,7 @@ const ServicesSection = () => {
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
                   <Link
-                    href="/services-professionnels"
+                    href="/services"
                     className="group/btn inline-flex items-center justify-center w-full px-6 py-6 gradient-accent text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
                   >
                     En savoir plus
