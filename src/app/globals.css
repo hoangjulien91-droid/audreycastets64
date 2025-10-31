@@ -1,3 +1,5 @@
+/* Updated: 2025-10-31T22:46:48.346Z */
+/* Updated: 2025-10-31T18:51:04.835Z */
 /* Updated: 2025-10-21T23:52:42.970Z */
 /* Updated: 2025-10-21T23:33:55.772Z */
 /* Updated: 2025-10-21T23:32:41.505Z */
@@ -227,6 +229,72 @@
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
+    }
+  }
+
+  /* Accessibility improvements */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Improved focus for buttons and links */
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+
+  /* Skip to main content link for screen readers */
+  .skip-to-main {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1em;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+  }
+
+  .skip-to-main:focus {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1em;
+  }
+
+  /* Ensure sufficient color contrast */
+  ::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Improve readability */
+  p, li, span {
+    line-height: 1.6;
+  }
+
+  /* Better touch targets for mobile */
+  @media (max-width: 768px) {
+    button,
+    a,
+    input,
+    select,
+    textarea {
+      min-height: 44px;
+      min-width: 44px;
     }
   }
 }

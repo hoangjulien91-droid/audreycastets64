@@ -1,6 +1,8 @@
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import type { Metadata } from 'next';
 import { 
   CircleCheck,
   ArrowRight,
@@ -20,9 +22,28 @@ import {
   MapPin
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: 'Tarifs - Consultations & Services Psychologie du Travail',
+  description: 'Tarifs transparents : 55€ la séance pour particuliers. Devis personnalisé pour professionnels. Premier entretien gratuit. Possibilité de remboursement mutuelle.',
+  alternates: {
+    canonical: 'https://www.audrey-castets.fr/tarifs',
+  },
+  openGraph: {
+    title: 'Tarifs - Consultations & Services Psychologie du Travail',
+    description: 'Tarifs transparents : 55€ la séance. Premier entretien gratuit.',
+    url: 'https://www.audrey-castets.fr/tarifs',
+    type: 'website',
+  },
+};
+
 export default function TarifsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', url: '/' },
+        { name: 'Tarifs' }
+      ]} />
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-20">
@@ -451,5 +472,6 @@ export default function TarifsPage() {
 
       <Footer />
     </div>
+    </>
   );
 }

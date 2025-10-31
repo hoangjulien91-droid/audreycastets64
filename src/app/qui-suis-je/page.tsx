@@ -2,6 +2,8 @@ import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import Image from "next/image";
+import { BreadcrumbJsonLd, PersonJsonLd } from "@/components/JsonLd";
+import type { Metadata } from 'next';
 import { 
   Award, 
   Heart, 
@@ -16,9 +18,29 @@ import {
   Star
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: 'Qui suis-je ? Audrey Castets - Psychologue du Travail',
+  description: 'Découvrez mon parcours, mes formations et mon approche en psychologie du travail. Plus de 5 ans d\'expérience en TCC, EFT et accompagnement professionnel.',
+  alternates: {
+    canonical: 'https://www.audrey-castets.fr/qui-suis-je',
+  },
+  openGraph: {
+    title: 'Qui suis-je ? Audrey Castets - Psychologue du Travail',
+    description: 'Découvrez mon parcours, mes formations et mon approche en psychologie du travail.',
+    url: 'https://www.audrey-castets.fr/qui-suis-je',
+    type: 'profile',
+  },
+};
+
 export default function QuiSuisJePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', url: '/' },
+        { name: 'Qui suis-je' }
+      ]} />
+      <PersonJsonLd />
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-20">
@@ -364,5 +386,6 @@ export default function QuiSuisJePage() {
 
       <Footer />
     </div>
+    </>
   );
 }

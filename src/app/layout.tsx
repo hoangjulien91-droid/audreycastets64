@@ -21,21 +21,60 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Audrey Castets - Psychologue du Travail et TCC",
-  description: "Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé pour particuliers et professionnels. Prévention RPS, gestion du stress, burn-out.",
-  keywords: ["psychologue", "TCC", "EFT", "psychologie du travail", "burn-out", "stress", "RPS", "accompagnement professionnel"],
+  metadataBase: new URL('https://www.audrey-castets.fr'),
+  title: {
+    default: "Audrey Castets - Psychologue du Travail | TCC & EFT",
+    template: "%s | Audrey Castets - Psychologue"
+  },
+  description: "Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé pour particuliers et professionnels. Gestion du stress, burn-out, reconversion. Consultations en cabinet ou visio.",
+  keywords: ["psychologue", "psychologue du travail", "TCC", "EFT", "thérapie cognitivo-comportementale", "burn-out", "stress", "anxiété", "reconversion professionnelle", "risques psychosociaux", "accompagnement professionnel"],
   authors: [{ name: "Audrey Castets" }],
+  creator: "Audrey Castets",
+  publisher: "Audrey Castets",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "Audrey Castets - Psychologue du Travail et TCC",
-    description: "Accompagnement personnalisé pour particuliers et professionnels. TCC, EFT, prévention RPS.",
     type: "website",
     locale: "fr_FR",
+    url: "https://www.audrey-castets.fr",
+    siteName: "Audrey Castets - Psychologue du Travail",
+    title: "Audrey Castets - Psychologue du Travail | TCC & EFT",
+    description: "Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé pour particuliers et professionnels.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Audrey Castets - Psychologue du Travail",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Audrey Castets - Psychologue du Travail et TCC",
-    description: "Accompagnement personnalisé pour particuliers et professionnels.",
+    title: "Audrey Castets - Psychologue du Travail | TCC & EFT",
+    description: "Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé.",
+    creator: "@audreycastets",
+    images: ["/og-image.jpg"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({

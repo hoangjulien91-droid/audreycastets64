@@ -1,6 +1,8 @@
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
+import type { Metadata } from 'next';
 import { 
   Heart, 
   Target, 
@@ -16,9 +18,36 @@ import {
   Zap
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: 'Mon Approche Thérapeutique - TCC, EFT & Psychologie du Travail',
+  description: 'Une approche thérapeutique centrée sur la personne, alliant TCC, EFT et psychologie du travail pour des résultats concrets et durables. Découvrez ma méthodologie.',
+  alternates: {
+    canonical: 'https://www.audrey-castets.fr/mon-approche',
+  },
+  openGraph: {
+    title: 'Mon Approche Thérapeutique - TCC, EFT & Psychologie du Travail',
+    description: 'Une approche thérapeutique centrée sur la personne, alliant TCC, EFT et psychologie du travail.',
+    url: 'https://www.audrey-castets.fr/mon-approche',
+    type: 'article',
+  },
+};
+
 export default function MonApprochePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', url: '/' },
+        { name: 'Mon Approche' }
+      ]} />
+      <ServiceJsonLd 
+        name="Thérapies Cognitivo-Comportementales (TCC)"
+        description="Approche pragmatique et efficace pour identifier et modifier les pensées négatives et les comportements inadaptés"
+      />
+      <ServiceJsonLd 
+        name="EFT (Emotional Freedom Techniques)"
+        description="Technique de libération émotionnelle rapide et efficace pour réduire le stress et l'anxiété"
+      />
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-20">
@@ -441,5 +470,6 @@ export default function MonApprochePage() {
 
       <Footer />
     </div>
+    </>
   );
 }
