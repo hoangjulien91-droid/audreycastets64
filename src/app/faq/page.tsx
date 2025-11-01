@@ -61,34 +61,37 @@ export default function FaqPage() {
       <FaqJsonLd faqs={faqData} />
       <div className="min-h-screen bg-background">
         <Header />
-        <main className="pt-20">
+        <main className="pt-20" id="main-content">
           {/* Hero Section */}
-          <section className="relative py-20 bg-gradient-to-br from-pink-50 via-purple-50/30 to-background overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-100/40 via-purple-100/20 to-transparent blur-3xl" />
+          <section 
+            className="relative py-20 bg-gradient-to-br from-pink-50 via-purple-50/30 to-background overflow-hidden"
+            aria-labelledby="faq-heading"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-100/40 via-purple-100/20 to-transparent blur-3xl" aria-hidden="true" />
             <div className="container relative z-10">
               {/* Breadcrumb */}
-              <nav className="flex items-center gap-2 text-sm mb-8">
+              <nav className="flex items-center gap-2 text-sm mb-8" aria-label="Fil d'Ariane">
                 <Link
                   href="/"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Accueil
                 </Link>
-                <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                <ChevronRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
                 <span className="text-foreground font-medium">FAQ</span>
               </nav>
 
               <div className="max-w-4xl">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100 text-primary mb-6">
-                  <Sparkles className="h-4 w-4" />
+                  <Sparkles className="h-4 w-4" aria-hidden="true" />
                   <span className="text-sm font-medium">
                     Questions Fréquentes
                   </span>
                 </div>
 
                 {/* Title */}
-                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
+                <h1 id="faq-heading" className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
                   Toutes les{" "}
                   <span className="bg-gradient-to-r from-primary via-purple-500 to-primary bg-clip-text text-transparent">
                     réponses
@@ -104,17 +107,17 @@ export default function FaqPage() {
                 </p>
 
                 {/* Feature Badges */}
-                <div className="flex flex-wrap gap-3">
-                  <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-pink-100 text-sm font-medium text-foreground shadow-sm">
+                <div className="flex flex-wrap gap-3" role="list" aria-label="Points clés">
+                  <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-pink-100 text-sm font-medium text-foreground shadow-sm" role="listitem">
                     💬 Réponses détaillées
                   </div>
-                  <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-100 text-sm font-medium text-foreground shadow-sm">
+                  <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-100 text-sm font-medium text-foreground shadow-sm" role="listitem">
                     🔍 Facile à parcourir
                   </div>
-                  <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-pink-100 text-sm font-medium text-foreground shadow-sm">
+                  <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-pink-100 text-sm font-medium text-foreground shadow-sm" role="listitem">
                     ⚡ Informations à jour
                   </div>
-                  <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-100 text-sm font-medium text-foreground shadow-sm">
+                  <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-100 text-sm font-medium text-foreground shadow-sm" role="listitem">
                     💡 Conseils d'experts
                   </div>
                 </div>
@@ -126,17 +129,20 @@ export default function FaqPage() {
           <FaqAccordion />
 
           {/* CTA Section */}
-          <section className="py-20 bg-gradient-to-br from-primary via-pink-500 to-purple-500 text-white">
+          <section 
+            className="py-20 bg-gradient-to-br from-primary via-pink-500 to-purple-500 text-white"
+            aria-labelledby="cta-heading"
+          >
             <div className="container">
               <div className="max-w-3xl mx-auto text-center">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm mb-6">
-                  <Sparkles className="h-4 w-4" />
+                  <Sparkles className="h-4 w-4" aria-hidden="true" />
                   <span className="text-sm font-medium">
                     Besoin d'aide supplémentaire ?
                   </span>
                 </div>
 
-                <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
+                <h2 id="cta-heading" className="font-display text-4xl md:text-5xl font-bold mb-6">
                   Vous ne trouvez pas{" "}
                   <span className="underline decoration-wavy decoration-white/50">
                     la réponse
@@ -155,8 +161,9 @@ export default function FaqPage() {
                     <Button
                       size="lg"
                       className="bg-white text-primary hover:bg-white/90 font-semibold px-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+                      aria-label="Poser une question via le formulaire de contact"
                     >
-                      <Mail className="h-5 w-5 mr-2" />
+                      <Mail className="h-5 w-5 mr-2" aria-hidden="true" />
                       Poser une question
                     </Button>
                   </Link>
@@ -165,24 +172,25 @@ export default function FaqPage() {
                       size="lg"
                       variant="outline"
                       className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 transition-all hover:scale-105"
+                      aria-label="Découvrir mon approche thérapeutique"
                     >
                       Découvrir mon approche
-                      <ArrowRight className="h-5 w-5 ml-2" />
+                      <ArrowRight className="h-5 w-5 ml-2" aria-hidden="true" />
                     </Button>
                   </Link>
                 </div>
 
-                <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-white" />
+                <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm" role="list" aria-label="Garanties">
+                  <div className="flex items-center gap-2" role="listitem">
+                    <div className="w-2 h-2 rounded-full bg-white" aria-hidden="true" />
                     <span>Réponse sous 24h</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-white" />
+                  <div className="flex items-center gap-2" role="listitem">
+                    <div className="w-2 h-2 rounded-full bg-white" aria-hidden="true" />
                     <span>Premier entretien offert</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-white" />
+                  <div className="flex items-center gap-2" role="listitem">
+                    <div className="w-2 h-2 rounded-full bg-white" aria-hidden="true" />
                     <span>Sans engagement</span>
                   </div>
                 </div>

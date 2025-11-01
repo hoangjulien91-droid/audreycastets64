@@ -47,18 +47,21 @@ export default function ServicesPage() {
       <div className="min-h-screen bg-background">
         <Header />
         
-        <main className="pt-20">
+        <main className="pt-20" id="main-content">
           {/* Hero Section with Breadcrumb */}
-          <section className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50/30 to-background py-16 md:py-24">
+          <section 
+            className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50/30 to-background py-16 md:py-24"
+            aria-labelledby="services-heading"
+          >
             <div className="container mx-auto px-6 lg:px-8 relative z-10">
-              <div className="mb-8">
+              <nav className="mb-8" aria-label="Fil d'Ariane">
                 <Breadcrumb 
                   items={[
                     { label: "Accueil", href: "/" },
                     { label: "Mes Services" }
                   ]} 
                 />
-              </div>
+              </nav>
               <AnimatedHeroSection />
             </div>
           </section>

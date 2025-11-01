@@ -37,7 +37,7 @@ export default function HomePage() {
       <PersonJsonLd />
       <div className="min-h-screen bg-background">
         <Header />
-        <main className="pt-20">
+        <main className="pt-20" id="main-content">
           <HeroSection />
           <ServicesSection />
           <PsychologySection />

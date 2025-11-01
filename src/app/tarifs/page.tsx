@@ -48,36 +48,39 @@ export default function TarifsPage() {
       <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-20" id="main-content">
         {/* Hero Section with Breadcrumb */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24">
+        <section 
+          className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
+          aria-labelledby="tarifs-heading"
+        >
           {/* Background decorative elements */}
-          <div className="absolute inset-0 pointer-events-none opacity-20">
+          <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
             <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-[#D4C5D9]/40 rounded-full blur-3xl animate-blob"></div>
             <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#A594B3]/30 rounded-full blur-3xl animate-blob" style={{ animationDelay: '1s' }}></div>
           </div>
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
             {/* Breadcrumb */}
-            <div className="mb-8">
+            <nav className="mb-8" aria-label="Fil d'Ariane">
               <Breadcrumb 
                 items={[
                   { label: "Accueil", href: "/" },
                   { label: "Tarifs" }
                 ]} 
               />
-            </div>
+            </nav>
 
             {/* Hero Content */}
             <div className="max-w-5xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
-                <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+                <Sparkles className="w-4 h-4 text-primary animate-pulse" aria-hidden="true" />
                 <span className="text-sm font-medium text-primary">
                   Tarifs Transparents
                 </span>
               </div>
 
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+              <h1 id="tarifs-heading" className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
                 Des tarifs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">transparents</span> adaptés à vos besoins
               </h1>
 
@@ -86,7 +89,7 @@ export default function TarifsPage() {
               </p>
 
               {/* Key Features Pills */}
-              <div className="flex flex-wrap gap-3 justify-center">
+              <div className="flex flex-wrap gap-3 justify-center" role="list" aria-label="Points clés">
                 {[
                   { icon: <BadgeCheck className="w-4 h-4" />, label: "Tarifs clairs" },
                   { icon: <CreditCard className="w-4 h-4" />, label: "Plusieurs moyens de paiement" },
@@ -96,8 +99,9 @@ export default function TarifsPage() {
                   <div
                     key={index}
                     className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 shadow-sm"
+                    role="listitem"
                   >
-                    <span className="text-primary">{item.icon}</span>
+                    <span className="text-primary" aria-hidden="true">{item.icon}</span>
                     <span className="text-sm font-medium text-foreground">
                       {item.label}
                     </span>
@@ -109,8 +113,11 @@ export default function TarifsPage() {
         </section>
 
         {/* Pricing Cards Section */}
-        <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <section 
+          className="py-16 md:py-24 bg-white relative overflow-hidden"
+          aria-labelledby="pricing-heading"
+        >
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20" aria-hidden="true">
             <div className="absolute top-0 right-0 w-96 h-96 bg-[#E8DFF0] rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#D4C5D9] rounded-full blur-3xl"></div>
           </div>
@@ -120,12 +127,12 @@ export default function TarifsPage() {
               <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
                 Grille tarifaire
               </span>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 id="pricing-heading" className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Choisissez la formule <span className="text-primary">adaptée à votre situation</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto mb-12" role="list" aria-label="Offres tarifaires">
               {/* Card 1: Particuliers */}
               <div className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#F3E8F0]/40 to-[#E8DFF0]/30 group-hover:from-[#F3E8F0]/60 group-hover:to-[#E8DFF0]/50 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
@@ -265,7 +272,7 @@ export default function TarifsPage() {
             {/* Info Banner */}
             <div className="max-w-4xl mx-auto bg-gradient-to-r from-[#F3E8F0] to-[#E8DFF0] rounded-2xl p-6 md:p-8 border border-[#D4C5D9]/30">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0" aria-hidden="true">
                   <Info className="w-6 h-6 text-primary" />
                 </div>
                 <div>
@@ -282,19 +289,22 @@ export default function TarifsPage() {
         </section>
 
         {/* Remboursements Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white">
+        <section 
+          className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          aria-labelledby="remboursements-heading"
+        >
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
                   Prises en charge
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 id="remboursements-heading" className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Possibilités de <span className="text-primary">remboursement</span>
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" role="list" aria-label="Options de remboursement">
                 {[
                   {
                     icon: <Shield className="w-6 h-6" />,
@@ -342,12 +352,12 @@ export default function TarifsPage() {
                 ))}
               </div>
 
-              <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-[#D4C5D9]/30">
+              <article className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-[#D4C5D9]/30">
                 <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-                  <BadgeCheck className="w-6 h-6 text-primary" />
+                  <BadgeCheck className="w-6 h-6 text-primary" aria-hidden="true" />
                   À savoir
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-3" role="list">
                   <li className="flex items-start gap-3">
                     <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <p className="text-sm text-muted-foreground">
@@ -367,26 +377,29 @@ export default function TarifsPage() {
                     </p>
                   </li>
                 </ul>
-              </div>
+              </article>
             </div>
           </div>
         </section>
 
         {/* Modalités de paiement */}
-        <section className="py-16 md:py-24 bg-white">
+        <section 
+          className="py-16 md:py-24 bg-white"
+          aria-labelledby="modalites-heading"
+        >
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
                   Informations pratiques
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 id="modalites-heading" className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Modalités de <span className="text-primary">paiement</span>
                 </h2>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-[#D4C5D9]/30">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              <article className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-[#D4C5D9]/30">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8" role="list" aria-label="Moyens de paiement">
                   {[
                     {
                       icon: <CreditCard className="w-6 h-6 text-primary" />,
@@ -416,7 +429,7 @@ export default function TarifsPage() {
 
                 <div className="border-t border-[#D4C5D9]/30 pt-8">
                   <h3 className="text-xl font-bold text-foreground mb-4">Politique d'annulation</h3>
-                  <div className="space-y-3">
+                  <div className="space-y-3" role="list">
                     <div className="flex items-start gap-3">
                       <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                       <p className="text-muted-foreground">
@@ -437,16 +450,19 @@ export default function TarifsPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]">
+        <section 
+          className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]"
+          aria-labelledby="cta-heading"
+        >
           <div className="container mx-auto px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 id="cta-heading" className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
                 Une question sur les tarifs ?
               </h2>
               <p className="text-white/90 text-lg mb-8">
@@ -456,13 +472,15 @@ export default function TarifsPage() {
                 <a
                   href="/#contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-primary bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                  aria-label="Me contacter pour des questions sur les tarifs"
                 >
                   Me contacter
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-5 h-5" aria-hidden="true" />
                 </a>
                 <a
                   href="/services"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full border-2 border-white hover:bg-white/30 transition-all duration-300"
+                  aria-label="Découvrir les services proposés"
                 >
                   Découvrir mes services
                 </a>
