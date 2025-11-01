@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Home, ArrowLeft, Search, FileQuestion } from 'lucide-react';
+import { Home, Search, FileQuestion } from 'lucide-react';
 import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';
+import { BackButton } from '@/components/ui/back-button';
 
 export const metadata: Metadata = {
   title: 'Page non trouvée - 404',
@@ -53,13 +54,7 @@ export default function NotFound() {
                 Retour à l'accueil
               </Link>
               
-              <button
-                onClick={() => window.history.back()}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-full border-2 border-[#D4C5D9] hover:bg-[#F3E8F0] transition-all duration-300"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                Page précédente
-              </button>
+              <BackButton />
             </div>
 
             {/* Quick Links */}
