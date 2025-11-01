@@ -166,7 +166,7 @@ const ServicesSection = () => {
           {/* Card 2: Pour les Professionnels */}
           <motion.div variants={fadeInUp} className="group relative">
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-br from-[#E8DFF0]/40 to-[#F3E8F0]/30 rounded-3xl blur-xl"
+              className="absolute inset-0 bg-gradient-to-br from-[#B8E6D5]/40 to-[#D4F1E8]/30 rounded-3xl blur-xl"
               animate={{
                 scale: [1, 1.05, 1],
                 opacity: [0.4, 0.6, 0.4],
@@ -177,22 +177,22 @@ const ServicesSection = () => {
               variants={cardHover}
               initial="rest"
               whileHover="hover"
-              className="relative h-full glass-effect rounded-3xl border border-[#D4C5D9]/30 shadow-lg overflow-hidden"
+              className="relative h-full glass-effect rounded-3xl border border-[#7BC4BF]/20 shadow-lg overflow-hidden"
             >
-              <div className="h-2 bg-gradient-to-r from-[#8B7A98] via-[#A594B3] to-[#C5B8D0]"></div>
+              <div className="h-2 bg-gradient-to-r from-[#5FABA6] via-[#7BC4BF] to-[#9FD9D3]"></div>
               <div className="p-8 md:p-10">
                 <motion.div 
                   className="relative mb-6"
                   whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl blur-xl opacity-40"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#5FABA6] to-[#7BC4BF] rounded-2xl blur-xl opacity-40"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#5FABA6] to-[#7BC4BF] rounded-2xl flex items-center justify-center shadow-lg">
                     <Users className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
 
-                <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl md:text-3xl font-bold font-display text-foreground mb-4 group-hover:text-[#5FABA6] transition-colors">
                   Pour les Professionnels
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">
@@ -216,7 +216,7 @@ const ServicesSection = () => {
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 + 0.3 }}
                     >
-                      <CircleCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <CircleCheck className="w-5 h-5 text-[#5FABA6] flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-foreground/80">{item}</span>
                     </motion.li>
                   ))}
@@ -224,9 +224,9 @@ const ServicesSection = () => {
 
                 <Link href="/contact">
                   <motion.div 
-                    whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(139, 122, 152, 0.25)" }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(95, 171, 166, 0.25)" }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#8B7A98] to-[#A594B3] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
+                    className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#5FABA6] to-[#7BC4BF] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
                   >
                     Me contacter pour un devis
                     <ArrowRight className="w-5 h-5 ml-2" />
