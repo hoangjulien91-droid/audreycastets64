@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
-import { ChevronRight, Sparkles, Phone, Mail, MapPin, Clock, MessageCircle, Send, Loader2, CheckCircle } from 'lucide-react';
+import { ChevronRight, Sparkles, Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle } from 'lucide-react';
 import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';
+import { ContactForm } from '@/components/contact/contact-form';
 
 export const revalidate = 3600; // Revalidate every hour
 
@@ -22,72 +23,6 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service_type: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error' | null;
-    message: string;
-  }>({ type: null, message: '' });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: '' });
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSubmitStatus({
-          type: 'success',
-          message: 'Merci ! Votre message a été envoyé avec succès. Je vous répondrai dans les 24h.',
-        });
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service_type: '',
-          message: '',
-        });
-      } else {
-        setSubmitStatus({
-          type: 'error',
-          message: data.error || 'Une erreur est survenue. Veuillez réessayer.',
-        });
-      }
-    } catch (error) {
-      setSubmitStatus({
-        type: 'error',
-        message: 'Erreur de connexion. Veuillez vérifier votre connexion internet.',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <>
       <BreadcrumbJsonLd items={[
@@ -275,133 +210,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Right Column - Contact Form */}
-                <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-10 border-t-4 border-t-[var(--color-primary)] sticky top-24">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="bg-gradient-to-br from-[var(--color-primary)] to-[#A594B3] p-3 rounded-xl">
-                      <Send className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)]" style={{ fontFamily: 'var(--font-display)' }}>
-                      Demande de Contact
-                    </h3>
-                  </div>
-
-                  {submitStatus.type && (
-                    <div
-                      className={`mb-6 p-4 rounded-xl ${
-                        submitStatus.type === 'success'
-                          ? 'bg-green-50 text-green-800 border border-green-200'
-                          : 'bg-red-50 text-red-800 border border-red-200'
-                      }`}
-                    >
-                      {submitStatus.message}
-                    </div>
-                  )}
-
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-                        Nom complet <span className="text-[var(--color-primary)]">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all"
-                        placeholder="Votre nom complet"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-                        Email <span className="text-[var(--color-primary)]">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all"
-                        placeholder="votre@email.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-                        Téléphone (optionnel)
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all"
-                        placeholder="06 12 34 56 78"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="service_type" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-                        Je suis
-                      </label>
-                      <select
-                        id="service_type"
-                        name="service_type"
-                        value={formData.service_type}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all"
-                      >
-                        <option value="">Sélectionnez une option</option>
-                        <option value="particulier">Un particulier</option>
-                        <option value="professionnel">Un professionnel</option>
-                        <option value="autre">Autre</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-                        Message <span className="text-[var(--color-primary)]">*</span>
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={5}
-                        className="w-full px-4 py-3 border-2 border-[var(--color-border)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all resize-none"
-                        placeholder="Décrivez brièvement votre besoin..."
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-[var(--color-primary)] to-[#A594B3] text-white py-4 px-6 rounded-full font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          Envoi en cours...
-                        </>
-                      ) : (
-                        <>
-                          Envoyer ma demande
-                          <Send className="w-5 h-5" />
-                        </>
-                      )}
-                    </button>
-
-                    <p className="text-xs text-[var(--color-text-secondary)] text-center">
-                      🔒 Vos informations sont confidentielles et ne seront jamais partagées.
-                    </p>
-                  </form>
-                </div>
+                <ContactForm />
               </div>
             </div>
           </section>
