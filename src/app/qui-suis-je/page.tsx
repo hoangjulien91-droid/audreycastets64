@@ -31,6 +31,12 @@ export const metadata: Metadata = {
     description: 'Découvrez mon parcours, mes formations et mon approche en psychologie du travail.',
     url: 'https://www.audrey-castets.fr/qui-suis-je',
     type: 'profile',
+    images: [{
+      url: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg',
+      width: 500,
+      height: 500,
+      alt: 'Audrey Castets - Psychologue du Travail'
+    }]
   },
 };
 
@@ -45,32 +51,35 @@ export default function QuiSuisJePage() {
       <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-20" id="main-content">
         {/* Hero Section with Breadcrumb */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24">
+        <section 
+          className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
+          aria-label="Présentation d'Audrey Castets"
+        >
           {/* Background decorative elements */}
-          <div className="absolute inset-0 pointer-events-none opacity-30">
+          <div className="absolute inset-0 pointer-events-none opacity-30" aria-hidden="true">
             <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-[#D4C5D9]/40 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#A594B3]/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
           </div>
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
             {/* Breadcrumb */}
-            <div className="mb-8">
+            <nav className="mb-8" aria-label="Fil d'Ariane">
               <Breadcrumb 
                 items={[
                   { label: "Accueil", href: "/" },
                   { label: "Qui suis-je" }
                 ]} 
               />
-            </div>
+            </nav>
 
             {/* Hero Content */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left Content */}
               <div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
-                  <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+                  <Sparkles className="w-4 h-4 text-primary animate-pulse" aria-hidden="true" />
                   <span className="text-sm font-medium text-primary">
                     Mon parcours & expertise
                   </span>
@@ -81,7 +90,7 @@ export default function QuiSuisJePage() {
                 </h1>
 
                 <div className="flex items-center gap-2.5 mb-6">
-                  <Heart className="w-6 h-6 text-primary fill-primary animate-pulse" />
+                  <Heart className="w-6 h-6 text-primary fill-primary animate-pulse" aria-hidden="true" />
                   <p className="text-xl md:text-2xl text-primary font-semibold font-display">
                     Psychologue du Travail
                   </p>
@@ -92,26 +101,26 @@ export default function QuiSuisJePage() {
                 </p>
 
                 {/* Quick Stats */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto">
+                <div className="grid grid-cols-3 gap-4" role="list" aria-label="Statistiques clés">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
+                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
                       <Award className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-2xl font-bold text-primary text-center">+5 ans</p>
+                    <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 5 ans">+5 ans</p>
                     <p className="text-xs text-muted-foreground text-center">Expérience</p>
                   </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-full mb-2 mx-auto">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
+                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-full mb-2 mx-auto" aria-hidden="true">
                       <Users className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-2xl font-bold text-primary text-center">200+</p>
+                    <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 200">200+</p>
                     <p className="text-xs text-muted-foreground text-center">Accompagnements</p>
                   </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto">
+                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
+                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
                       <Star className="w-6 h-6 text-white" />
                     </div>
-                    <p className="text-2xl font-bold text-primary text-center">95%</p>
+                    <p className="text-2xl font-bold text-primary text-center" aria-label="95 pourcent">95%</p>
                     <p className="text-xs text-muted-foreground text-center">Satisfaction</p>
                   </div>
                 </div>
@@ -120,15 +129,17 @@ export default function QuiSuisJePage() {
               {/* Right Image */}
               <div className="flex justify-center lg:justify-end">
                 <div className="relative group">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98] opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700"></div>
+                  <div className="absolute -inset-6 bg-gradient-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98] opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700" aria-hidden="true"></div>
                   <div className="relative">
                     <Image
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg"
                       alt="Audrey Castets - Psychologue du Travail"
                       width={500}
                       height={500}
+                      sizes="(max-width: 768px) 288px, (max-width: 1024px) 384px, 400px"
                       className="w-72 h-72 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] object-cover rounded-full shadow-2xl ring-8 ring-white/60 group-hover:ring-[#D4C5D9]/40 transition-all duration-500"
                       priority
+                      quality={85}
                     />
                   </div>
                 </div>
@@ -138,14 +149,17 @@ export default function QuiSuisJePage() {
         </section>
 
         {/* Mon Parcours Section */}
-        <section className="py-16 md:py-24 bg-white">
+        <section 
+          className="py-16 md:py-24 bg-white"
+          aria-labelledby="parcours-heading"
+        >
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
                   Mon histoire
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 id="parcours-heading" className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Un parcours au service de <span className="text-primary">votre bien-être</span>
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -154,11 +168,11 @@ export default function QuiSuisJePage() {
               </div>
 
               {/* Timeline */}
-              <div className="space-y-8">
+              <div className="space-y-8" role="list" aria-label="Parcours professionnel">
                 {/* Formation */}
-                <div className="flex gap-6 group">
+                <article className="flex gap-6 group" role="listitem">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                       <GraduationCap className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -168,12 +182,12 @@ export default function QuiSuisJePage() {
                       Master 2 en Psychologie du Travail et des Organisations, complété par des formations spécialisées en TCC (Thérapies Cognitivo-Comportementales) et EFT (Emotional Freedom Techniques).
                     </p>
                   </div>
-                </div>
+                </article>
 
                 {/* Expérience */}
-                <div className="flex gap-6 group">
+                <article className="flex gap-6 group" role="listitem">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                       <Briefcase className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -183,12 +197,12 @@ export default function QuiSuisJePage() {
                       Plus de 5 ans d'accompagnement auprès de particuliers et d'entreprises, avec une expertise reconnue dans la gestion du stress, la prévention du burn-out et l'optimisation du bien-être au travail.
                     </p>
                   </div>
-                </div>
+                </article>
 
                 {/* International */}
-                <div className="flex gap-6 group">
+                <article className="flex gap-6 group" role="listitem">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                       <Globe className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -198,26 +212,29 @@ export default function QuiSuisJePage() {
                       Collaborations avec des organisations internationales, enrichissant ma pratique par une approche multiculturelle et des méthodologies variées d'accompagnement.
                     </p>
                   </div>
-                </div>
+                </article>
               </div>
             </div>
           </div>
         </section>
 
         {/* Ma Philosophie Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white">
+        <section 
+          className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          aria-labelledby="philosophie-heading"
+        >
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
                   Ma philosophie
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 id="philosophie-heading" className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Une approche <span className="text-primary">humaine et personnalisée</span>
                 </h2>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-[#D4C5D9]/30">
+              <article className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-[#D4C5D9]/30">
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   Pour moi, chaque personne est unique et mérite un accompagnement sur mesure. Je crois profondément en une approche bienveillante, sans jugement, où l'écoute active et l'empathie sont au cœur de ma pratique.
                 </p>
@@ -227,24 +244,27 @@ export default function QuiSuisJePage() {
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Que vous soyez confronté à un burn-out, à des difficultés relationnelles au travail, ou simplement en quête de sens dans votre carrière professionnelle, je suis là pour vous guider vers un mieux-être durable.
                 </p>
-              </div>
+              </article>
             </div>
           </div>
         </section>
 
         {/* Mes Spécialités Section */}
-        <section className="py-16 md:py-24 bg-white">
+        <section 
+          className="py-16 md:py-24 bg-white"
+          aria-labelledby="specialites-heading"
+        >
           <div className="container mx-auto px-6 lg:px-8">
             <div className="text-center mb-12">
               <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
                 Domaines d'expertise
               </span>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 id="specialites-heading" className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Mes <span className="text-primary">spécialités</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto" role="list" aria-label="Liste des spécialités">
               {/* Specialty Cards */}
               {[
                 {
@@ -284,11 +304,12 @@ export default function QuiSuisJePage() {
                   color: "from-[#C5B8D0] to-[#A594B3]"
                 }
               ].map((specialty, index) => (
-                <div
+                <article
                   key={index}
                   className="group bg-white rounded-2xl p-6 border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  role="listitem"
                 >
-                  <div className={`w-14 h-14 bg-gradient-to-br ${specialty.color} rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-14 h-14 bg-gradient-to-br ${specialty.color} rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`} aria-hidden="true">
                     {specialty.icon}
                   </div>
                   <h3 className="text-lg font-bold text-foreground mb-2">
@@ -297,27 +318,30 @@ export default function QuiSuisJePage() {
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {specialty.description}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
         {/* Déontologie Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white">
+        <section 
+          className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          aria-labelledby="deontologie-heading"
+        >
           <div className="container mx-auto px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
                   Éthique professionnelle
                 </span>
-                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                <h2 id="deontologie-heading" className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Un engagement <span className="text-primary">déontologique fort</span>
                 </h2>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-primary">
-                <div className="space-y-6">
+              <article className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-primary">
+                <ul className="space-y-6" role="list" aria-label="Engagements déontologiques">
                   {[
                     {
                       icon: <CheckCircle className="w-6 h-6 text-primary" />,
@@ -340,28 +364,31 @@ export default function QuiSuisJePage() {
                       text: "Numéro ADELI et RPPS à jour pour exercice légal"
                     }
                   ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4">
-                      {item.icon}
+                    <li key={index} className="flex items-start gap-4">
+                      <span aria-hidden="true">{item.icon}</span>
                       <p className="text-muted-foreground text-lg">{item.text}</p>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
                 <div className="mt-8 pt-8 border-t border-border">
                   <p className="text-sm text-muted-foreground">
                     <strong className="text-foreground">Numéro ADELI :</strong> 409307198 • <strong className="text-foreground">RPPS :</strong> 10009709337
                   </p>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]">
+        <section 
+          className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]"
+          aria-labelledby="cta-heading"
+        >
           <div className="container mx-auto px-6 lg:px-8 text-center">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 id="cta-heading" className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
                 Prêt(e) à commencer votre parcours ?
               </h2>
               <p className="text-white/90 text-lg mb-8">
@@ -369,14 +396,16 @@ export default function QuiSuisJePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-primary bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                  aria-label="Prendre contact avec Audrey Castets"
                 >
                   Prendre contact
                 </a>
                 <a
                   href="/#services"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full border-2 border-white hover:bg-white/30 transition-all duration-300"
+                  aria-label="Découvrir les services proposés"
                 >
                   Découvrir mes services
                 </a>
