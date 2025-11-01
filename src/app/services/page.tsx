@@ -5,7 +5,6 @@ import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import type { Metadata } from 'next';
 import { 
   AnimatedHeroSection,
-  AnimatedServicesCards,
   AnimatedServicesParticuliers,
   AnimatedServicesProfessionnels,
   AnimatedPracticalInfo,
@@ -66,7 +65,6 @@ export default function ServicesPage() {
             </div>
           </section>
 
-          <AnimatedServicesCards />
           <AnimatedServicesParticuliers />
           <AnimatedServicesProfessionnels />
           <AnimatedPracticalInfo />
