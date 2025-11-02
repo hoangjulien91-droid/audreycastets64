@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Shield, Search, FileCheck, Users } from "lucide-react";
+import { ExternalLink, Shield, Search, FileCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -36,9 +36,13 @@ export default function PartnersSection() {
               {/* Photo professionnelle */}
               <div className="mx-auto md:mx-0">
                 <div className="relative w-48 h-48 rounded-2xl overflow-hidden shadow-lg ring-2 ring-accent-teal/20">
-                  <div className="w-full h-full bg-gradient-to-br from-accent-teal/20 to-accent-teal/10 flex items-center justify-center">
-                    <Users className="w-20 h-20 text-accent-teal" />
-                  </div>
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/julien-hoang-detective-bayonne-1762105713740.jpg?width=8000&height=8000&resize=contain"
+                    alt="Julien Hoang - Détective Privé Victimologue"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 192px, 192px"
+                  />
                 </div>
               </div>
 
