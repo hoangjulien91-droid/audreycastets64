@@ -225,13 +225,13 @@ const ServicesSection = () => {
                   ))}
                 </ul>
 
-                <Link href="/contact">
+                <Link href="/services#accompagnement-professionnels">
                   <motion.div 
                     whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(95, 171, 166, 0.25)" }}
                     whileTap={{ scale: 0.98 }}
                     className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#5FABA6] to-[#7BC4BF] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
                   >
-                    Me contacter pour un devis
+                    En savoir plus
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </motion.div>
                 </Link>

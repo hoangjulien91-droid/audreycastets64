@@ -428,6 +428,7 @@ export function AnimatedServiceDetails({ title, services, bgColor = "gradient-to
 
   return (
     <motion.section 
+      id={title === "Professionnels" ? "accompagnement-professionnels" : undefined}
       ref={ref}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
