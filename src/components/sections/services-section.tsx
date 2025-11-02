@@ -133,7 +133,10 @@ const ServicesSection = () => {
                     "Thérapies Cognitivo-Comportementales (TCC)",
                     "Gestion du stress et de l'anxiété",
                     "EFT - Techniques de libération émotionnelle",
-                    "Burn-out et épuisement professionnel"
+                    "Burn-out et épuisement professionnel",
+                    "Dépression",
+                    "Estime/confiance en soi",
+                    "Bilan de compétences"
                   ].map((item, idx) => (
                     <motion.li 
                       key={idx}
