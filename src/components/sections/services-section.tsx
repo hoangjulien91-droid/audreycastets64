@@ -209,7 +209,8 @@ const ServicesSection = () => {
                   {[
                     "Diagnostic des risques psychosociaux",
                     "Recrutement et tests SOSIE",
-                    "Ateliers de prévention du stress"
+                    "Ateliers de prévention du stress",
+                    "Soutien psychologique individuel et collectif"
                   ].map((item, idx) => (
                     <motion.li 
                       key={idx}
