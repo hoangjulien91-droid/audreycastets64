@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ClipboardCheck, Users, FileSearch, Heart } from "lucide-react";
+import { ClipboardCheck, Users, Heart } from "lucide-react";
 
 export default function CollaborativeProcessSection() {
   const steps = [
@@ -21,17 +21,10 @@ export default function CollaborativeProcessSection() {
     },
     {
       number: "03",
-      icon: FileSearch,
-      title: "Synthèse interdisciplinaire",
-      description: "Mise en commun des expertises pour constituer un dossier complet et cohérent",
-      color: "primary"
-    },
-    {
-      number: "04",
       icon: Heart,
       title: "Soutien juridique et reconstruction",
       description: "Accompagnement vers la reconnaissance de vos droits et la reconstruction personnelle",
-      color: "accent-teal"
+      color: "primary"
     }
   ];
 
@@ -49,7 +42,7 @@ export default function CollaborativeProcessSection() {
             Notre Processus <span className="text-primary">Collaboratif</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Un accompagnement structuré en 4 étapes pour votre reconstruction
+            Un accompagnement structuré en 3 étapes pour votre reconstruction
           </p>
         </motion.div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle, Clock, Shield, FileCheck } from "lucide-react";
+import { CheckCircle, Clock, FileCheck } from "lucide-react";
 
 export default function WhyAllianceSection() {
   const advantages = [
@@ -14,11 +14,6 @@ export default function WhyAllianceSection() {
       icon: Clock,
       title: "Gain de temps et d'efficacité",
       description: "Coordination optimale entre les différentes expertises pour avancer plus rapidement"
-    },
-    {
-      icon: Shield,
-      title: "Protection renforcée",
-      description: "Un accompagnement global qui assure votre sécurité physique et psychologique"
     },
     {
       icon: FileCheck,
@@ -67,7 +62,7 @@ export default function WhyAllianceSection() {
           variants={containerVariants}
           className="max-w-5xl mx-auto"
         >
-          <div className="grid sm:grid-cols-2 gap-6 mb-12">
+          <div className="grid sm:grid-cols-3 gap-6 mb-12">
             {advantages.map((advantage, index) => (
               <motion.div
                 key={index}

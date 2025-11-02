@@ -3,10 +3,8 @@
 import { motion } from "framer-motion";
 import { 
   AlertTriangle, 
-  Users, 
   HeartCrack, 
   Scale, 
-  Shield as ShieldIcon,
   Briefcase 
 } from "lucide-react";
 
@@ -25,27 +23,15 @@ export default function InterventionDomainsSection() {
       color: "accent-teal"
     },
     {
-      icon: ShieldIcon,
-      title: "Agressions et traumatismes",
-      description: "Soutien psychologique et investigation",
-      color: "primary"
-    },
-    {
       icon: Scale,
       title: "Discrimination et rupture abusive",
       description: "Constitution de dossiers solides",
-      color: "accent-teal"
+      color: "primary"
     },
     {
       icon: Briefcase,
       title: "Accidents du travail avec préjudice",
       description: "Évaluation et expertise",
-      color: "primary"
-    },
-    {
-      icon: Users,
-      title: "Préparation aux expertises judiciaires",
-      description: "Accompagnement complet",
       color: "accent-teal"
     }
   ];
@@ -88,7 +74,7 @@ export default function InterventionDomainsSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
         >
           {domains.map((domain, index) => (
             <motion.div
