@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Shield, Search, FileCheck } from "lucide-react";
+import { ExternalLink, Shield, Search, FileCheck, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -65,7 +65,8 @@ export default function PartnersSection() {
                     {[
                       { icon: Shield, text: "Aide aux victimes" },
                       { icon: Search, text: "Investigations sensibles" },
-                      { icon: FileCheck, text: "Constitution de dossiers" }
+                      { icon: FileCheck, text: "Constitution de dossiers" },
+                      { icon: Database, text: "Collecte d'éléments probatoires" }
                     ].map((speciality, index) => (
                       <div
                         key={index}
@@ -87,7 +88,7 @@ export default function PartnersSection() {
                       "Harcèlement moral et sexuel",
                       "Violences conjugales",
                       "Discrimination au travail",
-                      "Expertise judiciaire"
+                      "Assistance aux procédures judiciaires"
                     ].map((domain, index) => (
                       <div key={index} className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-accent-teal" />
