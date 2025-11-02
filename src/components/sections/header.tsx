@@ -26,6 +26,7 @@ const navLinks = [
   { href: "/qui-suis-je", label: "Qui suis-je" },
   { href: "/mon-approche", label: "Mon approche" },
   { href: "/services", label: "Services" },
+  { href: "/partenariat", label: "Partenariat" },
   { href: "/tarifs", label: "Tarifs" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
