@@ -54,7 +54,7 @@ export default function ComplementaryApproachSection() {
                     { icon: Brain, text: "Évaluation psychologique" },
                     { icon: Users, text: "Accompagnement thérapeutique" },
                     { icon: Target, text: "Réinsertion professionnelle" },
-                    { icon: FileText, text: "Expertise judiciaire" }
+                    { icon: ShieldIcon, text: "Prévention des RPS" }
                   ].map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <item.icon className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
