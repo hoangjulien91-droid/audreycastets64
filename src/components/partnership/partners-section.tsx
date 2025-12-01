@@ -104,12 +104,12 @@ export default function PartnersSection() {
                   className="bg-accent-teal hover:bg-accent-teal/90 text-white shadow-lg"
                 >
                   <a 
-                    href="https://detective-conseil.fr/" 
+                    href="https://ikerketa.fr/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2"
                   >
-                    Visiter le site
+                    Detective privé à Anglet
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </Button>
