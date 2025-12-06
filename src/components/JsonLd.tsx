@@ -222,3 +222,32 @@ export const ServiceJsonLd = ({ name, description, price }: ServiceData) => {
 
   return <JsonLd data={data} />;
 };
+
+// Article Schema
+interface ArticleData {
+  title: string;
+  description: string;
+  datePublished: string;
+  authors: string[];
+}
+
+export const ArticleJsonLd = ({ title, description, datePublished, authors }: ArticleData) => {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    datePublished,
+    author: authors.map(author => ({
+      '@type': 'Person',
+      name: author
+    })),
+    publisher: {
+      '@type': 'Organization',
+      name: 'Audrey Castets - Psychologue du Travail',
+      url: 'https://www.audrey-castets.fr'
+    }
+  };
+
+  return <JsonLd data={data} />;
+};
