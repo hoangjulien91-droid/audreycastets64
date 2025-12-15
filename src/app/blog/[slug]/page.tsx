@@ -6,7 +6,8 @@ import { BreadcrumbJsonLd, ArticleJsonLd } from "@/components/JsonLd";
 import type { Metadata } from 'next';
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog-posts";
 import { BlogPostContent } from "@/components/blog/blog-post-content";
-import { Calendar, Clock, User, Share2 } from "lucide-react";
+import { ShareButton } from "@/components/blog/share-button";
+import { Calendar, Clock, User } from "lucide-react";
 
 export const revalidate = 3600;
 
@@ -135,23 +136,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
                 {/* Share Button */}
                 <div className="mb-8">
-                  <button
-                    onClick={() => {
-                      if (navigator.share) {
-                        navigator.share({
-                          title: post.title,
-                          text: post.summary,
-                          url: window.location.href,
-                        }).catch(() => {});
-                      } else {
-                        navigator.clipboard.writeText(window.location.href);
-                      }
-                    }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
-                  >
-                    <Share2 className="h-4 w-4" />
-                    <span>Copier l'URL</span>
-                  </button>
+                  <ShareButton title={post.title} summary={post.summary} />
                 </div>
               </article>
             </div>
