@@ -150,6 +150,16 @@ const Footer = () => {
           <p className="text-xs text-muted-foreground">
             © 2024 Audrey Castets - Psychologue du Travail. Tous droits réservés.
           </p>
+          <p className="text-xs text-muted-foreground/60 mt-2">
+            <a 
+              href="https://www.ikerketa.fr" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-muted-foreground transition-colors"
+            >
+              IKERKETA détective privé Bayonne
+            </a>
+          </p>
         </motion.div>
       </div>
     </footer>
