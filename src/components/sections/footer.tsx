@@ -151,6 +151,7 @@ const Footer = () => {
             © 2025 Audrey Castets - Psychologue du Travail. Tous droits réservés.
           </p>
           <p className="text-xs text-muted-foreground/60 mt-2">
+            crée en colaboration avec{' '}
             <a 
               href="https://ikerketa.fr" 
               target="_blank" 
