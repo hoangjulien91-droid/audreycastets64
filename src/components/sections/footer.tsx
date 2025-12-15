@@ -148,7 +148,7 @@ const Footer = () => {
           className="mt-12 border-t border-primary/20 pt-8 text-center"
         >
           <p className="text-xs text-muted-foreground">
-            © 2024 Audrey Castets - Psychologue du Travail. Tous droits réservés.
+            © 2025 Audrey Castets - Psychologue du Travail. Tous droits réservés.
           </p>
           <p className="text-xs text-muted-foreground/60 mt-2">
             <a 
