@@ -157,7 +157,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-muted-foreground transition-colors"
             >
-              propulsé en colaboration avec IKERKETA détective privé Bayonne
+              crée en colaboration avec IKERKETA détective privé Bayonne
             </a>
           </p>
         </motion.div>
