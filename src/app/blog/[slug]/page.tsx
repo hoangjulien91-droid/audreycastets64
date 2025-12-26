@@ -12,9 +12,7 @@ import { Calendar, Clock, User } from "lucide-react";
 export const revalidate = 3600;
 
 interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -24,7 +22,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata(props: BlogPostPageProps): Promise<Metadata> {
+  const params = await props.params;
   const post = getBlogPost(params.slug);
   
   if (!post) {
@@ -50,7 +49,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage(props: BlogPostPageProps) {
+  const params = await props.params;
   const post = getBlogPost(params.slug);
 
   if (!post) {
@@ -80,8 +80,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <Header />
         
         <main className="pt-20" id="main-content">
-          {/* Hero Section */}
-          <section className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50/30 to-background py-12 md:py-16">
+          <section 
+            className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50/30 to-background py-12 md:py-16"
+            aria-labelledby="article-heading"
+          >
             <div className="container mx-auto px-6 lg:px-8 relative z-10">
               <nav className="mb-8" aria-label="Fil d'Ariane">
                 <Breadcrumb 
@@ -94,33 +96,35 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               </nav>
               
               <article className="max-w-4xl mx-auto">
-                {/* Post Header */}
                 <header className="mb-12">
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground font-display">
+                  <h1 
+                    id="article-heading"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground font-display"
+                  >
                     {post.title}
                   </h1>
                   
-                  <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-muted-foreground mb-6">
-                    <div className="flex items-center gap-2">
-                      <User className="h-4 w-4" />
+                  <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-muted-foreground mb-6" role="list" aria-label="Informations de l'article">
+                    <div className="flex items-center gap-2" role="listitem">
+                      <User className="h-4 w-4" aria-hidden="true" />
                       <span className="font-medium">{post.authors.join(', ')}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4" />
+                    <div className="flex items-center gap-2" role="listitem">
+                      <Calendar className="h-4 w-4" aria-hidden="true" />
                       <time dateTime={post.date}>{formattedDate}</time>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4" />
+                    <div className="flex items-center gap-2" role="listitem">
+                      <Clock className="h-4 w-4" aria-hidden="true" />
                       <span>{post.readTime}</span>
                     </div>
                   </div>
 
-                  {/* Tags */}
                   {post.tags && post.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-6" role="list" aria-label="Tags de l'article">
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
+                          role="listitem"
                           className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary"
                         >
                           {tag}
@@ -134,7 +138,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   </p>
                 </header>
 
-                {/* Share Button */}
                 <div className="mb-8">
                   <ShareButton title={post.title} summary={post.summary} />
                 </div>
@@ -142,7 +145,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </section>
 
-          {/* Post Content */}
           <BlogPostContent post={post} />
         </main>
 

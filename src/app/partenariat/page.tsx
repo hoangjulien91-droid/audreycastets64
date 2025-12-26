@@ -1,5 +1,7 @@
 import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';
+import { Breadcrumb } from '@/components/ui/breadcrumb';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import PartnershipHeroSection from '@/components/partnership/hero-section';
 import ComplementaryApproachSection from '@/components/partnership/complementary-approach-section';
 import PartnersSection from '@/components/partnership/partners-section';
@@ -8,6 +10,8 @@ import CollaborativeProcessSection from '@/components/partnership/collaborative-
 import WhyAllianceSection from '@/components/partnership/why-alliance-section';
 import PartnershipContactSection from '@/components/partnership/partnership-contact-section';
 import type { Metadata } from 'next';
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Partenariat Interdisciplinaire - Audrey Castets & Julien Hoang',
@@ -25,18 +29,24 @@ export const metadata: Metadata = {
 
 export default function PartnershipPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main className="pt-20" id="main-content">
-        <PartnershipHeroSection />
-        <ComplementaryApproachSection />
-        <PartnersSection />
-        <InterventionDomainsSection />
-        <CollaborativeProcessSection />
-        <WhyAllianceSection />
-        <PartnershipContactSection />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Accueil', url: '/' },
+        { name: 'Partenariat' }
+      ]} />
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="pt-20" id="main-content">
+          <PartnershipHeroSection />
+          <ComplementaryApproachSection />
+          <PartnersSection />
+          <InterventionDomainsSection />
+          <CollaborativeProcessSection />
+          <WhyAllianceSection />
+          <PartnershipContactSection />
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }

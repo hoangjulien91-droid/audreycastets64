@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import { useRef } from "react";
 import Link from "next/link";

@@ -1,18 +1,18 @@
 import Link from "next/link";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { BreadcrumbJsonLd, FaqJsonLd } from "@/components/JsonLd";
 import { FaqAccordion } from "@/components/faq/faq-accordion";
 import type { Metadata } from 'next';
 import {
-  ChevronRight,
   Sparkles,
   Mail,
   ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'FAQ - Questions Fréquentes sur la Psychologie du Travail',
@@ -62,27 +62,22 @@ export default function FaqPage() {
       <div className="min-h-screen bg-background">
         <Header />
         <main className="pt-20" id="main-content">
-          {/* Hero Section */}
           <section 
             className="relative py-20 bg-gradient-to-br from-pink-50 via-purple-50/30 to-background overflow-hidden"
             aria-labelledby="faq-heading"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-pink-100/40 via-purple-100/20 to-transparent blur-3xl" aria-hidden="true" />
             <div className="container relative z-10">
-              {/* Breadcrumb */}
-              <nav className="flex items-center gap-2 text-sm mb-8" aria-label="Fil d'Ariane">
-                <Link
-                  href="/"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Accueil
-                </Link>
-                <ChevronRight className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
-                <span className="text-foreground font-medium">FAQ</span>
+              <nav className="mb-8" aria-label="Fil d'Ariane">
+                <Breadcrumb 
+                  items={[
+                    { label: "Accueil", href: "/" },
+                    { label: "FAQ" }
+                  ]} 
+                />
               </nav>
 
               <div className="max-w-4xl">
-                {/* Badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100 text-primary mb-6">
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
                   <span className="text-sm font-medium">
@@ -90,7 +85,6 @@ export default function FaqPage() {
                   </span>
                 </div>
 
-                {/* Title */}
                 <h1 id="faq-heading" className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
                   Toutes les{" "}
                   <span className="bg-gradient-to-r from-primary via-purple-500 to-primary bg-clip-text text-transparent">
@@ -99,36 +93,32 @@ export default function FaqPage() {
                   à vos questions
                 </h1>
 
-                {/* Subtitle */}
                 <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                   Toutes les réponses à vos questions sur la psychologie du
                   travail, les thérapies cognitivo-comportementales et mes
                   services d'accompagnement.
                 </p>
 
-                {/* Feature Badges */}
                 <div className="flex flex-wrap gap-3" role="list" aria-label="Points clés">
                   <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-pink-100 text-sm font-medium text-foreground shadow-sm" role="listitem">
-                    💬 Réponses détaillées
+                    Réponses détaillées
                   </div>
                   <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-100 text-sm font-medium text-foreground shadow-sm" role="listitem">
-                    🔍 Facile à parcourir
+                    Facile à parcourir
                   </div>
                   <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-pink-100 text-sm font-medium text-foreground shadow-sm" role="listitem">
-                    ⚡ Informations à jour
+                    Informations à jour
                   </div>
                   <div className="px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-purple-100 text-sm font-medium text-foreground shadow-sm" role="listitem">
-                    💡 Conseils d'experts
+                    Conseils d'experts
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* FAQ Accordion */}
           <FaqAccordion />
 
-          {/* CTA Section */}
           <section 
             className="py-20 bg-gradient-to-br from-primary via-pink-500 to-purple-500 text-white"
             aria-labelledby="cta-heading"
