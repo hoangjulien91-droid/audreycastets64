@@ -5,7 +5,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
+import { navLinks } from "@/lib/data/navigation"
 
 const Logo = () => (
   <svg
@@ -21,22 +22,11 @@ const Logo = () => (
   </svg>
 )
 
-const navLinks = [
-  { href: "/", label: "Accueil" },
-  { href: "/qui-suis-je", label: "Qui suis-je" },
-  { href: "/mon-approche", label: "Mon approche" },
-  { href: "/services", label: "Services" },
-  { href: "/partenariat", label: "Partenariat" },
-  { href: "/tarifs", label: "Tarifs" },
-  { href: "/blog", label: "Blog" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
-]
-
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
+  const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -51,7 +41,7 @@ export default function Header() {
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
+        initial={prefersReducedMotion ? {} : { y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={cn(

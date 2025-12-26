@@ -1,0 +1,19 @@
+# Contenu Blog
+
+Ce dossier contient les articles de blog au format MDX.
+
+## Structure d'un article
+
+Chaque fichier `.mdx` doit avoir un frontmatter avec les champs suivants:
+
+```yaml
+---
+title: "Titre de l'article"
+description: "Description courte"
+date: "2025-01-01"
+author: "Audrey Castets"
+tags: ["tag1", "tag2"]
+readTime: "5 min"
+image: "/blog/image.webp"
+---
+```

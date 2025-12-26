@@ -84,9 +84,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
-      <body className="antialiased">
-        <ErrorReporter />
-        <ThemeInitializer />
+<body className="antialiased">
+          <a href="#main-content" className="skip-to-main">
+            Aller au contenu principal
+          </a>
+          <ErrorReporter />
+          <ThemeInitializer />
         <Script
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
           strategy="afterInteractive"

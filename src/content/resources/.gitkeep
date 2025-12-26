@@ -1,0 +1,19 @@
+# Ressources (Guides Experts)
+
+Ce dossier contient les guides experts au format MDX.
+
+## Structure d'une ressource
+
+Chaque fichier `.mdx` doit avoir un frontmatter avec les champs suivants:
+
+```yaml
+---
+title: "Titre du guide"
+description: "Description courte"
+date: "2025-01-01"
+author: "Audrey Castets"
+tags: ["psychologie", "travail"]
+readTime: "10 min"
+image: "/resources/image.webp"
+---
+```
