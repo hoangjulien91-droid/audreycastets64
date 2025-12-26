@@ -327,6 +327,67 @@
     font-family: var(--font-body);
   }
 
+  .bg-violet {
+    background-color: var(--color-violet);
+  }
+  .bg-violet-soft {
+    background-color: var(--color-violet-soft);
+  }
+  .bg-violet-light {
+    background-color: var(--color-violet-light);
+  }
+  .bg-rose {
+    background-color: var(--color-rose);
+  }
+  .bg-rose-soft {
+    background-color: var(--color-rose-soft);
+  }
+  .bg-rose-light {
+    background-color: var(--color-rose-light);
+  }
+  .bg-mauve {
+    background-color: var(--color-mauve);
+  }
+  .bg-mauve-light {
+    background-color: var(--color-mauve-light);
+  }
+  .bg-sage {
+    background-color: var(--color-sage);
+  }
+  .bg-sage-light {
+    background-color: var(--color-sage-light);
+  }
+  .bg-blush {
+    background-color: var(--color-blush);
+  }
+  .bg-blush-light {
+    background-color: var(--color-blush-light);
+  }
+  .text-violet {
+    color: var(--color-violet);
+  }
+  .text-rose {
+    color: var(--color-rose);
+  }
+  .text-mauve {
+    color: var(--color-mauve);
+  }
+  .text-sage {
+    color: var(--color-sage);
+  }
+  .text-blush {
+    color: var(--color-blush);
+  }
+  .border-violet {
+    border-color: var(--color-violet);
+  }
+  .border-rose {
+    border-color: var(--color-rose);
+  }
+  .border-sage {
+    border-color: var(--color-sage);
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
