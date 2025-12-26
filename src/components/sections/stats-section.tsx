@@ -9,7 +9,7 @@ interface Stat {
   value: number;
   suffix: string;
   label: string;
-  gradient: string;
+  color: string;
 }
 
 const stats: Stat[] = [
@@ -18,28 +18,28 @@ const stats: Stat[] = [
     value: 5,
     suffix: "+",
     label: "Années d'expérience",
-    gradient: "from-primary to-primary-soft",
+    color: "bg-primary",
   },
   {
     icon: Users,
     value: 200,
     suffix: "+",
     label: "Patients accompagnés",
-    gradient: "from-violet to-violet-soft",
+    color: "bg-violet",
   },
   {
     icon: Award,
     value: 95,
     suffix: "%",
     label: "Satisfaction client",
-    gradient: "from-rose to-rose-soft",
+    color: "bg-rose",
   },
   {
     icon: Clock,
     value: 24,
     suffix: "h",
     label: "Délai de réponse",
-    gradient: "from-mauve to-mauve-light",
+    color: "bg-mauve",
   },
 ];
 
@@ -87,7 +87,7 @@ export default function StatsSection() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-background via-warm-rose/30 to-background relative overflow-hidden">
+    <section className="section-spacing bg-warm-rose/30 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="orb orb-primary w-[500px] h-[500px] top-0 left-1/4 opacity-20" />
         <div className="orb orb-violet w-[400px] h-[400px] bottom-0 right-1/4 opacity-15" />
@@ -106,7 +106,7 @@ export default function StatsSection() {
             <span>Chiffres clés</span>
           </div>
           <h2 className="text-foreground">
-            Une expertise <span className="gradient-text">reconnue</span>
+            Une expertise <span className="text-primary">reconnue</span>
           </h2>
         </motion.div>
 
@@ -121,20 +121,19 @@ export default function StatsSection() {
               className="group"
             >
               <div className="card-premium relative p-6 lg:p-8 text-center overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} aria-hidden="true" />
+                <div className={`absolute inset-0 ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} aria-hidden="true" />
                 
                 <motion.div 
                   className="relative mx-auto mb-4 w-14 h-14"
                   whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} rounded-xl blur-lg opacity-40`} aria-hidden="true" />
-                  <div className={`relative w-full h-full bg-gradient-to-br ${stat.gradient} rounded-xl flex items-center justify-center shadow-md`}>
+                  <div className={`relative w-full h-full ${stat.color} rounded-xl flex items-center justify-center shadow-md`}>
                     <stat.icon className="w-7 h-7 text-white" aria-hidden="true" />
                   </div>
                 </motion.div>
 
-                <div className={`text-4xl lg:text-5xl font-bold bg-gradient-to-br ${stat.gradient} bg-clip-text text-transparent mb-2`}>
+                <div className="text-4xl lg:text-5xl font-bold text-foreground mb-2">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
 

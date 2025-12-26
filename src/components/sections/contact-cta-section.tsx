@@ -22,19 +22,19 @@ const features = [
     icon: Phone,
     title: "Premier entretien offert",
     description: "15 minutes pour faire connaissance",
-    gradient: "from-primary to-primary-soft"
+    color: "bg-primary"
   },
   {
     icon: Clock,
     title: "Réponse sous 24h",
     description: "Je réponds rapidement à toutes vos demandes",
-    gradient: "from-accent-teal to-accent-teal-light"
+    color: "bg-violet"
   },
   {
     icon: MessageCircle,
     title: "Sans engagement",
     description: "Échangeons en toute liberté",
-    gradient: "from-lavender to-lavender-light"
+    color: "bg-rose"
   }
 ];
 
@@ -91,10 +91,10 @@ export default function ContactCtaSection() {
   };
 
   return (
-    <section id="contact" className="section-spacing-lg bg-gradient-to-b from-background via-warm-beige/30 to-background relative overflow-hidden">
+    <section id="contact" className="section-spacing-lg bg-warm-rose/30 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="orb orb-primary w-[500px] h-[500px] top-0 left-0 opacity-15" />
-        <div className="orb orb-teal w-[400px] h-[400px] bottom-0 right-0 opacity-10" />
+        <div className="orb orb-violet w-[400px] h-[400px] bottom-0 right-0 opacity-10" />
       </div>
 
       <div className="container relative z-10">
@@ -110,7 +110,7 @@ export default function ContactCtaSection() {
               <span>Contact</span>
             </div>
             <h2 className="text-foreground mb-5">
-              Prêt(e) à franchir le <span className="gradient-text">pas</span> ?
+              Prêt(e) à franchir le <span className="text-primary">pas</span> ?
             </h2>
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
               Je vous accompagne avec bienveillance et professionnalisme dans votre parcours. 
@@ -128,7 +128,7 @@ export default function ContactCtaSection() {
                   className="flex items-start gap-4 group"
                 >
                   <motion.div 
-                    className={`bg-gradient-to-br ${feature.gradient} p-3 rounded-xl shadow-md flex-shrink-0`}
+                    className={`${feature.color} p-3 rounded-xl shadow-md flex-shrink-0`}
                     whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -164,7 +164,7 @@ export default function ContactCtaSection() {
                 animate={{ opacity: 1, y: 0 }}
                 className={`mb-6 p-4 rounded-xl text-sm ${
                   submitStatus.type === 'success'
-                    ? 'bg-accent-teal/10 text-accent-teal border border-accent-teal/20'
+                    ? 'bg-sage/20 text-sage border border-sage/30'
                     : 'bg-destructive/10 text-destructive border border-destructive/20'
                 }`}
                 role="alert"
@@ -257,7 +257,7 @@ export default function ContactCtaSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-premium w-full justify-center text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full justify-center text-base disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 {isSubmitting ? (
                   <>

@@ -17,7 +17,7 @@ export default function Footer() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-background via-warm-rose/30 to-soft-lavender/50">
+    <footer className="relative overflow-hidden bg-soft-lavender/30">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="orb orb-primary w-[400px] h-[400px] -top-40 left-1/4 opacity-10" />
         <div className="orb orb-violet w-[300px] h-[300px] bottom-0 right-1/3 opacity-10" />
@@ -32,7 +32,7 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-violet flex items-center justify-center shadow-lg shadow-primary/20">
+              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
                 <Heart className="w-5 h-5 text-white" />
               </div>
               <span className="text-lg font-semibold text-foreground font-display">Audrey Castets</span>
@@ -41,18 +41,18 @@ export default function Footer() {
               Psychologue du travail avec +5 ans d'expérience, spécialisée en TCC et EFT pour l'accompagnement thérapeutique individuel et professionnel.
             </p>
             <div className="flex gap-3">
-              <a
-                href="tel:0743687297"
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-violet/10 flex items-center justify-center text-primary hover:from-primary hover:to-violet hover:text-white transition-all duration-300 shadow-sm"
-                aria-label="Appeler"
-              >
-                <Phone className="w-4 h-4" />
-              </a>
-              <a
-                href="mailto:contact@audrey-castets.fr"
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-violet/10 flex items-center justify-center text-primary hover:from-primary hover:to-violet hover:text-white transition-all duration-300 shadow-sm"
-                aria-label="Envoyer un email"
-              >
+<a
+                  href="tel:0743687297"
+                  className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm"
+                  aria-label="Appeler"
+                >
+                  <Phone className="w-4 h-4" />
+                </a>
+                <a
+                  href="mailto:contact@audrey-castets.fr"
+                  className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm"
+                  aria-label="Envoyer un email"
+                >
                 <Mail className="w-4 h-4" />
               </a>
             </div>

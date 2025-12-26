@@ -10,28 +10,28 @@ const values = [
     title: "Bienveillance",
     subtitle: "Non-jugement",
     description: "Chaque parcours est unique. Je vous accueille dans un espace sécurisé où votre histoire est entendue avec respect.",
-    gradient: "from-primary to-primary-soft",
+    color: "bg-primary",
   },
   {
     icon: Puzzle,
     title: "Approche Intégrative",
     subtitle: "Sur-mesure",
     description: "J'utilise une combinaison d'outils (TCC, psychodynamique) pour créer une thérapie adaptée à vos besoins.",
-    gradient: "from-violet to-violet-soft",
+    color: "bg-violet",
   },
   {
     icon: Scale,
     title: "Éthique",
     subtitle: "Confidentialité",
     description: "Le respect du secret professionnel est absolu. Notre relation est bâtie sur la confiance et un cadre déontologique strict.",
-    gradient: "from-rose to-rose-soft",
+    color: "bg-rose",
   },
   {
     icon: BrainCircuit,
     title: "Collaboration",
     subtitle: "Active",
     description: "Vous êtes l'expert de votre propre vie. Nous travaillons ensemble pour définir et atteindre vos objectifs.",
-    gradient: "from-mauve to-mauve-light",
+    color: "bg-mauve",
   },
 ];
 
@@ -58,7 +58,7 @@ export default function ValuesSection() {
             <span>Mon engagement</span>
           </div>
           <h2 className="text-foreground mb-5">
-            Les piliers de mon <span className="gradient-text">accompagnement</span>
+            Les piliers de mon <span className="text-primary">accompagnement</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Ma pratique est guidée par des principes fondamentaux qui garantissent une thérapie de qualité, humaine et respectueuse.
@@ -76,15 +76,14 @@ export default function ValuesSection() {
               className="group"
             >
               <div className="card-premium relative h-full p-7 text-center overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} aria-hidden="true" />
+                <div className={`absolute inset-0 ${value.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} aria-hidden="true" />
                 
                 <motion.div
                   className="relative mx-auto mb-5"
                   whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className={`absolute inset-0 w-16 h-16 mx-auto bg-gradient-to-br ${value.gradient} rounded-2xl blur-lg opacity-40`} aria-hidden="true" />
-                  <div className={`relative w-16 h-16 mx-auto bg-gradient-to-br ${value.gradient} rounded-2xl flex items-center justify-center shadow-lg`}>
+                  <div className={`relative w-16 h-16 mx-auto ${value.color} rounded-2xl flex items-center justify-center shadow-lg`}>
                     <value.icon className="w-8 h-8 text-white" aria-hidden="true" />
                   </div>
                 </motion.div>

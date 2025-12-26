@@ -56,9 +56,9 @@ const LinkCard = ({ href, Icon, title, subtitle, index }: LinkCardProps) => {
           whileHover={{ scale: 1.1, rotate: 5 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="absolute inset-0 rounded-full gradient-primary opacity-10 blur-2xl transition-opacity group-hover:opacity-20"></div>
-          <div className="relative flex h-full w-full items-center justify-center rounded-full border-2 border-primary/10 bg-white/50 backdrop-blur-sm">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-primary/5 to-accent-teal/5 transition-colors group-hover:bg-primary/10">
+<div className="absolute inset-0 rounded-full bg-primary opacity-10 blur-2xl transition-opacity group-hover:opacity-20"></div>
+            <div className="relative flex h-full w-full items-center justify-center rounded-full border-2 border-primary/10 bg-white/50 backdrop-blur-sm">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/15">
               <Icon className="h-10 w-10 text-primary transition-transform group-hover:scale-110" />
             </div>
           </div>
@@ -85,7 +85,7 @@ const LinkCard = ({ href, Icon, title, subtitle, index }: LinkCardProps) => {
 
 const AdditionalLinksSection = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-warm-beige py-20 md:py-24">
+    <section className="bg-warm-rose/30 py-20 md:py-24">
       <div className="container mx-auto px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -94,9 +94,9 @@ const AdditionalLinksSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <h2 className="font-display text-4xl font-bold text-foreground md:text-5xl">
-            Pour aller <span className="gradient-text">plus loin</span>
-          </h2>
+<h2 className="font-display text-4xl font-bold text-foreground md:text-5xl">
+              Pour aller <span className="text-primary">plus loin</span>
+            </h2>
         </motion.div>
 
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">

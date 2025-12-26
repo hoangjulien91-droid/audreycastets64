@@ -59,7 +59,7 @@ export default function FaqSection() {
             <span>FAQ</span>
           </div>
           <h2 className="text-foreground mb-5">
-            Questions <span className="gradient-text">Fréquentes</span>
+            Questions <span className="text-primary">Fréquentes</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Retrouvez les réponses aux questions les plus courantes

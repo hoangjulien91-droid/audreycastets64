@@ -20,9 +20,8 @@ const services = [
       "Estime et confiance en soi",
       "Bilan de compétences"
     ],
-    gradient: "from-primary to-rose",
-    bgGradient: "from-primary/5 via-rose-light/30 to-transparent",
-    iconBg: "from-primary to-rose",
+    color: "bg-primary",
+    bgColor: "bg-primary/5",
     checkColor: "text-primary",
     link: "/mon-approche",
     linkText: "Découvrir mon approche"
@@ -39,9 +38,8 @@ const services = [
       "Ateliers de prévention du stress",
       "Soutien psychologique individuel et collectif"
     ],
-    gradient: "from-violet to-violet-soft",
-    bgGradient: "from-violet/5 via-violet-light/30 to-transparent",
-    iconBg: "from-violet to-violet-soft",
+    color: "bg-violet",
+    bgColor: "bg-violet/5",
     checkColor: "text-violet",
     link: "/services#accompagnement-professionnels",
     linkText: "Voir les services entreprise"
@@ -71,7 +69,7 @@ export default function ServicesSection() {
             <span>Services</span>
           </div>
           <h2 className="text-foreground mb-5">
-            Mes <span className="gradient-text">Services</span>
+            Mes <span className="text-primary">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Un accompagnement professionnel adapté à vos besoins, que vous soyez particulier ou professionnel.
@@ -88,10 +86,10 @@ export default function ServicesSection() {
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="group relative"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} aria-hidden="true" />
+              <div className={`absolute inset-0 ${service.bgColor} rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} aria-hidden="true" />
               
               <div className="card-premium relative h-full p-8 lg:p-10 overflow-hidden">
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} opacity-80`} aria-hidden="true" />
+                <div className={`absolute top-0 left-0 right-0 h-1 ${service.color} opacity-80`} aria-hidden="true" />
                 
                 <div className="flex items-start gap-5 mb-6">
                   <motion.div 
@@ -99,8 +97,7 @@ export default function ServicesSection() {
                     whileHover={shouldReduceMotion ? {} : { rotate: 5, scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.iconBg} rounded-2xl blur-lg opacity-40`} aria-hidden="true" />
-                    <div className={`relative w-16 h-16 bg-gradient-to-br ${service.iconBg} rounded-2xl flex items-center justify-center shadow-lg`}>
+                    <div className={`relative w-16 h-16 ${service.color} rounded-2xl flex items-center justify-center shadow-lg`}>
                       <service.icon className="w-8 h-8 text-white" aria-hidden="true" />
                     </div>
                   </motion.div>
@@ -134,7 +131,7 @@ export default function ServicesSection() {
 
                 <Link
                   href={service.link}
-                  className={`group/btn inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r ${service.gradient} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
+                  className={`group/btn inline-flex items-center justify-center w-full px-6 py-4 ${service.color} text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
                 >
                   {service.linkText}
                   <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover/btn:translate-x-1" aria-hidden="true" />

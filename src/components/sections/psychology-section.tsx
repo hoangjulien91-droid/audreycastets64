@@ -9,13 +9,15 @@ const cards = [
     icon: Target,
     title: "Pour qui ?",
     content: "L'accompagnement a pour but d'exprimer ce qui ne va pas, de prendre du recul, et d'identifier des leviers avec des exercices pratiques. L'objectif est de vous donner des clefs pour appréhender les situations de crise ou de tension.",
-    gradient: "from-primary to-primary-soft"
+    color: "bg-primary",
+    borderColor: "bg-primary"
   },
   {
     icon: MessageCircle,
     title: "Pourquoi consulter ?",
     content: "Il est parfois difficile de comprendre certaines situations qui peuvent provoquer perte de sens, conflits ou isolement professionnel. Les entretiens interrogent le rapport à son travail et questionnent l'organisation.",
-    gradient: "from-accent-teal to-accent-teal-light"
+    color: "bg-violet",
+    borderColor: "bg-violet"
   }
 ];
 
@@ -23,10 +25,10 @@ export default function PsychologySection() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-warm-beige/50 to-background relative overflow-hidden">
+    <section className="section-spacing bg-warm-rose/30 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="orb orb-primary w-[500px] h-[500px] top-0 right-0 opacity-15" />
-        <div className="orb orb-teal w-[400px] h-[400px] bottom-0 left-0 opacity-10" />
+        <div className="orb orb-violet w-[400px] h-[400px] bottom-0 left-0 opacity-10" />
       </div>
 
       <div className="container relative z-10">
@@ -42,7 +44,7 @@ export default function PsychologySection() {
             <span>Psychologie du Travail</span>
           </div>
           <h2 className="text-foreground mb-5">
-            La Psychologie du <span className="gradient-text">Travail</span>
+            La Psychologie du <span className="text-primary">Travail</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Pour toutes les personnes qui s'interrogent sur leur travail, leur recherche d'emploi ou leur avenir professionnel, quand une situation de malaise voire de souffrance apparaît.
@@ -60,15 +62,14 @@ export default function PsychologySection() {
               className="group"
             >
               <div className="card-premium relative h-full p-8 overflow-hidden">
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${card.gradient}`} aria-hidden="true" />
+                <div className={`absolute top-0 left-0 right-0 h-1 ${card.borderColor}`} aria-hidden="true" />
                 
                 <motion.div 
                   className="relative mb-5"
                   whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className={`absolute inset-0 w-16 h-16 bg-gradient-to-br ${card.gradient} rounded-xl blur-lg opacity-40`} aria-hidden="true" />
-                  <div className={`relative w-16 h-16 bg-gradient-to-br ${card.gradient} rounded-xl flex items-center justify-center shadow-lg`}>
+                  <div className={`relative w-16 h-16 ${card.color} rounded-xl flex items-center justify-center shadow-lg`}>
                     <card.icon className="w-8 h-8 text-white" aria-hidden="true" />
                   </div>
                 </motion.div>
@@ -93,15 +94,14 @@ export default function PsychologySection() {
           className="max-w-3xl mx-auto"
         >
           <div className="card-premium relative p-8 text-center overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-lavender to-lavender-light" aria-hidden="true" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-rose" aria-hidden="true" />
             
             <motion.div 
               className="relative mx-auto mb-5"
               whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="absolute inset-0 w-16 h-16 mx-auto bg-gradient-to-br from-lavender to-lavender-light rounded-xl blur-lg opacity-40" aria-hidden="true" />
-              <div className="relative w-16 h-16 mx-auto bg-gradient-to-br from-lavender to-lavender-light rounded-xl flex items-center justify-center shadow-lg">
+              <div className="relative w-16 h-16 mx-auto bg-rose rounded-xl flex items-center justify-center shadow-lg">
                 <Shield className="w-8 h-8 text-white" aria-hidden="true" />
               </div>
             </motion.div>

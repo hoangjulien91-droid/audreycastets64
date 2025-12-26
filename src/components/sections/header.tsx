@@ -10,8 +10,8 @@ import { navLinks } from "@/lib/data/navigation"
 
 const Logo = () => (
   <div className="relative">
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-violet/20 rounded-xl blur-lg" />
-    <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-primary via-primary to-violet flex items-center justify-center shadow-lg shadow-primary/20">
+    <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg" />
+    <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
       <span className="text-white font-display font-bold text-lg sm:text-xl">A</span>
     </div>
   </div>
@@ -100,16 +100,16 @@ export default function Header() {
                 className="flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 rounded-full hover:bg-primary/[0.05]"
                 aria-label="Appeler le 07 43 68 72 97"
               >
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/10 to-violet/10 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                   <Phone className="w-3.5 h-3.5 text-primary" />
                 </div>
                 <span className="hidden xl:inline">07 43 68 72 97</span>
               </a>
               <Link
                 href="/contact"
-                className="group relative flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full bg-gradient-to-r from-primary to-primary-soft text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
+                className="group relative flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full bg-primary text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <span className="relative">Prendre RDV</span>
                 <ArrowRight className="w-4 h-4 relative transition-transform group-hover:translate-x-0.5" />
               </Link>
@@ -180,7 +180,7 @@ export default function Header() {
                           className={cn(
                             "flex items-center justify-between w-full rounded-xl py-3.5 px-4 text-[15px] font-medium transition-all duration-300",
                             pathname === link.href 
-                              ? "bg-gradient-to-r from-primary/10 to-violet/5 text-primary" 
+                              ? "bg-primary/10 text-primary" 
                               : "text-foreground hover:bg-muted/50"
                           )}
                           onClick={() => setIsMenuOpen(false)}
@@ -195,7 +195,7 @@ export default function Header() {
                   </div>
                 </nav>
 
-                <div className="p-5 space-y-3 border-t border-border/50 bg-gradient-to-b from-muted/30 to-muted/50">
+                <div className="p-5 space-y-3 border-t border-border/50 bg-muted/30">
                   <a
                     href="tel:0743687297"
                     className="flex items-center justify-center gap-2.5 w-full rounded-xl py-3.5 text-[15px] font-medium text-foreground bg-white border border-border/50 hover:border-primary/30 transition-all duration-300 shadow-sm"
@@ -205,7 +205,7 @@ export default function Header() {
                   </a>
                   <Link
                     href="/contact"
-                    className="flex items-center justify-center gap-2 w-full rounded-xl py-3.5 text-[15px] font-semibold text-white bg-gradient-to-r from-primary to-primary-soft shadow-lg shadow-primary/20 hover:shadow-xl transition-all duration-300"
+                    className="flex items-center justify-center gap-2 w-full rounded-xl py-3.5 text-[15px] font-semibold text-white bg-primary shadow-lg shadow-primary/20 hover:shadow-xl transition-all duration-300"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Prendre RDV

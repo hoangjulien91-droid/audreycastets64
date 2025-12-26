@@ -36,7 +36,7 @@ export default function HeroSection() {
       className="relative min-h-[100svh] overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-warm-rose/50 to-soft-lavender/30" aria-hidden="true" />
+      <div className="absolute inset-0 bg-warm-rose/30" aria-hidden="true" />
       
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         {!shouldReduceMotion && (
@@ -48,7 +48,7 @@ export default function HeroSection() {
                 scale: [1, 1.05, 1],
               }}
               transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-[500px] h-[500px] -top-20 left-1/4 rounded-full bg-gradient-to-br from-primary/[0.12] via-rose/[0.08] to-transparent blur-3xl"
+              className="absolute w-[500px] h-[500px] -top-20 left-1/4 rounded-full bg-primary/10 blur-3xl"
             />
             <motion.div
               animate={{
@@ -57,7 +57,7 @@ export default function HeroSection() {
                 scale: [1, 1.08, 1],
               }}
               transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-[600px] h-[600px] bottom-0 right-1/4 rounded-full bg-gradient-to-tl from-violet/[0.10] via-blush/[0.06] to-transparent blur-3xl"
+              className="absolute w-[600px] h-[600px] bottom-0 right-1/4 rounded-full bg-violet/10 blur-3xl"
             />
             <motion.div
               animate={{
@@ -65,7 +65,7 @@ export default function HeroSection() {
                 y: [0, -30, 0],
               }}
               transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-[400px] h-[400px] top-1/3 right-0 rounded-full bg-gradient-to-bl from-rose/[0.08] to-transparent blur-3xl"
+              className="absolute w-[400px] h-[400px] top-1/3 right-0 rounded-full bg-rose/8 blur-3xl"
             />
           </>
         )}
@@ -79,12 +79,12 @@ export default function HeroSection() {
             style={shouldReduceMotion ? {} : { y, opacity }}
             className="text-center lg:text-left order-2 lg:order-1"
           >
-            <motion.div
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/[0.08] to-violet/[0.08] border border-primary/10 text-primary text-sm font-medium mb-8"
-            >
+<motion.div
+                initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/10 text-primary text-sm font-medium mb-8"
+              >
               <Sparkles className="w-4 h-4" aria-hidden="true" />
               <span>Votre espace de sérénité</span>
             </motion.div>
@@ -126,7 +126,7 @@ export default function HeroSection() {
             >
               {features.map((feature, idx) => (
                 <li key={idx} className="flex items-center gap-3 text-sm sm:text-base text-foreground/80">
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-primary/20 to-violet/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
                   </div>
                   {feature}
@@ -140,11 +140,11 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
-              <Link 
-                href="/contact" 
-                className="group relative flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-primary via-primary to-rose-dark text-white font-semibold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-500 hover:-translate-y-1 overflow-hidden"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/25 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+<Link 
+                  href="/contact" 
+                  className="group relative flex items-center justify-center gap-2.5 w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-white font-semibold shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+                >
+                <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <span className="relative">Prendre rendez-vous</span>
                 <ArrowRight className="w-4 h-4 relative transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
@@ -165,10 +165,10 @@ export default function HeroSection() {
               <div className="flex items-center justify-center lg:justify-start gap-8">
                 <div className="flex -space-x-3">
                   {[...Array(4)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 via-violet/20 to-rose/20 border-2 border-white flex items-center justify-center text-xs font-semibold text-primary shadow-md"
-                    >
+<div
+                        key={i}
+                        className="w-10 h-10 rounded-full bg-primary/15 border-2 border-white flex items-center justify-center text-xs font-semibold text-primary shadow-md"
+                      >
                       {["S", "M", "T", "J"][i]}
                     </div>
                   ))}
@@ -197,10 +197,10 @@ export default function HeroSection() {
               transition={{ duration: 1, delay: 0.2 }}
               className="relative"
             >
-              <div className="absolute -inset-4 sm:-inset-8 bg-gradient-to-br from-primary/15 via-violet/10 to-rose/10 rounded-[3rem] blur-3xl opacity-70" aria-hidden="true" />
+              <div className="absolute -inset-4 sm:-inset-8 bg-primary/10 rounded-[3rem] blur-3xl opacity-70" aria-hidden="true" />
               
               <div className="relative aspect-[4/5] max-w-sm sm:max-w-md mx-auto lg:max-w-none">
-                <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-primary/20 via-violet/15 to-rose/20 p-[2px]">
+                <div className="absolute inset-0 rounded-[2.5rem] bg-primary/15 p-[2px]">
                   <div className="w-full h-full rounded-[2.4rem] overflow-hidden bg-white">
                     <Image
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg?"
@@ -210,7 +210,7 @@ export default function HeroSection() {
                       priority
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/5 via-transparent to-transparent" aria-hidden="true" />
+                    <div className="absolute inset-0 bg-foreground/5" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -227,7 +227,7 @@ export default function HeroSection() {
                       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                       className="bg-white/95 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-xl shadow-primary/10 border border-primary/10 flex items-center gap-2.5"
                     >
-                      <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary/15 to-violet/15 flex items-center justify-center">
+                      <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center">
                         <badge.icon className="w-4 h-4 text-primary" />
                       </div>
                       <span className="text-xs font-semibold text-foreground whitespace-nowrap">{badge.label}</span>
@@ -242,7 +242,7 @@ export default function HeroSection() {
                   className="absolute -bottom-4 -right-4 sm:bottom-8 sm:-right-8 bg-white/95 backdrop-blur-xl px-5 py-4 rounded-2xl shadow-2xl shadow-primary/15 border border-primary/10"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary via-primary-soft to-violet flex items-center justify-center shadow-lg shadow-primary/20">
+                    <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
                       <Heart className="w-7 h-7 text-white fill-white" />
                     </div>
                     <div>

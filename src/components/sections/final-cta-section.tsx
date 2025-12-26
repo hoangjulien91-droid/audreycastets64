@@ -16,7 +16,7 @@ export default function FinalCtaSection() {
 
   return (
     <section className="section-spacing-lg relative overflow-hidden">
-      <div className="absolute inset-0 gradient-primary" aria-hidden="true" />
+      <div className="absolute inset-0 bg-primary" aria-hidden="true" />
       
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <motion.div

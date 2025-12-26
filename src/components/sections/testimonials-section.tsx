@@ -16,42 +16,42 @@ const testimonials = [
     name: "Sophie M.",
     role: "Cadre en reconversion",
     initial: "S",
-    gradient: "from-primary to-primary-soft",
+    color: "bg-primary",
   },
   {
     quote: "J'étais en burn-out complet. Audrey m'a accompagné avec empathie et professionnalisme. Aujourd'hui je vais beaucoup mieux et j'ai appris à poser mes limites au travail.",
     name: "Thomas L.",
     role: "Manager",
     initial: "T",
-    gradient: "from-violet to-violet-soft",
+    color: "bg-violet",
   },
   {
     quote: "Un accompagnement sur mesure qui a transformé ma vision du travail. Audrey a su identifier mes blocages et m'a donné des outils concrets pour avancer sereinement dans mon projet.",
     name: "Marie D.",
     role: "Entrepreneuse",
     initial: "M",
-    gradient: "from-rose to-rose-soft",
+    color: "bg-rose",
   },
   {
     quote: "Professionnelle et à l'écoute, Audrey m'a aidé à gérer mes relations conflictuelles au travail. Ses conseils ont été précieux et je recommande vivement ses services.",
     name: "Julien P.",
     role: "Consultant RH",
     initial: "J",
-    gradient: "from-mauve to-mauve-light",
+    color: "bg-mauve",
   },
   {
     quote: "Les séances avec Audrey m'ont permis de mieux comprendre mes émotions et de développer une meilleure gestion du stress. Je me sens beaucoup plus équilibrée.",
     name: "Émilie R.",
     role: "Chef de projet",
     initial: "É",
-    gradient: "from-sage to-sage-light",
+    color: "bg-sage",
   },
   {
     quote: "Un accompagnement personnalisé qui m'a vraiment aidé dans ma prise de poste. Audrey a su m'apporter les clés pour manager mon équipe avec plus de sérénité.",
     name: "Alexandre B.",
     role: "Directeur commercial",
     initial: "A",
-    gradient: "from-blush to-blush-light",
+    color: "bg-blush",
   },
 ];
 
@@ -73,7 +73,7 @@ export default function TestimonialsSection() {
   }, [api]);
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-background via-soft-lavender/30 to-background relative overflow-hidden">
+    <section className="section-spacing bg-soft-lavender/30 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <Quote className="absolute top-20 left-10 w-32 h-32 text-primary/5 rotate-12" />
         <Quote className="absolute bottom-20 right-10 w-40 h-40 text-violet/5 -rotate-12" />
@@ -94,7 +94,7 @@ export default function TestimonialsSection() {
             <span>Témoignages</span>
           </div>
           <h2 className="text-foreground mb-5">
-            Ils me font <span className="gradient-text">confiance</span>
+            Ils me font <span className="text-primary">confiance</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Découvrez les retours de personnes que j'ai eu le plaisir d'accompagner.
@@ -117,7 +117,7 @@ export default function TestimonialsSection() {
                   transition={{ delay: (index % 3) * 0.1 }}
                 >
                   <div className="card-premium relative h-full p-7 flex flex-col overflow-hidden group">
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonial.gradient}`} aria-hidden="true" />
+                    <div className={`absolute top-0 left-0 right-0 h-1 ${testimonial.color}`} aria-hidden="true" />
                     <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity" aria-hidden="true">
                       <Quote className="w-12 h-12 text-primary" />
                     </div>
@@ -133,7 +133,7 @@ export default function TestimonialsSection() {
                     </blockquote>
 
                     <div className="flex items-center gap-4 pt-5 border-t border-border/50">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-semibold text-lg shadow-md`}>
+                      <div className={`w-12 h-12 rounded-xl ${testimonial.color} flex items-center justify-center text-white font-semibold text-lg shadow-md`}>
                         {testimonial.initial}
                       </div>
                       <div>
@@ -154,7 +154,7 @@ export default function TestimonialsSection() {
                 onClick={() => api?.scrollTo(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   current === index 
-                    ? "bg-gradient-to-r from-primary to-violet w-8" 
+                    ? "bg-primary w-8" 
                     : "bg-primary/20 w-2 hover:bg-primary/40"
                 }`}
                 role="tab"
