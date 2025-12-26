@@ -16,42 +16,42 @@ const testimonials = [
     name: "Sophie M.",
     role: "Cadre en reconversion",
     initial: "S",
-    color: "bg-primary",
+    bgColor: "#9D6B8C",
   },
   {
     quote: "J'étais en burn-out complet. Audrey m'a accompagné avec empathie et professionnalisme. Aujourd'hui je vais beaucoup mieux et j'ai appris à poser mes limites au travail.",
     name: "Thomas L.",
     role: "Manager",
     initial: "T",
-    color: "bg-violet",
+    bgColor: "#8B7CB3",
   },
   {
     quote: "Un accompagnement sur mesure qui a transformé ma vision du travail. Audrey a su identifier mes blocages et m'a donné des outils concrets pour avancer sereinement dans mon projet.",
     name: "Marie D.",
     role: "Entrepreneuse",
     initial: "M",
-    color: "bg-rose",
+    bgColor: "#C27B9E",
   },
   {
     quote: "Professionnelle et à l'écoute, Audrey m'a aidé à gérer mes relations conflictuelles au travail. Ses conseils ont été précieux et je recommande vivement ses services.",
     name: "Julien P.",
     role: "Consultant RH",
     initial: "J",
-    color: "bg-mauve",
+    bgColor: "#9B8AA3",
   },
   {
     quote: "Les séances avec Audrey m'ont permis de mieux comprendre mes émotions et de développer une meilleure gestion du stress. Je me sens beaucoup plus équilibrée.",
     name: "Émilie R.",
     role: "Chef de projet",
     initial: "É",
-    color: "bg-sage",
+    bgColor: "#8FAE9B",
   },
   {
     quote: "Un accompagnement personnalisé qui m'a vraiment aidé dans ma prise de poste. Audrey a su m'apporter les clés pour manager mon équipe avec plus de sérénité.",
     name: "Alexandre B.",
     role: "Directeur commercial",
     initial: "A",
-    color: "bg-blush",
+    bgColor: "#E8B4C8",
   },
 ];
 
@@ -116,26 +116,26 @@ export default function TestimonialsSection() {
                   viewport={{ once: true }}
                   transition={{ delay: (index % 3) * 0.1 }}
                 >
-                  <div className="card-premium relative h-full p-7 flex flex-col overflow-hidden group">
-                    <div className={`absolute top-0 left-0 right-0 h-1 ${testimonial.color}`} aria-hidden="true" />
-                    <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity" aria-hidden="true">
-                      <Quote className="w-12 h-12 text-primary" />
-                    </div>
-                    
-                    <div className="flex items-center gap-1 mb-5" role="img" aria-label="5 étoiles sur 5">
-                      {Array(5).fill(0).map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-primary fill-primary" />
-                      ))}
-                    </div>
-
-                    <blockquote className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow relative z-10">
-                      "{testimonial.quote}"
-                    </blockquote>
-
-                    <div className="flex items-center gap-4 pt-5 border-t border-border/50">
-                      <div className={`w-12 h-12 rounded-xl ${testimonial.color} flex items-center justify-center text-white font-semibold text-lg shadow-md`}>
-                        {testimonial.initial}
+<div className="card-premium relative h-full p-7 flex flex-col overflow-hidden group">
+                      <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: testimonial.bgColor }} aria-hidden="true" />
+                      <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity" aria-hidden="true">
+                        <Quote className="w-12 h-12 text-primary" />
                       </div>
+                      
+                      <div className="flex items-center gap-1 mb-5" role="img" aria-label="5 étoiles sur 5">
+                        {Array(5).fill(0).map((_, i) => (
+                          <Star key={i} className="w-4 h-4 text-primary fill-primary" />
+                        ))}
+                      </div>
+
+                      <blockquote className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow relative z-10">
+                        "{testimonial.quote}"
+                      </blockquote>
+
+                      <div className="flex items-center gap-4 pt-5 border-t border-border/50">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-semibold text-lg shadow-md" style={{ backgroundColor: testimonial.bgColor }}>
+                          {testimonial.initial}
+                        </div>
                       <div>
                         <p className="font-semibold text-foreground">{testimonial.name}</p>
                         <p className="text-sm text-muted-foreground">{testimonial.role}</p>

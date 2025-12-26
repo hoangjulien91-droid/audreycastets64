@@ -9,7 +9,7 @@ interface Stat {
   value: number;
   suffix: string;
   label: string;
-  color: string;
+  bgColor: string;
 }
 
 const stats: Stat[] = [
@@ -18,28 +18,28 @@ const stats: Stat[] = [
     value: 5,
     suffix: "+",
     label: "Années d'expérience",
-    color: "bg-primary",
+    bgColor: "#9D6B8C",
   },
   {
     icon: Users,
     value: 200,
     suffix: "+",
     label: "Patients accompagnés",
-    color: "bg-violet",
+    bgColor: "#8B7CB3",
   },
   {
     icon: Award,
     value: 95,
     suffix: "%",
     label: "Satisfaction client",
-    color: "bg-rose",
+    bgColor: "#C27B9E",
   },
   {
     icon: Clock,
     value: 24,
     suffix: "h",
     label: "Délai de réponse",
-    color: "bg-mauve",
+    bgColor: "#9B8AA3",
   },
 ];
 
@@ -120,18 +120,18 @@ export default function StatsSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="card-premium relative p-6 lg:p-8 text-center overflow-hidden">
-                <div className={`absolute inset-0 ${stat.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} aria-hidden="true" />
-                
-                <motion.div 
-                  className="relative mx-auto mb-4 w-14 h-14"
-                  whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className={`relative w-full h-full ${stat.color} rounded-xl flex items-center justify-center shadow-md`}>
-                    <stat.icon className="w-7 h-7 text-white" aria-hidden="true" />
-                  </div>
-                </motion.div>
+<div className="card-premium relative p-6 lg:p-8 text-center overflow-hidden">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500" style={{ backgroundColor: stat.bgColor }} aria-hidden="true" />
+                  
+                  <motion.div 
+                    className="relative mx-auto mb-4 w-14 h-14"
+                    whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="relative w-full h-full rounded-xl flex items-center justify-center shadow-md" style={{ backgroundColor: stat.bgColor }}>
+                      <stat.icon className="w-7 h-7 text-white" aria-hidden="true" />
+                    </div>
+                  </motion.div>
 
                 <div className="text-4xl lg:text-5xl font-bold text-foreground mb-2">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />

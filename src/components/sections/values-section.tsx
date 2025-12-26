@@ -10,28 +10,28 @@ const values = [
     title: "Bienveillance",
     subtitle: "Non-jugement",
     description: "Chaque parcours est unique. Je vous accueille dans un espace sécurisé où votre histoire est entendue avec respect.",
-    color: "bg-primary",
+    bgColor: "#9D6B8C",
   },
   {
     icon: Puzzle,
     title: "Approche Intégrative",
     subtitle: "Sur-mesure",
     description: "J'utilise une combinaison d'outils (TCC, psychodynamique) pour créer une thérapie adaptée à vos besoins.",
-    color: "bg-violet",
+    bgColor: "#8B7CB3",
   },
   {
     icon: Scale,
     title: "Éthique",
     subtitle: "Confidentialité",
     description: "Le respect du secret professionnel est absolu. Notre relation est bâtie sur la confiance et un cadre déontologique strict.",
-    color: "bg-rose",
+    bgColor: "#C27B9E",
   },
   {
     icon: BrainCircuit,
     title: "Collaboration",
     subtitle: "Active",
     description: "Vous êtes l'expert de votre propre vie. Nous travaillons ensemble pour définir et atteindre vos objectifs.",
-    color: "bg-mauve",
+    bgColor: "#9B8AA3",
   },
 ];
 
@@ -75,18 +75,18 @@ export default function ValuesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group"
             >
-              <div className="card-premium relative h-full p-7 text-center overflow-hidden">
-                <div className={`absolute inset-0 ${value.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} aria-hidden="true" />
-                
-                <motion.div
-                  className="relative mx-auto mb-5"
-                  whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className={`relative w-16 h-16 mx-auto ${value.color} rounded-2xl flex items-center justify-center shadow-lg`}>
-                    <value.icon className="w-8 h-8 text-white" aria-hidden="true" />
-                  </div>
-                </motion.div>
+<div className="card-premium relative h-full p-7 text-center overflow-hidden">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500" style={{ backgroundColor: value.bgColor }} aria-hidden="true" />
+                  
+                  <motion.div
+                    className="relative mx-auto mb-5"
+                    whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="relative w-16 h-16 mx-auto rounded-2xl flex items-center justify-center shadow-lg" style={{ backgroundColor: value.bgColor }}>
+                      <value.icon className="w-8 h-8 text-white" aria-hidden="true" />
+                    </div>
+                  </motion.div>
 
                 <h3 className="text-lg font-semibold text-foreground mb-1">
                   {value.title}

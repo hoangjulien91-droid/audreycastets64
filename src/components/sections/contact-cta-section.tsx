@@ -22,19 +22,19 @@ const features = [
     icon: Phone,
     title: "Premier entretien offert",
     description: "15 minutes pour faire connaissance",
-    color: "bg-primary"
+    bgColor: "#9D6B8C"
   },
   {
     icon: Clock,
     title: "Réponse sous 24h",
     description: "Je réponds rapidement à toutes vos demandes",
-    color: "bg-violet"
+    bgColor: "#8B7CB3"
   },
   {
     icon: MessageCircle,
     title: "Sans engagement",
     description: "Échangeons en toute liberté",
-    color: "bg-rose"
+    bgColor: "#C27B9E"
   }
 ];
 
@@ -127,13 +127,14 @@ export default function ContactCtaSection() {
                   transition={{ delay: index * 0.1 + 0.2 }}
                   className="flex items-start gap-4 group"
                 >
-                  <motion.div 
-                    className={`${feature.color} p-3 rounded-xl shadow-md flex-shrink-0`}
-                    whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <feature.icon className="w-5 h-5 text-white" aria-hidden="true" />
-                  </motion.div>
+<motion.div 
+                      className="p-3 rounded-xl shadow-md flex-shrink-0"
+                      style={{ backgroundColor: feature.bgColor }}
+                      whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <feature.icon className="w-5 h-5 text-white" aria-hidden="true" />
+                    </motion.div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">
                       {feature.title}
@@ -158,20 +159,21 @@ export default function ContactCtaSection() {
               Demande de Contact Rapide
             </h3>
 
-            {submitStatus.type && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={`mb-6 p-4 rounded-xl text-sm ${
-                  submitStatus.type === 'success'
-                    ? 'bg-sage/20 text-sage border border-sage/30'
-                    : 'bg-destructive/10 text-destructive border border-destructive/20'
-                }`}
-                role="alert"
-              >
-                {submitStatus.message}
-              </motion.div>
-            )}
+{submitStatus.type && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`mb-6 p-4 rounded-xl text-sm ${
+                    submitStatus.type === 'success'
+                      ? 'border'
+                      : 'bg-destructive/10 text-destructive border border-destructive/20'
+                  }`}
+                  style={submitStatus.type === 'success' ? { backgroundColor: 'rgba(143, 174, 155, 0.2)', color: '#8FAE9B', borderColor: 'rgba(143, 174, 155, 0.3)' } : undefined}
+                  role="alert"
+                >
+                  {submitStatus.message}
+                </motion.div>
+              )}
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
               <div>

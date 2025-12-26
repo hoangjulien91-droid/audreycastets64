@@ -50,23 +50,25 @@ export default function HeroSection() {
               transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
               className="absolute w-[500px] h-[500px] -top-20 left-1/4 rounded-full bg-primary/10 blur-3xl"
             />
-            <motion.div
-              animate={{
-                x: [0, -30, 0],
-                y: [0, 30, 0],
-                scale: [1, 1.08, 1],
-              }}
-              transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-[600px] h-[600px] bottom-0 right-1/4 rounded-full bg-violet/10 blur-3xl"
-            />
-            <motion.div
-              animate={{
-                x: [0, 20, 0],
-                y: [0, -30, 0],
-              }}
-              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-[400px] h-[400px] top-1/3 right-0 rounded-full bg-rose/8 blur-3xl"
-            />
+<motion.div
+                animate={{
+                  x: [0, -30, 0],
+                  y: [0, 30, 0],
+                  scale: [1, 1.08, 1],
+                }}
+                transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute w-[600px] h-[600px] bottom-0 right-1/4 rounded-full blur-3xl"
+                style={{ backgroundColor: 'rgba(139, 124, 179, 0.1)' }}
+              />
+              <motion.div
+                animate={{
+                  x: [0, 20, 0],
+                  y: [0, -30, 0],
+                }}
+                transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute w-[400px] h-[400px] top-1/3 right-0 rounded-full blur-3xl"
+                style={{ backgroundColor: 'rgba(194, 123, 158, 0.08)' }}
+              />
           </>
         )}
         

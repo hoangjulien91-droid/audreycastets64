@@ -9,15 +9,15 @@ const cards = [
     icon: Target,
     title: "Pour qui ?",
     content: "L'accompagnement a pour but d'exprimer ce qui ne va pas, de prendre du recul, et d'identifier des leviers avec des exercices pratiques. L'objectif est de vous donner des clefs pour appréhender les situations de crise ou de tension.",
-    color: "bg-primary",
-    borderColor: "bg-primary"
+    bgColor: "#9D6B8C",
+    borderColor: "#9D6B8C"
   },
   {
     icon: MessageCircle,
     title: "Pourquoi consulter ?",
     content: "Il est parfois difficile de comprendre certaines situations qui peuvent provoquer perte de sens, conflits ou isolement professionnel. Les entretiens interrogent le rapport à son travail et questionnent l'organisation.",
-    color: "bg-violet",
-    borderColor: "bg-violet"
+    bgColor: "#8B7CB3",
+    borderColor: "#8B7CB3"
   }
 ];
 
@@ -61,18 +61,18 @@ export default function PsychologySection() {
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="group"
             >
-              <div className="card-premium relative h-full p-8 overflow-hidden">
-                <div className={`absolute top-0 left-0 right-0 h-1 ${card.borderColor}`} aria-hidden="true" />
-                
-                <motion.div 
-                  className="relative mb-5"
-                  whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className={`relative w-16 h-16 ${card.color} rounded-xl flex items-center justify-center shadow-lg`}>
-                    <card.icon className="w-8 h-8 text-white" aria-hidden="true" />
-                  </div>
-                </motion.div>
+<div className="card-premium relative h-full p-8 overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: card.borderColor }} aria-hidden="true" />
+                  
+                  <motion.div 
+                    className="relative mb-5"
+                    whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="relative w-16 h-16 rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: card.bgColor }}>
+                      <card.icon className="w-8 h-8 text-white" aria-hidden="true" />
+                    </div>
+                  </motion.div>
 
                 <h3 className="text-xl font-semibold text-foreground mb-4 font-display">
                   {card.title}
@@ -93,18 +93,18 @@ export default function PsychologySection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="max-w-3xl mx-auto"
         >
-          <div className="card-premium relative p-8 text-center overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-rose" aria-hidden="true" />
-            
-            <motion.div 
-              className="relative mx-auto mb-5"
-              whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="relative w-16 h-16 mx-auto bg-rose rounded-xl flex items-center justify-center shadow-lg">
-                <Shield className="w-8 h-8 text-white" aria-hidden="true" />
-              </div>
-            </motion.div>
+<div className="card-premium relative p-8 text-center overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: '#C27B9E' }} aria-hidden="true" />
+              
+              <motion.div 
+                className="relative mx-auto mb-5"
+                whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="relative w-16 h-16 mx-auto rounded-xl flex items-center justify-center shadow-lg" style={{ backgroundColor: '#C27B9E' }}>
+                  <Shield className="w-8 h-8 text-white" aria-hidden="true" />
+                </div>
+              </motion.div>
 
             <h3 className="text-xl font-semibold text-foreground mb-4 font-display">
               Éthique et Déontologie
