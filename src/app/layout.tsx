@@ -1,26 +1,23 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Cormorant_Garamond } from "next/font/google";
-import "./globals.css";
-import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
-import Script from "next/script";
-import ErrorReporter from "@/components/ErrorReporter";
-import ThemeInitializer from "@/components/ThemeInitializer";
+import { Lato, Libre_Baskerville } from "next/font/google";
 
-const sourceSans = Source_Sans_3({
+const lato = Lato({
   subsets: ["latin"],
   variable: "--font-source-sans",
   display: "swap",
   preload: true,
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "700", "900"],
 });
 
-const cormorant = Cormorant_Garamond({
+const libreBaskerville = Libre_Baskerville({
   subsets: ["latin"],
   variable: "--font-cormorant",
   display: "swap",
   preload: true,
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
 });
+
+
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.audrey-castets.fr'),
@@ -83,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning className={`${sourceSans.variable} ${cormorant.variable}`}>
+    <html lang="fr" suppressHydrationWarning className={`${lato.variable} ${libreBaskerville.variable}`}>
 <body className="antialiased">
           <a href="#main-content" className="skip-to-main">
             Aller au contenu principal
