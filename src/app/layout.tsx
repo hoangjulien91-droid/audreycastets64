@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import { Source_Sans_3, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import Script from "next/script";
 import ErrorReporter from "@/components/ErrorReporter";
 import ThemeInitializer from "@/components/ThemeInitializer";
 
-const dmSans = DM_Sans({
+const sourceSans = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-source-sans",
   display: "swap",
   preload: true,
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const fraunces = Fraunces({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-cormorant",
   display: "swap",
   preload: true,
   weight: ["400", "500", "600", "700"],
@@ -83,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning className={`${dmSans.variable} ${fraunces.variable}`}>
+    <html lang="fr" suppressHydrationWarning className={`${sourceSans.variable} ${cormorant.variable}`}>
 <body className="antialiased">
           <a href="#main-content" className="skip-to-main">
             Aller au contenu principal
