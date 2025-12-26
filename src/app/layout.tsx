@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Lato, Libre_Baskerville } from "next/font/google";
+import Script from "next/script";
+import "./globals.css";
 
 const lato = Lato({
   subsets: ["latin"],
@@ -16,8 +18,6 @@ const libreBaskerville = Libre_Baskerville({
   preload: true,
   weight: ["400", "700"],
 });
-
-
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.audrey-castets.fr'),
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    },
+  },
   manifest: '/site.webmanifest',
 };
 
@@ -81,12 +81,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning className={`${lato.variable} ${libreBaskerville.variable}`}>
-<body className="antialiased">
-          <a href="#main-content" className="skip-to-main">
-            Aller au contenu principal
-          </a>
-          <ErrorReporter />
-          <ThemeInitializer />
+      <body className="antialiased">
+        <a href="#main-content" className="skip-to-main">
+          Aller au contenu principal
+        </a>
         <Script
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
           strategy="afterInteractive"
@@ -98,7 +96,6 @@ export default function RootLayout({
           data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
         />
         {children}
-        <VisualEditsMessenger />
       </body>
     </html>
   );
