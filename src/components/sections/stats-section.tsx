@@ -25,21 +25,21 @@ const stats: Stat[] = [
     value: 200,
     suffix: "+",
     label: "Patients accompagnés",
-    gradient: "from-accent-teal to-accent-teal-light",
+    gradient: "from-violet to-violet-soft",
   },
   {
     icon: Award,
     value: 95,
     suffix: "%",
     label: "Satisfaction client",
-    gradient: "from-lavender to-lavender-light",
+    gradient: "from-rose to-rose-soft",
   },
   {
     icon: Clock,
     value: 24,
     suffix: "h",
     label: "Délai de réponse",
-    gradient: "from-rose to-rose-light",
+    gradient: "from-mauve to-mauve-light",
   },
 ];
 
@@ -87,10 +87,10 @@ export default function StatsSection() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-background via-warm-beige/50 to-background relative overflow-hidden">
+    <section className="section-spacing bg-gradient-to-b from-background via-warm-rose/30 to-background relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="orb orb-primary w-[500px] h-[500px] top-0 left-1/4 opacity-20" />
-        <div className="orb orb-teal w-[400px] h-[400px] bottom-0 right-1/4 opacity-15" />
+        <div className="orb orb-violet w-[400px] h-[400px] bottom-0 right-1/4 opacity-15" />
       </div>
 
       <div className="container relative z-10">

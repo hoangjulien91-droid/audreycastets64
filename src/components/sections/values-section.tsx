@@ -17,21 +17,21 @@ const values = [
     title: "Approche Intégrative",
     subtitle: "Sur-mesure",
     description: "J'utilise une combinaison d'outils (TCC, psychodynamique) pour créer une thérapie adaptée à vos besoins.",
-    gradient: "from-accent-teal to-accent-teal-light",
+    gradient: "from-violet to-violet-soft",
   },
   {
     icon: Scale,
     title: "Éthique",
     subtitle: "Confidentialité",
     description: "Le respect du secret professionnel est absolu. Notre relation est bâtie sur la confiance et un cadre déontologique strict.",
-    gradient: "from-lavender to-lavender-light",
+    gradient: "from-rose to-rose-soft",
   },
   {
     icon: BrainCircuit,
     title: "Collaboration",
     subtitle: "Active",
     description: "Vous êtes l'expert de votre propre vie. Nous travaillons ensemble pour définir et atteindre vos objectifs.",
-    gradient: "from-rose to-rose-light",
+    gradient: "from-mauve to-mauve-light",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function ValuesSection() {
   return (
     <section id="engagements" className="section-spacing bg-background relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-        <div className="orb orb-lavender w-[500px] h-[500px] -top-20 right-0 opacity-20" />
+        <div className="orb orb-violet w-[500px] h-[500px] -top-20 right-0 opacity-20" />
         <div className="orb orb-rose w-[400px] h-[400px] bottom-0 -left-20 opacity-15" />
       </div>
 

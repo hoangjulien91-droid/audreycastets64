@@ -17,10 +17,10 @@ export default function Footer() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-background via-warm-beige/50 to-warm-beige">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-background via-warm-rose/30 to-soft-lavender/50">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="orb orb-primary w-[400px] h-[400px] -top-40 left-1/4 opacity-10" />
-        <div className="orb orb-teal w-[300px] h-[300px] bottom-0 right-1/3 opacity-10" />
+        <div className="orb orb-violet w-[300px] h-[300px] bottom-0 right-1/3 opacity-10" />
       </div>
 
       <div className="container relative z-10 pt-16 pb-8">
@@ -32,8 +32,8 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl icon-wrapper-primary flex items-center justify-center">
-                <Heart className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-violet flex items-center justify-center shadow-lg shadow-primary/20">
+                <Heart className="w-5 h-5 text-white" />
               </div>
               <span className="text-lg font-semibold text-foreground font-display">Audrey Castets</span>
             </div>
@@ -43,14 +43,14 @@ export default function Footer() {
             <div className="flex gap-3">
               <a
                 href="tel:0743687297"
-                className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-violet/10 flex items-center justify-center text-primary hover:from-primary hover:to-violet hover:text-white transition-all duration-300 shadow-sm"
                 aria-label="Appeler"
               >
                 <Phone className="w-4 h-4" />
               </a>
               <a
                 href="mailto:contact@audrey-castets.fr"
-                className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-violet/10 flex items-center justify-center text-primary hover:from-primary hover:to-violet hover:text-white transition-all duration-300 shadow-sm"
                 aria-label="Envoyer un email"
               >
                 <Mail className="w-4 h-4" />
@@ -116,11 +116,11 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-5">Déontologie</h3>
             <ul className="space-y-4" role="list">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <Shield className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent-teal" aria-hidden="true" />
+                <Shield className="w-4 h-4 mt-0.5 flex-shrink-0 text-violet" aria-hidden="true" />
                 <span>Confidentialité garantie</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <FileText className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent-teal" aria-hidden="true" />
+                <FileText className="w-4 h-4 mt-0.5 flex-shrink-0 text-violet" aria-hidden="true" />
                 <div>
                   <p className="font-medium text-foreground">Code déontologique</p>
                   <p>N° ADELI: 409307198</p>

@@ -23,21 +23,21 @@ const testimonials = [
     name: "Thomas L.",
     role: "Manager",
     initial: "T",
-    gradient: "from-accent-teal to-accent-teal-light",
+    gradient: "from-violet to-violet-soft",
   },
   {
     quote: "Un accompagnement sur mesure qui a transformé ma vision du travail. Audrey a su identifier mes blocages et m'a donné des outils concrets pour avancer sereinement dans mon projet.",
     name: "Marie D.",
     role: "Entrepreneuse",
     initial: "M",
-    gradient: "from-lavender to-lavender-light",
+    gradient: "from-rose to-rose-soft",
   },
   {
     quote: "Professionnelle et à l'écoute, Audrey m'a aidé à gérer mes relations conflictuelles au travail. Ses conseils ont été précieux et je recommande vivement ses services.",
     name: "Julien P.",
     role: "Consultant RH",
     initial: "J",
-    gradient: "from-rose to-rose-light",
+    gradient: "from-mauve to-mauve-light",
   },
   {
     quote: "Les séances avec Audrey m'ont permis de mieux comprendre mes émotions et de développer une meilleure gestion du stress. Je me sens beaucoup plus équilibrée.",
@@ -51,7 +51,7 @@ const testimonials = [
     name: "Alexandre B.",
     role: "Directeur commercial",
     initial: "A",
-    gradient: "from-primary-soft to-primary-light",
+    gradient: "from-blush to-blush-light",
   },
 ];
 
@@ -73,12 +73,12 @@ export default function TestimonialsSection() {
   }, [api]);
 
   return (
-    <section className="section-spacing bg-gradient-to-b from-background via-warm-pink/20 to-background relative overflow-hidden">
+    <section className="section-spacing bg-gradient-to-b from-background via-soft-lavender/30 to-background relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <Quote className="absolute top-20 left-10 w-32 h-32 text-primary/5 rotate-12" />
-        <Quote className="absolute bottom-20 right-10 w-40 h-40 text-accent-teal/5 -rotate-12" />
+        <Quote className="absolute bottom-20 right-10 w-40 h-40 text-violet/5 -rotate-12" />
         <div className="orb orb-primary w-[400px] h-[400px] top-0 right-1/4 opacity-15" />
-        <div className="orb orb-lavender w-[300px] h-[300px] bottom-0 left-1/4 opacity-10" />
+        <div className="orb orb-violet w-[300px] h-[300px] bottom-0 left-1/4 opacity-10" />
       </div>
 
       <div className="container relative z-10">
@@ -154,7 +154,7 @@ export default function TestimonialsSection() {
                 onClick={() => api?.scrollTo(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   current === index 
-                    ? "bg-primary w-8" 
+                    ? "bg-gradient-to-r from-primary to-violet w-8" 
                     : "bg-primary/20 w-2 hover:bg-primary/40"
                 }`}
                 role="tab"

@@ -20,8 +20,10 @@ const services = [
       "Estime et confiance en soi",
       "Bilan de compétences"
     ],
-    gradient: "from-primary to-primary-soft",
-    bgGradient: "from-primary/5 via-lavender-light/30 to-transparent",
+    gradient: "from-primary to-rose",
+    bgGradient: "from-primary/5 via-rose-light/30 to-transparent",
+    iconBg: "from-primary to-rose",
+    checkColor: "text-primary",
     link: "/mon-approche",
     linkText: "Découvrir mon approche"
   },
@@ -37,8 +39,10 @@ const services = [
       "Ateliers de prévention du stress",
       "Soutien psychologique individuel et collectif"
     ],
-    gradient: "from-accent-teal to-accent-teal-light",
-    bgGradient: "from-accent-teal/5 via-sage-light/30 to-transparent",
+    gradient: "from-violet to-violet-soft",
+    bgGradient: "from-violet/5 via-violet-light/30 to-transparent",
+    iconBg: "from-violet to-violet-soft",
+    checkColor: "text-violet",
     link: "/services#accompagnement-professionnels",
     linkText: "Voir les services entreprise"
   }
@@ -51,7 +55,7 @@ export default function ServicesSection() {
     <section id="services" className="section-spacing-lg bg-background relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="orb orb-primary w-[600px] h-[600px] -top-40 -right-40 opacity-30" />
-        <div className="orb orb-teal w-[500px] h-[500px] -bottom-40 -left-40 opacity-20" />
+        <div className="orb orb-violet w-[500px] h-[500px] -bottom-40 -left-40 opacity-25" />
       </div>
 
       <div className="container relative z-10">
@@ -62,7 +66,7 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-20"
         >
-          <div className="badge-premium mb-5 inline-flex">
+          <div className="badge-premium mb-6 inline-flex">
             <Sparkles className="w-4 h-4" aria-hidden="true" />
             <span>Services</span>
           </div>
@@ -87,16 +91,16 @@ export default function ServicesSection() {
               <div className={`absolute inset-0 bg-gradient-to-br ${service.bgGradient} rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} aria-hidden="true" />
               
               <div className="card-premium relative h-full p-8 lg:p-10 overflow-hidden">
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`} aria-hidden="true" />
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} opacity-80`} aria-hidden="true" />
                 
                 <div className="flex items-start gap-5 mb-6">
                   <motion.div 
-                    className={`relative flex-shrink-0`}
+                    className="relative flex-shrink-0"
                     whileHover={shouldReduceMotion ? {} : { rotate: 5, scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-2xl blur-lg opacity-40`} aria-hidden="true" />
-                    <div className={`relative w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center shadow-lg`}>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.iconBg} rounded-2xl blur-lg opacity-40`} aria-hidden="true" />
+                    <div className={`relative w-16 h-16 bg-gradient-to-br ${service.iconBg} rounded-2xl flex items-center justify-center shadow-lg`}>
                       <service.icon className="w-8 h-8 text-white" aria-hidden="true" />
                     </div>
                   </motion.div>
@@ -122,7 +126,7 @@ export default function ServicesSection() {
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.05 + 0.3 }}
                     >
-                      <CircleCheck className={`w-5 h-5 flex-shrink-0 mt-0.5 ${index === 0 ? 'text-primary' : 'text-accent-teal'}`} aria-hidden="true" />
+                      <CircleCheck className={`w-5 h-5 flex-shrink-0 mt-0.5 ${service.checkColor}`} aria-hidden="true" />
                       <span className="text-sm text-foreground/80">{feature}</span>
                     </motion.li>
                   ))}
