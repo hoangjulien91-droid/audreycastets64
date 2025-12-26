@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Clock, MessageCircle, Send, Loader2 } from 'lucide-react';
+import { Phone, Clock, MessageCircle, Send, Loader2, Mail } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Le nom doit contenir au moins 2 caractères'),
@@ -34,7 +34,7 @@ const features = [
     icon: MessageCircle,
     title: "Sans engagement",
     description: "Échangeons en toute liberté",
-    gradient: "from-primary-soft to-primary-light"
+    gradient: "from-lavender to-lavender-light"
   }
 ];
 
@@ -44,6 +44,7 @@ export default function ContactCtaSection() {
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
+  const shouldReduceMotion = useReducedMotion();
 
   const {
     register,
@@ -61,9 +62,7 @@ export default function ContactCtaSection() {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
@@ -81,7 +80,7 @@ export default function ContactCtaSection() {
           message: responseData.error || 'Une erreur est survenue. Veuillez réessayer.',
         });
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         type: 'error',
         message: 'Erreur de connexion. Veuillez vérifier votre connexion internet.',
@@ -92,52 +91,54 @@ export default function ContactCtaSection() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-white to-warm-beige relative overflow-hidden">
-      {/* Animated blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl animate-blob" />
-        <div className="absolute bottom-1/3 right-10 w-80 h-80 bg-accent-teal/20 rounded-full blur-3xl animate-blob" style={{ animationDelay: '2s' }} />
+    <section id="contact" className="section-spacing-lg bg-gradient-to-b from-background via-warm-beige/30 to-background relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="orb orb-primary w-[500px] h-[500px] top-0 left-0 opacity-15" />
+        <div className="orb orb-teal w-[400px] h-[400px] bottom-0 right-0 opacity-10" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left Column */}
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground font-display">
+            <div className="badge-premium mb-5 inline-flex">
+              <Mail className="w-4 h-4" aria-hidden="true" />
+              <span>Contact</span>
+            </div>
+            <h2 className="text-foreground mb-5">
               Prêt(e) à franchir le <span className="gradient-text">pas</span> ?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
               Je vous accompagne avec bienveillance et professionnalisme dans votre parcours. 
               N'hésitez pas à me contacter pour échanger sur vos besoins.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-5">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={shouldReduceMotion ? {} : { opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.2 }}
                   className="flex items-start gap-4 group"
                 >
                   <motion.div 
-                    className={`bg-gradient-to-br ${feature.gradient} p-3 rounded-2xl shadow-md`}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className={`bg-gradient-to-br ${feature.gradient} p-3 rounded-xl shadow-md flex-shrink-0`}
+                    whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <feature.icon className="w-6 h-6 text-white" />
+                    <feature.icon className="w-5 h-5 text-white" aria-hidden="true" />
                   </motion.div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-sm text-muted-foreground">
                       {feature.description}
                     </p>
                   </div>
@@ -146,15 +147,14 @@ export default function ContactCtaSection() {
             </div>
           </motion.div>
 
-          {/* Right Column - Contact Form */}
           <motion.div 
-            className="bg-white rounded-3xl shadow-xl p-8 border border-primary/10"
-            initial={{ opacity: 0, x: 50 }}
+            className="card-premium p-8 lg:p-10"
+            initial={shouldReduceMotion ? {} : { opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-6 text-foreground">
+            <h3 className="text-xl font-semibold text-foreground mb-6">
               Demande de Contact Rapide
             </h3>
 
@@ -162,108 +162,115 @@ export default function ContactCtaSection() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`mb-6 p-4 rounded-xl ${
+                className={`mb-6 p-4 rounded-xl text-sm ${
                   submitStatus.type === 'success'
-                    ? 'bg-green-50 text-green-800 border border-green-200'
-                    : 'bg-red-50 text-red-800 border border-red-200'
+                    ? 'bg-accent-teal/10 text-accent-teal border border-accent-teal/20'
+                    : 'bg-destructive/10 text-destructive border border-destructive/20'
                 }`}
+                role="alert"
               >
                 {submitStatus.message}
               </motion.div>
             )}
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              {[
-                { id: 'name', label: 'Nom complet', type: 'text', placeholder: 'Votre nom complet', required: true },
-                { id: 'email', label: 'Email', type: 'email', placeholder: 'votre@email.com', required: true },
-                { id: 'phone', label: 'Téléphone (optionnel)', type: 'tel', placeholder: '06 12 34 56 78', required: false }
-              ].map((field, index) => (
-                <motion.div
-                  key={field.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <label htmlFor={field.id} className="block text-sm font-medium text-foreground mb-2">
-                    {field.label} {field.required && <span className="text-primary">*</span>}
-                  </label>
-                  <input
-                    type={field.type}
-                    id={field.id}
-                    {...register(field.id as keyof ContactFormData)}
-                    className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder={field.placeholder}
-                  />
-                  {errors[field.id as keyof ContactFormData] && (
-                    <p className="mt-1 text-sm text-red-600">
-                      {errors[field.id as keyof ContactFormData]?.message}
-                    </p>
-                  )}
-                </motion.div>
-              ))}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  Nom complet <span className="text-primary">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  {...register('name')}
+                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                  placeholder="Votre nom complet"
+                  aria-invalid={errors.name ? 'true' : 'false'}
+                />
+                {errors.name && (
+                  <p className="mt-1.5 text-sm text-destructive">{errors.name.message}</p>
+                )}
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.15 }}
-              >
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  Email <span className="text-primary">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  {...register('email')}
+                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                  placeholder="votre@email.com"
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                />
+                {errors.email && (
+                  <p className="mt-1.5 text-sm text-destructive">{errors.email.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                  Téléphone <span className="text-muted-foreground">(optionnel)</span>
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  {...register('phone')}
+                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                  placeholder="06 12 34 56 78"
+                />
+              </div>
+
+              <div>
                 <label htmlFor="service_type" className="block text-sm font-medium text-foreground mb-2">
                   Je suis
                 </label>
                 <select
                   id="service_type"
                   {...register('service_type')}
-                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                 >
                   <option value="">Sélectionnez une option</option>
                   <option value="particulier">Un particulier</option>
                   <option value="professionnel">Un professionnel</option>
                   <option value="autre">Autre</option>
                 </select>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
+              <div>
                 <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
                   Message <span className="text-primary">*</span>
                 </label>
                 <textarea
                   id="message"
                   {...register('message')}
-                  rows={5}
-                  className="w-full px-4 py-3 border border-input rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                  rows={4}
+                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
                   placeholder="Décrivez brièvement votre besoin..."
+                  aria-invalid={errors.message ? 'true' : 'false'}
                 />
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+                  <p className="mt-1.5 text-sm text-destructive">{errors.message.message}</p>
                 )}
-              </motion.div>
+              </div>
 
-              <motion.button
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full gradient-primary text-white py-4 px-6 rounded-full font-medium shadow-lg hover:shadow-xl flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="btn-premium w-full justify-center text-base disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <Loader2 className="w-5 h-5 animate-spin mr-2" aria-hidden="true" />
                     Envoi en cours...
                   </>
                 ) : (
                   <>
                     Envoyer ma demande
-                    <Send className="w-5 h-5" />
+                    <Send className="w-5 h-5 ml-2" aria-hidden="true" />
                   </>
                 )}
-              </motion.button>
+              </button>
 
               <p className="text-xs text-muted-foreground text-center">
                 Vos informations sont confidentielles et ne seront jamais partagées.

@@ -1,79 +1,108 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { HeartHandshake, Puzzle, Scale, BrainCircuit } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { HeartHandshake, Puzzle, Scale, BrainCircuit, Sparkles } from "lucide-react";
 import React from "react";
 
 const values = [
   {
-    icon: <HeartHandshake className="h-10 w-10 text-[var(--color-accent-link)]" />,
-    title: "Bienveillance & Non-jugement",
-    description:
-      "Chaque parcours est unique. Je vous accueille dans un espace sécurisé où votre histoire est entendue avec respect et sans aucun jugement.",
+    icon: HeartHandshake,
+    title: "Bienveillance",
+    subtitle: "Non-jugement",
+    description: "Chaque parcours est unique. Je vous accueille dans un espace sécurisé où votre histoire est entendue avec respect.",
+    gradient: "from-primary to-primary-soft",
   },
   {
-    icon: <Puzzle className="h-10 w-10 text-[var(--color-accent-link)]" />,
+    icon: Puzzle,
     title: "Approche Intégrative",
-    description:
-      "J'utilise une combinaison d'outils et de techniques (TCC, psychodynamique) pour créer une thérapie sur-mesure, adaptée à vos besoins spécifiques.",
+    subtitle: "Sur-mesure",
+    description: "J'utilise une combinaison d'outils (TCC, psychodynamique) pour créer une thérapie adaptée à vos besoins.",
+    gradient: "from-accent-teal to-accent-teal-light",
   },
   {
-    icon: <Scale className="h-10 w-10 text-[var(--color-accent-link)]" />,
-    title: "Éthique & Confidentialité",
-    description:
-      "Le respect du secret professionnel est absolu. Notre relation thérapeutique est bâtie sur la confiance et un cadre déontologique strict.",
+    icon: Scale,
+    title: "Éthique",
+    subtitle: "Confidentialité",
+    description: "Le respect du secret professionnel est absolu. Notre relation est bâtie sur la confiance et un cadre déontologique strict.",
+    gradient: "from-lavender to-lavender-light",
   },
   {
-    icon: <BrainCircuit className="h-10 w-10 text-[var(--color-accent-link)]" />,
-    title: "Collaboration Active",
-    description:
-      "Vous êtes l'expert de votre propre vie. Nous travaillons ensemble, en partenariat, pour définir et atteindre vos objectifs de mieux-être.",
+    icon: BrainCircuit,
+    title: "Collaboration",
+    subtitle: "Active",
+    description: "Vous êtes l'expert de votre propre vie. Nous travaillons ensemble pour définir et atteindre vos objectifs.",
+    gradient: "from-rose to-rose-light",
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
+export default function ValuesSection() {
+  const shouldReduceMotion = useReducedMotion();
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.98 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
-};
-
-const ValuesSection = () => {
   return (
-    <section id="engagements" className="py-20 sm:py-28 bg-background">
-      <div className="container">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-base font-semibold leading-7 text-[var(--color-accent-link)]">Mon engagement</p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-display">Les piliers de mon accompagnement</h2>
-          <p className="mt-6 text-lg leading-8 text-text-secondary">Ma pratique est guidée par des principes fondamentaux qui garantissent une thérapie de qualité, humaine et respectueuse.</p>
-        </div>
+    <section id="engagements" className="section-spacing bg-background relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="orb orb-lavender w-[500px] h-[500px] -top-20 right-0 opacity-20" />
+        <div className="orb orb-rose w-[400px] h-[400px] bottom-0 -left-20 opacity-15" />
+      </div>
 
+      <div className="container relative z-10">
         <motion.div
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto text-center mb-16"
         >
-          {values.map((value) => (
-            <motion.div key={value.title} variants={itemVariants} className="flex flex-col items-start text-left">
-              <div className="p-3 rounded-full bg-[var(--color-accent-link)]/10 ring-8 ring-[var(--color-accent-link)]/5 mb-6">
-                {value.icon}
+          <div className="badge-premium mb-5 inline-flex">
+            <Sparkles className="w-4 h-4" aria-hidden="true" />
+            <span>Mon engagement</span>
+          </div>
+          <h2 className="text-foreground mb-5">
+            Les piliers de mon <span className="gradient-text">accompagnement</span>
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Ma pratique est guidée par des principes fondamentaux qui garantissent une thérapie de qualité, humaine et respectueuse.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {values.map((value, index) => (
+            <motion.div
+              key={value.title}
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
+            >
+              <div className="card-premium relative h-full p-7 text-center overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${value.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} aria-hidden="true" />
+                
+                <motion.div
+                  className="relative mx-auto mb-5"
+                  whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className={`absolute inset-0 w-16 h-16 mx-auto bg-gradient-to-br ${value.gradient} rounded-2xl blur-lg opacity-40`} aria-hidden="true" />
+                  <div className={`relative w-16 h-16 mx-auto bg-gradient-to-br ${value.gradient} rounded-2xl flex items-center justify-center shadow-lg`}>
+                    <value.icon className="w-8 h-8 text-white" aria-hidden="true" />
+                  </div>
+                </motion.div>
+
+                <h3 className="text-lg font-semibold text-foreground mb-1">
+                  {value.title}
+                </h3>
+                <p className="text-sm font-medium text-primary mb-3">
+                  {value.subtitle}
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {value.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold leading-7 text-foreground">{value.title}</h3>
-              <p className="mt-2 text-base leading-7 text-text-secondary">{value.description}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-};
-
-export default ValuesSection;
+}
