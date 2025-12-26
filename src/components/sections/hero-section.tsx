@@ -97,9 +97,7 @@ export default function HeroSection() {
               className="text-foreground mb-4 text-balance"
             >
               Audrey{" "}
-              <span className="relative">
-                <span className="gradient-text">Castets</span>
-              </span>
+              <span className="text-primary">Castets</span>
             </motion.h1>
 
             <motion.p
