@@ -201,18 +201,24 @@ export default function HeroSection() {
             >
               <div className="absolute -inset-4 sm:-inset-8 bg-primary/10 rounded-[3rem] blur-3xl opacity-70" aria-hidden="true" />
               
-              <div className="relative aspect-[4/5] max-w-sm sm:max-w-md mx-auto lg:max-w-none">
-                <div className="absolute inset-0 rounded-[2.5rem] bg-primary/15 p-[2px]">
-                  <div className="w-full h-full rounded-[2.4rem] overflow-hidden bg-white">
+              <div className="relative aspect-[4/5] max-w-sm sm:max-w-md mx-auto lg:max-w-md">
+                {/* Soft ambient glow behind the image */}
+                <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 via-rose/20 to-violet/20 rounded-[3rem] blur-2xl opacity-60" aria-hidden="true" />
+                
+                {/* Main container with gradient border */}
+                <div className="absolute inset-0 rounded-[2.5rem] p-[3px] bg-gradient-to-br from-white/80 via-white/20 to-white/60 shadow-2xl shadow-primary/10 ring-1 ring-white/40">
+                  <div className="w-full h-full rounded-[2.3rem] overflow-hidden bg-white/50 backdrop-blur-sm relative isolate">
                     <Image
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg?"
                       alt="Audrey Castets - Psychologue du Travail spécialisée TCC et EFT"
                       fill
-                      className="object-cover object-top"
+                      className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out-expo"
                       priority
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                     />
-                    <div className="absolute inset-0 bg-foreground/5" aria-hidden="true" />
+                    {/* Inner grain/overlay for texture */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-white/10 mix-blend-overlay pointer-events-none" aria-hidden="true" />
+                    <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-[2.3rem] pointer-events-none" aria-hidden="true" />
                   </div>
                 </div>
 
