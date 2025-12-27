@@ -1,0 +1,461 @@
+import { DivaSection, DivaImpactDomain } from "@/types/diva";
+
+export const DIVA_SECTIONS: DivaSection[] = [
+  {
+    id: "inattention",
+    title: "Section 1 : Déficit de l'Attention (Critère A1)",
+    criteria: [
+      {
+        id: "A1a",
+        label: "A1",
+        description: "Avez-vous souvent du mal à prêter attention aux détails, ou faites-vous souvent des erreurs d'étourderie ?",
+        examplesAdult: [
+          "Fait des erreurs d'étourderie",
+          "Travaille lentement pour éviter les erreurs",
+          "Ne lit pas les instructions avec soin",
+          "Du mal à travailler de façon minutieuse",
+          "Besoin de trop de temps pour mener à leur terme des tâches complexes",
+          "Facilement empêtré par les détails",
+          "Travaille trop rapidement et commet ainsi des erreurs"
+        ],
+        examplesChild: [
+          "Erreurs d'étourderie lors du travail scolaire",
+          "Erreurs parce qu'il ne lisait pas les questions correctement",
+          "Ne répondait pas à des questions parce qu'il ne les lisait pas correctement",
+          "Ne répondait pas aux questions posées au verso d'un examen",
+          "Les autres faisaient remarquer que le travail n'était pas soigné",
+          "Ne vérifiait pas ses réponses dans les devoirs scolaires",
+          "Besoin de trop de temps pour terminer les tâches minutieuses"
+        ]
+      },
+      {
+        id: "A1b",
+        label: "A2",
+        description: "Trouvez-vous souvent difficile de soutenir votre attention sur une tâche ?",
+        examplesAdult: [
+          "Incapable de maintenir son attention longtemps",
+          "Facilement distrait par ses propres pensées",
+          "Difficile de suivre un film jusqu'à la fin ou de lire un livre",
+          "Rapidement ennuyé par les choses",
+          "Pose des questions sur des sujets déjà discutés"
+        ],
+        examplesChild: [
+          "Du mal à maintenir l'attention lors du travail scolaire",
+          "Du mal à maintenir l'attention sur un jeu",
+          "Facilement distrait",
+          "Du mal à se concentrer",
+          "Besoin d'un environnement structuré pour ne pas être distrait",
+          "Rapidement ennuyé dans des activités"
+        ]
+      },
+      {
+        id: "A1c",
+        label: "A3",
+        description: "Donnez-vous souvent l'impression de ne pas écouter lorsqu'on vous parle directement ?",
+        examplesAdult: [
+          "Rêveur ou préoccupé",
+          "Du mal à se concentrer pendant une conversation",
+          "Ne se rappelle pas du sujet d'une conversation après-coup",
+          "Change souvent de sujet dans une conversation",
+          "On vous dit que vos pensées sont ailleurs"
+        ],
+        examplesChild: [
+          "Ne sait plus ce que les parents/enseignants ont dit",
+          "Rêveur ou préoccupé",
+          "N'écoute qu'avec un contact visuel ou un ton élevé",
+          "Doit souvent être interpelé",
+          "Les questions doivent être répétées"
+        ]
+      },
+      {
+        id: "A1d",
+        label: "A4",
+        description: "Avez-vous souvent du mal à vous conformer aux consignes et à terminer vos tâches ?",
+        examplesAdult: [
+          "Fait plusieurs tâches en même temps sans les terminer",
+          "Du mal à finir les tâches une fois la nouveauté passée",
+          "Besoin de délais pour terminer les tâches",
+          "Du mal à terminer les tâches administratives",
+          "Du mal à suivre les instructions dans un manuel"
+        ],
+        examplesChild: [
+          "Du mal à suivre les instructions",
+          "Difficulté avec les tâches à plusieurs étapes",
+          "Ne termine pas les choses",
+          "Ne termine pas les devoirs ou ne les rend pas",
+          "Besoin de structure pour terminer les tâches"
+        ]
+      },
+      {
+        id: "A1e",
+        label: "A5",
+        description: "Trouvez-vous souvent difficile d'organiser les tâches ou les activités ?",
+        examplesAdult: [
+          "Du mal à planifier les activités quotidiennes",
+          "Maison ou espace de travail en désordre",
+          "Planification inefficace ou trop chargée",
+          "Arrive en retard",
+          "Incapable d'utiliser un agenda efficacement",
+          "Faible conscience du temps"
+        ],
+        examplesChild: [
+          "Du mal à être prêt à temps",
+          "Chambre ou bureau en désordre",
+          "Du mal à jouer seul",
+          "Du mal à planifier tâches ou devoirs",
+          "Arrive en retard",
+          "Faible conscience du temps"
+        ]
+      },
+      {
+        id: "A1f",
+        label: "A6",
+        description: "Évitez-vous souvent les tâches nécessitant un effort mental soutenu ?",
+        examplesAdult: [
+          "Fait d'abord les choses faciles/agréables",
+          "Remet à plus tard les tâches ennuyeuses",
+          "Remet à plus tard jusqu'à dépasser les délais",
+          "Évite les tâches administratives",
+          "N'aime pas lire (effort mental)",
+          "Évite les tâches demandant beaucoup de concentration"
+        ],
+        examplesChild: [
+          "Évite les devoirs ou aversion pour ceux-ci",
+          "Lit peu de livres (effort mental)",
+          "Évite les tâches demandant de la concentration",
+          "Déteste les matières demandant de la concentration",
+          "Remet à plus tard les tâches ennuyeuses"
+        ]
+      },
+      {
+        id: "A1g",
+        label: "A7",
+        description: "Perdez-vous souvent les objets nécessaires à votre travail ou vos activités ?",
+        examplesAdult: [
+          "Égare portefeuille, clés, agenda",
+          "Oublie des choses en quittant un lieu",
+          "Perd des papiers pour son travail",
+          "Perd du temps à chercher des choses",
+          "Panique si on change ses choses de place",
+          "Range les choses au mauvais endroit"
+        ],
+        examplesChild: [
+          "Perd agenda, stylos, affaires de sport",
+          "Égare jouets, habits ou devoirs",
+          "Perd du temps à chercher des choses",
+          "Panique si on change ses choses de place",
+          "On lui fait remarquer qu'il perd des choses"
+        ]
+      },
+      {
+        id: "A1h",
+        label: "A8",
+        description: "Vous laissez-vous facilement distraire par des stimuli externes ?",
+        examplesAdult: [
+          "Du mal à ignorer les stimuli externes",
+          "Du mal à reprendre après une distraction",
+          "Facilement distrait par bruits/événements",
+          "Facilement distrait par les conversations des autres",
+          "Du mal à filtrer les informations"
+        ],
+        examplesChild: [
+          "Regarde souvent dehors en classe",
+          "Facilement distrait par bruits/événements",
+          "Du mal à reprendre après une distraction"
+        ]
+      },
+      {
+        id: "A1i",
+        label: "A9",
+        description: "Avez-vous des oublis fréquents dans la vie quotidienne ?",
+        examplesAdult: [
+          "Oublie rendez-vous ou obligations",
+          "Oublie clés, agenda, etc.",
+          "Besoin de rappels fréquents",
+          "Retourne sur ses pas pour chercher des oublis",
+          "Utilise des systèmes rigides pour ne pas oublier",
+          "Oublie de consulter son agenda"
+        ],
+        examplesChild: [
+          "Oublie rendez-vous ou consignes",
+          "On doit souvent lui rappeler les choses",
+          "S'arrête en chemin car a oublié ce qu'il devait faire",
+          "Oublie d'apporter ses affaires scolaires",
+          "Oublie des choses à l'école/chez des amis"
+        ]
+      }
+    ]
+  },
+  {
+    id: "hyperactivity",
+    title: "Section 2 : Hyperactivité / Impulsivité (Critère A2)",
+    criteria: [
+      {
+        id: "A2a",
+        label: "H/I 1",
+        description: "Remuez-vous souvent les mains ou les pieds, ou vous tortillez-vous sur votre siège ?",
+        examplesAdult: [
+          "Du mal à rester assis immobile",
+          "Remue les jambes",
+          "Tape avec un stylo ou joue avec un objet",
+          "Tortille les cheveux ou ronge les ongles",
+          "Contrôle son agitation mais avec stress"
+        ],
+        examplesChild: [
+          "On lui dit 'tiens-toi tranquille'",
+          "Remue les jambes",
+          "Tape avec un stylo ou joue avec un objet",
+          "Tortille les cheveux ou ronge les ongles",
+          "Incapable de rester assis relaxé"
+        ]
+      },
+      {
+        id: "A2b",
+        label: "H/I 2",
+        description: "Vous levez-vous souvent dans des situations où vous êtes supposé rester assis ?",
+        examplesAdult: [
+          "Évite réunions, conférences, etc.",
+          "Préfère marcher plutôt que s'asseoir",
+          "Ne reste jamais longtemps assis tranquille",
+          "Stressé par l'obligation de s'asseoir",
+          "Trouve une excuse pour marcher"
+        ],
+        examplesChild: [
+          "Se lève souvent (repas, classe)",
+          "Difficile de rester assis (repas, classe)",
+          "On lui dit de rester assis",
+          "Trouve une excuse pour marcher"
+        ]
+      },
+      {
+        id: "A2c",
+        label: "H/I 3",
+        description: "Vous sentez-vous souvent agité ?",
+        examplesAdult: [
+          "Se sent agité ou nerveux à l'intérieur",
+          "Sentiment constant devoir faire quelque chose",
+          "Trouve difficile de se relaxer"
+        ],
+        examplesChild: [
+          "Court toujours",
+          "Grimpe partout",
+          "Monte aux arbres",
+          "Se sent agité à l'intérieur"
+        ]
+      },
+      {
+        id: "A2d",
+        label: "H/I 4",
+        description: "Trouvez-vous souvent difficile de profiter d'un moment de détente (bruit) ?",
+        examplesAdult: [
+          "Parle quand ce n'est pas approprié",
+          "Se met en avant en public",
+          "Bruyant dans toutes situations",
+          "Du mal à faire des activités tranquillement",
+          "Du mal à parler doucement"
+        ],
+        examplesChild: [
+          "Fait du bruit en jouant ou en classe",
+          "Incapable de regarder TV/film tranquillement",
+          "On lui demande de se calmer",
+          "Se met en avant en public"
+        ]
+      },
+      {
+        id: "A2e",
+        label: "H/I 5",
+        description: "Êtes-vous souvent 'sur la brèche' ou 'dirigé par un moteur' ?",
+        examplesAdult: [
+          "Toujours occupé",
+          "Déborde d'énergie, toujours en mouvement",
+          "Franchit ses propres limites",
+          "Lâche difficilement prise, insistant"
+        ],
+        examplesChild: [
+          "Constamment occupé",
+          "Remarqué par son activité",
+          "Déborde d'énergie",
+          "Toujours sur la brèche"
+        ]
+      },
+      {
+        id: "A2f",
+        label: "H/I 6",
+        description: "Parlez-vous souvent trop ?",
+        examplesAdult: [
+          "Parle tellement que c'est fatiguant pour les autres",
+          "Connu pour parler sans cesse",
+          "Difficile d'arrêter de parler",
+          "Ne laisse pas parler les autres",
+          "Besoin de beaucoup de mots"
+        ],
+        examplesChild: [
+          "Connu comme une 'boîte à paroles'",
+          "On lui demande souvent le silence",
+          "Bavardages notés sur bulletins",
+          "Puni pour avoir trop parlé",
+          "Ne laisse pas parler les autres"
+        ]
+      },
+      {
+        id: "A2g",
+        label: "H/I 7",
+        description: "Laissez-vous souvent échapper la réponse à une question pas encore finie ?",
+        examplesAdult: [
+          "Dit ce qu'il pense sans réfléchir",
+          "Répond avant la fin des questions",
+          "Finit les phrases des autres",
+          "Manque de tact"
+        ],
+        examplesChild: [
+          "Dit les choses sans réfléchir",
+          "Veut être le premier à répondre",
+          "Donne la première réponse venue",
+          "Interrompt les autres",
+          "Manque de tact"
+        ]
+      },
+      {
+        id: "A2h",
+        label: "H/I 8",
+        description: "Trouvez-vous souvent difficile d'attendre votre tour ?",
+        examplesAdult: [
+          "Difficulté à attendre dans une file",
+          "Difficulté dans les embouteillages",
+          "Du mal à attendre son tour pour parler",
+          "Impatient",
+          "Quitte emplois/relations par impatience"
+        ],
+        examplesChild: [
+          "Du mal à attendre son tour (jeux/sport)",
+          "Du mal à attendre son tour en classe",
+          "Toujours le premier à parler/agir",
+          "Rapidement impatient",
+          "Traverse sans regarder"
+        ]
+      },
+      {
+        id: "A2i",
+        label: "H/I 9",
+        description: "Interrompez-vous souvent les autres ou imposez-vous votre présence ?",
+        examplesAdult: [
+          "Rapide à interférer avec les autres",
+          "Interrompt les autres",
+          "Dérange sans demande",
+          "Intrusif",
+          "Du mal à respecter les limites",
+          "Donne son opinion immédiatement"
+        ],
+        examplesChild: [
+          "S'immisce dans les jeux",
+          "Interrompt les conversations",
+          "Réagit sur tout",
+          "Incapable d'attendre"
+        ]
+      }
+    ]
+  }
+];
+
+export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
+  {
+    id: "work_education",
+    label: "Travail / Éducation",
+    examplesAdult: [
+      "Niveau d'étude non atteint",
+      "Travaille en deçà du niveau",
+      "Fatigué du lieu de travail",
+      "Succession d'emplois courts",
+      "Difficulté administrative/planification",
+      "Pas de promotions",
+      "Sous-performant",
+      "Conflits au travail",
+      "Arrêts maladie liés aux symptômes"
+    ],
+    examplesChild: [
+      "Niveau inférieur au QI",
+      "Redoublement",
+      "Études inachevées/Renvoi",
+      "Plus d'années que nécessaire",
+      "Difficulté avec devoirs",
+      "Éducation spéciale",
+      "Remarques des enseignants"
+    ]
+  },
+  {
+    id: "relationships_family",
+    label: "Relations / Famille",
+    examplesAdult: [
+      "Fatigué par les relations",
+      "Débute/termine impulsivement",
+      "Compensation par le conjoint",
+      "Problèmes relationnels/disputes",
+      "Problèmes sexuels",
+      "Difficultés éducation enfants",
+      "Difficultés ménagères/financières"
+    ],
+    examplesChild: [
+      "Disputes fréquentes (fratrie)",
+      "Punitions fréquentes",
+      "Peu de contacts familiaux (conflits)",
+      "Soutien parental prolongé"
+    ]
+  },
+  {
+    id: "social_contact",
+    label: "Contacts Sociaux",
+    examplesAdult: [
+      "Fatigué par contacts sociaux",
+      "Difficile de maintenir contacts",
+      "Conflits communication",
+      "Difficile d'initier contacts",
+      "Oubli d'être attentionné"
+    ],
+    examplesChild: [
+      "Difficile de maintenir contacts",
+      "Conflits communication",
+      "Peu d'amis",
+      "Teasing / Exclu",
+      "Joue les petits durs"
+    ]
+  },
+  {
+    id: "leisure_hobby",
+    label: "Temps Libre / Hobbies",
+    examplesAdult: [
+      "Incapable de se relaxer",
+      "Sport excessif pour relaxer",
+      "Incapable de finir livre/film",
+      "Lassé rapidement des hobbies",
+      "Conduite dangereuse/Accidents",
+      "Recherche sensations/risques",
+      "Problèmes police/justice"
+    ],
+    examplesChild: [
+      "Incapable de se relaxer",
+      "Sport excessif",
+      "Incapable de finir livre/film",
+      "Lassé rapidement",
+      "Recherche sensations",
+      "Accidents fréquents"
+    ]
+  },
+  {
+    id: "self_confidence",
+    label: "Confiance en soi / Image de soi",
+    examplesAdult: [
+      "Doute de soi",
+      "Image négative (échecs passés)",
+      "Peur de l'échec",
+      "Réaction excessive critiques",
+      "Perfectionnisme"
+    ],
+    examplesChild: [
+      "Doute de soi",
+      "Image négative",
+      "Peur de l'échec",
+      "Réaction excessive critiques",
+      "Perfectionnisme"
+    ]
+  }
+];

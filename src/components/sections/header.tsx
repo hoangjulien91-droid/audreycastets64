@@ -18,7 +18,7 @@ const Logo = () => (
 )
 
 const mainNavLinks = navLinks.filter(link => 
-  ["/qui-suis-je", "/services", "/tarifs", "/contact"].includes(link.href)
+  ["/qui-suis-je", "/services", "/tests", "/tarifs", "/contact"].includes(link.href)
 );
 
 export default function Header() {
@@ -47,7 +47,7 @@ export default function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled 
-            ? "glass-effect border-t-0 border-x-0 py-3 shadow-sm" 
+            ? "glass-effect-strong border-t-0 border-x-0 py-3 shadow-sm" 
             : "bg-transparent py-6 border-b border-transparent"
         )}
       >
@@ -65,7 +65,7 @@ export default function Header() {
                   Audrey <span className="text-primary">Castets</span>
                 </span>
                 <span className="text-xs sm:text-sm text-muted-foreground font-display italic leading-snug group-hover:text-primary/80 transition-colors">
-                  Psychologue
+                  Psychologue du Travail et TCC
                 </span>
               </div>
             </Link>
@@ -160,7 +160,7 @@ export default function Header() {
                     <Logo />
                     <div className="flex flex-col">
                       <span className="text-lg font-bold text-foreground font-display leading-none">Audrey <span className="text-primary">Castets</span></span>
-                      <span className="text-xs text-muted-foreground font-display italic leading-snug">Psychologue</span>
+                      <span className="text-xs text-muted-foreground font-display italic leading-snug">Psychologue du Travail et TCC</span>
                     </div>
                   </Link>
                   <button
