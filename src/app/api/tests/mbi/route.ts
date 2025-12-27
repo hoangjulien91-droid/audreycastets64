@@ -36,7 +36,7 @@ async function sendEmail({
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Audrey Castets <contact@audreycastets.fr>',
+        from: 'Audrey Castets <contact@audrey-castets.fr>',
         to,
         subject,
         html,

@@ -3,6 +3,8 @@ import { Syne, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import StickyMobileCTA from "@/components/ui/sticky-mobile-cta";
+import { AccessibilityProvider } from "@/components/providers/accessibility-provider";
+import { AccessibilityMenu } from "@/components/ui/accessibility-menu";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -36,6 +38,11 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Audrey Castets - Psychologue",
   },
   other: {
     'geo.region': 'FR-64',
@@ -79,7 +86,7 @@ export const metadata: Metadata = {
   },
   icons: {
   },
-  manifest: '/site.webmanifest',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -94,12 +101,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="antialiased">
-        <a href="#main-content" className="skip-to-main">
-          Aller au contenu principal
-        </a>
+        <AccessibilityProvider>
+          <a href="#main-content" className="skip-to-main">
+            Aller au contenu principal
+          </a>
 
-        {children}
-        <StickyMobileCTA />
+          {children}
+          <StickyMobileCTA />
+          <AccessibilityMenu />
+        </AccessibilityProvider>
       </body>
     </html>
   );

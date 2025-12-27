@@ -1,0 +1,19 @@
+{
+  "name": "Audrey Castets - Psychologue du Travail",
+  "short_name": "Cabinet Castets",
+  "description": "Psychologue du Travail spécialisée en TCC, EFT et Risques Psychosociaux à Biarritz.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF8F6",
+  "theme_color": "#EC4899",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "categories": ["health", "medical", "productivity"]
+}
