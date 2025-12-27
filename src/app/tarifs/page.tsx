@@ -60,7 +60,7 @@ export default function TarifsPage() {
         }}
         title={
           <>
-            Des tarifs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">transparents</span> adaptés à vos besoins
+            Des tarifs <span className="text-transparent bg-clip-text bg-linear-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">transparents</span> adaptés à vos besoins
           </>
         }
         subtitle="Des tarifs transparents adaptés à vos besoins, avec possibilité de prise en charge selon votre situation."
@@ -114,13 +114,13 @@ export default function TarifsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto mb-12" role="list" aria-label="Offres tarifaires">
               {/* Card 1: Particuliers */}
               <div className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#F3E8F0]/40 to-[#E8DFF0]/30 group-hover:from-[#F3E8F0]/60 group-hover:to-[#E8DFF0]/50 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
+                <div className="absolute inset-0 bg-linear-to-br from-[#F3E8F0]/40 to-[#E8DFF0]/30 group-hover:from-[#F3E8F0]/60 group-hover:to-[#E8DFF0]/50 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
                 <div className="relative h-full bg-white rounded-3xl border border-[#D4C5D9]/30 shadow-[0_4px_24px_rgba(139,122,152,0.08)] hover:shadow-[0_8px_32px_rgba(139,122,152,0.12)] transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2">
-                  <div className="h-2 bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]"></div>
+                  <div className="h-2 bg-linear-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]"></div>
                   <div className="p-8 md:p-10">
                     <div className="relative mb-6">
-                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl blur-xl opacity-30"></div>
-                      <div className="relative w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                      <div className="absolute inset-0 w-16 h-16 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl blur-xl opacity-30"></div>
+                      <div className="relative w-16 h-16 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                         <Heart className="w-8 h-8 text-white" />
                       </div>
                     </div>
@@ -174,7 +174,7 @@ export default function TarifsPage() {
                     </ul>
                     <Link
                       href="/#contact"
-                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-linear-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
                     >
                       Prendre rendez-vous
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -185,13 +185,13 @@ export default function TarifsPage() {
 
               {/* Card 2: Professionnels */}
               <div className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E8DFF0]/40 to-[#F3E8F0]/30 group-hover:from-[#E8DFF0]/60 group-hover:to-[#F3E8F0]/50 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
+                <div className="absolute inset-0 bg-linear-to-br from-[#E8DFF0]/40 to-[#F3E8F0]/30 group-hover:from-[#E8DFF0]/60 group-hover:to-[#F3E8F0]/50 rounded-3xl transition-all duration-500 transform group-hover:-translate-y-1"></div>
                 <div className="relative h-full bg-white rounded-3xl border border-[#D4C5D9]/30 shadow-[0_4px_24px_rgba(139,122,152,0.08)] hover:shadow-[0_8px_32px_rgba(139,122,152,0.12)] transition-all duration-500 overflow-hidden transform group-hover:-translate-y-2">
-                  <div className="h-2 bg-gradient-to-r from-[#8B7A98] via-[#A594B3] to-[#C5B8D0]"></div>
+                  <div className="h-2 bg-linear-to-r from-[#8B7A98] via-[#A594B3] to-[#C5B8D0]"></div>
                   <div className="p-8 md:p-10">
                     <div className="relative mb-6">
-                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl blur-xl opacity-30"></div>
-                      <div className="relative w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                      <div className="absolute inset-0 w-16 h-16 bg-linear-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl blur-xl opacity-30"></div>
+                      <div className="relative w-16 h-16 bg-linear-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                         <Building2 className="w-8 h-8 text-white" />
                       </div>
                     </div>
@@ -238,7 +238,7 @@ export default function TarifsPage() {
                     </ul>
                     <Link
                       href="/#contact"
-                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-[#8B7A98] to-[#A594B3] text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                      className="inline-flex items-center justify-center w-full px-6 py-4 bg-linear-to-r from-[#8B7A98] to-[#A594B3] text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
                     >
                       Demander un devis
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -249,7 +249,7 @@ export default function TarifsPage() {
             </div>
 
             {/* Info Banner */}
-            <div className="max-w-4xl mx-auto bg-gradient-to-r from-[#F3E8F0] to-[#E8DFF0] rounded-2xl p-6 md:p-8 border border-[#D4C5D9]/30">
+            <div className="max-w-4xl mx-auto bg-linear-to-r from-[#F3E8F0] to-[#E8DFF0] rounded-2xl p-6 md:p-8 border border-[#D4C5D9]/30">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center flex-shrink-0" aria-hidden="true">
                   <Info className="w-6 h-6 text-primary" />
@@ -269,7 +269,7 @@ export default function TarifsPage() {
 
         {/* Remboursements Section */}
         <section 
-          className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          className="py-16 md:py-24 bg-linear-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
           aria-labelledby="remboursements-heading"
         >
           <div className="container mx-auto px-6 lg:px-8">
@@ -314,7 +314,7 @@ export default function TarifsPage() {
                     key={index}
                     className="group bg-white rounded-2xl p-6 border border-[#D4C5D9]/30 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
-                    <div className={`w-12 h-12 bg-gradient-to-br ${
+                    <div className={`w-12 h-12 bg-linear-to-br ${
                       item.color === 'primary' 
                         ? 'from-[#A594B3] to-[#8B7A98]' 
                         : 'from-[#C5B8D0] to-[#A594B3]'
@@ -436,7 +436,7 @@ export default function TarifsPage() {
 
         {/* CTA Final */}
         <section 
-          className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]"
+          className="py-16 md:py-20 bg-linear-to-r from-primary via-[#A594B3] to-[#8B7A98]"
           aria-labelledby="cta-heading"
         >
           <div className="container mx-auto px-6 lg:px-8 text-center">

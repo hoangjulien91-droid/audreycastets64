@@ -43,7 +43,7 @@ export default function ContactPage() {
             }}
             title={
               <>
-                Prenons <span className="bg-gradient-to-r from-primary to-[#A594B3] bg-clip-text text-transparent">contact</span>
+                Prenons <span className="bg-linear-to-r from-primary to-[#A594B3] bg-clip-text text-transparent">contact</span>
               </>
             }
             subtitle="Prenons contact pour échanger sur vos besoins et voir comment je peux vous accompagner dans votre démarche."
@@ -86,9 +86,9 @@ export default function ContactPage() {
                   </p>
 
                   <div className="space-y-6 mb-12" role="list" aria-label="Coordonnées">
-                    <article className="bg-gradient-to-br from-[#F3E8F0] to-white p-6 rounded-2xl border border-[#D4C5D9]/30 hover:shadow-lg transition-all duration-300" role="listitem">
+                    <article className="bg-linear-to-br from-[#F3E8F0] to-white p-6 rounded-2xl border border-[#D4C5D9]/30 hover:shadow-lg transition-all duration-300" role="listitem">
                       <div className="flex items-start gap-4">
-                        <div className="bg-gradient-to-br from-primary to-[#A594B3] p-3 rounded-xl shadow-lg" aria-hidden="true">
+                        <div className="bg-linear-to-br from-primary to-[#A594B3] p-3 rounded-xl shadow-lg" aria-hidden="true">
                           <Phone className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -105,9 +105,9 @@ export default function ContactPage() {
                       </div>
                     </article>
 
-                    <article className="bg-gradient-to-br from-[#E8DFF0] to-white p-6 rounded-2xl border border-[#A594B3]/30 hover:shadow-lg transition-all duration-300" role="listitem">
+                    <article className="bg-linear-to-br from-[#E8DFF0] to-white p-6 rounded-2xl border border-[#A594B3]/30 hover:shadow-lg transition-all duration-300" role="listitem">
                       <div className="flex items-start gap-4">
-                        <div className="bg-gradient-to-br from-[#A594B3] to-[#8B7A98] p-3 rounded-xl shadow-lg" aria-hidden="true">
+                        <div className="bg-linear-to-br from-[#A594B3] to-[#8B7A98] p-3 rounded-xl shadow-lg" aria-hidden="true">
                           <Mail className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -124,9 +124,9 @@ export default function ContactPage() {
                       </div>
                     </article>
 
-                    <article className="bg-gradient-to-br from-[#F3E8F0] to-white p-6 rounded-2xl border border-[#D4C5D9]/30 hover:shadow-lg transition-all duration-300" role="listitem">
+                    <article className="bg-linear-to-br from-[#F3E8F0] to-white p-6 rounded-2xl border border-[#D4C5D9]/30 hover:shadow-lg transition-all duration-300" role="listitem">
                       <div className="flex items-start gap-4">
-                        <div className="bg-gradient-to-br from-primary to-[#A594B3] p-3 rounded-xl shadow-lg" aria-hidden="true">
+                        <div className="bg-linear-to-br from-primary to-[#A594B3] p-3 rounded-xl shadow-lg" aria-hidden="true">
                           <MapPin className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -141,7 +141,7 @@ export default function ContactPage() {
                     </article>
                   </div>
 
-                  <div className="bg-gradient-to-br from-[#E8DFF0] to-[#F3E8F0] p-8 rounded-3xl border border-[#D4C5D9]/30">
+                  <div className="bg-linear-to-br from-[#E8DFF0] to-[#F3E8F0] p-8 rounded-3xl border border-[#D4C5D9]/30">
                     <h3 className="text-xl font-bold mb-6 text-foreground">
                       Pourquoi me contacter ?
                     </h3>
@@ -197,10 +197,10 @@ export default function ContactPage() {
           </section>
 
           <section 
-            className="py-20 bg-gradient-to-br from-primary via-[#A594B3] to-primary relative overflow-hidden"
+            className="py-20 bg-linear-to-br from-primary via-[#A594B3] to-primary relative overflow-hidden"
             aria-labelledby="cta-heading"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-[#A594B3]/90" aria-hidden="true" />
+            <div className="absolute inset-0 bg-linear-to-r from-primary/90 to-[#A594B3]/90" aria-hidden="true" />
             <div className="container mx-auto px-4 text-center relative z-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-white animate-pulse" aria-hidden="true" />

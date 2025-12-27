@@ -57,8 +57,9 @@
   --color-warm-rose: #FBF4F7;
   --color-soft-lavender: #F8F5FB;
 
-  --font-display: var(--font-cormorant), "Libre Baskerville", Georgia, serif;
-  --font-body: var(--font-source-sans), "Lato", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-display), "Syne", sans-serif;
+  --font-body: var(--font-source-sans), "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-serif), "Instrument Serif", serif;
 
   --radius-lg: 1.5rem;
   --radius-md: 1rem;

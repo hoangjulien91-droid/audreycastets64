@@ -67,7 +67,7 @@ export default function WhyAllianceSection() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-gradient-to-br from-white to-muted/30 rounded-2xl p-6 sm:p-8 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+                className="bg-linear-to-br from-white to-muted/30 rounded-2xl p-6 sm:p-8 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <advantage.icon className="w-6 h-6 text-primary" />
@@ -85,7 +85,7 @@ export default function WhyAllianceSection() {
           {/* Citation en exergue */}
           <motion.div
             variants={itemVariants}
-            className="bg-gradient-to-r from-primary/5 via-accent/5 to-accent-teal/5 rounded-2xl p-8 sm:p-10 border-l-4 border-primary"
+            className="bg-linear-to-r from-primary/5 via-accent/5 to-accent-teal/5 rounded-2xl p-8 sm:p-10 border-l-4 border-primary"
           >
             <div className="flex items-start gap-4">
               <div className="hidden sm:block text-6xl text-primary/20 font-serif leading-none">"</div>

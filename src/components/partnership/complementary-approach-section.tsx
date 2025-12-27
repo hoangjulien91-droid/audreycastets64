@@ -42,7 +42,7 @@ export default function ComplementaryApproachSection() {
           <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Psychologue du travail */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-8 border-2 border-primary/20 h-full">
+              <div className="bg-linear-to-br from-primary/10 to-primary/5 rounded-3xl p-8 border-2 border-primary/20 h-full">
                 <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-6 shadow-lg">
                   <Brain className="w-8 h-8 text-white" />
                 </div>
@@ -67,7 +67,7 @@ export default function ComplementaryApproachSection() {
 
             {/* Détective victimologue */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-accent-teal/10 to-accent-teal/5 rounded-3xl p-8 border-2 border-accent-teal/20 h-full">
+              <div className="bg-linear-to-br from-accent-teal/10 to-accent-teal/5 rounded-3xl p-8 border-2 border-accent-teal/20 h-full">
                 <div className="w-16 h-16 rounded-2xl bg-accent-teal flex items-center justify-center mb-6 shadow-lg">
                   <Search className="w-8 h-8 text-white" />
                 </div>
@@ -94,7 +94,7 @@ export default function ComplementaryApproachSection() {
           {/* Synergie */}
           <motion.div
             variants={itemVariants}
-            className="bg-gradient-to-r from-primary/5 via-accent/5 to-accent-teal/5 rounded-2xl p-8 text-center border border-primary/10"
+            className="bg-linear-to-r from-primary/5 via-accent/5 to-accent-teal/5 rounded-2xl p-8 text-center border border-primary/10"
           >
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">

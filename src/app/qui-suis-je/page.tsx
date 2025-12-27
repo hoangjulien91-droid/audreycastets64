@@ -94,21 +94,21 @@ export default function QuiSuisJePage() {
               {/* Quick Stats */}
               <div className="grid grid-cols-3 gap-4" role="list" aria-label="Statistiques clés">
                 <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
+                  <div className="flex items-center justify-center w-12 h-12 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
                     <Award className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 5 ans">+5 ans</p>
                   <p className="text-xs text-muted-foreground text-center">Expérience</p>
                 </div>
                 <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-full mb-2 mx-auto" aria-hidden="true">
+                  <div className="flex items-center justify-center w-12 h-12 bg-linear-to-br from-[#C5B8D0] to-[#A594B3] rounded-full mb-2 mx-auto" aria-hidden="true">
                     <Users className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 200">200+</p>
                   <p className="text-xs text-muted-foreground text-center">Accompagnements</p>
                 </div>
                 <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
+                  <div className="flex items-center justify-center w-12 h-12 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
                     <Star className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-2xl font-bold text-primary text-center" aria-label="95 pourcent">95%</p>
@@ -120,7 +120,7 @@ export default function QuiSuisJePage() {
             {/* Right Image */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative group">
-                <div className="absolute -inset-6 bg-gradient-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98] opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700" aria-hidden="true"></div>
+                <div className="absolute -inset-6 bg-linear-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98] opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700" aria-hidden="true"></div>
                 <div className="relative">
                   <Image
                     src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg"
@@ -162,7 +162,7 @@ export default function QuiSuisJePage() {
                 {/* Formation */}
                 <article className="flex gap-6 group" role="listitem">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                    <div className="w-16 h-16 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                       <GraduationCap className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -177,7 +177,7 @@ export default function QuiSuisJePage() {
                 {/* Expérience */}
                 <article className="flex gap-6 group" role="listitem">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                    <div className="w-16 h-16 bg-linear-to-br from-[#C5B8D0] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                       <Briefcase className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -192,7 +192,7 @@ export default function QuiSuisJePage() {
                 {/* International */}
                 <article className="flex gap-6 group" role="listitem">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                    <div className="w-16 h-16 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                       <Globe className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -210,7 +210,7 @@ export default function QuiSuisJePage() {
 
         {/* Ma Philosophie Section */}
         <section 
-          className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          className="py-16 md:py-24 bg-linear-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
           aria-labelledby="philosophie-heading"
         >
           <div className="container mx-auto px-6 lg:px-8">
@@ -299,7 +299,7 @@ export default function QuiSuisJePage() {
                   className="group bg-white rounded-2xl p-6 border border-border shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   role="listitem"
                 >
-                  <div className={`w-14 h-14 bg-gradient-to-br ${specialty.color} rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`} aria-hidden="true">
+                  <div className={`w-14 h-14 bg-linear-to-br ${specialty.color} rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`} aria-hidden="true">
                     {specialty.icon}
                   </div>
                   <h3 className="text-lg font-bold text-foreground mb-2">
@@ -316,7 +316,7 @@ export default function QuiSuisJePage() {
 
         {/* Déontologie Section */}
         <section 
-          className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          className="py-16 md:py-24 bg-linear-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
           aria-labelledby="deontologie-heading"
         >
           <div className="container mx-auto px-6 lg:px-8">
@@ -373,7 +373,7 @@ export default function QuiSuisJePage() {
 
         {/* CTA Final */}
         <section 
-          className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]"
+          className="py-16 md:py-20 bg-linear-to-r from-primary via-[#A594B3] to-[#8B7A98]"
           aria-labelledby="cta-heading"
         >
           <div className="container mx-auto px-6 lg:px-8 text-center">

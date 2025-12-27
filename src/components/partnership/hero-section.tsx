@@ -13,7 +13,7 @@ export default function PartnershipHeroSection() {
 
   return (
     <section 
-      className="relative min-h-[70vh] overflow-hidden bg-gradient-to-br from-[#1e3a5f] via-[#2d5a7b] to-[#4a7396]"
+      className="relative min-h-[70vh] overflow-hidden bg-linear-to-br from-[#1e3a5f] via-[#2d5a7b] to-[#4a7396]"
       aria-labelledby="partnership-heading"
     >
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">

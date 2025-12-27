@@ -63,10 +63,10 @@ export default function FaqPage() {
         <Header />
         <main className="pt-20" id="main-content">
           <section 
-            className="relative py-20 bg-gradient-to-br from-pink-50 via-purple-50/30 to-background overflow-hidden"
+            className="relative py-20 bg-linear-to-br from-pink-50 via-purple-50/30 to-background overflow-hidden"
             aria-labelledby="faq-heading"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-100/40 via-purple-100/20 to-transparent blur-3xl" aria-hidden="true" />
+            <div className="absolute inset-0 bg-linear-to-br from-pink-100/40 via-purple-100/20 to-transparent blur-3xl" aria-hidden="true" />
             <div className="container relative z-10">
               <nav className="mb-8" aria-label="Fil d'Ariane">
                 <Breadcrumb 
@@ -87,7 +87,7 @@ export default function FaqPage() {
 
                 <h1 id="faq-heading" className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
                   Toutes les{" "}
-                  <span className="bg-gradient-to-r from-primary via-purple-500 to-primary bg-clip-text text-transparent">
+                  <span className="bg-linear-to-r from-primary via-purple-500 to-primary bg-clip-text text-transparent">
                     réponses
                   </span>{" "}
                   à vos questions
@@ -120,7 +120,7 @@ export default function FaqPage() {
           <FaqAccordion />
 
           <section 
-            className="py-20 bg-gradient-to-br from-primary via-pink-500 to-purple-500 text-white"
+            className="py-20 bg-linear-to-br from-primary via-pink-500 to-purple-500 text-white"
             aria-labelledby="cta-heading"
           >
             <div className="container">

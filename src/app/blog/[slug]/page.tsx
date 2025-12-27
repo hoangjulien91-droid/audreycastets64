@@ -81,7 +81,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
         
         <main className="pt-20" id="main-content">
           <section 
-            className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50/30 to-background py-12 md:py-16"
+            className="relative overflow-hidden bg-linear-to-br from-pink-50 via-purple-50/30 to-background py-12 md:py-16"
             aria-labelledby="article-heading"
           >
             <div className="container mx-auto px-6 lg:px-8 relative z-10">

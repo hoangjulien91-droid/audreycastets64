@@ -119,7 +119,7 @@ export function AnimatedHeroSection() {
 
         <motion.h1 variants={fadeInUp} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
           Des accompagnements <motion.span 
-            className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-primary"
+            className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-primary"
             animate={{
               backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
             }}
@@ -167,7 +167,7 @@ export function AnimatedServicesCards() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={staggerContainer}
-      className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white relative overflow-hidden"
+      className="py-16 md:py-24 bg-linear-to-br from-[#F9F7F4] via-[#FDFCFB] to-white relative overflow-hidden"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
         <motion.div 
@@ -204,7 +204,7 @@ export function AnimatedServicesCards() {
           {/* Card 1 */}
           <motion.div variants={fadeInUp} className="group relative">
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-br from-[#F3E8F0]/40 to-[#E8DFF0]/30 rounded-3xl blur-xl"
+              className="absolute inset-0 bg-linear-to-br from-[#F3E8F0]/40 to-[#E8DFF0]/30 rounded-3xl blur-xl"
               animate={{
                 scale: [1, 1.05, 1],
                 opacity: [0.4, 0.6, 0.4],
@@ -217,15 +217,15 @@ export function AnimatedServicesCards() {
               whileHover="hover"
               className="relative h-full glass-effect rounded-3xl border border-[#D4C5D9]/30 shadow-lg overflow-hidden"
             >
-              <div className="h-2 bg-gradient-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98]"></div>
+              <div className="h-2 bg-linear-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98]"></div>
               <div className="p-8 md:p-10">
                 <motion.div 
                   className="relative mb-6"
                   whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl blur-xl opacity-40"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="absolute inset-0 w-16 h-16 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl blur-xl opacity-40"></div>
+                  <div className="relative w-16 h-16 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
                     <Heart className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
@@ -254,7 +254,7 @@ export function AnimatedServicesCards() {
                   <motion.div 
                     whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(139, 122, 152, 0.25)" }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
+                    className="inline-flex items-center justify-center w-full px-6 py-6 bg-linear-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
                   >
                     En savoir plus
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -267,7 +267,7 @@ export function AnimatedServicesCards() {
           {/* Card 2 */}
           <motion.div variants={fadeInUp} className="group relative">
             <motion.div 
-              className="absolute inset-0 bg-gradient-to-br from-[#E8DFF0]/40 to-[#F3E8F0]/30 rounded-3xl blur-xl"
+              className="absolute inset-0 bg-linear-to-br from-[#E8DFF0]/40 to-[#F3E8F0]/30 rounded-3xl blur-xl"
               animate={{
                 scale: [1, 1.05, 1],
                 opacity: [0.4, 0.6, 0.4],
@@ -280,15 +280,15 @@ export function AnimatedServicesCards() {
               whileHover="hover"
               className="relative h-full glass-effect rounded-3xl border border-[#D4C5D9]/30 shadow-lg overflow-hidden"
             >
-              <div className="h-2 bg-gradient-to-r from-[#8B7A98] via-[#A594B3] to-[#C5B8D0]"></div>
+              <div className="h-2 bg-linear-to-r from-[#8B7A98] via-[#A594B3] to-[#C5B8D0]"></div>
               <div className="p-8 md:p-10">
                 <motion.div 
                   className="relative mb-6"
                   whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl blur-xl opacity-40"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="absolute inset-0 w-16 h-16 bg-linear-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl blur-xl opacity-40"></div>
+                  <div className="relative w-16 h-16 bg-linear-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg">
                     <Users className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
@@ -317,7 +317,7 @@ export function AnimatedServicesCards() {
                   <motion.div 
                     whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(139, 122, 152, 0.25)" }}
                     whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center justify-center w-full px-6 py-6 bg-gradient-to-r from-[#8B7A98] to-[#A594B3] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
+                    className="inline-flex items-center justify-center w-full px-6 py-6 bg-linear-to-r from-[#8B7A98] to-[#A594B3] text-white font-semibold rounded-2xl shadow-md cursor-pointer"
                   >
                     Me contacter pour un devis
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -457,7 +457,7 @@ export function AnimatedServiceDetails({ title, services, bgColor = "gradient-to
                 className="group bg-white rounded-2xl p-6 border border-border shadow-md transition-all duration-300"
               >
                 <motion.div 
-                  className={`w-12 h-12 bg-gradient-to-br ${
+                  className={`w-12 h-12 bg-linear-to-br ${
                     service.color === 'primary' 
                       ? 'from-primary to-pink-400' 
                       : 'from-purple-500 to-purple-600'
@@ -499,7 +499,7 @@ export function AnimatedPracticalInfo() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={staggerContainer}
-      className="py-16 md:py-24 bg-gradient-to-br from-pink-50 to-white"
+      className="py-16 md:py-24 bg-linear-to-br from-pink-50 to-white"
     >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
@@ -589,7 +589,7 @@ export function AnimatedFinalCTA() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="py-16 md:py-20 bg-gradient-to-r from-primary via-purple-500 to-primary relative overflow-hidden"
+      className="py-16 md:py-20 bg-linear-to-r from-primary via-purple-500 to-primary relative overflow-hidden"
     >
       <motion.div
         animate={{

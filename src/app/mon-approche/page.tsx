@@ -57,7 +57,7 @@ export default function MonApprochePage() {
       <main className="pt-20" id="main-content">
         {/* Hero Section with Breadcrumb */}
         <section 
-          className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
+          className="relative overflow-hidden bg-linear-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
           aria-labelledby="approche-heading"
         >
           {/* Background decorative elements */}
@@ -87,7 +87,7 @@ export default function MonApprochePage() {
               </div>
 
               <h1 id="approche-heading" className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Mon <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">Approche</span>
+                Mon <span className="text-transparent bg-clip-text bg-linear-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">Approche</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
@@ -167,7 +167,7 @@ export default function MonApprochePage() {
                   key={index}
                   className="group bg-white rounded-2xl p-8 border border-[#D4C5D9]/30 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className={`w-16 h-16 bg-gradient-to-br ${principle.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`w-16 h-16 bg-linear-to-br ${principle.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     {principle.icon}
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-3">
@@ -184,7 +184,7 @@ export default function MonApprochePage() {
 
         {/* Méthodologies Section */}
         <section 
-          className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          className="py-16 md:py-24 bg-linear-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
           aria-labelledby="methodologies-heading"
         >
           <div className="container mx-auto px-6 lg:px-8">
@@ -205,7 +205,7 @@ export default function MonApprochePage() {
               <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-primary">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
                       <Brain className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -244,7 +244,7 @@ export default function MonApprochePage() {
               <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-[#8B7A98]">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-linear-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg">
                       <Zap className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -283,7 +283,7 @@ export default function MonApprochePage() {
               <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-primary">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
                       <Lightbulb className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -374,7 +374,7 @@ export default function MonApprochePage() {
                 >
                   <div className="flex items-start gap-6">
                     <div className="flex-shrink-0">
-                      <div className={`w-16 h-16 bg-gradient-to-br ${
+                      <div className={`w-16 h-16 bg-linear-to-br ${
                         step.color === 'primary' 
                           ? 'from-[#A594B3] to-[#8B7A98]' 
                           : 'from-[#C5B8D0] to-[#A594B3]'
@@ -404,7 +404,7 @@ export default function MonApprochePage() {
 
         {/* Ce qui me différencie Section */}
         <section 
-          className="py-16 md:py-24 bg-gradient-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          className="py-16 md:py-24 bg-linear-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
           aria-labelledby="difference-heading"
         >
           <div className="container mx-auto px-6 lg:px-8">
@@ -460,7 +460,7 @@ export default function MonApprochePage() {
 
         {/* CTA Final */}
         <section 
-          className="py-16 md:py-20 bg-gradient-to-r from-primary via-[#A594B3] to-[#8B7A98]"
+          className="py-16 md:py-20 bg-linear-to-r from-primary via-[#A594B3] to-[#8B7A98]"
           aria-labelledby="cta-heading"
         >
           <div className="container mx-auto px-6 lg:px-8 text-center">

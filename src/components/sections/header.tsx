@@ -46,16 +46,16 @@ export default function Header() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          scrolled ? "py-2 sm:py-3" : "py-4 sm:py-6"
+          scrolled 
+            ? "glass-effect border-t-0 border-x-0 py-3 shadow-sm" 
+            : "bg-transparent py-6 border-b border-transparent"
         )}
       >
-        <div className="container">
+        <div className="container px-4 sm:px-6">
           <div
             className={cn(
-              "mx-auto flex items-center justify-between rounded-full px-4 sm:px-6 transition-all duration-500",
-              scrolled 
-                ? "glass-effect py-2.5 sm:py-3 shadow-sm" 
-                : "bg-transparent py-2 border border-transparent"
+              "mx-auto flex items-center justify-between transition-all duration-500",
+              // Remove inner styling that conflicted
             )}
           >
             <Link href="/" className="group flex items-center gap-3 relative z-10">

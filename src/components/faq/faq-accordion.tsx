@@ -146,7 +146,7 @@ export function FaqAccordion() {
                 >
                   <AccordionTrigger className="flex w-full items-start justify-between p-6 font-semibold text-lg text-left hover:bg-accent/10 rounded-2xl transition-colors group [&[data-state=open]>div>svg]:rotate-180">
                     <div className="flex items-start gap-4 flex-1">
-                      <div className="mt-1 p-2 rounded-lg bg-gradient-to-br from-primary/10 to-purple-500/10 text-primary group-hover:scale-110 transition-transform">
+                      <div className="mt-1 p-2 rounded-lg bg-linear-to-br from-primary/10 to-purple-500/10 text-primary group-hover:scale-110 transition-transform">
                         <MessageCircleQuestion className="h-5 w-5" />
                       </div>
                       <div className="flex-1">

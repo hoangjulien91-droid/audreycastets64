@@ -59,7 +59,7 @@ export function ContactForm() {
     return (
       <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 border border-[#D4C5D9]/30">
         <div className="text-center py-12">
-          <div className="w-20 h-20 bg-gradient-to-br from-[var(--color-primary)] to-[#A594B3] rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
+          <div className="w-20 h-20 bg-linear-to-br from-[var(--color-primary)] to-[#A594B3] rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-soft">
             <CheckCircle className="w-10 h-10 text-white" />
           </div>
           <h3 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4">
@@ -171,7 +171,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-[var(--color-primary)] to-[#A594B3] text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3"
+          className="w-full bg-linear-to-r from-[var(--color-primary)] to-[#A594B3] text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-3"
         >
           {isSubmitting ? (
             <>

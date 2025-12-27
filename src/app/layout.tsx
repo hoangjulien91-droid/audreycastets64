@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
-import { Lato, Libre_Baskerville } from "next/font/google";
+import { Syne, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import StickyMobileCTA from "@/components/ui/sticky-mobile-cta";
 
-const lato = Lato({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-source-sans",
+  variable: "--font-display",
   display: "swap",
   preload: true,
-  weight: ["300", "400", "700", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const libreBaskerville = Libre_Baskerville({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-cormorant",
+  variable: "--font-serif",
   display: "swap",
   preload: true,
-  weight: ["400", "700"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -80,7 +82,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" suppressHydrationWarning className={`${lato.variable} ${libreBaskerville.variable}`}>
+    <html lang="fr" suppressHydrationWarning className={`${syne.variable} ${instrumentSerif.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -91,6 +93,7 @@ export default function RootLayout({
         </a>
 
         {children}
+        <StickyMobileCTA />
       </body>
     </html>
   );

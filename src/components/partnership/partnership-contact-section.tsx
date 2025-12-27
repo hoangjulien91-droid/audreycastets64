@@ -27,7 +27,7 @@ export default function PartnershipContactSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-24 lg:py-32 bg-gradient-to-b from-muted/30 to-white">
+    <section className="py-20 sm:py-24 lg:py-32 bg-linear-to-b from-muted/30 to-white">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -94,7 +94,7 @@ export default function PartnershipContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-gradient-to-br from-primary/5 to-accent-teal/5 rounded-2xl p-8 border border-primary/10"
+            className="bg-linear-to-br from-primary/5 to-accent-teal/5 rounded-2xl p-8 border border-primary/10"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">

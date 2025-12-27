@@ -29,7 +29,7 @@ export default function CollaborativeProcessSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-24 lg:py-32 bg-gradient-to-b from-muted/30 to-white">
+    <section className="py-20 sm:py-24 lg:py-32 bg-linear-to-b from-muted/30 to-white">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function CollaborativeProcessSection() {
           {/* Timeline */}
           <div className="relative">
             {/* Ligne verticale (desktop) */}
-            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent-teal to-primary transform -translate-x-1/2" />
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary via-accent-teal to-primary transform -translate-x-1/2" />
 
             <div className="space-y-12 lg:space-y-24">
               {steps.map((step, index) => (

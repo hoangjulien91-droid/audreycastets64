@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background flex flex-col">
+      <div className="min-h-screen bg-linear-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background flex flex-col">
         <Header />
         
         <main className="flex-grow flex items-center justify-center px-6 py-20">
@@ -28,7 +28,7 @@ export default function NotFound() {
                 <FileQuestion className="w-64 h-64 text-primary" />
               </div>
               <div className="relative">
-                <h1 className="font-display text-9xl md:text-[12rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0] leading-none">
+                <h1 className="font-display text-9xl md:text-[12rem] font-bold text-transparent bg-clip-text bg-linear-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0] leading-none">
                   404
                 </h1>
               </div>
@@ -48,7 +48,7 @@ export default function NotFound() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 <Home className="w-5 h-5" />
                 Retour à l'accueil

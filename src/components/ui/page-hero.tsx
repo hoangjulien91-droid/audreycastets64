@@ -29,7 +29,7 @@ export function PageHero({
 }: PageHeroProps) {
   return (
     <section 
-      className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
+      className="relative overflow-hidden bg-linear-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 pointer-events-none opacity-30 select-none" aria-hidden="true">
