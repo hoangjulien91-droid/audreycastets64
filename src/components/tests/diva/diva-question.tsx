@@ -57,44 +57,50 @@ export function DivaQuestion({ criterion, value, onChange }: DivaQuestionProps) 
         {/* ADULTE */}
         <div className={`
             p-6 rounded-2xl border-2 transition-all duration-300 relative
-            ${value.presentAdult ? 'border-primary bg-primary/5' : 'border-border bg-white'}
+            ${value.presentAdult ? 'border-primary bg-primary/5 shadow-premium' : 'border-border/50 bg-white/50 hover:border-primary/20'}
         `}>
-             <div className="absolute -top-3 left-6 px-3 bg-background text-sm font-bold text-primary uppercase tracking-wider">
+             <div className="absolute -top-3 left-6 px-3 bg-background text-sm font-bold text-primary uppercase tracking-wider shadow-sm border border-primary/10 rounded-full">
                 Vie Adulte (Actuel)
              </div>
 
-             <div className="space-y-4 mt-2">
-                <p className="text-sm text-muted-foreground font-medium mb-3">
+             <div className="space-y-4 mt-4">
+                <p className="text-sm text-muted-foreground font-medium mb-3 pl-1">
                     Cochez les exemples qui vous correspondent :
                 </p>
-                <div className="space-y-2">
+                <div className="space-y-3">
                     {criterion.examplesAdult.map((ex, idx) => (
                         <button
                             key={idx}
                             onClick={() => toggleExampleAdult(idx)}
-                            className={`w-full text-left p-3 rounded-xl text-sm transition-all flex items-start gap-3
+                            className={`w-full text-left p-4 rounded-xl text-base transition-all flex items-start gap-4 group
                                 ${value.examplesAdultChecked.includes(idx) 
-                                    ? 'bg-white shadow-sm ring-1 ring-primary/20 text-foreground' 
-                                    : 'hover:bg-accent/50 text-muted-foreground'
+                                    ? 'bg-white shadow-md ring-1 ring-primary/20 text-foreground translate-x-1' 
+                                    : 'hover:bg-white hover:shadow-sm text-muted-foreground hover:text-foreground'
                                 }
                             `}
                         >
-                            <div className={`mt-0.5 w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors
-                                ${value.examplesAdultChecked.includes(idx) ? 'bg-primary border-primary' : 'border-input'}
+                            <div className={`mt-0.5 w-6 h-6 rounded-lg border-2 flex items-center justify-center shrink-0 transition-all duration-300
+                                ${value.examplesAdultChecked.includes(idx) 
+                                    ? 'bg-primary border-primary scale-110 shadow-sm' 
+                                    : 'border-input group-hover:border-primary/50'
+                                }
                             `}>
-                                {value.examplesAdultChecked.includes(idx) && <Check className="w-3 h-3 text-white" />}
+                                {value.examplesAdultChecked.includes(idx) && <Check className="w-4 h-4 text-white font-bold" strokeWidth={3} />}
                             </div>
-                            <span>{ex}</span>
+                            <span className="leading-snug">{ex}</span>
                         </button>
                     ))}
                 </div>
 
-                <div className="pt-4 border-t border-border/50">
-                    <label className="flex items-center gap-4 cursor-pointer group">
-                        <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all
-                            ${value.presentAdult ? 'bg-primary border-primary' : 'border-input group-hover:border-primary/50'}
+                <div className="pt-6 mt-2 border-t border-border/50">
+                    <label className="flex items-center gap-4 cursor-pointer group p-2 rounded-xl hover:bg-white/50 transition-colors">
+                        <div className={`w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-300 shadow-sm
+                            ${value.presentAdult 
+                                ? 'bg-primary border-primary scale-105 shadow-primary/20' 
+                                : 'border-input bg-white group-hover:border-primary'
+                            }
                         `}>
-                            {value.presentAdult && <Check className="w-4 h-4 text-white" />}
+                            {value.presentAdult && <Check className="w-5 h-5 text-white" strokeWidth={3} />}
                         </div>
                         <input 
                             type="checkbox" 
@@ -102,9 +108,12 @@ export function DivaQuestion({ criterion, value, onChange }: DivaQuestionProps) 
                             checked={value.presentAdult} 
                             onChange={togglePresentAdult}
                         />
-                        <span className={`font-semibold ${value.presentAdult ? 'text-primary' : 'text-foreground'}`}>
-                            Le symptôme est présent
-                        </span>
+                        <div className="flex flex-col">
+                            <span className={`font-bold text-lg transition-colors ${value.presentAdult ? 'text-primary' : 'text-foreground'}`}>
+                                Le symptôme est présent
+                            </span>
+                            <span className="text-xs text-muted-foreground">Cochez si le symptôme est fréquent</span>
+                        </div>
                     </label>
                 </div>
              </div>
@@ -113,44 +122,50 @@ export function DivaQuestion({ criterion, value, onChange }: DivaQuestionProps) 
         {/* ENFANT */}
         <div className={`
             p-6 rounded-2xl border-2 transition-all duration-300 relative
-            ${value.presentChild ? 'border-primary bg-primary/5' : 'border-border bg-white'}
+            ${value.presentChild ? 'border-primary bg-primary/5 shadow-premium' : 'border-border/50 bg-white/50 hover:border-primary/20'}
         `}>
-             <div className="absolute -top-3 left-6 px-3 bg-background text-sm font-bold text-primary uppercase tracking-wider">
+             <div className="absolute -top-3 left-6 px-3 bg-background text-sm font-bold text-primary uppercase tracking-wider shadow-sm border border-primary/10 rounded-full">
                 Enfance (5-12 ans)
              </div>
 
-             <div className="space-y-4 mt-2">
-                <p className="text-sm text-muted-foreground font-medium mb-3">
+             <div className="space-y-4 mt-4">
+                <p className="text-sm text-muted-foreground font-medium mb-3 pl-1">
                     Souvenirs d'enfance correspondants :
                 </p>
-                <div className="space-y-2">
+                <div className="space-y-3">
                     {criterion.examplesChild.map((ex, idx) => (
                         <button
                             key={idx}
                             onClick={() => toggleExampleChild(idx)}
-                            className={`w-full text-left p-3 rounded-xl text-sm transition-all flex items-start gap-3
+                            className={`w-full text-left p-4 rounded-xl text-base transition-all flex items-start gap-4 group
                                 ${value.examplesChildChecked.includes(idx) 
-                                    ? 'bg-white shadow-sm ring-1 ring-primary/20 text-foreground' 
-                                    : 'hover:bg-accent/50 text-muted-foreground'
+                                    ? 'bg-white shadow-md ring-1 ring-primary/20 text-foreground translate-x-1' 
+                                    : 'hover:bg-white hover:shadow-sm text-muted-foreground hover:text-foreground'
                                 }
                             `}
                         >
-                            <div className={`mt-0.5 w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors
-                                ${value.examplesChildChecked.includes(idx) ? 'bg-primary border-primary' : 'border-input'}
+                            <div className={`mt-0.5 w-6 h-6 rounded-lg border-2 flex items-center justify-center shrink-0 transition-all duration-300
+                                ${value.examplesChildChecked.includes(idx) 
+                                    ? 'bg-primary border-primary scale-110 shadow-sm' 
+                                    : 'border-input group-hover:border-primary/50'
+                                }
                             `}>
-                                {value.examplesChildChecked.includes(idx) && <Check className="w-3 h-3 text-white" />}
+                                {value.examplesChildChecked.includes(idx) && <Check className="w-4 h-4 text-white font-bold" strokeWidth={3} />}
                             </div>
-                            <span>{ex}</span>
+                            <span className="leading-snug">{ex}</span>
                         </button>
                     ))}
                 </div>
 
-                <div className="pt-4 border-t border-border/50">
-                    <label className="flex items-center gap-4 cursor-pointer group">
-                         <div className={`w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all
-                            ${value.presentChild ? 'bg-primary border-primary' : 'border-input group-hover:border-primary/50'}
+                <div className="pt-6 mt-2 border-t border-border/50">
+                    <label className="flex items-center gap-4 cursor-pointer group p-2 rounded-xl hover:bg-white/50 transition-colors">
+                         <div className={`w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all duration-300 shadow-sm
+                            ${value.presentChild 
+                                ? 'bg-primary border-primary scale-105 shadow-primary/20' 
+                                : 'border-input bg-white group-hover:border-primary'
+                            }
                         `}>
-                            {value.presentChild && <Check className="w-4 h-4 text-white" />}
+                            {value.presentChild && <Check className="w-5 h-5 text-white" strokeWidth={3} />}
                         </div>
                         <input 
                             type="checkbox" 
@@ -158,9 +173,12 @@ export function DivaQuestion({ criterion, value, onChange }: DivaQuestionProps) 
                             checked={value.presentChild} 
                             onChange={togglePresentChild}
                         />
-                        <span className={`font-semibold ${value.presentChild ? 'text-primary' : 'text-foreground'}`}>
-                            Le symptôme était présent
-                        </span>
+                         <div className="flex flex-col">
+                            <span className={`font-bold text-lg transition-colors ${value.presentChild ? 'text-primary' : 'text-foreground'}`}>
+                                Le symptôme était présent
+                            </span>
+                            <span className="text-xs text-muted-foreground">Cochez si le symptôme était fréquent</span>
+                        </div>
                     </label>
                 </div>
              </div>
