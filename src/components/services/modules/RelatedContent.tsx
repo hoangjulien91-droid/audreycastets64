@@ -1,7 +1,7 @@
 "use client";
 
 import { ServiceData } from "@/lib/data/services";
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 import { ArrowRight, FileText, CheckCircle, Brain } from "lucide-react";
 
 interface RelatedContentProps {

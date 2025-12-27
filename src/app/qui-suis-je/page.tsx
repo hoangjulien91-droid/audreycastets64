@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 import Header from "@/components/sections/header";
 import { PageHero } from "@/components/ui/page-hero";
 import Footer from "@/components/sections/footer";

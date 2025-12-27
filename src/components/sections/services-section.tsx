@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight, CircleCheck, Heart, Users, Sparkles } from "lucide-react";
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 import { motion, useReducedMotion } from "framer-motion";
 
 const services = [

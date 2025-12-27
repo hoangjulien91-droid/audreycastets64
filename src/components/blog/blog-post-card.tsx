@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 import { Calendar, Clock, User } from "lucide-react";
 import { BlogPost } from "@/lib/blog-posts";
 import { motion } from "framer-motion";

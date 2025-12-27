@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";

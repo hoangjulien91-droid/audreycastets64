@@ -1,5 +1,5 @@
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 
 interface BreadcrumbItem {
   label: string;

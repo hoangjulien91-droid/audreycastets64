@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Shield, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 
 export default function PartnershipContactSection() {
   const contactInfo = [

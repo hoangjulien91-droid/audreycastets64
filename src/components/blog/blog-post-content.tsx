@@ -3,7 +3,7 @@
 import { BlogPost } from "@/lib/blog-posts";
 import { motion } from "framer-motion";
 import { Link as LinkIcon } from "lucide-react";
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 
 interface BlogPostContentProps {
   post: BlogPost;

@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { ArrowRight, Sparkles, Heart, Star, Shield, Clock, CheckCircle2, Award } from "lucide-react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import Link from "next/link";
+import { Link } from 'next-view-transitions';
 import { useRef } from "react";
+import audreyHero from "@/assets/images/audrey-hero.jpg";
 
 const features = [
   "Thérapies Cognitivo-Comportementales (TCC)",
@@ -209,11 +210,12 @@ export default function HeroSection() {
                 <div className="absolute inset-0 rounded-[2.5rem] p-[3px] bg-gradient-to-br from-white/80 via-white/20 to-white/60 shadow-2xl shadow-primary/10 ring-1 ring-white/40">
                   <div className="w-full h-full rounded-[2.3rem] overflow-hidden bg-white/50 backdrop-blur-sm relative isolate">
                     <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg?"
+                      src={audreyHero}
                       alt="Audrey Castets - Psychologue du Travail spécialisée TCC et EFT"
                       fill
                       className="object-cover object-top hover:scale-105 transition-transform duration-700 ease-out-expo"
                       priority
+                      placeholder="blur"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                     />
                     {/* Inner grain/overlay for texture */}
