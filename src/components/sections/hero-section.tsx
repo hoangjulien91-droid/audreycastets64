@@ -167,14 +167,9 @@ export default function HeroSection() {
             >
               <div className="flex items-center justify-center lg:justify-start gap-8">
                 <div className="flex -space-x-3">
-                  {[...Array(4)].map((_, i) => (
-<div
-                        key={i}
-                        className="w-10 h-10 rounded-full bg-primary/15 border-2 border-white flex items-center justify-center text-xs font-semibold text-primary shadow-md"
-                      >
-                      {["S", "M", "T", "J"][i]}
-                    </div>
-                  ))}
+                <div className="flex -space-x-3">
+                  {/* Badges removed as per user request (confusing UI) */}
+                </div>
                 </div>
                 <div className="text-left">
                   <div className="flex items-center gap-1 mb-1">
