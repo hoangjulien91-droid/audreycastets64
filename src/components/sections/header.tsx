@@ -62,7 +62,7 @@ export default function Header() {
               <Logo />
               <div className="flex flex-col">
                 <span className="text-lg sm:text-xl font-bold text-foreground transition-colors group-hover:text-primary font-display leading-none">
-                  Audrey Castets
+                  Audrey <span className="text-primary">Castets</span>
                 </span>
                 <span className="text-xs sm:text-sm text-muted-foreground font-display italic leading-snug">
                   Psychologue
@@ -153,7 +153,7 @@ export default function Header() {
                   <Link href="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
                     <Logo />
                     <div className="flex flex-col">
-                      <span className="text-lg font-bold text-foreground font-display leading-none">Audrey Castets</span>
+                      <span className="text-lg font-bold text-foreground font-display leading-none">Audrey <span className="text-primary">Castets</span></span>
                       <span className="text-xs text-muted-foreground font-display italic leading-snug">Psychologue</span>
                     </div>
                   </Link>
