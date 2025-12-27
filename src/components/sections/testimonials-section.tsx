@@ -152,15 +152,17 @@ export default function TestimonialsSection() {
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  current === index 
-                    ? "bg-primary w-8" 
-                    : "bg-primary/20 w-2 hover:bg-primary/40"
-                }`}
+                className="group p-2 flex items-center justify-center transition-all duration-300"
                 role="tab"
                 aria-selected={current === index}
                 aria-label={`Voir témoignage ${index + 1}`}
-              />
+              >
+                <div className={`h-2 rounded-full transition-all duration-300 ${
+                  current === index 
+                    ? "bg-primary-dark w-8" 
+                    : "bg-primary/30 w-2 group-hover:bg-primary/50"
+                }`} />
+              </button>
             ))}
           </div>
         </Carousel>

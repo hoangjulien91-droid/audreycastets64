@@ -96,14 +96,14 @@ export default function HeroSection() {
               className="text-foreground mb-4 text-balance"
             >
               Audrey{" "}
-              <span className="text-primary">Castets</span>
+              <span className="text-primary-dark">Castets</span>
             </motion.h1>
 
             <motion.p
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl sm:text-2xl font-medium text-primary/90 font-display mb-6"
+              className="text-xl sm:text-2xl font-bold text-primary-dark font-display mb-6"
             >
               Psychologue du Travail
             </motion.p>
@@ -125,8 +125,8 @@ export default function HeroSection() {
             >
               {features.map((feature, idx) => (
                 <li key={idx} className="flex items-center gap-3 text-sm sm:text-base text-foreground/80">
-                  <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
+                  <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-primary-dark" />
                   </div>
                   {feature}
                 </li>
