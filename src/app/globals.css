@@ -197,6 +197,12 @@
 
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+  
+  .render-lazy {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
   }
 
   body {

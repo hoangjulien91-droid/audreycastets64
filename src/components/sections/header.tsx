@@ -43,28 +43,28 @@ export default function Header() {
       <motion.header
         initial={prefersReducedMotion ? {} : { y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-          scrolled ? "py-3" : "py-4 sm:py-5"
+          scrolled ? "py-2 sm:py-3" : "py-4 sm:py-6"
         )}
       >
         <div className="container">
           <div
             className={cn(
-              "mx-auto flex items-center justify-between rounded-2xl px-4 sm:px-6 transition-all duration-500",
+              "mx-auto flex items-center justify-between rounded-full px-4 sm:px-6 transition-all duration-500",
               scrolled 
-                ? "bg-white/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(157,107,140,0.08)] border border-primary/5 py-3" 
-                : "bg-transparent py-2"
+                ? "glass-effect py-2.5 sm:py-3 shadow-sm" 
+                : "bg-transparent py-2 border border-transparent"
             )}
           >
-            <Link href="/" className="group flex items-center gap-3">
+            <Link href="/" className="group flex items-center gap-3 relative z-10">
               <Logo />
               <div className="flex flex-col">
                 <span className="text-lg sm:text-xl font-bold text-foreground transition-colors group-hover:text-primary font-display leading-none">
                   Audrey <span className="text-primary">Castets</span>
                 </span>
-                <span className="text-xs sm:text-sm text-muted-foreground font-display italic leading-snug">
+                <span className="text-xs sm:text-sm text-muted-foreground font-display italic leading-snug group-hover:text-primary/80 transition-colors">
                   Psychologue
                 </span>
               </div>
@@ -76,55 +76,57 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative px-4 py-2.5 text-sm font-medium transition-all duration-300 rounded-full",
+                    "relative px-4 py-2 text-[15px] font-medium transition-all duration-300 rounded-full group hover:text-primary",
                     pathname === link.href 
                       ? "text-primary" 
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-muted-foreground"
                   )}
                 >
                   {link.label}
                   {pathname === link.href && (
                     <motion.div
-                      className="absolute inset-0 bg-primary/[0.08] rounded-full -z-10"
+                      className="absolute inset-0 bg-primary/[0.06] rounded-full -z-10 border border-primary/10"
                       layoutId="nav-bg"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
+                  <div className="absolute inset-0 rounded-full scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 bg-primary/[0.03] -z-10" />
                 </Link>
               ))}
             </nav>
 
-            <div className="hidden items-center gap-3 lg:flex">
+            <div className="hidden items-center gap-4 lg:flex relative z-10">
               <a
                 href="tel:0743687297"
-                className="flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 rounded-full hover:bg-primary/[0.05]"
+                className="flex items-center gap-2.5 px-3 py-2 text-[15px] font-medium text-muted-foreground hover:text-primary transition-all duration-300 rounded-full hover:bg-primary/[0.05] group"
                 aria-label="Appeler le 07 43 68 72 97"
               >
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Phone className="w-3.5 h-3.5 text-primary" />
                 </div>
-                <span className="hidden xl:inline">07 43 68 72 97</span>
+                <span className="hidden xl:inline group-hover:font-semibold transition-all">07 43 68 72 97</span>
               </a>
               <Link
                 href="/contact"
-                className="group relative flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full bg-primary text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
+                className="btn-premium py-2.5 px-6 text-[15px]"
               >
-                <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                <span className="relative">Prendre RDV</span>
-                <ArrowRight className="w-4 h-4 relative transition-transform group-hover:translate-x-0.5" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Prendre RDV
+                  <ArrowRight className="w-4 h-4" />
+                </span>
               </Link>
             </div>
 
             <button
               className={cn(
-                "relative p-2.5 rounded-xl transition-all duration-300 lg:hidden",
-                "hover:bg-primary/[0.05] text-foreground"
+                "relative p-2.5 rounded-full transition-all duration-300 lg:hidden",
+                "hover:bg-primary/[0.05] text-foreground active:scale-95"
               )}
               aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={isMenuOpen}
               onClick={() => setIsMenuOpen(true)}
             >
-              <Menu className="h-5 w-5" />
+              <Menu className="h-6 w-6 text-foreground" strokeWidth={1.5} />
             </button>
           </div>
         </div>
@@ -137,19 +139,23 @@ export default function Header() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="absolute inset-0 bg-foreground/20 backdrop-blur-md" 
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 bg-background/60 backdrop-blur-sm" 
               onClick={() => setIsMenuOpen(false)} 
             />
             <motion.div 
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-background shadow-2xl"
+              transition={{ type: "spring", damping: 30, stiffness: 300, mass: 1 }}
+              className="absolute top-0 right-0 bottom-0 w-full max-w-sm glass-effect-strong shadow-2xl border-l border-white/20 overflow-hidden"
             >
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between px-5 py-5 border-b border-border/50">
+              {/* Decorative Orbs */}
+              <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-primary/20 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 opacity-50 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-violet/20 blur-[90px] rounded-full translate-y-1/2 -translate-x-1/2 opacity-50 pointer-events-none" />
+
+              <div className="flex flex-col h-full relative z-10">
+                <div className="flex items-center justify-between px-6 py-6 border-b border-primary/10">
                   <Link href="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
                     <Logo />
                     <div className="flex flex-col">
@@ -159,15 +165,15 @@ export default function Header() {
                   </Link>
                   <button
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-2.5 rounded-xl hover:bg-primary/[0.05] transition-colors"
+                    className="p-2.5 rounded-full hover:bg-black/5 transition-colors active:scale-95"
                     aria-label="Fermer le menu"
                   >
                     <X className="h-5 w-5 text-muted-foreground" />
                   </button>
                 </div>
 
-                <nav className="flex-1 overflow-y-auto px-4 py-6" role="navigation" aria-label="Menu mobile">
-                  <div className="space-y-1">
+                <nav className="flex-1 overflow-y-auto px-6 py-8" role="navigation" aria-label="Menu mobile">
+                  <div className="space-y-2">
                     {navLinks.map((link, idx) => (
                       <motion.div
                         key={link.href}
@@ -178,16 +184,21 @@ export default function Header() {
                         <Link
                           href={link.href}
                           className={cn(
-                            "flex items-center justify-between w-full rounded-xl py-3.5 px-4 text-[15px] font-medium transition-all duration-300",
+                            "flex items-center justify-between w-full rounded-2xl py-4 px-5 text-base font-medium transition-all duration-300 border border-transparent",
                             pathname === link.href 
-                              ? "bg-primary/10 text-primary" 
-                              : "text-foreground hover:bg-muted/50"
+                              ? "bg-primary/10 text-primary border-primary/10 shadow-sm" 
+                              : "text-foreground hover:bg-white/50 hover:border-white/40"
                           )}
                           onClick={() => setIsMenuOpen(false)}
                         >
-                          {link.label}
+                          <span className={cn(
+                            "transition-transform duration-300", 
+                            pathname === link.href ? "translate-x-1" : "group-hover:translate-x-1"
+                          )}>
+                            {link.label}
+                          </span>
                           {pathname === link.href && (
-                            <Sparkles className="w-4 h-4 text-primary" />
+                            <Sparkles className="w-4 h-4 text-primary animate-pulse" />
                           )}
                         </Link>
                       </motion.div>
@@ -195,21 +206,23 @@ export default function Header() {
                   </div>
                 </nav>
 
-                <div className="p-5 space-y-3 border-t border-border/50 bg-muted/30">
+                <div className="p-6 space-y-4 border-t border-primary/10 bg-white/30 backdrop-blur-sm">
                   <a
                     href="tel:0743687297"
-                    className="flex items-center justify-center gap-2.5 w-full rounded-xl py-3.5 text-[15px] font-medium text-foreground bg-white border border-border/50 hover:border-primary/30 transition-all duration-300 shadow-sm"
+                    className="flex items-center justify-center gap-3 w-full rounded-full py-4 text-[15px] font-medium text-foreground bg-white/80 border border-white hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-md"
                   >
                     <Phone className="w-4 h-4 text-primary" />
                     07 43 68 72 97
                   </a>
                   <Link
                     href="/contact"
-                    className="flex items-center justify-center gap-2 w-full rounded-xl py-3.5 text-[15px] font-semibold text-white bg-primary shadow-lg shadow-primary/20 hover:shadow-xl transition-all duration-300"
+                    className="btn-premium w-full !py-4"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Prendre RDV
-                    <ArrowRight className="w-4 h-4" />
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      Prendre RDV
+                      <ArrowRight className="w-5 h-5" />
+                    </span>
                   </Link>
                 </div>
               </div>

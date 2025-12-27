@@ -13,6 +13,7 @@ import Footer from '@/components/sections/footer';
 import { OrganizationJsonLd, LocalBusinessJsonLd, PersonJsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-static';
 export const revalidate = 3600; // Revalidate every hour
 
 export const metadata: Metadata = {

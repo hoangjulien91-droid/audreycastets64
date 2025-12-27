@@ -24,8 +24,31 @@ const nextConfig: NextConfig = {
   },
   transpilePackages: [],
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
-  }
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-slot'],
+  },
+  async headers() {
+    return [
+      {
+        source: '/:all*(svg|jpg|png)',
+        locale: false,
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -8,6 +8,7 @@ import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';
 import { ContactForm } from '@/components/contact/contact-form';
 
+export const dynamic = 'force-static';
 export const revalidate = 3600;
 
 export const metadata: Metadata = {

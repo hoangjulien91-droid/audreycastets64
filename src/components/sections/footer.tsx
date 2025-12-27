@@ -17,7 +17,7 @@ export default function Footer() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <footer className="relative overflow-hidden bg-soft-lavender/30">
+    <footer className="relative overflow-hidden bg-soft-lavender/30 render-lazy">
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="orb orb-primary w-[400px] h-[400px] -top-40 left-1/4 opacity-10" />
         <div className="orb orb-violet w-[300px] h-[300px] bottom-0 right-1/3 opacity-10" />
