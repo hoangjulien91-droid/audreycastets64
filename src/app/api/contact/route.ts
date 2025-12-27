@@ -233,7 +233,7 @@ export async function POST(request: NextRequest) {
         submittedAt,
       });
 
-      const adminEmail = process.env.ADMIN_EMAIL || 'audrey-castets@outlook.fr';
+      const adminEmail = process.env.ADMIN_EMAIL || 'audrey.castets@gmail.com';
       const notificationResult = await sendEmail({
         from: 'Notifications <contact@audreycastets.fr>',
         to: adminEmail,

@@ -15,7 +15,6 @@ import { ServiceFAQ } from '@/components/services/modules/ServiceFAQ';
 import { LocalSeoBlock } from '@/components/services/modules/LocalSeoBlock';
 import { AbstractServiceSchema } from '@/components/services/modules/AbstractServiceSchema';
 import { RelatedContent } from '@/components/services/modules/RelatedContent';
-import { ServiceNavigation } from '@/components/services/modules/ServiceNavigation';
 import { ScientificContext } from '@/components/services/modules/ScientificContext';
 import { CaseStudy } from '@/components/services/modules/CaseStudy';
 import { KeyFigures } from '@/components/services/modules/KeyFigures';
@@ -99,27 +98,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
         align="center"
       />
 
-      {/* 2. PROGRESS BAR & STICKY NAV */}
-      <ServiceNavigation />
-
       <div className="container mx-auto px-6 lg:px-8 mt-12 md:mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="max-w-5xl mx-auto">
           
-          {/* LEFT SIDEBAR (Desktop Only for TOC placeholder if needed, mainly centered content though) 
-              Actually StickyNav handles the TOC on the left column if layout permits, 
-              but here we use a centralized layout with the StickyNav covering the left space if desired
-              or we put content in col-span-12 and StickyNav is absolute/fixed. 
-              The current ServiceNavigation component is fixed/sticky on left.
-              Let's push content to the right a bit on large screens.
-          */}
-          <aside className="hidden lg:block lg:col-span-3 relative">
-            {/* The Navigation component renders itself into this space if positioned relatively, 
-                but our component uses 'fixed/sticky' classes internally. 
-                Let's assume the component handles its position nicely.
-            */}
-          </aside>
-
-          <div className="lg:col-span-8 lg:col-start-4">
+          <div>
             
             {/* 3. VULGARISATION MODULE */}
             <section id="comprendre" className="mb-20 scroll-mt-32">
