@@ -33,7 +33,7 @@ const fadeInUp = {
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.6 }
   }
 };
 
@@ -52,7 +52,7 @@ const cardHover = {
   hover: { 
     scale: 1.03, 
     y: -8,
-    transition: { duration: 0.3, ease: "easeOut" }
+    transition: { duration: 0.3 }
   }
 };
 
@@ -63,8 +63,7 @@ const glowPulse = {
     scale: [0.8, 1.1, 0.8],
     transition: {
       duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut"
+      repeat: Infinity
     }
   }
 };
@@ -109,7 +108,7 @@ export function AnimatedHeroSection() {
         <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 bg-pink-100 rounded-full border border-primary/20 shadow-sm mb-6">
           <motion.div
             animate={{ rotate: [0, 360] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 3, repeat: Infinity }}
           >
             <Sparkles className="w-4 h-4 text-primary" />
           </motion.div>
@@ -177,7 +176,7 @@ export function AnimatedServicesCards() {
             y: [0, -50, 0],
             scale: [1, 1.1, 1],
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 10, repeat: Infinity }}
           className="absolute top-0 right-0 w-96 h-96 bg-[#F3E8F0] rounded-full blur-3xl"
         />
         <motion.div 
@@ -186,7 +185,7 @@ export function AnimatedServicesCards() {
             y: [0, 50, 0],
             scale: [1, 1.2, 1],
           }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 12, repeat: Infinity }}
           className="absolute bottom-0 left-0 w-96 h-96 bg-[#E8DFF0] rounded-full blur-3xl"
         />
       </div>
