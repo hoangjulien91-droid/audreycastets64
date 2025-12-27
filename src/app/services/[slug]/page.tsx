@@ -16,6 +16,9 @@ import { LocalSeoBlock } from '@/components/services/modules/LocalSeoBlock';
 import { AbstractServiceSchema } from '@/components/services/modules/AbstractServiceSchema';
 import { RelatedContent } from '@/components/services/modules/RelatedContent';
 import { ServiceNavigation } from '@/components/services/modules/ServiceNavigation';
+import { ScientificContext } from '@/components/services/modules/ScientificContext';
+import { CaseStudy } from '@/components/services/modules/CaseStudy';
+import { KeyFigures } from '@/components/services/modules/KeyFigures';
 
 interface ServicePageProps {
   params: Promise<{
@@ -54,6 +57,9 @@ export async function generateStaticParams() {
   }));
 }
 
+import Header from '@/components/sections/header';
+import Footer from '@/components/sections/footer';
+
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
@@ -65,7 +71,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const related = getRelatedServices(service.relatedServices);
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-0">
+      <Header />
+      <main className="pt-20">
       <BreadcrumbJsonLd items={[
         { name: 'Accueil', url: '/' },
         { name: 'Services', url: '/services' },
@@ -139,6 +147,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
                   </div>
                 ))}
               </div>
+
+              {/* [NEW] KEY FIGURES */}
+              {service.keyStats && <KeyFigures keyStats={service.keyStats} />}
               
               <div className="text-lg leading-relaxed text-muted-foreground space-y-6">
                 <p>{service.fullDescription}</p>
@@ -146,10 +157,24 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </div>
             </section>
 
+            {/* [NEW] SCIENTIFIC CONTEXT (If available) */}
+            {service.scientificBasis && (
+               <section className="mb-20">
+                  <ScientificContext scientificBasis={service.scientificBasis} />
+               </section>
+            )}
+
             {/* 6. METHODOLOGY TIMELINE */}
             <section id="methodologie" className="mb-20 scroll-mt-32">
               <MethodologySteps steps={service.methodology} />
             </section>
+
+            {/* [NEW] CASE STUDY (If available) */}
+            {service.caseStudy && (
+               <section className="mb-20">
+                  <CaseStudy caseStudy={service.caseStudy} />
+               </section>
+            )}
 
             {/* 7. BIO FOCUS */}
             <section className="mb-20">
@@ -191,7 +216,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
          // We can wrap it or customize it here.
          // For now, the generic one is "S-Tier" enough.
       />
-
+      </main>
+      <Footer />
     </div>
   );
 }

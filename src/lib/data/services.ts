@@ -49,6 +49,24 @@ export interface ServiceData {
   testimonials: ServiceTestimonial[];
   faq: ServiceFAQ[];
   bioFocus: string;
+  scientificBasis?: {
+    title: string;
+    introduction: string;
+    points: { label: string; description: string }[];
+    conclusion: string;
+  };
+  caseStudy?: {
+    title: string;
+    context: string;
+    problem: string;
+    approach: string;
+    result: string;
+  };
+  keyStats?: {
+    value: string;
+    label: string;
+    source?: string;
+  }[];
   relatedServices: string[];
   relatedTests?: ('mbi' | 'diva')[];
 }
@@ -89,6 +107,28 @@ export const servicesData: ServiceData[] = [
       { question: "Est-ce compatible avec un traitement médicamenteux ?", answer: "Oui, tout à fait. La TCC est souvent recommandée en complément ou en alternative selon les cas." }
     ],
     bioFocus: "Formée aux TCC depuis plus de 10 ans, j'utilise cette approche rigoureuse avec douceur pour vous aider à déconstruire les schémas qui vous limitent.",
+    scientificBasis: {
+      title: "La Science derrière les TCC",
+      introduction: "Les Thérapies Cognitivo-Comportementales ne sont pas basées sur de simples intuitions, mais sur des décennies de recherches cliniques rigoureuses. Elles reposent sur le principe de neuroplasticité : notre cerveau peut apprendre et désapprendre tout au long de la vie.",
+      points: [
+          { label: "Validité Clinique", description: "Reconnue par l'OMS et la HAS (Haute Autorité de Santé) comme traitement de référence pour les troubles anxieux et dépressifs." },
+          { label: "Modèle STO", description: "Comprendre le lien entre Situation, Pensée (Cognition), Émotion et Comportement." },
+          { label: "Mesurabilité", description: "L'efficacité se mesure concrètement par la réduction des symptômes et l'atteinte d'objectifs définis." }
+      ],
+      conclusion: "C'est la seule psychothérapie dont l'efficacité a été prouvée scientifiquement de manière aussi large."
+    },
+    caseStudy: {
+      title: "Sortir de l'Anxiété Sociale",
+      context: "Pierre, 34 ans, ingénieur, évite toutes les réunions d'équipe de peur d'être jugé.",
+      problem: "Pierre souffre d'anxiété sociale. Il pense : 'Si je prends la parole, je vais rougir, bafouiller, et tout le monde verra que je suis incompétent'. Résultat : il s'isole et sa carrière stagne.",
+      approach: "Nous avons d'abord identifié ses pensées automatiques ('Lecture de pensée'). Puis, nous avons mis en place des expositions progressives : d'abord poser une question simple, puis présenter un slide, etc.",
+      result: "Après 12 séances, Pierre anime les réunions hebdomadaires. Il a toujours un peu le trac, mais il ne l'empêche plus d'agir. Il a obtenu une promotion 6 mois plus tard."
+    },
+    keyStats: [
+       { value: "70%", label: "Taux de réussite moyen", source: "Inserm" },
+       { value: "15", label: "Séances en moyenne", source: "Données cabinet" },
+       { value: "1er", label: "Traitement Recommandé", source: "HAS" }
+    ],
     relatedServices: ['gestion-stress-anxiete', 'depression', 'confiance-estime-de-soi']
   },
   {
