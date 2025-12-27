@@ -3,6 +3,7 @@ import { Link } from 'next-view-transitions';
 import { ArrowRight, Brain, AlertTriangle } from 'lucide-react';
 import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';
+import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'Tests & Pré-diagnostic | Audrey Castets - Psychologue du Travail',
@@ -16,6 +17,12 @@ export default function TestsPage() {
         <Header />
         <main className="pt-32 pb-20">
           <div className="container">
+            <Breadcrumbs 
+              items={[
+                { label: "Bilans Psychométriques" }
+              ]} 
+              className="mb-8"
+            />
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
                 Tests & <span className="text-primary">Pré-diagnostic</span>
