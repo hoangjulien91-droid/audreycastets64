@@ -65,7 +65,7 @@ export default function Header() {
                   Audrey Castets
                 </span>
                 <span className="text-[10px] sm:text-xs text-muted-foreground font-medium tracking-wider uppercase">
-                  Psychologue du Travail
+                  Psychologue TCC et du Travail
                 </span>
               </div>
             </Link>
@@ -154,7 +154,7 @@ export default function Header() {
                     <Logo />
                     <div className="flex flex-col">
                       <span className="text-base font-semibold text-foreground font-display">Audrey Castets</span>
-                      <span className="text-[10px] text-muted-foreground font-medium tracking-wider uppercase">Psychologue</span>
+                      <span className="text-[10px] text-muted-foreground font-medium tracking-wider uppercase">Psychologue TCC et du Travail</span>
                     </div>
                   </Link>
                   <button
