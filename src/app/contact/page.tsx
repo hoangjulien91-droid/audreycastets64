@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
+import { PageHero } from "@/components/ui/page-hero";
 import { Sparkles, Phone, Mail, MapPin, Clock, MessageCircle, CheckCircle, ChevronRight } from 'lucide-react';
 import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';
@@ -34,57 +35,42 @@ export default function ContactPage() {
         <Header />
         
         <main className="pt-20" id="main-content">
-          <section 
-            className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background"
-            aria-labelledby="contact-heading"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-[#F3E8F0]/40 via-[#E8DFF0]/30 to-transparent" aria-hidden="true" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4C5D9]/20 rounded-full blur-3xl" aria-hidden="true" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#A594B3]/15 rounded-full blur-3xl" aria-hidden="true" />
-            
-            <div className="container mx-auto px-4 relative z-10">
-              <nav className="mb-8" aria-label="Fil d'Ariane">
-                <Breadcrumb 
-                  items={[
-                    { label: "Accueil", href: "/" },
-                    { label: "Contact" }
-                  ]} 
-                />
-              </nav>
-
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30">
-                <Sparkles className="w-4 h-4 text-primary animate-pulse" aria-hidden="true" />
-                <span className="text-sm font-medium text-primary">Contact</span>
-              </div>
-
-              <h1 id="contact-heading" className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground font-display">
+          <PageHero
+            badge={{
+              icon: <Sparkles className="w-4 h-4" />,
+              text: "Contact"
+            }}
+            title={
+              <>
                 Prenons <span className="bg-gradient-to-r from-primary to-[#A594B3] bg-clip-text text-transparent">contact</span>
-              </h1>
-              
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-10">
-                Prenons contact pour échanger sur vos besoins et voir comment je peux vous accompagner dans votre démarche.
-              </p>
-
-              <div className="flex flex-wrap gap-3" role="list" aria-label="Avantages">
-                <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 text-sm text-foreground" role="listitem">
-                  <CheckCircle className="w-4 h-4 inline mr-2 text-primary" aria-hidden="true" />
-                  Réponse sous 24h
-                </div>
-                <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#A594B3]/30 text-sm text-foreground" role="listitem">
-                  <CheckCircle className="w-4 h-4 inline mr-2 text-[#A594B3]" aria-hidden="true" />
-                  Premier entretien offert
-                </div>
-                <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 text-sm text-foreground" role="listitem">
-                  <CheckCircle className="w-4 h-4 inline mr-2 text-primary" aria-hidden="true" />
-                  Confidentialité absolue
-                </div>
-                <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#A594B3]/30 text-sm text-foreground" role="listitem">
-                  <CheckCircle className="w-4 h-4 inline mr-2 text-[#A594B3]" aria-hidden="true" />
-                  Sans engagement
-                </div>
+              </>
+            }
+            subtitle="Prenons contact pour échanger sur vos besoins et voir comment je peux vous accompagner dans votre démarche."
+            breadcrumbs={[
+              { label: "Accueil", href: "/" },
+              { label: "Contact" }
+            ]}
+            align="left"
+          >
+            <div className="flex flex-wrap gap-3 mt-8" role="list" aria-label="Avantages">
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 text-sm text-foreground" role="listitem">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-primary" aria-hidden="true" />
+                Réponse sous 24h
+              </div>
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#A594B3]/30 text-sm text-foreground" role="listitem">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-[#A594B3]" aria-hidden="true" />
+                Premier entretien offert
+              </div>
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 text-sm text-foreground" role="listitem">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-primary" aria-hidden="true" />
+                Confidentialité absolue
+              </div>
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#A594B3]/30 text-sm text-foreground" role="listitem">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-[#A594B3]" aria-hidden="true" />
+                Sans engagement
               </div>
             </div>
-          </section>
+          </PageHero>
 
           <section className="py-20 bg-white" aria-labelledby="contact-info-heading">
             <div className="container mx-auto px-4">

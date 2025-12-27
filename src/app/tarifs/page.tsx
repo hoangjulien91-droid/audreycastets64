@@ -1,7 +1,9 @@
 import Header from "@/components/sections/header";
+import { PageHero } from "@/components/ui/page-hero";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
-import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import Link from 'next/link';
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import type { Metadata } from 'next';
 import { 
   CircleCheck,
@@ -50,67 +52,43 @@ export default function TarifsPage() {
       
       <main className="pt-20" id="main-content">
         {/* Hero Section with Breadcrumb */}
-        <section 
-          className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
-          aria-labelledby="tarifs-heading"
-        >
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
-            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-[#D4C5D9]/40 rounded-full blur-3xl animate-blob"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#A594B3]/30 rounded-full blur-3xl animate-blob" style={{ animationDelay: '1s' }}></div>
-          </div>
-
-          <div className="container mx-auto px-6 lg:px-8 relative z-10">
-            {/* Breadcrumb */}
-            <nav className="mb-8" aria-label="Fil d'Ariane">
-              <Breadcrumb 
-                items={[
-                  { label: "Accueil", href: "/" },
-                  { label: "Tarifs" }
-                ]} 
-              />
-            </nav>
-
-            {/* Hero Content */}
-            <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
-                <Sparkles className="w-4 h-4 text-primary animate-pulse" aria-hidden="true" />
-                <span className="text-sm font-medium text-primary">
-                  Tarifs Transparents
-                </span>
-              </div>
-
-              <h1 id="tarifs-heading" className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Des tarifs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">transparents</span> adaptés à vos besoins
-              </h1>
-
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
-                Des tarifs transparents adaptés à vos besoins, avec possibilité de prise en charge selon votre situation.
-              </p>
-
-              {/* Key Features Pills */}
-              <div className="flex flex-wrap gap-3 justify-center" role="list" aria-label="Points clés">
-                {[
-                  { icon: <BadgeCheck className="w-4 h-4" />, label: "Tarifs clairs" },
-                  { icon: <CreditCard className="w-4 h-4" />, label: "Plusieurs moyens de paiement" },
-                  { icon: <FileText className="w-4 h-4" />, label: "Factures & reçus" },
-                  { icon: <Shield className="w-4 h-4" />, label: "Pas d'engagement" }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 shadow-sm"
-                    role="listitem"
-                  >
-                    <span className="text-primary" aria-hidden="true">{item.icon}</span>
-                    <span className="text-sm font-medium text-foreground">
-                      {item.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+      <PageHero
+        badge={{
+          icon: <Sparkles className="w-4 h-4" />,
+          text: "Tarifs Transparents"
+        }}
+        title={
+          <>
+            Des tarifs <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">transparents</span> adaptés à vos besoins
+          </>
+        }
+        subtitle="Des tarifs transparents adaptés à vos besoins, avec possibilité de prise en charge selon votre situation."
+        breadcrumbs={[
+          { label: "Accueil", href: "/" },
+          { label: "Tarifs" }
+        ]}
+        align="center"
+      >
+        <div className="flex flex-wrap gap-3 justify-center mt-8" role="list" aria-label="Points clés">
+          {[
+            { icon: <BadgeCheck className="w-4 h-4" />, label: "Tarifs clairs" },
+            { icon: <CreditCard className="w-4 h-4" />, label: "Plusieurs moyens de paiement" },
+            { icon: <FileText className="w-4 h-4" />, label: "Factures & reçus" },
+            { icon: <Shield className="w-4 h-4" />, label: "Pas d'engagement" }
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 shadow-sm"
+              role="listitem"
+            >
+              <span className="text-primary" aria-hidden="true">{item.icon}</span>
+              <span className="text-sm font-medium text-foreground">
+                {item.label}
+              </span>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </PageHero>
 
         {/* Pricing Cards Section */}
         <section 
@@ -193,13 +171,13 @@ export default function TarifsPage() {
                         </span>
                       </li>
                     </ul>
-                    <a
+                    <Link
                       href="/#contact"
                       className="inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
                     >
                       Prendre rendez-vous
                       <ArrowRight className="w-5 h-5 ml-2" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -257,13 +235,13 @@ export default function TarifsPage() {
                         </span>
                       </li>
                     </ul>
-                    <a
+                    <Link
                       href="/#contact"
                       className="inline-flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-[#8B7A98] to-[#A594B3] text-white font-semibold rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-300 cursor-pointer"
                     >
                       Demander un devis
                       <ArrowRight className="w-5 h-5 ml-2" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -469,21 +447,21 @@ export default function TarifsPage() {
                 N'hésitez pas à me contacter pour toute question concernant les tarifs, les modalités de paiement ou les possibilités de remboursement.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+                <Link
                   href="/#contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-primary bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                   aria-label="Me contacter pour des questions sur les tarifs"
                 >
                   Me contacter
                   <ArrowRight className="w-5 h-5" aria-hidden="true" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/services"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full border-2 border-white hover:bg-white/30 transition-all duration-300"
                   aria-label="Découvrir les services proposés"
                 >
                   Découvrir mes services
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,4 +1,6 @@
+import Link from "next/link";
 import Header from "@/components/sections/header";
+import { PageHero } from "@/components/ui/page-hero";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import Image from "next/image";
@@ -53,100 +55,87 @@ export default function QuiSuisJePage() {
       
       <main className="pt-20" id="main-content">
         {/* Hero Section with Breadcrumb */}
-        <section 
-          className="relative overflow-hidden bg-gradient-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
-          aria-label="Présentation d'Audrey Castets"
+        {/* Hero Section with Breadcrumb */}
+        <PageHero
+          title={null}
+          breadcrumbs={[
+            { label: "Accueil", href: "/" },
+            { label: "Qui suis-je" }
+          ]}
+          align="left"
         >
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 pointer-events-none opacity-30" aria-hidden="true">
-            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-[#D4C5D9]/40 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#A594B3]/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          </div>
-
-          <div className="container mx-auto px-6 lg:px-8 relative z-10">
-            {/* Breadcrumb */}
-            <nav className="mb-8" aria-label="Fil d'Ariane">
-              <Breadcrumb 
-                items={[
-                  { label: "Accueil", href: "/" },
-                  { label: "Qui suis-je" }
-                ]} 
-              />
-            </nav>
-
-            {/* Hero Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* Left Content */}
-              <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
-                  <Sparkles className="w-4 h-4 text-primary animate-pulse" aria-hidden="true" />
-                  <span className="text-sm font-medium text-primary">
-                    Mon parcours & expertise
-                  </span>
-                </div>
-
-                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                  Audrey <span className="text-primary">Castets</span>
-                </h1>
-
-                <div className="flex items-center gap-2.5 mb-6">
-                  <Heart className="w-6 h-6 text-primary fill-primary animate-pulse" aria-hidden="true" />
-                  <p className="text-xl md:text-2xl text-primary font-semibold font-display">
-                    Psychologue du Travail
-                  </p>
-                </div>
-
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  Passionnée par l'accompagnement humain, j'ai construit mon expertise autour de la <strong className="text-foreground">psychologie du travail</strong>, des <strong className="text-foreground">thérapies cognitivo-comportementales (TCC)</strong> et de <strong className="text-foreground">l'EFT</strong>. Mon objectif : vous aider à retrouver un équilibre entre vie professionnelle et bien-être personnel.
-                </p>
-
-                {/* Quick Stats */}
-                <div className="grid grid-cols-3 gap-4" role="list" aria-label="Statistiques clés">
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
-                      <Award className="w-6 h-6 text-white" />
-                    </div>
-                    <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 5 ans">+5 ans</p>
-                    <p className="text-xs text-muted-foreground text-center">Expérience</p>
-                  </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-full mb-2 mx-auto" aria-hidden="true">
-                      <Users className="w-6 h-6 text-white" />
-                    </div>
-                    <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 200">200+</p>
-                    <p className="text-xs text-muted-foreground text-center">Accompagnements</p>
-                  </div>
-                  <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
-                      <Star className="w-6 h-6 text-white" />
-                    </div>
-                    <p className="text-2xl font-bold text-primary text-center" aria-label="95 pourcent">95%</p>
-                    <p className="text-xs text-muted-foreground text-center">Satisfaction</p>
-                  </div>
-                </div>
+          {/* Hero Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
+                <Sparkles className="w-4 h-4 text-primary animate-pulse" aria-hidden="true" />
+                <span className="text-sm font-medium text-primary">
+                  Mon parcours & expertise
+                </span>
               </div>
 
-              {/* Right Image */}
-              <div className="flex justify-center lg:justify-end">
-                <div className="relative group">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98] opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700" aria-hidden="true"></div>
-                  <div className="relative">
-                    <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg"
-                      alt="Audrey Castets - Psychologue du Travail"
-                      width={500}
-                      height={500}
-                      sizes="(max-width: 768px) 288px, (max-width: 1024px) 384px, 400px"
-                      className="w-72 h-72 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] object-cover rounded-full shadow-2xl ring-8 ring-white/60 group-hover:ring-[#D4C5D9]/40 transition-all duration-500"
-                      priority
-                      quality={85}
-                    />
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                Audrey <span className="text-primary">Castets</span>
+              </h1>
+
+              <div className="flex items-center gap-2.5 mb-6">
+                <Heart className="w-6 h-6 text-primary fill-primary animate-pulse" aria-hidden="true" />
+                <p className="text-xl md:text-2xl text-primary font-semibold font-display">
+                  Psychologue du Travail
+                </p>
+              </div>
+
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                Passionnée par l'accompagnement humain, j'ai construit mon expertise autour de la <strong className="text-foreground">psychologie du travail</strong>, des <strong className="text-foreground">thérapies cognitivo-comportementales (TCC)</strong> et de <strong className="text-foreground">l'EFT</strong>. Mon objectif : vous aider à retrouver un équilibre entre vie professionnelle et bien-être personnel.
+              </p>
+
+              {/* Quick Stats */}
+              <div className="grid grid-cols-3 gap-4" role="list" aria-label="Statistiques clés">
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
+                    <Award className="w-6 h-6 text-white" />
                   </div>
+                  <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 5 ans">+5 ans</p>
+                  <p className="text-xs text-muted-foreground text-center">Expérience</p>
+                </div>
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#C5B8D0] to-[#A594B3] rounded-full mb-2 mx-auto" aria-hidden="true">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 200">200+</p>
+                  <p className="text-xs text-muted-foreground text-center">Accompagnements</p>
+                </div>
+                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
+                  <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
+                    <Star className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-2xl font-bold text-primary text-center" aria-label="95 pourcent">95%</p>
+                  <p className="text-xs text-muted-foreground text-center">Satisfaction</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative group">
+                <div className="absolute -inset-6 bg-gradient-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98] opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700" aria-hidden="true"></div>
+                <div className="relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg"
+                    alt="Audrey Castets - Psychologue du Travail"
+                    width={500}
+                    height={500}
+                    sizes="(max-width: 768px) 288px, (max-width: 1024px) 384px, 400px"
+                    className="w-72 h-72 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] object-cover rounded-full shadow-2xl ring-8 ring-white/60 group-hover:ring-[#D4C5D9]/40 transition-all duration-500"
+                    priority
+                    quality={85}
+                  />
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </PageHero>
 
         {/* Mon Parcours Section */}
         <section 
@@ -395,20 +384,20 @@ export default function QuiSuisJePage() {
                 Contactez-moi dès aujourd'hui pour un premier échange confidentiel et sans engagement.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-primary bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                   aria-label="Prendre contact avec Audrey Castets"
                 >
                   Prendre contact
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/#services"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full border-2 border-white hover:bg-white/30 transition-all duration-300"
                   aria-label="Découvrir les services proposés"
                 >
                   Découvrir mes services
-                </a>
+                </Link>
               </div>
             </div>
           </div>

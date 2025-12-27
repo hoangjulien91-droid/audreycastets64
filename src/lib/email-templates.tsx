@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Head } from '@react-email/components';
 
 interface ContactConfirmationEmailProps {
   name: string;
@@ -8,7 +9,7 @@ export const ContactConfirmationEmail: React.FC<ContactConfirmationEmailProps> =
   name,
 }) => (
   <html>
-    <head>
+    <Head>
       <style>
         {`
           body {
@@ -90,7 +91,7 @@ export const ContactConfirmationEmail: React.FC<ContactConfirmationEmailProps> =
           }
         `}
       </style>
-    </head>
+    </Head>
     <body>
       <div className="container">
         <div className="header">
@@ -149,7 +150,7 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
   submittedAt,
 }) => (
   <html>
-    <head>
+    <Head>
       <style>
         {`
           body {
@@ -250,7 +251,7 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
           }
         `}
       </style>
-    </head>
+    </Head>
     <body>
       <div className="container">
         <div className="header">

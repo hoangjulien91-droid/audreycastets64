@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -470,21 +471,21 @@ export default function MonApprochePage() {
                 Prenons un premier rendez-vous pour échanger sur vos besoins. C'est gratuit, sans engagement et entièrement confidentiel.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+                <Link
                   href="/#contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-primary bg-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                   aria-label="Réserver un premier entretien gratuit"
                 >
                   Premier entretien gratuit
                   <ArrowRight className="w-5 h-5" aria-hidden="true" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/qui-suis-je"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full border-2 border-white hover:bg-white/30 transition-all duration-300"
                   aria-label="En savoir plus sur mon parcours"
                 >
                   En savoir plus sur moi
-                </a>
+                </Link>
               </div>
             </div>
           </div>

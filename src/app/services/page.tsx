@@ -1,9 +1,10 @@
 import Header from "@/components/sections/header";
+import { PageHero } from "@/components/ui/page-hero";
 import Footer from "@/components/sections/footer";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
+import { Sparkles } from "lucide-react";
 import type { Metadata } from 'next';
-import { 
+import {
   AnimatedHeroSection,
   AnimatedServicesParticuliers,
   AnimatedServicesProfessionnels,
@@ -34,36 +35,36 @@ export default function ServicesPage() {
         { name: 'Accueil', url: '/' },
         { name: 'Mes Services' }
       ]} />
-      <ServiceJsonLd 
+      <ServiceJsonLd
         name="Accompagnement Particuliers - TCC & EFT"
         description="Thérapie Cognitive et Comportementale (TCC) et EFT pour accompagnement personnel"
         price="55"
       />
-      <ServiceJsonLd 
+      <ServiceJsonLd
         name="Accompagnement Professionnels - Psychologie du Travail"
         description="Diagnostic RPS, recrutement, ateliers de prévention pour entreprises"
       />
       <div className="min-h-screen bg-background">
         <Header />
-        
+
         <main className="pt-20" id="main-content">
-          {/* Hero Section with Breadcrumb */}
-          <section 
-            className="relative overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50/30 to-background py-16 md:py-24"
-            aria-labelledby="services-heading"
-          >
-            <div className="container mx-auto px-6 lg:px-8 relative z-10">
-              <nav className="mb-8" aria-label="Fil d'Ariane">
-                <Breadcrumb 
-                  items={[
-                    { label: "Accueil", href: "/" },
-                    { label: "Mes Services" }
-                  ]} 
-                />
-              </nav>
-              <AnimatedHeroSection />
-            </div>
-          </section>
+          <PageHero
+            badge={{
+              icon: <Sparkles className="w-4 h-4" />,
+              text: "Accompagnement Psychologique"
+            }}
+            title={
+              <>
+                Expertise & <span className="text-primary">Services</span>
+              </>
+            }
+            subtitle="Des accompagnements adaptés à vos besoins, que vous soyez un particulier en quête de mieux-être ou une entreprise soucieuse de la qualité de vie au travail."
+            breadcrumbs={[
+              { label: "Accueil", href: "/" },
+              { label: "Mes Services" }
+            ]}
+            align="center"
+          />
 
           <AnimatedServicesParticuliers />
           <AnimatedServicesProfessionnels />

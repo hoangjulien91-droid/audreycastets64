@@ -1,4 +1,6 @@
 "use client";
+import React from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -31,7 +33,7 @@ export function Navigation() {
               href="/" 
               className="text-xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
             >
-              Orchids
+              Audrey Castets
             </Link>
           </div>
           <div className="flex items-center space-x-1 overflow-x-auto">

@@ -13,7 +13,7 @@
         "verify": "npm run lint && npm run typecheck && npm run build"
     },
     "dependencies": {
-        "@babel/parser": "^7.28.4",
+
         "@headlessui/react": "^2.2.9",
         "@heroicons/react": "^2.2.0",
         "@hookform/resolvers": "^5.1.1",
@@ -64,7 +64,7 @@
         "embla-carousel-auto-scroll": "^8.6.0",
         "embla-carousel-autoplay": "^8.6.0",
         "embla-carousel-react": "^8.6.0",
-        "estree-walker": "2.0.2",
+
         "framer-motion": "^12.23.24",
         "input-otp": "^1.4.2",
         "lucide-react": "^0.545.0",

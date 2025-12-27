@@ -199,7 +199,7 @@ export async function POST(request: NextRequest) {
       timeStyle: 'short',
     });
 
-    let emailsSent = {
+    const emailsSent = {
       confirmation: false,
       notification: false,
     };
