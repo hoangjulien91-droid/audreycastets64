@@ -61,11 +61,11 @@ export default function Header() {
             <Link href="/" className="group flex items-center gap-3">
               <Logo />
               <div className="flex flex-col">
-                <span className="text-base sm:text-lg font-semibold text-foreground transition-colors group-hover:text-primary font-display leading-tight tracking-tight">
+                <span className="text-lg sm:text-xl font-bold text-foreground transition-colors group-hover:text-primary font-display leading-none">
                   Audrey Castets
                 </span>
-                <span className="text-[10px] sm:text-xs text-muted-foreground font-medium tracking-wider uppercase">
-                  Psychologue TCC et du Travail
+                <span className="text-xs sm:text-sm text-muted-foreground font-display italic leading-snug">
+                  Psychologue
                 </span>
               </div>
             </Link>
@@ -153,8 +153,8 @@ export default function Header() {
                   <Link href="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
                     <Logo />
                     <div className="flex flex-col">
-                      <span className="text-base font-semibold text-foreground font-display">Audrey Castets</span>
-                      <span className="text-[10px] text-muted-foreground font-medium tracking-wider uppercase">Psychologue TCC et du Travail</span>
+                      <span className="text-lg font-bold text-foreground font-display leading-none">Audrey Castets</span>
+                      <span className="text-xs text-muted-foreground font-display italic leading-snug">Psychologue</span>
                     </div>
                   </Link>
                   <button
