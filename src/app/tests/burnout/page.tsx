@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { MBIWizard } from '@/components/tests/mbi/mbi-wizard';
+import { Breadcrumbs } from '@/components/ui/breadcrumbs';
 import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';
 
@@ -13,6 +14,14 @@ export default function BurnoutTestPage() {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <main className="flex-1 flex flex-col pt-32 pb-20 px-4">
+        <div className="container mx-auto">
+             <Breadcrumbs 
+                items={[
+                    { label: "Bilans Psychométriques", href: "/tests" },
+                    { label: "Test de Burnout (MBI)" }
+                ]} 
+             />
+        </div>
         <MBIWizard />
       </main>
       <Footer />

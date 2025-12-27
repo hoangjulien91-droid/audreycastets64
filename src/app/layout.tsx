@@ -37,6 +37,12 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  other: {
+    'geo.region': 'FR-64',
+    'geo.placename': 'Biarritz',
+    'geo.position': '43.4832; -1.5586', // Coordonnées approximatives Biarritz
+    'ICBM': '43.4832, -1.5586',
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",

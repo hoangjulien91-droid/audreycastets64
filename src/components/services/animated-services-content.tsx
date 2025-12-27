@@ -337,55 +337,64 @@ const servicesParticuliers = [
     icon: <Brain className="w-6 h-6" />,
     title: "Thérapies Cognitivo-Comportementales (TCC)",
     description: "Approche structurée pour identifier et modifier les pensées et comportements inadaptés. Efficace pour l'anxiété, la dépression, les phobies.",
-    color: "primary"
+    color: "primary",
+    slug: "therapies-cognitivo-comportementales-tcc"
   },
   {
     icon: <Zap className="w-6 h-6" />,
     title: "EFT (Emotional Freedom Techniques)",
     description: "Technique psycho-corporelle combinant stimulation de points d'acupression et travail cognitif pour libérer les émotions négatives rapidement.",
-    color: "secondary-purple"
+    color: "secondary-purple",
+    slug: "eft-emotional-freedom-techniques"
   },
   {
     icon: <Cloud className="w-6 h-6" />,
     title: "Dépression",
     description: "Accompagnement thérapeutique pour sortir de la dépression. Travail sur les pensées négatives, la motivation et la reconstruction du plaisir au quotidien.",
-    color: "primary"
+    color: "primary",
+    slug: "depression"
   },
   {
     icon: <Smile className="w-6 h-6" />,
     title: "Confiance et estime de soi",
     description: "Renforcement de la confiance en soi et de l'estime personnelle. Travail sur l'image de soi, l'affirmation et la valorisation de ses capacités.",
-    color: "secondary-purple"
+    color: "secondary-purple",
+    slug: "confiance-estime-de-soi"
   },
   {
     icon: <TrendingUp className="w-6 h-6" />,
     title: "Burn-out et épuisement professionnel",
     description: "Accompagnement spécialisé pour prévenir et traiter l'épuisement professionnel. Stratégies de récupération et de prévention de la rechute.",
-    color: "primary"
+    color: "primary",
+    slug: "burn-out-epuisement-professionnel"
   },
   {
     icon: <Target className="w-6 h-6" />,
     title: "Gestion du stress et de l'anxiété",
     description: "Techniques concrètes pour gérer le stress quotidien, l'anxiété généralisée et les attaques de panique. Outils pratiques et durables.",
-    color: "secondary-purple"
+    color: "secondary-purple",
+    slug: "gestion-stress-anxiete"
   },
   {
     icon: <Lightbulb className="w-6 h-6" />,
     title: "Développement personnel",
     description: "Travail sur la confiance en soi, l'estime de soi, la gestion des émotions et l'affirmation de soi pour mieux vivre au quotidien.",
-    color: "primary"
+    color: "primary",
+    slug: "developpement-personnel"
   },
   {
     icon: <FileCheck className="w-6 h-6" />,
     title: "Bilan de compétences",
     description: "Accompagnement structuré pour identifier vos compétences, valeurs et motivations. Clarification de votre projet professionnel et orientation de carrière.",
-    color: "secondary-purple"
+    color: "secondary-purple",
+    slug: "bilan-de-competences"
   },
   {
     icon: <Briefcase className="w-6 h-6" />,
     title: "Reconversion professionnelle",
     description: "Accompagnement dans votre réflexion de changement de carrière. Bilan de compétences, clarification de projet, gestion du stress lié au changement.",
-    color: "primary"
+    color: "primary",
+    slug: "reconversion-professionnelle"
   }
 ];
 
@@ -394,31 +403,36 @@ const servicesProfessionnels = [
     icon: <Shield className="w-6 h-6" />,
     title: "Prévention des Risques Psychosociaux (RPS)",
     description: "Diagnostic organisationnel, identification des facteurs de risque, plan d'action sur mesure pour améliorer la qualité de vie au travail.",
-    color: "secondary-purple"
+    color: "secondary-purple",
+    slug: "prevention-risques-psychosociaux-rps"
   },
   {
     icon: <UserCheck className="w-6 h-6" />,
     title: "Recrutement et évaluation",
     description: "Tests de personnalité SOSIE, entretiens structurés, évaluation des soft skills pour des recrutements réussis et pertinents.",
-    color: "primary"
+    color: "primary",
+    slug: "recrutement-evaluation"
   },
   {
     icon: <MessageCircle className="w-6 h-6" />,
     title: "Ateliers de prévention du stress",
     description: "Formations et ateliers collectifs sur la gestion du stress, la communication, la cohésion d'équipe et le bien-être au travail.",
-    color: "secondary-purple"
+    color: "secondary-purple",
+    slug: "ateliers-prevention-stress"
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: "Cellule d'écoute et soutien psychologique",
     description: "Mise en place d'espaces d'écoute confidentiels pour les salariés. Intervention en cas de crise ou d'événement traumatique.",
-    color: "secondary-purple"
+    color: "secondary-purple",
+    slug: "cellule-ecoute-soutien-psychologique"
   },
   {
     icon: <Award className="w-6 h-6" />,
     title: "Formation management et RH",
     description: "Formation des managers à la détection des signaux de souffrance, au management bienveillant et à la prévention du burn-out.",
-    color: "primary"
+    color: "primary",
+    slug: "formation-management-rh"
   }
 ];
 
@@ -447,14 +461,14 @@ export function AnimatedServiceDetails({ title, services, bgColor = "gradient-to
 
           <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {services.map((service: any, index: number) => (
+              <Link href={`/services/${service.slug}`} key={index} className="block h-full"> 
               <motion.div
-                key={index}
                 variants={fadeInUp}
                 whileHover={{ 
                   y: -8, 
                   boxShadow: "0 20px 60px rgba(139, 122, 152, 0.2)" 
                 }}
-                className="group bg-white rounded-2xl p-6 border border-border shadow-md transition-all duration-300"
+                className="group bg-white rounded-2xl p-6 border border-border shadow-md transition-all duration-300 h-full interact-hover"
               >
                 <motion.div 
                   className={`w-12 h-12 bg-linear-to-br ${
@@ -467,13 +481,18 @@ export function AnimatedServiceDetails({ title, services, bgColor = "gradient-to
                 >
                   {service.icon}
                 </motion.div>
-                <h3 className="text-lg font-bold text-foreground mb-2">
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
+                
+                <div className="mt-4 flex items-center text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">
+                   En savoir plus <ArrowRight className="w-4 h-4 ml-1" />
+                </div>
               </motion.div>
+              </Link>
             ))}
           </motion.div>
         </div>
@@ -589,62 +608,76 @@ export function AnimatedFinalCTA() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="py-16 md:py-20 bg-linear-to-r from-primary via-purple-500 to-primary relative overflow-hidden"
+      className="py-20 md:py-32 relative overflow-hidden"
     >
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 4, repeat: Infinity }}
-        className="absolute top-0 left-1/4 w-96 h-96 bg-white/20 rounded-full blur-3xl"
-      />
-      
-      <div className="container mx-auto px-6 lg:px-8 text-center relative z-10">
-        <div className="max-w-3xl mx-auto">
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl font-bold text-white mb-6"
-          >
-            Prêt(e) à démarrer votre accompagnement ?
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-white/90 text-lg mb-8"
-          >
-            Prenons contact pour échanger sur vos besoins et trouver ensemble la solution la plus adaptée à votre situation.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <motion.a
-              href="/#contact"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 50px rgba(0,0,0,0.2)" }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-primary bg-white rounded-full shadow-xl"
-            >
-              Prendre contact
-              <ArrowRight className="w-5 h-5" />
-            </motion.a>
-            <motion.a
-              href="/mon-approche"
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.3)" }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white glass-effect rounded-full border-2 border-white"
-            >
-              Découvrir mon approche
-            </motion.a>
-          </motion.div>
-        </div>
+      {/* Background Decor */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#FDFCFB] to-[#F9F7F4]/50" />
+        <motion.div 
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Infinity }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-linear-to-br from-primary/5 via-violet-500/5 to-rose-400/5 rounded-full blur-3xl opacity-60"
+        />
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <div className="card-premium p-10 md:p-14 relative overflow-hidden">
+             {/* Gradient Border Glow */}
+             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-violet/10 to-rose/10 opacity-50 pointer-events-none" />
+             
+             <div className="relative z-10">
+                <motion.div 
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="w-16 h-16 mx-auto mb-8 rounded-2xl bg-linear-to-br from-[#F8F5F7] to-[#FFFFFF] shadow-sm border border-white flex items-center justify-center transform hover:scale-110 transition-transform duration-500"
+                >
+                  <Sparkles className="w-8 h-8 text-primary" />
+                </motion.div>
+
+                <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                  Prêt(e) à démarrer <br className="hidden md:block" />
+                  <span className="gradient-text">votre accompagnement ?</span>
+                </h2>
+
+                <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+                  Prenons contact pour échanger sur vos besoins et trouver ensemble la solution la plus adaptée à votre situation.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Link href="/contact" className="w-full sm:w-auto">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="btn-premium w-full sm:w-auto min-w-[200px]"
+                    >
+                      Prendre contact
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </motion.div>
+                  </Link>
+                  
+                  <Link href="/mon-approche" className="w-full sm:w-auto">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="btn-secondary-premium w-full sm:w-auto min-w-[200px]"
+                    >
+                      Découvrir mon approche
+                    </motion.div>
+                  </Link>
+                </div>
+             </div>
+          </div>
+        </motion.div>
       </div>
     </motion.section>
   );
