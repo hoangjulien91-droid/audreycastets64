@@ -1,6 +1,6 @@
 "use client";
 
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { Heart, Layers3, MessageCircle, Target, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 

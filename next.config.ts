@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
   transpilePackages: [],
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-slot'],
+    reactCompiler: true,
   },
   async headers() {
     return [

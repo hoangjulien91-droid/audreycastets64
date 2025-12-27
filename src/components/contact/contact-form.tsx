@@ -10,7 +10,7 @@ export function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    type: '',
+    service_type: '',
     message: ''
   });
 
@@ -35,7 +35,7 @@ export function ContactForm() {
       }
 
       setIsSuccess(true);
-      setFormData({ name: '', email: '', type: '', message: '' });
+      setFormData({ name: '', email: '', service_type: '', message: '' });
       
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -131,13 +131,13 @@ export function ContactForm() {
 
         {/* Type Dropdown */}
         <div>
-          <label htmlFor="type" className="block text-sm font-semibold text-[var(--color-text-primary)] mb-2">
+          <label htmlFor="service_type" className="block text-sm font-semibold text-[var(--color-text-primary)] mb-2">
             Je suis <span className="text-red-500">*</span>
           </label>
           <select
-            id="type"
-            name="type"
-            value={formData.type}
+            id="service_type"
+            name="service_type"
+            value={formData.service_type}
             onChange={handleChange}
             required
             className="w-full px-4 py-3 border border-[#E5E7EB] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all bg-white"

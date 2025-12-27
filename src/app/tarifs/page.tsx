@@ -2,7 +2,7 @@ import Header from "@/components/sections/header";
 import { PageHero } from "@/components/ui/page-hero";
 import Footer from "@/components/sections/footer";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import type { Metadata } from 'next';
 import { 

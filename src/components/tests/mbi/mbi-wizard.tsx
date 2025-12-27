@@ -203,7 +203,8 @@ export function MBIWizard() {
                         <button
                             key={option.value}
                             onClick={() => {
-                                setValue(`answers.${currentQuestion.id}` as any, option.value);
+                                const currentAnswers = watch('answers');
+                                setValue('answers', { ...currentAnswers, [currentQuestion.id]: option.value });
                                 // Auto advance after short delay for better UX
                                 setTimeout(() => {
                                     if (step < MBI_QUESTIONS.length) {

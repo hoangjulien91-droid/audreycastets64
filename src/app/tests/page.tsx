@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { ArrowRight, Brain, AlertTriangle } from 'lucide-react';
 import Header from '@/components/sections/header';
 import Footer from '@/components/sections/footer';

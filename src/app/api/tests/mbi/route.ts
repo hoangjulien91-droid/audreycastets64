@@ -109,8 +109,16 @@ const getClientEmailHtml = (name: string, results: ReturnType<typeof calculateMB
 </html>
 `;
 
+interface MBIRequestData {
+  answers: MBIAnswer[];
+  userData: {
+    name: string;
+    email: string;
+  };
+}
+
 // Template Email Admin (Détaillé)
-const getAdminEmailHtml = (data: any, results: ReturnType<typeof calculateMBIResults>) => {
+const getAdminEmailHtml = (data: MBIRequestData, results: ReturnType<typeof calculateMBIResults>) => {
   const answersHtml = data.answers.map((a: MBIAnswer) => {
     const q = MBI_QUESTIONS.find(que => que.id === a.questionId);
     return `<li><strong>Q${a.questionId} (${q?.dimension}):</strong> ${a.value}/6 - ${q?.text}</li>`;

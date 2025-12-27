@@ -3,7 +3,7 @@
 import { DivaResult } from "@/types/diva";
 import { motion } from "framer-motion";
 import { Info, Brain, Activity, Target } from "lucide-react";
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 interface DivaResultsProps {
   results: DivaResult;

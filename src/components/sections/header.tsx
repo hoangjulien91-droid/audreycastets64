@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
+import { Link } from 'next-view-transitions';
 import { usePathname } from "next/navigation"
 import { Menu, X, Phone, ArrowRight, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"

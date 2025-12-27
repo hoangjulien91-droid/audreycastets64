@@ -1,6 +1,6 @@
 "use client";
 
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { Phone, Mail, MapPin, Shield, FileText, Heart } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 

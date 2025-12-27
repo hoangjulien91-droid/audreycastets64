@@ -3,7 +3,7 @@
 import { MBIResult } from "@/types/mbi";
 import { motion } from "framer-motion";
 import { CheckCircle, AlertTriangle, Info } from "lucide-react";
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 interface MBIResultsProps {
   results: MBIResult;

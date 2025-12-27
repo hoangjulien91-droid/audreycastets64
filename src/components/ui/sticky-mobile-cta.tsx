@@ -3,7 +3,7 @@
 import { Phone, Calendar } from 'lucide-react'; // Changed FileText to Calendar for "Réserver"
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 export default function StickyMobileCTA() {
   const [isVisible, setIsVisible] = useState(false);

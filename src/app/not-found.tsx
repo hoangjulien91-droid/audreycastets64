@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { Metadata } from 'next';
 import { Home, Search, FileQuestion } from 'lucide-react';
 import Header from '@/components/sections/header';

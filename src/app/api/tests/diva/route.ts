@@ -106,7 +106,11 @@ const getAdminEmailHtml = (
     data: { 
         answers: DivaAnswer[], 
         impactAnswers: DivaImpactAnswer[], 
-        userData: any 
+        userData: {
+            name: string;
+            email: string;
+            birthDate: string;
+        } 
     }, 
     results: ReturnType<typeof calculateDivaResults>
 ) => {

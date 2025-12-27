@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
