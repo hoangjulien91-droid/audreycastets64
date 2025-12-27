@@ -236,7 +236,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 3. Send Emails
-    const adminEmail = process.env.ADMIN_EMAIL || 'julien.hoang@gmail.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'audrey.castets@gmail.com';
     
     // Email Admin (Full Report)
     await sendEmail({
