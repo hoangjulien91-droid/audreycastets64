@@ -45,7 +45,8 @@ export default function HeroSection() {
                 scale: [1, 1.05, 1],
               }}
               transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-[500px] h-[500px] -top-20 left-1/4 rounded-full bg-primary/10 blur-3xl"
+              className="absolute w-[500px] h-[500px] -top-20 left-1/4 rounded-full bg-primary/10 blur-3xl pointer-events-none"
+              aria-hidden="true"
             />
 <motion.div
                 animate={{
@@ -54,8 +55,9 @@ export default function HeroSection() {
                   scale: [1, 1.08, 1],
                 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute w-[600px] h-[600px] bottom-0 right-1/4 rounded-full blur-3xl"
+                className="absolute w-[600px] h-[600px] bottom-0 right-1/4 rounded-full blur-3xl pointer-events-none"
                 style={{ backgroundColor: 'rgba(139, 124, 179, 0.1)' }}
+                aria-hidden="true"
               />
               <motion.div
                 animate={{
@@ -63,8 +65,9 @@ export default function HeroSection() {
                   y: [0, -30, 0],
                 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute w-[400px] h-[400px] top-1/3 right-0 rounded-full blur-3xl"
+                className="absolute w-[400px] h-[400px] top-1/3 right-0 rounded-full blur-3xl pointer-events-none"
                 style={{ backgroundColor: 'rgba(194, 123, 158, 0.08)' }}
+                aria-hidden="true"
               />
           </>
         )}
@@ -82,7 +85,7 @@ export default function HeroSection() {
                 initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/10 text-primary text-sm font-medium mb-8"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/10 text-primary-dark text-sm font-bold mb-8"
               >
               <Sparkles className="w-4 h-4" aria-hidden="true" />
               <span>Votre espace de sérénité</span>

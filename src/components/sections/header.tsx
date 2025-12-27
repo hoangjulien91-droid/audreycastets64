@@ -10,7 +10,7 @@ import { navLinks } from "@/lib/data/navigation"
 
 const Logo = () => (
   <div className="relative">
-    <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg" />
+    <div className="absolute inset-0 bg-primary/20 rounded-xl blur-lg" aria-hidden="true" />
     <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
       <span className="text-white font-display font-bold text-lg sm:text-xl">A</span>
     </div>
@@ -61,8 +61,8 @@ export default function Header() {
             <Link href="/" className="group flex items-center gap-3 relative z-10">
               <Logo />
               <div className="flex flex-col">
-                <span className="text-lg sm:text-xl font-bold text-foreground transition-colors group-hover:text-primary font-display leading-none">
-                  Audrey <span className="text-primary">Castets</span>
+                <span className="text-lg sm:text-xl font-bold text-foreground transition-colors group-hover:text-primary-dark font-display leading-none">
+                  Audrey <span className="text-primary-dark">Castets</span>
                 </span>
                 <span className="text-xs sm:text-sm text-muted-foreground font-display italic leading-snug group-hover:text-primary/80 transition-colors">
                   Psychologue du Travail et TCC
@@ -159,7 +159,7 @@ export default function Header() {
                   <Link href="/" className="flex items-center gap-3" onClick={() => setIsMenuOpen(false)}>
                     <Logo />
                     <div className="flex flex-col">
-                      <span className="text-lg font-bold text-foreground font-display leading-none">Audrey <span className="text-primary">Castets</span></span>
+                      <span className="text-lg font-bold text-foreground font-display leading-none">Audrey <span className="text-primary-dark">Castets</span></span>
                       <span className="text-xs text-muted-foreground font-display italic leading-snug">Psychologue du Travail et TCC</span>
                     </div>
                   </Link>
