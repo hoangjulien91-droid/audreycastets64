@@ -13,11 +13,7 @@ const features = [
   "Technique de libération émotionnelle (EFT)",
 ];
 
-const floatingBadges = [
-  { icon: Award, label: "Certifiée TCC", position: "top-12 -left-4 lg:left-0", delay: 0.8 },
-  { icon: Shield, label: "100% Confidentiel", position: "bottom-32 -left-6 lg:-left-4", delay: 0.9 },
-  { icon: Clock, label: "RDV sous 48h", position: "top-28 -right-4 lg:right-0", delay: 1 },
-];
+// Floating badges removed - conflicted with sticky mobile CTA
 
 export default function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
@@ -219,26 +215,7 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {!shouldReduceMotion && floatingBadges.map((badge) => (
-                  <motion.div
-                    key={badge.label}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: badge.delay }}
-                    className={`absolute ${badge.position} hidden sm:block`}
-                  >
-                    <motion.div
-                      animate={{ y: [0, -8, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      className="bg-white/95 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-xl shadow-primary/10 border border-primary/10 flex items-center gap-2.5"
-                    >
-                      <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center">
-                        <badge.icon className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-xs font-semibold text-foreground whitespace-nowrap">{badge.label}</span>
-                    </motion.div>
-                  </motion.div>
-                ))}
+                {/* Floating badges removed - conflicted with sticky mobile CTA */}
 
                 <motion.div
                   initial={shouldReduceMotion ? {} : { opacity: 0, x: 20 }}
