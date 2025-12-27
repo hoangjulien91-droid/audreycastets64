@@ -57,34 +57,50 @@ export function ServiceNavigation() {
 
   return (
     <>
+      {/* Mobile/Global Progress Bar (Nano-Bar) */}
       <motion.div 
-        className="fixed top-20 left-0 right-0 h-1 bg-primary origin-left z-50 pointer-events-none"
+        className="fixed top-20 left-0 right-0 h-0.5 bg-linear-to-r from-primary/30 to-primary origin-left z-50 pointer-events-none"
         style={{ scaleX }}
       />
       
-      <div className="hidden lg:block sticky top-32 w-64">
-        <nav className="flex flex-col gap-1 p-4 rounded-2xl glass-effect border-none shadow-sm">
-          <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest pl-3 mb-2">
-            Sommaire
-          </span>
-          {sections.map((section) => (
-            <button
-              key={section.id}
-              onClick={() => scrollTo(section.id)}
-              className={`text-sm text-left px-3 py-2 rounded-lg transition-all flex items-center justify-between group ${
-                activeSection === section.id
-                  ? "bg-primary/10 text-primary font-semibold"
-                  : "text-muted-foreground hover:bg-zinc-50 hover:text-foreground"
-              }`}
-            >
-              {section.label}
-              {activeSection === section.id && (
-                <motion.div layoutId="activeDot">
-                  <ArrowRight className="w-3 h-3" />
-                </motion.div>
-              )}
-            </button>
-          ))}
+      {/* Desktop Vertical Navigation (Minimalist) */}
+      <div className="hidden lg:block sticky top-32 w-48">
+        <nav className="flex flex-col relative">
+           {/* Vertical decorative line for the track is optional, but let's keep it really clean: no track, just text. 
+               Or maybe a very subtle track. Let's try a subtle track.
+           */}
+           <div className="absolute left-0 top-0 bottom-0 w-px bg-border/40" />
+
+          {sections.map((section) => {
+            const isActive = activeSection === section.id;
+            return (
+              <button
+                key={section.id}
+                onClick={() => scrollTo(section.id)}
+                className={`text-sm text-left pl-6 py-2 transition-all relative group ${
+                  isActive
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground/60 hover:text-foreground"
+                }`}
+              >
+                {/* Active Indicator Line */}
+                {isActive && (
+                  <motion.div 
+                    layoutId="activeTab"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-full bg-primary rounded-r-full"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                
+                {/* Hover Indicator (Small dot) - Only if not active */}
+                {!isActive && (
+                   <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-3 bg-foreground/20 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                )}
+
+                {section.label}
+              </button>
+            );
+          })}
         </nav>
       </div>
     </>
