@@ -1,0 +1,10 @@
+﻿
+> app@0.1.0 typecheck
+> tsc --noEmit
+
+src/lib/email-templates.tsx(125,14): error TS2559: Type 'string' has no properties in common with type 'Properties<string | number, string & {}>'.
+src/lib/email-templates.tsx(269,43): error TS2559: Type 'string' has no properties in common with type 'Properties<string | number, string & {}>'.
+src/lib/email-templates.tsx(279,42): error TS2559: Type 'string' has no properties in common with type 'Properties<string | number, string & {}>'.
+src/lib/email-templates.tsx(289,44): error TS2559: Type 'string' has no properties in common with type 'Properties<string | number, string & {}>'.
+src/lib/email-templates.tsx(308,14): error TS2559: Type 'string' has no properties in common with type 'Properties<string | number, string & {}>'.
+src/lib/email-templates.tsx(311,14): error TS2559: Type 'string' has no properties in common with type 'Properties<string | number, string & {}>'.

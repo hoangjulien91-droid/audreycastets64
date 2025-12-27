@@ -122,7 +122,7 @@ export const ContactConfirmationEmail: React.FC<ContactConfirmationEmailProps> =
             📞 <a href="tel:0743687297">07 43 68 72 97</a> | 
             ✉️ <a href="mailto:contact@audrey-castets.fr">contact@audrey-castets.fr</a>
           </p>
-          <p style="margin-top: 16px; font-size: 12px; color: #9CA3AF;">
+          <p style={{ marginTop: "16px", fontSize: "12px", color: "#9CA3AF" }}>
             © 2024 Audrey Castets - Psychologue du Travail. Tous droits réservés.
           </p>
         </div>
@@ -266,7 +266,7 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
           <div className="field">
             <div className="field-label">📧 Email</div>
             <div className="field-value">
-              <a href={`mailto:${email}`} style="color: #EC4899; text-decoration: none;">
+              <a href={`mailto:${email}`} style={{ color: "#EC4899", textDecoration: "none" }}>
                 {email}
               </a>
             </div>
@@ -276,7 +276,7 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
             <div className="field">
               <div className="field-label">📞 Téléphone</div>
               <div className="field-value">
-                <a href={`tel:${phone}`} style="color: #EC4899; text-decoration: none;">
+                <a href={`tel:${phone}`} style={{ color: "#EC4899", textDecoration: "none" }}>
                   {phone}
                 </a>
               </div>
@@ -286,7 +286,7 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
           {service_type && (
             <div className="field">
               <div className="field-label">🏷️ Type</div>
-              <div className="field-value" style="text-transform: capitalize;">
+              <div className="field-value" style={{ textTransform: "capitalize" }}>
                 {service_type}
               </div>
             </div>
@@ -305,10 +305,10 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
           </div>
         </div>
         <div className="footer">
-          <p style="font-weight: 600; color: #1F2937;">
+          <p style={{ fontWeight: 600, color: "#1F2937" }}>
             ⚡ Pensez à répondre dans les 24 heures !
           </p>
-          <p style="margin-top: 16px; font-size: 12px;">
+          <p style={{ marginTop: "16px", fontSize: "12px" }}>
             Ce message a été envoyé automatiquement depuis votre formulaire de contact.
           </p>
         </div>
