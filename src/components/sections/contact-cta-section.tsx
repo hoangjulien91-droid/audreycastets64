@@ -5,7 +5,6 @@ import { Phone, Clock, MessageCircle, Send, Loader2, Mail } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { motion, useReducedMotion } from "framer-motion";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
@@ -44,7 +43,6 @@ export default function ContactCtaSection() {
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
-  const shouldReduceMotion = useReducedMotion();
 
   const {
     register,
@@ -100,12 +98,7 @@ export default function ContactCtaSection() {
 
       <div className="relative z-10 container">
         <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-2 lg:gap-16">
-          <motion.div
-            initial={shouldReduceMotion ? {} : { opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="animate-in slide-in-left">
             <div className="badge-premium mb-5 inline-flex">
               <Mail className="h-4 w-4" aria-hidden="true" />
               <span>Contact</span>
@@ -120,47 +113,36 @@ export default function ContactCtaSection() {
 
             <div className="space-y-5">
               {features.map((feature, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={shouldReduceMotion ? {} : { opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.2 }}
-                  className="group flex items-start gap-4"
+                  className="group flex items-start gap-4 animate-in slide-in-left"
+                  style={{ transitionDelay: `${index * 100 + 200}ms` }}
                 >
-                  <motion.div
-                    className="flex-shrink-0 rounded-xl p-3 shadow-md"
+                  <div
+                    className="flex-shrink-0 rounded-xl p-3 shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                     style={{ backgroundColor: feature.bgColor }}
-                    whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
                   >
                     <feature.icon className="h-5 w-5 text-white" aria-hidden="true" />
-                  </motion.div>
+                  </div>
                   <div>
                     <h3 className="text-foreground mb-1 font-semibold">{feature.title}</h3>
                     <p className="text-muted-foreground text-sm">{feature.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="card-premium p-8 lg:p-10"
-            initial={shouldReduceMotion ? {} : { opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+          <div
+            className="card-premium p-8 lg:p-10 animate-in slide-in-right delay-200"
           >
             <h3 className="text-foreground mb-6 text-xl font-semibold">
               Demande de Contact Rapide
             </h3>
 
             {submitStatus.type && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={`mb-6 rounded-xl p-4 text-sm ${
+              <div
+                className={`mb-6 rounded-xl p-4 text-sm animate-in fade-in-up ${
                   submitStatus.type === "success"
                     ? "border"
                     : "bg-destructive/10 text-destructive border-destructive/20 border"
@@ -177,7 +159,7 @@ export default function ContactCtaSection() {
                 role="alert"
               >
                 {submitStatus.message}
-              </motion.div>
+              </div>
             )}
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -286,7 +268,7 @@ export default function ContactCtaSection() {
                 Vos informations sont confidentielles et ne seront jamais partagées.
               </p>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

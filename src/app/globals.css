@@ -265,6 +265,7 @@
       clip-path: inset(0 0 0 0);
     }
   }
+
 }
 
 @layer base {
@@ -952,4 +953,59 @@
 
 nextjs-portal {
   display: none !important;
+}
+@layer utilities {
+  .animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .animate-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-in.slide-in-left {
+    transform: translateX(-20px);
+  }
+
+  .animate-in.slide-in-left.is-visible {
+    transform: translateX(0);
+  }
+
+  .animate-in.slide-in-right {
+    transform: translateX(20px);
+  }
+
+  .animate-in.slide-in-right.is-visible {
+    transform: translateX(0);
+  }
+
+  .animate-in.scale-in {
+    transform: scale(0.95);
+  }
+
+  .animate-in.scale-in.is-visible {
+    transform: scale(1);
+  }
+
+  .delay-100 {
+    transition-delay: 100ms;
+  }
+  .delay-200 {
+    transition-delay: 200ms;
+  }
+  .delay-300 {
+    transition-delay: 300ms;
+  }
+  .delay-400 {
+    transition-delay: 400ms;
+  }
+  .delay-500 {
+    transition-delay: 500ms;
+  }
 }

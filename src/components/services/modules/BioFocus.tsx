@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { Link } from "next-view-transitions";
 import { ArrowRight } from "lucide-react";
@@ -11,11 +10,8 @@ interface BioFocusProps {
 
 export function BioFocus({ text }: BioFocusProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      className="border-border my-12 flex flex-col items-center gap-8 rounded-3xl border bg-white p-8 shadow-sm md:flex-row"
+    <div
+      className="border-border my-12 flex flex-col items-center gap-8 rounded-3xl border bg-white p-8 shadow-sm md:flex-row animate-in scale-in"
     >
       <div className="relative h-32 w-32 flex-shrink-0">
         <div className="bg-primary/10 absolute inset-0 scale-110 rounded-full blur-xl" />
@@ -41,6 +37,6 @@ export function BioFocus({ text }: BioFocusProps) {
           <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
-    </motion.div>
+    </div>
   );
 }

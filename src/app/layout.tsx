@@ -7,6 +7,7 @@ import { AccessibilityMenu } from "@/components/ui/accessibility-menu";
 import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "sonner";
 import StickyMobileCTA from "@/components/ui/sticky-mobile-cta";
+import { ScrollObserver } from "@/components/utils/scroll-observer";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -177,6 +178,7 @@ export default function RootLayout({
             <a href="#main-content" className="skip-to-main">
               Aller au contenu principal
             </a>
+            <ScrollObserver />
 
             {children}
             <StickyMobileCTA />

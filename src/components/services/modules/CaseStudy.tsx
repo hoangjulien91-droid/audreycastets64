@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { FolderOpen, ArrowRight, User, CheckCircle2 } from "lucide-react";
 
 interface CaseStudyProps {
@@ -21,11 +20,7 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
       <div className="container mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           {/* Left Column: Visual & Header */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
+          <div className="animate-in slide-in-left">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-100 bg-orange-50 px-3 py-1 text-xs font-bold tracking-wider text-orange-600 uppercase">
               <FolderOpen className="h-3 w-3" />
               Cas Concret
@@ -50,17 +45,13 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column: Steps */}
           <div className="space-y-8">
             {/* Problem */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="group relative overflow-hidden rounded-2xl border border-red-50 bg-white p-6 shadow-sm transition-colors hover:border-red-100"
+            <div
+              className="group relative overflow-hidden rounded-2xl border border-red-50 bg-white p-6 shadow-sm transition-colors hover:border-red-100 animate-in fade-in-up delay-200"
             >
               <div className="absolute top-0 right-0 -mt-8 -mr-8 h-24 w-24 rounded-bl-full bg-red-50 opacity-50" />
               <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-red-900">
@@ -72,15 +63,11 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
               <p className="text-muted-foreground relative z-10 text-sm leading-relaxed">
                 {caseStudy.problem}
               </p>
-            </motion.div>
+            </div>
 
             {/* Approach */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="group relative ml-4 overflow-hidden rounded-2xl border border-blue-50 bg-white p-6 shadow-sm transition-colors hover:border-blue-100 md:ml-8"
+            <div
+              className="group relative ml-4 overflow-hidden rounded-2xl border border-blue-50 bg-white p-6 shadow-sm transition-colors hover:border-blue-100 md:ml-8 animate-in fade-in-up delay-300"
             >
               <div className="absolute top-0 right-0 -mt-8 -mr-8 h-24 w-24 rounded-bl-full bg-blue-50 opacity-50" />
               <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-blue-900">
@@ -92,15 +79,11 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
               <p className="text-muted-foreground relative z-10 text-sm leading-relaxed">
                 {caseStudy.approach}
               </p>
-            </motion.div>
+            </div>
 
             {/* Result */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="relative overflow-hidden rounded-2xl border border-green-100 bg-green-50/50 p-8 shadow-md"
+            <div
+              className="relative overflow-hidden rounded-2xl border border-green-100 bg-green-50/50 p-8 shadow-md animate-in fade-in-up delay-400"
             >
               <div className="flex items-start gap-4">
                 <CheckCircle2 className="mt-1 h-8 w-8 flex-shrink-0 text-green-500" />
@@ -111,7 +94,7 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

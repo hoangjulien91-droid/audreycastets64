@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { TrendingUp, Users, Award, Clock } from "lucide-react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
 
 interface Stat {
   icon: React.ElementType;
@@ -46,13 +45,30 @@ const stats: Stat[] = [
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const shouldReduceMotion = useReducedMotion();
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry && entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!isInView) return;
 
-    if (shouldReduceMotion) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setCount(value);
       return;
     }
@@ -74,7 +90,7 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
     }, stepTime);
 
     return () => clearInterval(timer);
-  }, [isInView, value, shouldReduceMotion]);
+  }, [isInView, value]);
 
   return (
     <span ref={ref}>
@@ -85,8 +101,6 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export default function StatsSection() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <section className="section-spacing bg-warm-rose/30 relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -95,13 +109,7 @@ export default function StatsSection() {
       </div>
 
       <div className="relative z-10 container">
-        <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 text-center"
-        >
+        <div className="mb-14 text-center animate-in fade-in-up">
           <div className="badge-premium mb-5 inline-flex">
             <Award className="h-4 w-4" aria-hidden="true" />
             <span>Chiffres clés</span>
@@ -109,17 +117,14 @@ export default function StatsSection() {
           <h2 className="text-foreground">
             Une expertise <span className="text-primary">reconnue</span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-8">
           {stats.map((stat, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              className="group animate-in fade-in-up"
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="card-premium relative overflow-hidden p-6 text-center lg:p-8">
                 <div
@@ -128,18 +133,14 @@ export default function StatsSection() {
                   aria-hidden="true"
                 />
 
-                <motion.div
-                  className="relative mx-auto mb-4 h-14 w-14"
-                  whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <div className="relative mx-auto mb-4 h-14 w-14 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <div
                     className="relative flex h-full w-full items-center justify-center rounded-xl shadow-md"
                     style={{ backgroundColor: stat.bgColor }}
                   >
                     <stat.icon className="h-7 w-7 text-white" aria-hidden="true" />
                   </div>
-                </motion.div>
+                </div>
 
                 <div className="text-foreground mb-2 text-4xl font-bold lg:text-5xl">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
@@ -149,7 +150,7 @@ export default function StatsSection() {
                   {stat.label}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

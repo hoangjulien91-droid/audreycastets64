@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 interface Step {
@@ -25,13 +24,10 @@ export function MethodologySteps({ steps }: MethodologyStepsProps) {
 
         <div className="space-y-8">
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
-              className="relative flex gap-6"
+              className="relative flex gap-6 animate-in slide-in-left"
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Point de la timeline */}
               <div className="relative z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border-4 border-purple-50 bg-white shadow-sm">
@@ -48,7 +44,7 @@ export function MethodologySteps({ steps }: MethodologyStepsProps) {
                 </h4>
                 <p className="text-muted-foreground leading-relaxed">{step.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

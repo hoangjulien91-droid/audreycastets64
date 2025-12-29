@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Target, MessageCircle, Shield, Brain } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 
 const cards = [
   {
@@ -24,8 +23,6 @@ const cards = [
 ];
 
 export default function PsychologySection() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <section className="section-spacing bg-warm-rose/30 relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -34,13 +31,7 @@ export default function PsychologySection() {
       </div>
 
       <div className="relative z-10 container">
-        <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 text-center"
-        >
+        <div className="mb-14 text-center animate-in fade-in-up">
           <div className="badge-premium mb-5 inline-flex">
             <Brain className="h-4 w-4" aria-hidden="true" />
             <span>Psychologie du Travail</span>
@@ -52,17 +43,14 @@ export default function PsychologySection() {
             Pour toutes les personnes qui s'interrogent sur leur travail, leur recherche d'emploi ou
             leur avenir professionnel, quand une situation de malaise voire de souffrance apparaît.
           </p>
-        </motion.div>
+        </div>
 
         <div className="mx-auto mb-10 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
           {cards.map((card, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={shouldReduceMotion ? {} : { opacity: 0, x: index === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group"
+              className={`group animate-in ${index === 0 ? "slide-in-left" : "slide-in-right"}`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="card-premium relative h-full overflow-hidden p-8">
                 <div
@@ -71,18 +59,14 @@ export default function PsychologySection() {
                   aria-hidden="true"
                 />
 
-                <motion.div
-                  className="relative mb-5"
-                  whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <div className="relative mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <div
                     className="relative flex h-16 w-16 items-center justify-center rounded-xl shadow-lg"
                     style={{ backgroundColor: card.bgColor }}
                   >
                     <card.icon className="h-8 w-8 text-white" aria-hidden="true" />
                   </div>
-                </motion.div>
+                </div>
 
                 <h3 className="text-foreground font-display mb-4 text-xl font-semibold">
                   {card.title}
@@ -90,16 +74,12 @@ export default function PsychologySection() {
 
                 <p className="text-muted-foreground leading-relaxed">{card.content}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mx-auto max-w-3xl"
+        <div
+          className="mx-auto max-w-3xl animate-in fade-in-up delay-300"
         >
           <div className="card-premium relative overflow-hidden p-8 text-center">
             <div
@@ -108,18 +88,14 @@ export default function PsychologySection() {
               aria-hidden="true"
             />
 
-            <motion.div
-              className="relative mx-auto mb-5"
-              whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            >
+            <div className="relative mx-auto mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
               <div
                 className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-xl shadow-lg"
                 style={{ backgroundColor: "#C27B9E" }}
               >
                 <Shield className="h-8 w-8 text-white" aria-hidden="true" />
               </div>
-            </motion.div>
+            </div>
 
             <h3 className="text-foreground font-display mb-4 text-xl font-semibold">
               Éthique et Déontologie
@@ -132,7 +108,7 @@ export default function PsychologySection() {
               l'anonymat des personnes reçues, conformément au code de déontologie des psychologues.
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

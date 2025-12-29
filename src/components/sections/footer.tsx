@@ -2,7 +2,6 @@
 
 import { Link } from "next-view-transitions";
 import { Phone, Mail, MapPin, Shield, FileText, Heart } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 
 const footerLinks = [
   { href: "/qui-suis-je", label: "Qui suis-je" },
@@ -14,8 +13,6 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <footer className="bg-soft-lavender/30 render-lazy relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -25,12 +22,7 @@ export default function Footer() {
 
       <div className="relative z-10 container pt-16 pb-8">
         <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          <motion.div
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="animate-in fade-in-up">
             <div className="mb-5 flex items-center gap-3">
               <div className="bg-primary shadow-primary/20 flex h-10 w-10 items-center justify-center rounded-xl shadow-lg">
                 <Heart className="h-5 w-5 text-white" />
@@ -59,13 +51,11 @@ export default function Footer() {
                 <Mail className="h-4 w-4" />
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          <div
+            className="animate-in fade-in-up"
+            style={{ transitionDelay: "100ms" }}
           >
             <h3 className="text-foreground mb-5 text-sm font-semibold tracking-wider uppercase">
               Navigation
@@ -86,13 +76,11 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
+            className="animate-in fade-in-up"
+            style={{ transitionDelay: "200ms" }}
           >
             <h3 className="text-foreground mb-5 text-sm font-semibold tracking-wider uppercase">
               Contact
@@ -125,13 +113,11 @@ export default function Footer() {
                 </span>
               </li>
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+          <div
+            className="animate-in fade-in-up"
+            style={{ transitionDelay: "300ms" }}
           >
             <h3 className="text-foreground mb-5 text-sm font-semibold tracking-wider uppercase">
               Déontologie
@@ -150,17 +136,13 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
-          </motion.div>
+          </div>
         </div>
 
         <div className="divider-gradient mb-8" aria-hidden="true" />
 
-        <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left"
+        <div
+          className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left animate-in fade-in-up delay-400"
         >
           <p className="text-muted-foreground text-xs">
             © {new Date().getFullYear()} Audrey Castets - Psychologue du Travail. Tous droits
@@ -177,7 +159,7 @@ export default function Footer() {
               IKERKETA
             </a>
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

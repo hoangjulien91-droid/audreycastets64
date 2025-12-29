@@ -2,7 +2,6 @@
 
 import { ArrowRight, CircleCheck, Heart, Users, Sparkles } from "lucide-react";
 import { Link } from "next-view-transitions";
-import { motion, useReducedMotion } from "framer-motion";
 
 const services = [
   {
@@ -51,8 +50,6 @@ const services = [
 ];
 
 export default function ServicesSection() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <section id="services" className="section-spacing-lg bg-background relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -61,13 +58,7 @@ export default function ServicesSection() {
       </div>
 
       <div className="relative z-10 container">
-        <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center lg:mb-20"
-        >
+        <div className="mb-16 text-center lg:mb-20 animate-in fade-in-up">
           <div className="badge-premium mb-6 inline-flex">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             <span>Services</span>
@@ -79,17 +70,14 @@ export default function ServicesSection() {
             Un accompagnement professionnel adapté à vos besoins, que vous soyez particulier ou
             professionnel.
           </p>
-        </motion.div>
+        </div>
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={service.id}
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group relative"
+              className="group relative animate-in fade-in-up"
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div
                 className="absolute inset-0 rounded-[2rem] opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
@@ -105,18 +93,14 @@ export default function ServicesSection() {
                 />
 
                 <div className="mb-6 flex items-start gap-5">
-                  <motion.div
-                    className="relative flex-shrink-0"
-                    whileHover={shouldReduceMotion ? {} : { rotate: 5, scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
+                  <div className="relative flex-shrink-0 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                     <div
                       className="relative flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg"
                       style={{ backgroundColor: service.bgColor }}
                     >
                       <service.icon className="h-8 w-8 text-white" aria-hidden="true" />
                     </div>
-                  </motion.div>
+                  </div>
                   <div>
                     <h3 className="text-foreground group-hover:text-primary font-display mb-1 text-xl font-semibold transition-colors lg:text-2xl">
                       {service.title}
@@ -129,13 +113,10 @@ export default function ServicesSection() {
 
                 <ul className="mb-10 space-y-3" role="list">
                   {service.features.map((feature, idx) => (
-                    <motion.li
+                    <li
                       key={idx}
-                      className="flex items-start gap-3"
-                      initial={shouldReduceMotion ? {} : { opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.05 + 0.3 }}
+                      className="flex items-start gap-3 animate-in slide-in-left"
+                      style={{ transitionDelay: `${idx * 50 + 300}ms` }}
                     >
                       <CircleCheck
                         className="mt-0.5 h-5 w-5 flex-shrink-0"
@@ -143,7 +124,7 @@ export default function ServicesSection() {
                         aria-hidden="true"
                       />
                       <span className="text-foreground/80 text-sm">{feature}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
 
@@ -159,7 +140,7 @@ export default function ServicesSection() {
                   />
                 </Link>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

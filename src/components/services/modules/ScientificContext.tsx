@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { BookOpen, GraduationCap, Microscope } from "lucide-react";
 
 interface ScientificContextProps {
@@ -24,12 +23,7 @@ export function ScientificContext({ scientificBasis }: ScientificContextProps) {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto max-w-4xl"
-        >
+        <div className="mx-auto max-w-4xl animate-in fade-in-up">
           {/* Header Badge */}
           <div className="mb-8 flex items-center justify-center gap-2">
             <span className="flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-bold tracking-wider text-blue-600 uppercase">
@@ -53,13 +47,10 @@ export function ScientificContext({ scientificBasis }: ScientificContextProps) {
 
             <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-2">
               {scientificBasis.points.map((point, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 rounded-2xl border border-white/40 bg-white/50 p-4 transition-all duration-300 hover:bg-white hover:shadow-md"
+                  className="flex items-start gap-4 rounded-2xl border border-white/40 bg-white/50 p-4 transition-all duration-300 hover:bg-white hover:shadow-md animate-in slide-in-left"
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-blue-100">
                     <div className="h-2 w-2 rounded-full bg-blue-600" />
@@ -70,7 +61,7 @@ export function ScientificContext({ scientificBasis }: ScientificContextProps) {
                       {point.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
@@ -81,7 +72,7 @@ export function ScientificContext({ scientificBasis }: ScientificContextProps) {
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

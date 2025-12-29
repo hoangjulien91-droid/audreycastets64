@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { TrendingUp } from "lucide-react";
 
 interface KeyFiguresProps {
@@ -17,13 +16,10 @@ export function KeyFigures({ keyStats }: KeyFiguresProps) {
   return (
     <div className="my-12 grid grid-cols-2 gap-6 lg:grid-cols-3">
       {keyStats.map((stat, index) => (
-        <motion.div
+        <div
           key={index}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: index * 0.1 }}
-          className="border-border group hover:border-primary/30 rounded-2xl border bg-white p-6 text-center shadow-sm transition-colors"
+          className="border-border group hover:border-primary/30 rounded-2xl border bg-white p-6 text-center shadow-sm transition-colors animate-in scale-in"
+          style={{ transitionDelay: `${index * 100}ms` }}
         >
           <div className="bg-primary/5 text-primary group-hover:bg-primary/10 mb-3 inline-flex items-center justify-center rounded-lg p-2 transition-colors">
             <TrendingUp className="h-5 w-5" />
@@ -37,7 +33,7 @@ export function KeyFigures({ keyStats }: KeyFiguresProps) {
               Source : {stat.source}
             </div>
           )}
-        </motion.div>
+        </div>
       ))}
     </div>
   );

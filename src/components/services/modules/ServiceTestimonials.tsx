@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
 interface Testimonial {
@@ -28,13 +27,10 @@ export function ServiceTestimonials({ testimonials }: ServiceTestimonialsProps) 
 
       <div className="relative z-10 grid grid-cols-1 gap-6 md:grid-cols-2">
         {testimonials.map((t, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="card-premium group relative p-8"
+            className="card-premium group relative p-8 animate-in fade-in-up"
+            style={{ transitionDelay: `${index * 100}ms` }}
           >
             <Quote className="text-primary/10 group-hover:text-primary/20 absolute top-6 right-6 h-10 w-10 transition-colors" />
             <p className="text-foreground relative z-10 mb-6 leading-relaxed italic">"{t.quote}"</p>
@@ -47,7 +43,7 @@ export function ServiceTestimonials({ testimonials }: ServiceTestimonialsProps) 
                 <p className="text-muted-foreground text-xs">{t.role}</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

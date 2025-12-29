@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { Star, Quote, MessageCircle } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -65,7 +64,6 @@ export default function TestimonialsSection() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
-  const shouldReduceMotion = useReducedMotion();
 
   React.useEffect(() => {
     if (!api) return;
@@ -88,13 +86,7 @@ export default function TestimonialsSection() {
       </div>
 
       <div className="relative z-10 container">
-        <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-14 text-center"
-        >
+        <div className="mb-14 text-center animate-in fade-in-up">
           <div className="badge-premium mb-5 inline-flex">
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
             <span>Témoignages</span>
@@ -105,12 +97,12 @@ export default function TestimonialsSection() {
           <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
             Découvrez les retours de personnes que j'ai eu le plaisir d'accompagner.
           </p>
-        </motion.div>
+        </div>
 
         <Carousel
           setApi={setApi}
           opts={{ loop: true, align: "start" }}
-          className="mx-auto w-full max-w-6xl"
+          className="mx-auto w-full max-w-6xl animate-in fade-in-up delay-200"
         >
           <CarouselContent className="-ml-4 md:-ml-6">
             {testimonials.map((testimonial, index) => (
@@ -118,13 +110,7 @@ export default function TestimonialsSection() {
                 key={index}
                 className="basis-full pl-4 md:basis-1/2 md:pl-6 lg:basis-1/3"
               >
-                <motion.div
-                  className="h-full"
-                  initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (index % 3) * 0.1 }}
-                >
+                <div className="h-full">
                   <div className="card-premium group relative flex h-full flex-col overflow-hidden p-7">
                     <div
                       className="absolute top-0 right-0 left-0 h-1"
@@ -167,7 +153,7 @@ export default function TestimonialsSection() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>

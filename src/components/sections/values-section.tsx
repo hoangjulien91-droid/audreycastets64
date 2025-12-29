@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { HeartHandshake, Puzzle, Scale, BrainCircuit, Sparkles } from "lucide-react";
 import React from "react";
 
@@ -40,8 +39,6 @@ const values = [
 ];
 
 export default function ValuesSection() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <section id="engagements" className="section-spacing bg-background relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -50,13 +47,7 @@ export default function ValuesSection() {
       </div>
 
       <div className="relative z-10 container">
-        <motion.div
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto mb-16 max-w-2xl text-center"
-        >
+        <div className="mx-auto mb-16 max-w-2xl text-center animate-in fade-in-up">
           <div className="badge-premium mb-5 inline-flex">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             <span>Mon engagement</span>
@@ -68,17 +59,14 @@ export default function ValuesSection() {
             Ma pratique est guidée par des principes fondamentaux qui garantissent une thérapie de
             qualité, humaine et respectueuse.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {values.map((value, index) => (
-            <motion.div
+            <div
               key={value.title}
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              className="group animate-in fade-in-up"
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="card-premium relative h-full overflow-hidden p-7 text-center">
                 <div
@@ -87,24 +75,20 @@ export default function ValuesSection() {
                   aria-hidden="true"
                 />
 
-                <motion.div
-                  className="relative mx-auto mb-5"
-                  whileHover={shouldReduceMotion ? {} : { rotate: 10, scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <div className="relative mx-auto mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <div
                     className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg"
                     style={{ backgroundColor: value.bgColor }}
                   >
                     <value.icon className="h-8 w-8 text-white" aria-hidden="true" />
                   </div>
-                </motion.div>
+                </div>
 
                 <h3 className="text-foreground mb-1 text-lg font-semibold">{value.title}</h3>
                 <p className="text-primary mb-3 text-sm font-medium">{value.subtitle}</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
