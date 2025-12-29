@@ -48,9 +48,9 @@ export default function PartnershipHeroSection() {
       </div>
 
       <div className="relative z-10 container py-24 sm:py-32 lg:py-40">
-        <nav className="mb-8" aria-label="Fil d'Ariane">
+        <div className="mb-8 flex justify-center">
           <Breadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Partenariat" }]} />
-        </nav>
+        </div>
 
         <div className="mx-auto max-w-4xl text-center">
           <motion.div
