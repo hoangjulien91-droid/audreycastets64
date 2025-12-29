@@ -1,7 +1,7 @@
 export type MBIQuestion = {
   id: number;
   text: string;
-  dimension: 'SEP' | 'SD' | 'SAP'; // SEP: Épuisement, SD: Dépersonnalisation, SAP: Accomplissement
+  dimension: "SEP" | "SD" | "SAP"; // SEP: Épuisement, SD: Dépersonnalisation, SAP: Accomplissement
 };
 
 export type MBIAnswer = {
@@ -11,7 +11,7 @@ export type MBIAnswer = {
 
 export type MBIScore = {
   score: number;
-  level: 'low' | 'moderate' | 'high';
+  level: "low" | "moderate" | "high";
   label: string;
   color: string; // Hex color for UI
 };

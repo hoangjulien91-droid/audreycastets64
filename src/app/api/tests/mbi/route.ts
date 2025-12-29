@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import { MBIAnswer } from '@/types/mbi';
-import { calculateMBIResults } from '@/lib/utils/mbi-calculations';
-import { MBI_QUESTIONS } from '@/lib/data/mbi-questions';
+import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+import { MBIAnswer } from "@/types/mbi";
+import { calculateMBIResults } from "@/lib/utils/mbi-calculations";
+import { MBI_QUESTIONS } from "@/lib/data/mbi-questions";
 
 // Init Supabase Admin
 const supabaseAdmin = createClient(
@@ -11,8 +11,8 @@ const supabaseAdmin = createClient(
   {
     auth: {
       autoRefreshToken: false,
-      persistSession: false
-    }
+      persistSession: false,
+    },
   }
 );
 
@@ -29,14 +29,14 @@ async function sendEmail({
   replyTo?: string;
 }) {
   try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: 'Audrey Castets <contact@audreycastets.fr>',
+        from: "Audrey Castets <contact@audreycastets.fr>",
         to,
         subject,
         html,
@@ -46,13 +46,13 @@ async function sendEmail({
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Resend Error:', errorText);
+      console.error("Resend Error:", errorText);
       throw new Error(`Resend API Error: ${errorText}`);
     }
-    
+
     return await response.json();
   } catch (error) {
-    console.error('Email sending failed:', error);
+    console.error("Email sending failed:", error);
     // On ne bloque pas le flux si l'email échoue, mais on log l'erreur
     return null;
   }
@@ -118,11 +118,16 @@ interface MBIRequestData {
 }
 
 // Template Email Admin (Détaillé)
-const getAdminEmailHtml = (data: MBIRequestData, results: ReturnType<typeof calculateMBIResults>) => {
-  const answersHtml = data.answers.map((a: MBIAnswer) => {
-    const q = MBI_QUESTIONS.find(que => que.id === a.questionId);
-    return `<li><strong>Q${a.questionId} (${q?.dimension}):</strong> ${a.value}/6 - ${q?.text}</li>`;
-  }).join('');
+const getAdminEmailHtml = (
+  data: MBIRequestData,
+  results: ReturnType<typeof calculateMBIResults>
+) => {
+  const answersHtml = data.answers
+    .map((a: MBIAnswer) => {
+      const q = MBI_QUESTIONS.find((que) => que.id === a.questionId);
+      return `<li><strong>Q${a.questionId} (${q?.dimension}):</strong> ${a.value}/6 - ${q?.text}</li>`;
+    })
+    .join("");
 
   return `
 <!DOCTYPE html>
@@ -130,7 +135,7 @@ const getAdminEmailHtml = (data: MBIRequestData, results: ReturnType<typeof calc
 <body>
   <h2>Nouveau Test MBI Complété</h2>
   <p><strong>Candidat :</strong> ${data.userData.name} (${data.userData.email})</p>
-  <p><strong>Date :</strong> ${new Date().toLocaleString('fr-FR')}</p>
+  <p><strong>Date :</strong> ${new Date().toLocaleString("fr-FR")}</p>
   
   <h3>Résultats Calculés</h3>
   <ul>
@@ -153,7 +158,7 @@ export async function POST(request: NextRequest) {
     const { answers, userData } = body;
 
     if (!answers || !Array.isArray(answers)) {
-      return NextResponse.json({ error: 'Invalid answers format' }, { status: 400 });
+      return NextResponse.json({ error: "Invalid answers format" }, { status: 400 });
     }
 
     // 1. Calculate Results Server-Side
@@ -162,49 +167,48 @@ export async function POST(request: NextRequest) {
     // 2. Save to Supabase (if table exists)
     // On tente l'insertion mais on ne crash pas si ça échoue (sauf si erreur critique)
     try {
-        const { error } = await supabaseAdmin
-            .from('mbi_submissions') // Assumed table name
-            .insert({
-                user_email: userData.email,
-                user_name: userData.name,
-                sep_score: results.dimensions.SEP.score,
-                sd_score: results.dimensions.SD.score,
-                sap_score: results.dimensions.SAP.score,
-                answers_json: answers,
-                global_assessment: results.globalAssessment
-            });
-        
-        if (error) {
-            console.warn("Supabase insertion failed (table might not exist):", error.message);
-        }
+      const { error } = await supabaseAdmin
+        .from("mbi_submissions") // Assumed table name
+        .insert({
+          user_email: userData.email,
+          user_name: userData.name,
+          sep_score: results.dimensions.SEP.score,
+          sd_score: results.dimensions.SD.score,
+          sap_score: results.dimensions.SAP.score,
+          answers_json: answers,
+          global_assessment: results.globalAssessment,
+        });
+
+      if (error) {
+        console.warn("Supabase insertion failed (table might not exist):", error.message);
+      }
     } catch (dbError) {
-        console.warn("Supabase error:", dbError);
+      console.warn("Supabase error:", dbError);
     }
 
     // 3. Send Emails
-    const adminEmail = process.env.ADMIN_EMAIL || 'audrey.castets@gmail.com';
-    
+    const adminEmail = process.env.ADMIN_EMAIL || "audrey.castets@gmail.com";
+
     // Email Admin
     await sendEmail({
       to: adminEmail,
       subject: `🔔 Nouveau Test MBI : ${userData.name}`,
       html: getAdminEmailHtml({ answers, userData }, results),
-      replyTo: userData.email
+      replyTo: userData.email,
     });
 
     // Email Client (only if email provided)
     if (userData.email) {
       await sendEmail({
         to: userData.email,
-        subject: 'Votre Bilan MBI - Audrey Castets',
-        html: getClientEmailHtml(userData.name || 'Visiteur', results)
+        subject: "Votre Bilan MBI - Audrey Castets",
+        html: getClientEmailHtml(userData.name || "Visiteur", results),
       });
     }
 
     return NextResponse.json({ success: true, results });
-
   } catch (error) {
-    console.error('MBI API Error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error("MBI API Error:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

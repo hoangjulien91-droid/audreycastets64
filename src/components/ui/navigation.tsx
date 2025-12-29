@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { Link } from 'next-view-transitions';
+import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 
 const navItems = [
@@ -25,13 +25,13 @@ export function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex items-center space-x-1">
-            <Link 
-              href="/" 
-              className="text-xl font-bold text-gray-900 hover:text-gray-700 transition-colors"
+            <Link
+              href="/"
+              className="text-xl font-bold text-gray-900 transition-colors hover:text-gray-700"
             >
               Audrey Castets
             </Link>
@@ -41,10 +41,10 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+                className={`rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
                   pathname === item.href
                     ? "bg-gray-900 text-white"
-                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                 }`}
               >
                 {item.label}
@@ -55,4 +55,4 @@ export function Navigation() {
       </div>
     </nav>
   );
-} 
+}

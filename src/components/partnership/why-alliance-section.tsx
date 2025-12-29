@@ -8,18 +8,20 @@ export default function WhyAllianceSection() {
     {
       icon: CheckCircle,
       title: "Cohérence entre soutien émotionnel et démarches factuelles",
-      description: "Une prise en charge harmonisée qui prend en compte tous les aspects de votre situation"
+      description:
+        "Une prise en charge harmonisée qui prend en compte tous les aspects de votre situation",
     },
     {
       icon: Clock,
       title: "Gain de temps et d'efficacité",
-      description: "Coordination optimale entre les différentes expertises pour avancer plus rapidement"
+      description:
+        "Coordination optimale entre les différentes expertises pour avancer plus rapidement",
     },
     {
       icon: FileCheck,
       title: "Dossiers solidement construits",
-      description: "Des preuves tangibles associées à une évaluation psychologique rigoureuse"
-    }
+      description: "Des preuves tangibles associées à une évaluation psychologique rigoureuse",
+    },
   ];
 
   const containerVariants = {
@@ -27,30 +29,30 @@ export default function WhyAllianceSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
-      }
-    }
+        staggerChildren: 0.15,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <section className="py-20 sm:py-24 lg:py-32 bg-white">
+    <section className="bg-white py-20 sm:py-24 lg:py-32">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-foreground mb-6">
+          <h2 className="font-display text-foreground mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
             Pourquoi Cette <span className="text-primary">Alliance ?</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
             Des avantages concrets pour les victimes
           </p>
         </motion.div>
@@ -60,24 +62,22 @@ export default function WhyAllianceSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="max-w-5xl mx-auto"
+          className="mx-auto max-w-5xl"
         >
-          <div className="grid sm:grid-cols-3 gap-6 mb-12">
+          <div className="mb-12 grid gap-6 sm:grid-cols-3">
             {advantages.map((advantage, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-linear-to-br from-white to-muted/30 rounded-2xl p-6 sm:p-8 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+                className="to-muted/30 border-border hover:border-primary/30 rounded-2xl border bg-linear-to-br from-white p-6 transition-all duration-300 hover:shadow-lg sm:p-8"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <advantage.icon className="w-6 h-6 text-primary" />
+                <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-xl">
+                  <advantage.icon className="text-primary h-6 w-6" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">
+                <h3 className="text-foreground mb-3 text-lg font-bold sm:text-xl">
                   {advantage.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {advantage.description}
-                </p>
+                <p className="text-muted-foreground leading-relaxed">{advantage.description}</p>
               </motion.div>
             ))}
           </div>
@@ -85,16 +85,21 @@ export default function WhyAllianceSection() {
           {/* Citation en exergue */}
           <motion.div
             variants={itemVariants}
-            className="bg-linear-to-r from-primary/5 via-accent/5 to-accent-teal/5 rounded-2xl p-8 sm:p-10 border-l-4 border-primary"
+            className="from-primary/5 via-accent/5 to-accent-teal/5 border-primary rounded-2xl border-l-4 bg-linear-to-r p-8 sm:p-10"
           >
             <div className="flex items-start gap-4">
-              <div className="hidden sm:block text-6xl text-primary/20 font-serif leading-none">"</div>
+              <div className="text-primary/20 hidden font-serif text-6xl leading-none sm:block">
+                "
+              </div>
               <div>
-                <p className="text-lg sm:text-xl text-foreground font-medium italic mb-4">
-                  L'alliance interdisciplinaire permet une prise en charge complète qui respecte la complexité de chaque situation. Soutien psychologique et investigation factuelle se renforcent mutuellement pour offrir aux victimes les meilleures chances de reconstruction et de reconnaissance de leurs droits.
+                <p className="text-foreground mb-4 text-lg font-medium italic sm:text-xl">
+                  L'alliance interdisciplinaire permet une prise en charge complète qui respecte la
+                  complexité de chaque situation. Soutien psychologique et investigation factuelle
+                  se renforcent mutuellement pour offrir aux victimes les meilleures chances de
+                  reconstruction et de reconnaissance de leurs droits.
                 </p>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <div className="w-12 h-0.5 bg-primary" />
+                <div className="text-muted-foreground flex items-center gap-4 text-sm">
+                  <div className="bg-primary h-0.5 w-12" />
                   <span className="font-semibold">Approche interdisciplinaire</span>
                 </div>
               </div>

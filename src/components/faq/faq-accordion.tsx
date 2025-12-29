@@ -7,10 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  ChevronDown,
-  MessageCircleQuestion,
-} from "lucide-react";
+import { ChevronDown, MessageCircleQuestion } from "lucide-react";
 
 const faqData = [
   {
@@ -58,7 +55,7 @@ const faqData = [
   {
     question: "Acceptez-vous les remboursements par mutuelle ?",
     answer:
-      "Je ne suis pas conventionnée Sécurité Sociale, les séances ne sont donc pas remboursées par l'Assurance Maladie. Cependant, de plus en plus de mutuelles proposent des forfaits \"médecines douces\" ou \"psychologie\" qui peuvent prendre en charge une partie des consultations. Je vous fournis une facture à transmettre à votre mutuelle.",
+      'Je ne suis pas conventionnée Sécurité Sociale, les séances ne sont donc pas remboursées par l\'Assurance Maladie. Cependant, de plus en plus de mutuelles proposent des forfaits "médecines douces" ou "psychologie" qui peuvent prendre en charge une partie des consultations. Je vous fournis une facture à transmettre à votre mutuelle.',
     category: "Tarifs",
   },
   {
@@ -109,16 +106,16 @@ export function FaqAccordion() {
   return (
     <>
       {/* Category Filter */}
-      <section className="py-8 bg-white border-b">
+      <section className="border-b bg-white py-8">
         <div className="container">
-          <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="scrollbar-hide flex items-center gap-3 overflow-x-auto pb-2">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
+                className={`rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap transition-all ${
                   selectedCategory === category
-                    ? "bg-primary text-white shadow-lg shadow-primary/30"
+                    ? "bg-primary shadow-primary/30 text-white shadow-lg"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >
@@ -130,39 +127,31 @@ export function FaqAccordion() {
       </section>
 
       {/* FAQ Content */}
-      <section className="py-20 bg-white">
+      <section className="bg-white py-20">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <Accordion
-              type="single"
-              collapsible
-              className="w-full space-y-4"
-            >
+          <div className="mx-auto max-w-4xl">
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {filteredFaq.map((item, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="border-2 rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/20"
+                  className="hover:border-primary/20 rounded-2xl border-2 bg-white shadow-sm transition-all duration-300 hover:shadow-lg"
                 >
-                  <AccordionTrigger className="flex w-full items-start justify-between p-6 font-semibold text-lg text-left hover:bg-accent/10 rounded-2xl transition-colors group [&[data-state=open]>div>svg]:rotate-180">
-                    <div className="flex items-start gap-4 flex-1">
-                      <div className="mt-1 p-2 rounded-lg bg-linear-to-br from-primary/10 to-purple-500/10 text-primary group-hover:scale-110 transition-transform">
+                  <AccordionTrigger className="hover:bg-accent/10 group flex w-full items-start justify-between rounded-2xl p-6 text-left text-lg font-semibold transition-colors [&[data-state=open]>div>svg]:rotate-180">
+                    <div className="flex flex-1 items-start gap-4">
+                      <div className="from-primary/10 text-primary mt-1 rounded-lg bg-linear-to-br to-purple-500/10 p-2 transition-transform group-hover:scale-110">
                         <MessageCircleQuestion className="h-5 w-5" />
                       </div>
                       <div className="flex-1">
-                        <span className="block mb-1">{item.question}</span>
-                        <span className="text-xs font-normal text-primary/70">
-                          {item.category}
-                        </span>
+                        <span className="mb-1 block">{item.question}</span>
+                        <span className="text-primary/70 text-xs font-normal">{item.category}</span>
                       </div>
-                      <ChevronDown className="h-6 w-6 shrink-0 text-primary transition-transform duration-300 ml-2" />
+                      <ChevronDown className="text-primary ml-2 h-6 w-6 shrink-0 transition-transform duration-300" />
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-6 pt-0">
+                  <AccordionContent className="px-6 pt-0 pb-6">
                     <div className="pl-14">
-                      <p className="text-muted-foreground leading-relaxed">
-                        {item.answer}
-                      </p>
+                      <p className="text-muted-foreground leading-relaxed">{item.answer}</p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -170,9 +159,9 @@ export function FaqAccordion() {
             </Accordion>
 
             {filteredFaq.length === 0 && (
-              <div className="text-center py-12">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
-                  <MessageCircleQuestion className="h-8 w-8 text-muted-foreground" />
+              <div className="py-12 text-center">
+                <div className="bg-muted mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full">
+                  <MessageCircleQuestion className="text-muted-foreground h-8 w-8" />
                 </div>
                 <p className="text-muted-foreground text-lg">
                   Aucune question trouvée dans cette catégorie

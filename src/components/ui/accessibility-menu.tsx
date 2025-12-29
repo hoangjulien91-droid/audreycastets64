@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useAccessibility } from '@/components/providers/accessibility-provider';
-import { Button } from '@/components/ui/button';
-import { Type } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useAccessibility } from "@/components/providers/accessibility-provider";
+import { Button } from "@/components/ui/button";
+import { Type } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function AccessibilityMenu() {
   const { isDyslexic, toggleDyslexic } = useAccessibility();
@@ -19,11 +19,11 @@ export function AccessibilityMenu() {
           variant={isDyslexic ? "default" : "outline"}
           size="icon"
           onClick={toggleDyslexic}
-          className="rounded-full shadow-lg border-2 border-primary/20 backdrop-blur-sm hover:scale-110 transition-transform h-12 w-12"
+          className="border-primary/20 h-12 w-12 rounded-full border-2 shadow-lg backdrop-blur-sm transition-transform hover:scale-110"
           aria-label={isDyslexic ? "Désactiver le mode dyslexie" : "Activer le mode dyslexie"}
           title="Mode Dyslexie"
         >
-          <Type className={`h-6 w-6 ${isDyslexic ? 'text-white' : 'text-primary'}`} />
+          <Type className={`h-6 w-6 ${isDyslexic ? "text-white" : "text-primary"}`} />
         </Button>
       </motion.div>
     </div>

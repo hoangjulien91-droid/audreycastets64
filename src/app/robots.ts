@@ -1,14 +1,14 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://www.audrey-castets.fr';
+  const baseUrl = "https://www.audrey-castets.fr";
 
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/admin/', '/_next/', '/login/', '/register/'],
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/admin/", "/_next/", "/login/", "/register/"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

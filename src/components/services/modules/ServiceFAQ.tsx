@@ -11,7 +11,7 @@ interface FAQItem {
 
 interface ServiceFAQProps {
   faq: FAQItem[];
-  serviceTitle: string; 
+  serviceTitle: string;
 }
 
 export function ServiceFAQ({ faq, serviceTitle }: ServiceFAQProps) {
@@ -23,14 +23,14 @@ export function ServiceFAQ({ faq, serviceTitle }: ServiceFAQProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faq.map(item => ({
+    mainEntity: faq.map((item) => ({
       "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
+      name: item.question,
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": item.answer
-      }
-    }))
+        text: item.answer,
+      },
+    })),
   };
 
   return (
@@ -39,29 +39,29 @@ export function ServiceFAQ({ faq, serviceTitle }: ServiceFAQProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
-      <div className="text-center mb-10">
-         <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full text-xs font-bold text-primary mb-3">
-             <HelpCircle className="w-3 h-3" /> FAQ
-         </span>
-        <h3 className="text-2xl font-display font-bold">
+
+      <div className="mb-10 text-center">
+        <span className="bg-primary/5 text-primary mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold">
+          <HelpCircle className="h-3 w-3" /> FAQ
+        </span>
+        <h3 className="font-display text-2xl font-bold">
           Questions fréquentes sur <span className="text-primary">{serviceTitle}</span>
         </h3>
       </div>
 
-      <div className="max-w-3xl mx-auto space-y-4">
+      <div className="mx-auto max-w-3xl space-y-4">
         {faq.map((item, index) => (
-          <div key={index} className="bg-white rounded-2xl border border-border overflow-hidden">
+          <div key={index} className="border-border overflow-hidden rounded-2xl border bg-white">
             <button
               onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-              className="w-full flex items-center justify-between p-6 text-left hover:bg-zinc-50 transition-colors"
-                aria-expanded={activeIndex === index}
+              className="flex w-full items-center justify-between p-6 text-left transition-colors hover:bg-zinc-50"
+              aria-expanded={activeIndex === index}
             >
-              <span className="font-semibold text-foreground pr-8">{item.question}</span>
+              <span className="text-foreground pr-8 font-semibold">{item.question}</span>
               {activeIndex === index ? (
-                <Minus className="w-5 h-5 text-primary flex-shrink-0" />
+                <Minus className="text-primary h-5 w-5 flex-shrink-0" />
               ) : (
-                <Plus className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <Plus className="text-muted-foreground h-5 w-5 flex-shrink-0" />
               )}
             </button>
             <AnimatePresence>
@@ -72,7 +72,7 @@ export function ServiceFAQ({ faq, serviceTitle }: ServiceFAQProps) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <div className="p-6 pt-0 text-muted-foreground leading-relaxed">
+                  <div className="text-muted-foreground p-6 pt-0 leading-relaxed">
                     {item.answer}
                   </div>
                 </motion.div>

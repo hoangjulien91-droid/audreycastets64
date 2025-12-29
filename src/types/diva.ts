@@ -7,7 +7,7 @@ export type DivaCriterion = {
 };
 
 export type DivaSection = {
-  id: 'inattention' | 'hyperactivity';
+  id: "inattention" | "hyperactivity";
   title: string;
   criteria: DivaCriterion[];
 };

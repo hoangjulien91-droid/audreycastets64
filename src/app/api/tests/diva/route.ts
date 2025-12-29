@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import { calculateDivaResults } from '@/lib/utils/diva-calculations';
-import { DIVA_SECTIONS, DIVA_IMPACT_DOMAINS } from '@/lib/data/diva-questions';
-import { DivaAnswer, DivaImpactAnswer } from '@/types/diva';
+import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+import { calculateDivaResults } from "@/lib/utils/diva-calculations";
+import { DIVA_SECTIONS, DIVA_IMPACT_DOMAINS } from "@/lib/data/diva-questions";
+import { DivaAnswer, DivaImpactAnswer } from "@/types/diva";
 
 // Init Supabase Admin
 const supabaseAdmin = createClient(
@@ -11,8 +11,8 @@ const supabaseAdmin = createClient(
   {
     auth: {
       autoRefreshToken: false,
-      persistSession: false
-    }
+      persistSession: false,
+    },
   }
 );
 
@@ -29,14 +29,14 @@ async function sendEmail({
   replyTo?: string;
 }) {
   try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: 'Audrey Castets <contact@audreycastets.fr>',
+        from: "Audrey Castets <contact@audreycastets.fr>",
         to,
         subject,
         html,
@@ -45,14 +45,14 @@ async function sendEmail({
     });
 
     if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Resend Error:', errorText);
-        throw new Error(`Resend API Error: ${errorText}`);
+      const errorText = await response.text();
+      console.error("Resend Error:", errorText);
+      throw new Error(`Resend API Error: ${errorText}`);
     }
-    
+
     return await response.json();
   } catch (error) {
-    console.error('Email sending failed:', error);
+    console.error("Email sending failed:", error);
     return null;
   }
 }
@@ -103,58 +103,61 @@ const getClientEmailHtml = (name: string, results: ReturnType<typeof calculateDi
 
 // Template Email Admin (Detailed for Clinical Analysis)
 const getAdminEmailHtml = (
-    data: { 
-        answers: DivaAnswer[], 
-        impactAnswers: DivaImpactAnswer[], 
-        userData: {
-            name: string;
-            email: string;
-            birthDate: string;
-        } 
-    }, 
-    results: ReturnType<typeof calculateDivaResults>
+  data: {
+    answers: DivaAnswer[];
+    impactAnswers: DivaImpactAnswer[];
+    userData: {
+      name: string;
+      email: string;
+      birthDate: string;
+    };
+  },
+  results: ReturnType<typeof calculateDivaResults>
 ) => {
-  
   // Helper to generate list of checked examples
   const generateCriteriaList = (sectionId: string) => {
-     const section = DIVA_SECTIONS.find(s => s.id === sectionId);
-     if (!section) return '';
+    const section = DIVA_SECTIONS.find((s) => s.id === sectionId);
+    if (!section) return "";
 
-     return section.criteria.map(c => {
-         const answer = data.answers.find(a => a.criterionId === c.id);
-         if (!answer) return '';
-         
-         const adultExamples = answer.examplesAdultChecked.map(i => c.examplesAdult[i]).join(', ');
-         const childExamples = answer.examplesChildChecked.map(i => c.examplesChild[i]).join(', ');
+    return section.criteria
+      .map((c) => {
+        const answer = data.answers.find((a) => a.criterionId === c.id);
+        if (!answer) return "";
 
-         return `
+        const adultExamples = answer.examplesAdultChecked.map((i) => c.examplesAdult[i]).join(", ");
+        const childExamples = answer.examplesChildChecked.map((i) => c.examplesChild[i]).join(", ");
+
+        return `
             <tr>
                 <td style="padding: 8px; border: 1px solid #ddd;"><strong>${c.label}</strong>: ${c.description}</td>
-                <td style="padding: 8px; border: 1px solid #ddd; background: ${answer.presentAdult ? '#dcfce7' : 'white'}">
-                    <strong>${answer.presentAdult ? 'OUI' : 'Non'}</strong><br/>
+                <td style="padding: 8px; border: 1px solid #ddd; background: ${answer.presentAdult ? "#dcfce7" : "white"}">
+                    <strong>${answer.presentAdult ? "OUI" : "Non"}</strong><br/>
                     <small>Ex: ${adultExamples}</small>
                 </td>
-                <td style="padding: 8px; border: 1px solid #ddd; background: ${answer.presentChild ? '#dbeafe' : 'white'}">
-                     <strong>${answer.presentChild ? 'OUI' : 'Non'}</strong><br/>
+                <td style="padding: 8px; border: 1px solid #ddd; background: ${answer.presentChild ? "#dbeafe" : "white"}">
+                     <strong>${answer.presentChild ? "OUI" : "Non"}</strong><br/>
                     <small>Ex: ${childExamples}</small>
                 </td>
             </tr>
          `;
-     }).join('');
+      })
+      .join("");
   };
 
-  const inattentionRows = generateCriteriaList('inattention');
-  const hyperactivityRows = generateCriteriaList('hyperactivity');
+  const inattentionRows = generateCriteriaList("inattention");
+  const hyperactivityRows = generateCriteriaList("hyperactivity");
 
-  const impactRows = data.impactAnswers.map(ia => {
-      const domain = DIVA_IMPACT_DOMAINS.find(d => d.id === ia.domainId);
+  const impactRows = data.impactAnswers
+    .map((ia) => {
+      const domain = DIVA_IMPACT_DOMAINS.find((d) => d.id === ia.domainId);
       return `
         <li>
             <strong>${domain?.label}:</strong> 
-            Adulte: ${ia.presentAdult ? 'OUI' : 'Non'} | Enfance: ${ia.presentChild ? 'OUI' : 'Non'}
+            Adulte: ${ia.presentAdult ? "OUI" : "Non"} | Enfance: ${ia.presentChild ? "OUI" : "Non"}
         </li>
       `;
-  }).join('');
+    })
+    .join("");
 
   return `
 <!DOCTYPE html>
@@ -163,7 +166,7 @@ const getAdminEmailHtml = (
   <h2>Rapport Clinique DIVA 2.0 - ${data.userData.name}</h2>
   <p><strong>Email:</strong> ${data.userData.email}</p>
   <p><strong>Date Naissance:</strong> ${data.userData.birthDate}</p>
-  <p><strong>Date Test:</strong> ${new Date().toLocaleString('fr-FR')}</p>
+  <p><strong>Date Test:</strong> ${new Date().toLocaleString("fr-FR")}</p>
   
   <div style="background: #fdf2f8; padding: 15px; border: 1px solid #db2777; margin-bottom: 20px;">
     <h3>Synthèse Automatique</h3>
@@ -216,49 +219,46 @@ export async function POST(request: NextRequest) {
 
     // 2. Save to database (optional/resilient)
     try {
-        const { error } = await supabaseAdmin
-            .from('diva_submissions')
-            .insert({
-                user_email: userData.email,
-                user_name: userData.name,
-                birth_date: userData.birthDate,
-                inattention_score_adult: results.inattentionScore.adult,
-                inattention_score_child: results.inattentionScore.child,
-                hyperactivity_score_adult: results.hyperactivityScore.adult,
-                hyperactivity_score_child: results.hyperactivityScore.child,
-                impact_score_adult: results.totalImpactScore.adult,
-                answers_json: { answers, impactAnswers },
-                global_assessment: results.globalAssessment
-            });
-         if (error) console.warn('Supabase DB error:', error.message);
+      const { error } = await supabaseAdmin.from("diva_submissions").insert({
+        user_email: userData.email,
+        user_name: userData.name,
+        birth_date: userData.birthDate,
+        inattention_score_adult: results.inattentionScore.adult,
+        inattention_score_child: results.inattentionScore.child,
+        hyperactivity_score_adult: results.hyperactivityScore.adult,
+        hyperactivity_score_child: results.hyperactivityScore.child,
+        impact_score_adult: results.totalImpactScore.adult,
+        answers_json: { answers, impactAnswers },
+        global_assessment: results.globalAssessment,
+      });
+      if (error) console.warn("Supabase DB error:", error.message);
     } catch (dbError) {
-        console.warn('Supabase DB error:', dbError);
+      console.warn("Supabase DB error:", dbError);
     }
 
     // 3. Send Emails
-    const adminEmail = process.env.ADMIN_EMAIL || 'audrey.castets@gmail.com';
-    
+    const adminEmail = process.env.ADMIN_EMAIL || "audrey.castets@gmail.com";
+
     // Email Admin (Full Report)
     await sendEmail({
       to: adminEmail,
       subject: `🧠 Rapport Clinique TDAH : ${userData.name}`,
       html: getAdminEmailHtml({ answers, impactAnswers, userData }, results),
-      replyTo: userData.email
+      replyTo: userData.email,
     });
 
     // Email Client (Summary)
     if (userData.email) {
       await sendEmail({
         to: userData.email,
-        subject: 'Votre Bilan Pré-diagnostic TDAH - Audrey Castets',
-        html: getClientEmailHtml(userData.name, results)
+        subject: "Votre Bilan Pré-diagnostic TDAH - Audrey Castets",
+        html: getClientEmailHtml(userData.name, results),
       });
     }
 
     return NextResponse.json({ success: true, results });
-
   } catch (error) {
-    console.error('DIVA API Error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error("DIVA API Error:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

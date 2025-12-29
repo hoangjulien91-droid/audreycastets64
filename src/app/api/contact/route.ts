@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 // Create Supabase client with service_role key for server-side operations
 const supabaseAdmin = createClient(
@@ -8,8 +8,8 @@ const supabaseAdmin = createClient(
   {
     auth: {
       autoRefreshToken: false,
-      persistSession: false
-    }
+      persistSession: false,
+    },
   }
 );
 
@@ -27,11 +27,11 @@ async function sendEmail({
   html: string;
   replyTo?: string;
 }) {
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
     headers: {
-      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       from,
@@ -44,7 +44,7 @@ async function sendEmail({
 
   if (!response.ok) {
     const error = await response.text();
-    console.error('Resend API error:', error);
+    console.error("Resend API error:", error);
     throw new Error(`Resend API error: ${error}`);
   }
 
@@ -134,12 +134,12 @@ const getAdminNotificationHtml = ({
       <div class="info-box">
         <div class="info-row"><span class="label">Nom :</span> ${name}</div>
         <div class="info-row"><span class="label">Email :</span> <a href="mailto:${email}">${email}</a></div>
-        ${phone ? `<div class="info-row"><span class="label">Téléphone :</span> ${phone}</div>` : ''}
-        ${service_type ? `<div class="info-row"><span class="label">Type :</span> ${service_type}</div>` : ''}
+        ${phone ? `<div class="info-row"><span class="label">Téléphone :</span> ${phone}</div>` : ""}
+        ${service_type ? `<div class="info-row"><span class="label">Type :</span> ${service_type}</div>` : ""}
       </div>
       <h3>Message :</h3>
       <div class="message-box">
-        ${message.replace(/\n/g, '<br>')}
+        ${message.replace(/\n/g, "<br>")}
       </div>
       <p style="color: #6B7280; font-size: 14px; margin-top: 30px;">
         💡 Vous pouvez répondre directement à cet email pour contacter ${name}.
@@ -158,7 +158,7 @@ export async function POST(request: NextRequest) {
     // Validation
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Les champs nom, email et message sont requis' },
+        { error: "Les champs nom, email et message sont requis" },
         { status: 400 }
       );
     }
@@ -166,15 +166,12 @@ export async function POST(request: NextRequest) {
     // Validation email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Format d\'email invalide' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Format d'email invalide" }, { status: 400 });
     }
 
     // Insert into Supabase database
     const { data: contactData, error: dbError } = await supabaseAdmin
-      .from('contact_submissions')
+      .from("contact_submissions")
       .insert({
         name,
         email,
@@ -187,16 +184,16 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (dbError) {
-      console.error('Database error:', dbError);
+      console.error("Database error:", dbError);
       return NextResponse.json(
-        { error: 'Erreur lors de l\'enregistrement de votre message' },
+        { error: "Erreur lors de l'enregistrement de votre message" },
         { status: 500 }
       );
     }
 
-    const submittedAt = new Date().toLocaleString('fr-FR', {
-      dateStyle: 'full',
-      timeStyle: 'short',
+    const submittedAt = new Date().toLocaleString("fr-FR", {
+      dateStyle: "full",
+      timeStyle: "short",
     });
 
     const emailsSent = {
@@ -208,18 +205,18 @@ export async function POST(request: NextRequest) {
     try {
       const confirmationHtml = getConfirmationEmailHtml(name);
       const confirmationResult = await sendEmail({
-        from: 'Audrey Castets <contact@audreycastets.fr>',
+        from: "Audrey Castets <contact@audreycastets.fr>",
         to: email,
-        subject: '✨ Confirmation de réception - Audrey Castets',
+        subject: "✨ Confirmation de réception - Audrey Castets",
         html: confirmationHtml,
       });
 
       if (confirmationResult.id) {
         emailsSent.confirmation = true;
-        console.log('✅ Email de confirmation envoyé:', confirmationResult.id);
+        console.log("✅ Email de confirmation envoyé:", confirmationResult.id);
       }
     } catch (emailError) {
-      console.error('❌ Erreur envoi email de confirmation:', emailError);
+      console.error("❌ Erreur envoi email de confirmation:", emailError);
     }
 
     // Email de notification à l'admin
@@ -233,9 +230,9 @@ export async function POST(request: NextRequest) {
         submittedAt,
       });
 
-      const adminEmail = process.env.ADMIN_EMAIL || 'audrey.castets@gmail.com';
+      const adminEmail = process.env.ADMIN_EMAIL || "audrey.castets@gmail.com";
       const notificationResult = await sendEmail({
-        from: 'Notifications <contact@audreycastets.fr>',
+        from: "Notifications <contact@audreycastets.fr>",
         to: adminEmail,
         subject: `🔔 Nouveau message de ${name}`,
         html: adminHtml,
@@ -244,43 +241,43 @@ export async function POST(request: NextRequest) {
 
       if (notificationResult.id) {
         emailsSent.notification = true;
-        console.log('✅ Email de notification envoyé:', notificationResult.id);
+        console.log("✅ Email de notification envoyé:", notificationResult.id);
       }
     } catch (emailError) {
-      console.error('❌ Erreur envoi email de notification:', emailError);
+      console.error("❌ Erreur envoi email de notification:", emailError);
     }
 
     // Logger l'envoi des emails dans Supabase
     if (contactData?.id) {
       try {
         await supabaseAdmin
-          .from('contact_submissions')
+          .from("contact_submissions")
           .update({
             email_sent_confirmation: emailsSent.confirmation,
             email_sent_notification: emailsSent.notification,
             email_sent_at: new Date().toISOString(),
           })
-          .eq('id', contactData.id);
+          .eq("id", contactData.id);
       } catch (logError) {
-        console.error('❌ Erreur lors du logging des emails:', logError);
+        console.error("❌ Erreur lors du logging des emails:", logError);
       }
     }
 
     return NextResponse.json(
-      { 
-        success: true, 
-        message: emailsSent.confirmation 
-          ? 'Votre message a été envoyé avec succès ! Vous allez recevoir un email de confirmation.'
-          : 'Votre message a été envoyé avec succès. Vous recevrez une réponse sous 24h.',
+      {
+        success: true,
+        message: emailsSent.confirmation
+          ? "Votre message a été envoyé avec succès ! Vous allez recevoir un email de confirmation."
+          : "Votre message a été envoyé avec succès. Vous recevrez une réponse sous 24h.",
         data: contactData,
         emailsSent,
       },
       { status: 200 }
     );
   } catch (error) {
-    console.error('❌ Erreur générale:', error);
+    console.error("❌ Erreur générale:", error);
     return NextResponse.json(
-      { error: 'Une erreur est survenue lors de l\'envoi de votre message' },
+      { error: "Une erreur est survenue lors de l'envoi de votre message" },
       { status: 500 }
     );
   }

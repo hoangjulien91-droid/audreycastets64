@@ -15,17 +15,17 @@ interface MethodologyStepsProps {
 export function MethodologySteps({ steps }: MethodologyStepsProps) {
   return (
     <div className="py-12">
-      <h3 className="text-2xl font-display font-bold mb-8 text-center">
+      <h3 className="font-display mb-8 text-center text-2xl font-bold">
         Notre méthodologie <span className="text-primary">étape par étape</span>
       </h3>
-      
-      <div className="relative max-w-3xl mx-auto">
+
+      <div className="relative mx-auto max-w-3xl">
         {/* Ligne verticale de fond */}
-        <div className="absolute left-[27px] top-4 bottom-4 w-1 bg-linear-to-b from-primary/20 via-purple-200 to-primary/5 rounded-full" />
+        <div className="from-primary/20 to-primary/5 absolute top-4 bottom-4 left-[27px] w-1 rounded-full bg-linear-to-b via-purple-200" />
 
         <div className="space-y-8">
           {steps.map((step, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -34,23 +34,19 @@ export function MethodologySteps({ steps }: MethodologyStepsProps) {
               className="relative flex gap-6"
             >
               {/* Point de la timeline */}
-              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-white border-4 border-purple-50 shadow-sm flex items-center justify-center relative z-10">
-                <span className="font-display font-bold text-primary text-xl">
-                  {index + 1}
-                </span>
+              <div className="relative z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border-4 border-purple-50 bg-white shadow-sm">
+                <span className="font-display text-primary text-xl font-bold">{index + 1}</span>
               </div>
 
               {/* Contenu */}
-              <div className="flex-1 pt-2 card-premium p-6 rounded-2xl hover:translate-x-2 transition-transform duration-300">
-                <h4 className="text-lg font-bold text-foreground mb-2 flex items-center gap-2">
+              <div className="card-premium flex-1 rounded-2xl p-6 pt-2 transition-transform duration-300 hover:translate-x-2">
+                <h4 className="text-foreground mb-2 flex items-center gap-2 text-lg font-bold">
                   {step.title}
                   {index === steps.length - 1 && (
-                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <CheckCircle2 className="h-5 w-5 text-green-500" />
                   )}
                 </h4>
-                <p className="text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
+                <p className="text-muted-foreground leading-relaxed">{step.description}</p>
               </div>
             </motion.div>
           ))}

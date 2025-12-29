@@ -38,11 +38,11 @@ export interface BlogPost {
 }
 
 export interface BlogSection {
-  type: 'section';
+  type: "section";
   heading: string;
   id: string;
   paragraphs: string[];
-  list?: { items: string[]; type?: 'bullet' | 'number' };
+  list?: { items: string[]; type?: "bullet" | "number" };
 }
 
 export interface ResourceMetadata {

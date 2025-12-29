@@ -3,7 +3,7 @@
 import { BlogPost } from "@/lib/blog-posts";
 import { motion } from "framer-motion";
 import { Link as LinkIcon } from "lucide-react";
-import { Link } from 'next-view-transitions';
+import { Link } from "next-view-transitions";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -16,9 +16,9 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-background">
+    <section className="bg-background py-12 md:py-16">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -29,24 +29,24 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
               <div key={index} className="mb-12">
                 {/* Section Heading with Link */}
                 <div className="group relative" id={section.id}>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground font-display flex items-center gap-2">
+                  <h2 className="text-foreground font-display mb-4 flex items-center gap-2 text-2xl font-bold md:text-3xl">
                     <Link href={`#${section.id}`} className="hover:text-primary transition-colors">
                       {section.heading}
                     </Link>
                     <button
                       onClick={() => copyHeadingLink(section.id)}
-                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="opacity-0 transition-opacity group-hover:opacity-100"
                       aria-label={`Copier le lien vers ${section.heading}`}
                       title="Copier le lien"
                     >
-                      <LinkIcon className="h-5 w-5 text-muted-foreground hover:text-primary" />
+                      <LinkIcon className="text-muted-foreground hover:text-primary h-5 w-5" />
                     </button>
                   </h2>
                 </div>
 
                 {/* Paragraphs */}
                 {section.paragraphs.map((paragraph, pIndex) => (
-                  <p key={pIndex} className="text-foreground/90 leading-relaxed mb-4">
+                  <p key={pIndex} className="text-foreground/90 mb-4 leading-relaxed">
                     {paragraph}
                   </p>
                 ))}
@@ -54,17 +54,19 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
                 {/* List */}
                 {section.list && (
                   <div className="my-6">
-                    {section.list.type === 'number' ? (
-                      <ol className="list-decimal list-inside space-y-2 text-foreground/90">
+                    {section.list.type === "number" ? (
+                      <ol className="text-foreground/90 list-inside list-decimal space-y-2">
                         {section.list.items.map((item, iIndex) => (
-                          <li key={iIndex} className="leading-relaxed">{item}</li>
+                          <li key={iIndex} className="leading-relaxed">
+                            {item}
+                          </li>
                         ))}
                       </ol>
                     ) : (
                       <ul className="space-y-2">
                         {section.list.items.map((item, iIndex) => (
                           <li key={iIndex} className="flex items-start gap-3">
-                            <span className="inline-flex items-center justify-center w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                            <span className="bg-primary mt-2.5 inline-flex h-1.5 w-1.5 flex-shrink-0 items-center justify-center rounded-full" />
                             <span className="text-foreground/90 leading-relaxed">{item}</span>
                           </li>
                         ))}
@@ -77,10 +79,10 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
           </motion.div>
 
           {/* Back to Blog Link */}
-          <div className="mt-12 pt-8 border-t border-border">
-            <Link 
+          <div className="border-border mt-12 border-t pt-8">
+            <Link
               href="/blog"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
+              className="text-primary hover:text-primary/80 inline-flex items-center gap-2 font-medium transition-colors"
             >
               ← Retour au blog
             </Link>

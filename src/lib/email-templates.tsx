@@ -1,13 +1,11 @@
-import * as React from 'react';
-import { Head } from '@react-email/components';
+import * as React from "react";
+import { Head } from "@react-email/components";
 
 interface ContactConfirmationEmailProps {
   name: string;
 }
 
-export const ContactConfirmationEmail: React.FC<ContactConfirmationEmailProps> = ({
-  name,
-}) => (
+export const ContactConfirmationEmail: React.FC<ContactConfirmationEmailProps> = ({ name }) => (
   <html>
     <Head>
       <style>
@@ -100,28 +98,38 @@ export const ContactConfirmationEmail: React.FC<ContactConfirmationEmailProps> =
         <div className="content">
           <p className="greeting">Bonjour {name},</p>
           <p className="message">
-            Merci d'avoir pris contact avec moi. J'ai bien reçu votre message et je l'ai lu 
-            avec attention.
+            Merci d'avoir pris contact avec moi. J'ai bien reçu votre message et je l'ai lu avec
+            attention.
           </p>
           <div className="info-box">
-            <p><strong>⏰ Délai de réponse :</strong> Je m'engage à vous répondre dans les <strong>24 heures</strong></p>
-            <p><strong>🎁 Premier entretien :</strong> Profitez de 15 minutes offertes pour échanger</p>
-            <p><strong>🔒 Confidentialité :</strong> Vos informations restent strictement confidentielles</p>
+            <p>
+              <strong>⏰ Délai de réponse :</strong> Je m'engage à vous répondre dans les{" "}
+              <strong>24 heures</strong>
+            </p>
+            <p>
+              <strong>🎁 Premier entretien :</strong> Profitez de 15 minutes offertes pour échanger
+            </p>
+            <p>
+              <strong>🔒 Confidentialité :</strong> Vos informations restent strictement
+              confidentielles
+            </p>
           </div>
           <p className="message">
-            En attendant ma réponse, n'hésitez pas à consulter mes services et mon approche 
-            sur mon site web.
+            En attendant ma réponse, n'hésitez pas à consulter mes services et mon approche sur mon
+            site web.
           </p>
           <p className="message">
-            À très bientôt,<br />
-            <strong>Audrey Castets</strong><br />
+            À très bientôt,
+            <br />
+            <strong>Audrey Castets</strong>
+            <br />
             <em>Psychologue du Travail</em>
           </p>
         </div>
         <div className="footer">
           <p className="contact-info">
-            📞 <a href="tel:0743687297">07 43 68 72 97</a> | 
-            ✉️ <a href="mailto:contact@audrey-castets.fr">contact@audrey-castets.fr</a>
+            📞 <a href="tel:0743687297">07 43 68 72 97</a> | ✉️{" "}
+            <a href="mailto:contact@audrey-castets.fr">contact@audrey-castets.fr</a>
           </p>
           <p style={{ marginTop: "16px", fontSize: "12px", color: "#9CA3AF" }}>
             © 2024 Audrey Castets - Psychologue du Travail. Tous droits réservés.
@@ -263,7 +271,7 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
             <div className="field-label">👤 Nom</div>
             <div className="field-value">{name}</div>
           </div>
-          
+
           <div className="field">
             <div className="field-label">📧 Email</div>
             <div className="field-value">
@@ -272,7 +280,7 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
               </a>
             </div>
           </div>
-          
+
           {phone && (
             <div className="field">
               <div className="field-label">📞 Téléphone</div>
@@ -283,7 +291,7 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
               </div>
             </div>
           )}
-          
+
           {service_type && (
             <div className="field">
               <div className="field-label">🏷️ Type</div>
@@ -292,14 +300,14 @@ export const AdminNotificationEmail: React.FC<AdminNotificationEmailProps> = ({
               </div>
             </div>
           )}
-          
+
           <div className="field">
             <div className="field-label">💬 Message</div>
             <div className="message-box">
               <p>{message}</p>
             </div>
           </div>
-          
+
           <div className="field">
             <div className="field-label">⏰ Reçu le</div>
             <div className="field-value">{submittedAt}</div>

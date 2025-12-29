@@ -10,30 +10,28 @@ interface VulgarisationBlockProps {
 
 export function VulgarisationBlock({ title, description }: VulgarisationBlockProps) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="relative overflow-hidden rounded-3xl bg-linear-to-br from-purple-50 via-white to-pink-50 p-8 md:p-10 border border-white/50 shadow-sm"
+      className="relative overflow-hidden rounded-3xl border border-white/50 bg-linear-to-br from-purple-50 via-white to-pink-50 p-8 shadow-sm md:p-10"
     >
-      <div className="absolute top-0 right-0 -mt-10 -mr-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
-      
-      <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
+      <div className="bg-primary/5 absolute top-0 right-0 -mt-10 -mr-10 h-32 w-32 rounded-full blur-3xl" />
+
+      <div className="relative z-10 flex flex-col items-start gap-6 md:flex-row">
         <div className="flex-shrink-0">
-          <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-primary border border-purple-100">
-            <Sparkles className="w-6 h-6" />
+          <div className="text-primary flex h-12 w-12 items-center justify-center rounded-2xl border border-purple-100 bg-white shadow-sm">
+            <Sparkles className="h-6 w-6" />
           </div>
         </div>
         <div>
-          <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-2">
+          <h3 className="text-primary mb-2 text-sm font-bold tracking-wider uppercase">
             Comprendre en 2 minutes
           </h3>
-          <h4 className="text-xl md:text-2xl font-display font-bold text-foreground mb-3">
+          <h4 className="font-display text-foreground mb-3 text-xl font-bold md:text-2xl">
             {title}
           </h4>
-          <p className="text-muted-foreground leading-relaxed text-lg">
-            {description}
-          </p>
+          <p className="text-muted-foreground text-lg leading-relaxed">{description}</p>
         </div>
       </div>
     </motion.div>

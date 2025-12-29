@@ -162,7 +162,6 @@ Maximiser la visibilité SERP avec des schémas structurés complets:
 > **IMPORTANT** : Pour éviter le TBT (Total Blocking Time) et le Jitter au chargement, nous utilisons une stratégie hybride.
 
 - **Entrance Animations (Scroll)** : **CSS Exclusif**.
-
   - Utiliser la classe utilitaire `.animate-in` (fadeInUp).
   - Ajouter `[data-in-view="true"]` via `IntersectionObserver` léger si nécessaire, ou simplement `.animate-[fadeInUp_0.5s_ease-out_forwards]` avec `animation-delay` pour le stagger.
   - ❌ INTERDIT : `whileInView` de Framer Motion sur les listes d'éléments (trop lourd).

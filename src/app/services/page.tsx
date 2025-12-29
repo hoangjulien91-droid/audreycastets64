@@ -3,38 +3,36 @@ import { PageHero } from "@/components/ui/page-hero";
 import Footer from "@/components/sections/footer";
 import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import { Sparkles } from "lucide-react";
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 import {
   AnimatedHeroSection,
   AnimatedServicesParticuliers,
   AnimatedServicesProfessionnels,
   AnimatedPracticalInfo,
-  AnimatedFinalCTA
+  AnimatedFinalCTA,
 } from "@/components/services/animated-services-content";
 
 export const revalidate = 3600; // Revalidate every hour
 
 export const metadata: Metadata = {
-  title: 'Mes Services - Accompagnement Particuliers & Professionnels',
-  description: 'Services de psychologie du travail pour particuliers (TCC, EFT, gestion du stress) et professionnels (RPS, recrutement, ateliers). Consultations en cabinet ou visio.',
+  title: "Mes Services - Accompagnement Particuliers & Professionnels",
+  description:
+    "Services de psychologie du travail pour particuliers (TCC, EFT, gestion du stress) et professionnels (RPS, recrutement, ateliers). Consultations en cabinet ou visio.",
   alternates: {
-    canonical: 'https://www.audrey-castets.fr/services',
+    canonical: "https://www.audrey-castets.fr/services",
   },
   openGraph: {
-    title: 'Mes Services - Accompagnement Particuliers & Professionnels',
-    description: 'Services de psychologie du travail pour particuliers et professionnels.',
-    url: 'https://www.audrey-castets.fr/services',
-    type: 'website',
+    title: "Mes Services - Accompagnement Particuliers & Professionnels",
+    description: "Services de psychologie du travail pour particuliers et professionnels.",
+    url: "https://www.audrey-castets.fr/services",
+    type: "website",
   },
 };
 
 export default function ServicesPage() {
   return (
     <>
-      <BreadcrumbJsonLd items={[
-        { name: 'Accueil', url: '/' },
-        { name: 'Mes Services' }
-      ]} />
+      <BreadcrumbJsonLd items={[{ name: "Accueil", url: "/" }, { name: "Mes Services" }]} />
       <ServiceJsonLd
         name="Accompagnement Particuliers - TCC & EFT"
         description="Thérapie Cognitive et Comportementale (TCC) et EFT pour accompagnement personnel"
@@ -44,14 +42,14 @@ export default function ServicesPage() {
         name="Accompagnement Professionnels - Psychologie du Travail"
         description="Diagnostic RPS, recrutement, ateliers de prévention pour entreprises"
       />
-      <div className="min-h-screen bg-background">
+      <div className="bg-background min-h-screen">
         <Header />
 
         <main className="pt-20" id="main-content">
           <PageHero
             badge={{
-              icon: <Sparkles className="w-4 h-4" />,
-              text: "Accompagnement Psychologique"
+              icon: <Sparkles className="h-4 w-4" />,
+              text: "Accompagnement Psychologique",
             }}
             title={
               <>
@@ -59,10 +57,7 @@ export default function ServicesPage() {
               </>
             }
             subtitle="Des accompagnements adaptés à vos besoins, que vous soyez un particulier en quête de mieux-être ou une entreprise soucieuse de la qualité de vie au travail."
-            breadcrumbs={[
-              { label: "Accueil", href: "/" },
-              { label: "Mes Services" }
-            ]}
+            breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Mes Services" }]}
             align="center"
           />
 

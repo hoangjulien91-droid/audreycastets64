@@ -8,7 +8,8 @@ export const DIVA_SECTIONS: DivaSection[] = [
       {
         id: "A1a",
         label: "A1",
-        description: "Avez-vous souvent du mal à prêter attention aux détails, ou faites-vous souvent des erreurs d'étourderie ?",
+        description:
+          "Avez-vous souvent du mal à prêter attention aux détails, ou faites-vous souvent des erreurs d'étourderie ?",
         examplesAdult: [
           "Fait des erreurs d'étourderie",
           "Travaille lentement pour éviter les erreurs",
@@ -16,7 +17,7 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Du mal à travailler de façon minutieuse",
           "Besoin de trop de temps pour mener à leur terme des tâches complexes",
           "Facilement empêtré par les détails",
-          "Travaille trop rapidement et commet ainsi des erreurs"
+          "Travaille trop rapidement et commet ainsi des erreurs",
         ],
         examplesChild: [
           "Erreurs d'étourderie lors du travail scolaire",
@@ -25,8 +26,8 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Ne répondait pas aux questions posées au verso d'un examen",
           "Les autres faisaient remarquer que le travail n'était pas soigné",
           "Ne vérifiait pas ses réponses dans les devoirs scolaires",
-          "Besoin de trop de temps pour terminer les tâches minutieuses"
-        ]
+          "Besoin de trop de temps pour terminer les tâches minutieuses",
+        ],
       },
       {
         id: "A1b",
@@ -37,7 +38,7 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Facilement distrait par ses propres pensées",
           "Difficile de suivre un film jusqu'à la fin ou de lire un livre",
           "Rapidement ennuyé par les choses",
-          "Pose des questions sur des sujets déjà discutés"
+          "Pose des questions sur des sujets déjà discutés",
         ],
         examplesChild: [
           "Du mal à maintenir l'attention lors du travail scolaire",
@@ -45,46 +46,48 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Facilement distrait",
           "Du mal à se concentrer",
           "Besoin d'un environnement structuré pour ne pas être distrait",
-          "Rapidement ennuyé dans des activités"
-        ]
+          "Rapidement ennuyé dans des activités",
+        ],
       },
       {
         id: "A1c",
         label: "A3",
-        description: "Donnez-vous souvent l'impression de ne pas écouter lorsqu'on vous parle directement ?",
+        description:
+          "Donnez-vous souvent l'impression de ne pas écouter lorsqu'on vous parle directement ?",
         examplesAdult: [
           "Rêveur ou préoccupé",
           "Du mal à se concentrer pendant une conversation",
           "Ne se rappelle pas du sujet d'une conversation après-coup",
           "Change souvent de sujet dans une conversation",
-          "On vous dit que vos pensées sont ailleurs"
+          "On vous dit que vos pensées sont ailleurs",
         ],
         examplesChild: [
           "Ne sait plus ce que les parents/enseignants ont dit",
           "Rêveur ou préoccupé",
           "N'écoute qu'avec un contact visuel ou un ton élevé",
           "Doit souvent être interpelé",
-          "Les questions doivent être répétées"
-        ]
+          "Les questions doivent être répétées",
+        ],
       },
       {
         id: "A1d",
         label: "A4",
-        description: "Avez-vous souvent du mal à vous conformer aux consignes et à terminer vos tâches ?",
+        description:
+          "Avez-vous souvent du mal à vous conformer aux consignes et à terminer vos tâches ?",
         examplesAdult: [
           "Fait plusieurs tâches en même temps sans les terminer",
           "Du mal à finir les tâches une fois la nouveauté passée",
           "Besoin de délais pour terminer les tâches",
           "Du mal à terminer les tâches administratives",
-          "Du mal à suivre les instructions dans un manuel"
+          "Du mal à suivre les instructions dans un manuel",
         ],
         examplesChild: [
           "Du mal à suivre les instructions",
           "Difficulté avec les tâches à plusieurs étapes",
           "Ne termine pas les choses",
           "Ne termine pas les devoirs ou ne les rend pas",
-          "Besoin de structure pour terminer les tâches"
-        ]
+          "Besoin de structure pour terminer les tâches",
+        ],
       },
       {
         id: "A1e",
@@ -96,7 +99,7 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Planification inefficace ou trop chargée",
           "Arrive en retard",
           "Incapable d'utiliser un agenda efficacement",
-          "Faible conscience du temps"
+          "Faible conscience du temps",
         ],
         examplesChild: [
           "Du mal à être prêt à temps",
@@ -104,8 +107,8 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Du mal à jouer seul",
           "Du mal à planifier tâches ou devoirs",
           "Arrive en retard",
-          "Faible conscience du temps"
-        ]
+          "Faible conscience du temps",
+        ],
       },
       {
         id: "A1f",
@@ -117,35 +120,36 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Remet à plus tard jusqu'à dépasser les délais",
           "Évite les tâches administratives",
           "N'aime pas lire (effort mental)",
-          "Évite les tâches demandant beaucoup de concentration"
+          "Évite les tâches demandant beaucoup de concentration",
         ],
         examplesChild: [
           "Évite les devoirs ou aversion pour ceux-ci",
           "Lit peu de livres (effort mental)",
           "Évite les tâches demandant de la concentration",
           "Déteste les matières demandant de la concentration",
-          "Remet à plus tard les tâches ennuyeuses"
-        ]
+          "Remet à plus tard les tâches ennuyeuses",
+        ],
       },
       {
         id: "A1g",
         label: "A7",
-        description: "Perdez-vous souvent les objets nécessaires à votre travail ou vos activités ?",
+        description:
+          "Perdez-vous souvent les objets nécessaires à votre travail ou vos activités ?",
         examplesAdult: [
           "Égare portefeuille, clés, agenda",
           "Oublie des choses en quittant un lieu",
           "Perd des papiers pour son travail",
           "Perd du temps à chercher des choses",
           "Panique si on change ses choses de place",
-          "Range les choses au mauvais endroit"
+          "Range les choses au mauvais endroit",
         ],
         examplesChild: [
           "Perd agenda, stylos, affaires de sport",
           "Égare jouets, habits ou devoirs",
           "Perd du temps à chercher des choses",
           "Panique si on change ses choses de place",
-          "On lui fait remarquer qu'il perd des choses"
-        ]
+          "On lui fait remarquer qu'il perd des choses",
+        ],
       },
       {
         id: "A1h",
@@ -156,13 +160,13 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Du mal à reprendre après une distraction",
           "Facilement distrait par bruits/événements",
           "Facilement distrait par les conversations des autres",
-          "Du mal à filtrer les informations"
+          "Du mal à filtrer les informations",
         ],
         examplesChild: [
           "Regarde souvent dehors en classe",
           "Facilement distrait par bruits/événements",
-          "Du mal à reprendre après une distraction"
-        ]
+          "Du mal à reprendre après une distraction",
+        ],
       },
       {
         id: "A1i",
@@ -174,17 +178,17 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Besoin de rappels fréquents",
           "Retourne sur ses pas pour chercher des oublis",
           "Utilise des systèmes rigides pour ne pas oublier",
-          "Oublie de consulter son agenda"
+          "Oublie de consulter son agenda",
         ],
         examplesChild: [
           "Oublie rendez-vous ou consignes",
           "On doit souvent lui rappeler les choses",
           "S'arrête en chemin car a oublié ce qu'il devait faire",
           "Oublie d'apporter ses affaires scolaires",
-          "Oublie des choses à l'école/chez des amis"
-        ]
-      }
-    ]
+          "Oublie des choses à l'école/chez des amis",
+        ],
+      },
+    ],
   },
   {
     id: "hyperactivity",
@@ -193,39 +197,41 @@ export const DIVA_SECTIONS: DivaSection[] = [
       {
         id: "A2a",
         label: "H/I 1",
-        description: "Remuez-vous souvent les mains ou les pieds, ou vous tortillez-vous sur votre siège ?",
+        description:
+          "Remuez-vous souvent les mains ou les pieds, ou vous tortillez-vous sur votre siège ?",
         examplesAdult: [
           "Du mal à rester assis immobile",
           "Remue les jambes",
           "Tape avec un stylo ou joue avec un objet",
           "Tortille les cheveux ou ronge les ongles",
-          "Contrôle son agitation mais avec stress"
+          "Contrôle son agitation mais avec stress",
         ],
         examplesChild: [
           "On lui dit 'tiens-toi tranquille'",
           "Remue les jambes",
           "Tape avec un stylo ou joue avec un objet",
           "Tortille les cheveux ou ronge les ongles",
-          "Incapable de rester assis relaxé"
-        ]
+          "Incapable de rester assis relaxé",
+        ],
       },
       {
         id: "A2b",
         label: "H/I 2",
-        description: "Vous levez-vous souvent dans des situations où vous êtes supposé rester assis ?",
+        description:
+          "Vous levez-vous souvent dans des situations où vous êtes supposé rester assis ?",
         examplesAdult: [
           "Évite réunions, conférences, etc.",
           "Préfère marcher plutôt que s'asseoir",
           "Ne reste jamais longtemps assis tranquille",
           "Stressé par l'obligation de s'asseoir",
-          "Trouve une excuse pour marcher"
+          "Trouve une excuse pour marcher",
         ],
         examplesChild: [
           "Se lève souvent (repas, classe)",
           "Difficile de rester assis (repas, classe)",
           "On lui dit de rester assis",
-          "Trouve une excuse pour marcher"
-        ]
+          "Trouve une excuse pour marcher",
+        ],
       },
       {
         id: "A2c",
@@ -234,14 +240,14 @@ export const DIVA_SECTIONS: DivaSection[] = [
         examplesAdult: [
           "Se sent agité ou nerveux à l'intérieur",
           "Sentiment constant devoir faire quelque chose",
-          "Trouve difficile de se relaxer"
+          "Trouve difficile de se relaxer",
         ],
         examplesChild: [
           "Court toujours",
           "Grimpe partout",
           "Monte aux arbres",
-          "Se sent agité à l'intérieur"
-        ]
+          "Se sent agité à l'intérieur",
+        ],
       },
       {
         id: "A2d",
@@ -252,14 +258,14 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Se met en avant en public",
           "Bruyant dans toutes situations",
           "Du mal à faire des activités tranquillement",
-          "Du mal à parler doucement"
+          "Du mal à parler doucement",
         ],
         examplesChild: [
           "Fait du bruit en jouant ou en classe",
           "Incapable de regarder TV/film tranquillement",
           "On lui demande de se calmer",
-          "Se met en avant en public"
-        ]
+          "Se met en avant en public",
+        ],
       },
       {
         id: "A2e",
@@ -269,14 +275,14 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Toujours occupé",
           "Déborde d'énergie, toujours en mouvement",
           "Franchit ses propres limites",
-          "Lâche difficilement prise, insistant"
+          "Lâche difficilement prise, insistant",
         ],
         examplesChild: [
           "Constamment occupé",
           "Remarqué par son activité",
           "Déborde d'énergie",
-          "Toujours sur la brèche"
-        ]
+          "Toujours sur la brèche",
+        ],
       },
       {
         id: "A2f",
@@ -287,15 +293,15 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Connu pour parler sans cesse",
           "Difficile d'arrêter de parler",
           "Ne laisse pas parler les autres",
-          "Besoin de beaucoup de mots"
+          "Besoin de beaucoup de mots",
         ],
         examplesChild: [
           "Connu comme une 'boîte à paroles'",
           "On lui demande souvent le silence",
           "Bavardages notés sur bulletins",
           "Puni pour avoir trop parlé",
-          "Ne laisse pas parler les autres"
-        ]
+          "Ne laisse pas parler les autres",
+        ],
       },
       {
         id: "A2g",
@@ -305,15 +311,15 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Dit ce qu'il pense sans réfléchir",
           "Répond avant la fin des questions",
           "Finit les phrases des autres",
-          "Manque de tact"
+          "Manque de tact",
         ],
         examplesChild: [
           "Dit les choses sans réfléchir",
           "Veut être le premier à répondre",
           "Donne la première réponse venue",
           "Interrompt les autres",
-          "Manque de tact"
-        ]
+          "Manque de tact",
+        ],
       },
       {
         id: "A2h",
@@ -324,15 +330,15 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Difficulté dans les embouteillages",
           "Du mal à attendre son tour pour parler",
           "Impatient",
-          "Quitte emplois/relations par impatience"
+          "Quitte emplois/relations par impatience",
         ],
         examplesChild: [
           "Du mal à attendre son tour (jeux/sport)",
           "Du mal à attendre son tour en classe",
           "Toujours le premier à parler/agir",
           "Rapidement impatient",
-          "Traverse sans regarder"
-        ]
+          "Traverse sans regarder",
+        ],
       },
       {
         id: "A2i",
@@ -344,17 +350,17 @@ export const DIVA_SECTIONS: DivaSection[] = [
           "Dérange sans demande",
           "Intrusif",
           "Du mal à respecter les limites",
-          "Donne son opinion immédiatement"
+          "Donne son opinion immédiatement",
         ],
         examplesChild: [
           "S'immisce dans les jeux",
           "Interrompt les conversations",
           "Réagit sur tout",
-          "Incapable d'attendre"
-        ]
-      }
-    ]
-  }
+          "Incapable d'attendre",
+        ],
+      },
+    ],
+  },
 ];
 
 export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
@@ -370,7 +376,7 @@ export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
       "Pas de promotions",
       "Sous-performant",
       "Conflits au travail",
-      "Arrêts maladie liés aux symptômes"
+      "Arrêts maladie liés aux symptômes",
     ],
     examplesChild: [
       "Niveau inférieur au QI",
@@ -379,8 +385,8 @@ export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
       "Plus d'années que nécessaire",
       "Difficulté avec devoirs",
       "Éducation spéciale",
-      "Remarques des enseignants"
-    ]
+      "Remarques des enseignants",
+    ],
   },
   {
     id: "relationships_family",
@@ -392,14 +398,14 @@ export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
       "Problèmes relationnels/disputes",
       "Problèmes sexuels",
       "Difficultés éducation enfants",
-      "Difficultés ménagères/financières"
+      "Difficultés ménagères/financières",
     ],
     examplesChild: [
       "Disputes fréquentes (fratrie)",
       "Punitions fréquentes",
       "Peu de contacts familiaux (conflits)",
-      "Soutien parental prolongé"
-    ]
+      "Soutien parental prolongé",
+    ],
   },
   {
     id: "social_contact",
@@ -409,15 +415,15 @@ export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
       "Difficile de maintenir contacts",
       "Conflits communication",
       "Difficile d'initier contacts",
-      "Oubli d'être attentionné"
+      "Oubli d'être attentionné",
     ],
     examplesChild: [
       "Difficile de maintenir contacts",
       "Conflits communication",
       "Peu d'amis",
       "Teasing / Exclu",
-      "Joue les petits durs"
-    ]
+      "Joue les petits durs",
+    ],
   },
   {
     id: "leisure_hobby",
@@ -429,7 +435,7 @@ export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
       "Lassé rapidement des hobbies",
       "Conduite dangereuse/Accidents",
       "Recherche sensations/risques",
-      "Problèmes police/justice"
+      "Problèmes police/justice",
     ],
     examplesChild: [
       "Incapable de se relaxer",
@@ -437,8 +443,8 @@ export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
       "Incapable de finir livre/film",
       "Lassé rapidement",
       "Recherche sensations",
-      "Accidents fréquents"
-    ]
+      "Accidents fréquents",
+    ],
   },
   {
     id: "self_confidence",
@@ -448,14 +454,14 @@ export const DIVA_IMPACT_DOMAINS: DivaImpactDomain[] = [
       "Image négative (échecs passés)",
       "Peur de l'échec",
       "Réaction excessive critiques",
-      "Perfectionnisme"
+      "Perfectionnisme",
     ],
     examplesChild: [
       "Doute de soi",
       "Image négative",
       "Peur de l'échec",
       "Réaction excessive critiques",
-      "Perfectionnisme"
-    ]
-  }
+      "Perfectionnisme",
+    ],
+  },
 ];

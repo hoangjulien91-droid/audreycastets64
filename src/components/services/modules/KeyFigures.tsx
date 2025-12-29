@@ -15,7 +15,7 @@ export function KeyFigures({ keyStats }: KeyFiguresProps) {
   if (!keyStats || keyStats.length === 0) return null;
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 my-12">
+    <div className="my-12 grid grid-cols-2 gap-6 lg:grid-cols-3">
       {keyStats.map((stat, index) => (
         <motion.div
           key={index}
@@ -23,21 +23,19 @@ export function KeyFigures({ keyStats }: KeyFiguresProps) {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1 }}
-          className="bg-white p-6 rounded-2xl border border-border shadow-sm text-center group hover:border-primary/30 transition-colors"
+          className="border-border group hover:border-primary/30 rounded-2xl border bg-white p-6 text-center shadow-sm transition-colors"
         >
-          <div className="mb-3 inline-flex items-center justify-center p-2 rounded-lg bg-primary/5 text-primary group-hover:bg-primary/10 transition-colors">
-            <TrendingUp className="w-5 h-5" />
+          <div className="bg-primary/5 text-primary group-hover:bg-primary/10 mb-3 inline-flex items-center justify-center rounded-lg p-2 transition-colors">
+            <TrendingUp className="h-5 w-5" />
           </div>
-          <div className="text-3xl md:text-4xl font-display font-bold text-foreground mb-2 gradient-text">
+          <div className="font-display text-foreground gradient-text mb-2 text-3xl font-bold md:text-4xl">
             {stat.value}
           </div>
-          <div className="text-sm font-medium text-foreground mb-1">
-            {stat.label}
-          </div>
+          <div className="text-foreground mb-1 text-sm font-medium">{stat.label}</div>
           {stat.source && (
-             <div className="text-[10px] text-muted-foreground uppercase tracking-wider">
-                Source : {stat.source}
-             </div>
+            <div className="text-muted-foreground text-[10px] tracking-wider uppercase">
+              Source : {stat.source}
+            </div>
           )}
         </motion.div>
       ))}

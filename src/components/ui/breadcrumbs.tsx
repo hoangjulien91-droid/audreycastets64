@@ -1,4 +1,4 @@
-import { Link } from 'next-view-transitions';
+import { Link } from "next-view-transitions";
 import { ChevronRight, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -14,16 +14,19 @@ interface BreadcrumbsProps {
 
 export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className={cn("flex items-center text-sm text-muted-foreground mb-8", className)}>
-      <ol className="flex items-center gap-2 flex-wrap">
+    <nav
+      aria-label="Breadcrumb"
+      className={cn("text-muted-foreground mb-8 flex items-center text-sm", className)}
+    >
+      <ol className="flex flex-wrap items-center gap-2">
         {/* Home Link */}
         <li className="flex items-center gap-2">
-          <Link 
-            href="/" 
-            className="flex items-center hover:text-primary transition-colors hover:bg-white/50 p-1.5 rounded-md"
+          <Link
+            href="/"
+            className="hover:text-primary flex items-center rounded-md p-1.5 transition-colors hover:bg-white/50"
             title="Retour à l'accueil"
           >
-            <Home className="w-4 h-4" />
+            <Home className="h-4 w-4" />
           </Link>
         </li>
 
@@ -32,19 +35,19 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
 
           return (
             <li key={index} className="flex items-center gap-2">
-              <ChevronRight className="w-4 h-4 text-muted-foreground/40" />
-              
+              <ChevronRight className="text-muted-foreground/40 h-4 w-4" />
+
               {isLast ? (
-                <span 
-                    className="font-medium text-foreground px-2 py-1 rounded-md bg-white/40 border border-white/20 shadow-sm backdrop-blur-sm"
-                    aria-current="page"
+                <span
+                  className="text-foreground rounded-md border border-white/20 bg-white/40 px-2 py-1 font-medium shadow-sm backdrop-blur-sm"
+                  aria-current="page"
                 >
                   {item.label}
                 </span>
               ) : (
-                <Link 
-                  href={item.href || "#"} 
-                  className="hover:text-primary transition-colors hover:bg-white/50 px-2 py-1 rounded-md"
+                <Link
+                  href={item.href || "#"}
+                  className="hover:text-primary rounded-md px-2 py-1 transition-colors hover:bg-white/50"
                 >
                   {item.label}
                 </Link>

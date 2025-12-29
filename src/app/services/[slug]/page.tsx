@@ -1,23 +1,23 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getServiceBySlug, getRelatedServices, servicesData } from '@/lib/data/services';
-import { PageHero } from '@/components/ui/page-hero';
-import { Sparkles, ArrowRight } from 'lucide-react';
-import { AnimatedFinalCTA } from '@/components/services/animated-services-content';
-import { BreadcrumbJsonLd, ServiceJsonLd } from '@/components/JsonLd';
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getServiceBySlug, getRelatedServices, servicesData } from "@/lib/data/services";
+import { PageHero } from "@/components/ui/page-hero";
+import { Sparkles, ArrowRight } from "lucide-react";
+import { AnimatedFinalCTA } from "@/components/services/animated-services-content";
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 
 // S-Tier Modules
-import { VulgarisationBlock } from '@/components/services/modules/VulgarisationBlock';
-import { MethodologySteps } from '@/components/services/modules/MethodologySteps';
-import { BioFocus } from '@/components/services/modules/BioFocus';
-import { ServiceTestimonials } from '@/components/services/modules/ServiceTestimonials';
-import { ServiceFAQ } from '@/components/services/modules/ServiceFAQ';
-import { LocalSeoBlock } from '@/components/services/modules/LocalSeoBlock';
-import { AbstractServiceSchema } from '@/components/services/modules/AbstractServiceSchema';
-import { RelatedContent } from '@/components/services/modules/RelatedContent';
-import { ScientificContext } from '@/components/services/modules/ScientificContext';
-import { CaseStudy } from '@/components/services/modules/CaseStudy';
-import { KeyFigures } from '@/components/services/modules/KeyFigures';
+import { VulgarisationBlock } from "@/components/services/modules/VulgarisationBlock";
+import { MethodologySteps } from "@/components/services/modules/MethodologySteps";
+import { BioFocus } from "@/components/services/modules/BioFocus";
+import { ServiceTestimonials } from "@/components/services/modules/ServiceTestimonials";
+import { ServiceFAQ } from "@/components/services/modules/ServiceFAQ";
+import { LocalSeoBlock } from "@/components/services/modules/LocalSeoBlock";
+import { AbstractServiceSchema } from "@/components/services/modules/AbstractServiceSchema";
+import { RelatedContent } from "@/components/services/modules/RelatedContent";
+import { ScientificContext } from "@/components/services/modules/ScientificContext";
+import { CaseStudy } from "@/components/services/modules/CaseStudy";
+import { KeyFigures } from "@/components/services/modules/KeyFigures";
 
 interface ServicePageProps {
   params: Promise<{
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   if (!service) {
     return {
-      title: 'Service non trouvé',
+      title: "Service non trouvé",
     };
   }
 
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: service.title,
       description: service.shortDescription,
       url: `https://www.audrey-castets.fr/services/${slug}`,
-      type: 'website',
+      type: "website",
     },
   };
 }
@@ -56,8 +56,8 @@ export async function generateStaticParams() {
   }));
 }
 
-import Header from '@/components/sections/header';
-import Footer from '@/components/sections/footer';
+import Header from "@/components/sections/header";
+import Footer from "@/components/sections/footer";
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
@@ -70,134 +70,135 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const related = getRelatedServices(service.relatedServices);
 
   return (
-    <div className="min-h-screen bg-background pb-0">
+    <div className="bg-background min-h-screen pb-0">
       <Header />
       <main className="pt-20">
-      <BreadcrumbJsonLd items={[
-        { name: 'Accueil', url: '/' },
-        { name: 'Services', url: '/services' },
-        { name: service.title }
-      ]} />
-      <ServiceJsonLd 
-        name={service.title}
-        description={service.shortDescription}
-      />
-      {/* 1. HERO SECTION (Glass & Light) */}
-      <PageHero
-        badge={{
-          icon: <Sparkles className="w-4 h-4" />,
-          text: service.category === 'particuliers' ? 'Accompagnement Particulier' : 'Accompagnement Professionnel'
-        }}
-        title={service.title}
-        subtitle={service.shortDescription}
-        breadcrumbs={[
-          { label: "Accueil", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: service.title }
-        ]}
-        align="center"
-      />
+        <BreadcrumbJsonLd
+          items={[
+            { name: "Accueil", url: "/" },
+            { name: "Services", url: "/services" },
+            { name: service.title },
+          ]}
+        />
+        <ServiceJsonLd name={service.title} description={service.shortDescription} />
+        {/* 1. HERO SECTION (Glass & Light) */}
+        <PageHero
+          badge={{
+            icon: <Sparkles className="h-4 w-4" />,
+            text:
+              service.category === "particuliers"
+                ? "Accompagnement Particulier"
+                : "Accompagnement Professionnel",
+          }}
+          title={service.title}
+          subtitle={service.shortDescription}
+          breadcrumbs={[
+            { label: "Accueil", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: service.title },
+          ]}
+          align="center"
+        />
 
-      <div className="container mx-auto px-6 lg:px-8 mt-12 md:mt-20">
-        <div className="max-w-5xl mx-auto">
-          
-          <div>
-            
-            {/* 3. VULGARISATION MODULE */}
-            <section id="comprendre" className="mb-20 scroll-mt-32">
-              <VulgarisationBlock 
-                title={service.vulgarisation.title} 
-                description={service.vulgarisation.description} 
-              />
-            </section>
+        <div className="container mx-auto mt-12 px-6 md:mt-20 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <div>
+              {/* 3. VULGARISATION MODULE */}
+              <section id="comprendre" className="mb-20 scroll-mt-32">
+                <VulgarisationBlock
+                  title={service.vulgarisation.title}
+                  description={service.vulgarisation.description}
+                />
+              </section>
 
-            {/* 4. VISUAL SCHEMA */}
-            <section className="mb-20">
-              <AbstractServiceSchema />
-            </section>
+              {/* 4. VISUAL SCHEMA */}
+              <section className="mb-20">
+                <AbstractServiceSchema />
+              </section>
 
-            {/* 5. DEEP CONTENT & BENEFITS */}
-            <section id="details" className="mb-20 scroll-mt-32 prose-premium">
-              <h2 className="font-display text-3xl font-bold mb-6">Pourquoi choisir cet accompagnement ?</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                {service.benefits.map((benefit, i) => (
-                  <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-border shadow-sm">
-                    <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold flex-shrink-0">
-                      ✓
-                    </span>
-                    <span className="text-sm font-medium">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+              {/* 5. DEEP CONTENT & BENEFITS */}
+              <section id="details" className="prose-premium mb-20 scroll-mt-32">
+                <h2 className="font-display mb-6 text-3xl font-bold">
+                  Pourquoi choisir cet accompagnement ?
+                </h2>
+                <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                  {service.benefits.map((benefit, i) => (
+                    <div
+                      key={i}
+                      className="border-border flex items-start gap-3 rounded-xl border bg-white p-4 shadow-sm"
+                    >
+                      <span className="bg-primary/10 text-primary flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                        ✓
+                      </span>
+                      <span className="text-sm font-medium">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
 
-              {/* [NEW] KEY FIGURES */}
-              {service.keyStats && <KeyFigures keyStats={service.keyStats} />}
-              
-              <div className="text-lg leading-relaxed text-muted-foreground space-y-6">
-                <p>{service.fullDescription}</p>
-                {/* Note: In a real CMS, this would be rich text. Here we use the fullDescription string. */}
-              </div>
-            </section>
+                {/* [NEW] KEY FIGURES */}
+                {service.keyStats && <KeyFigures keyStats={service.keyStats} />}
 
-            {/* [NEW] SCIENTIFIC CONTEXT (If available) */}
-            {service.scientificBasis && (
-               <section className="mb-20">
+                <div className="text-muted-foreground space-y-6 text-lg leading-relaxed">
+                  <p>{service.fullDescription}</p>
+                  {/* Note: In a real CMS, this would be rich text. Here we use the fullDescription string. */}
+                </div>
+              </section>
+
+              {/* [NEW] SCIENTIFIC CONTEXT (If available) */}
+              {service.scientificBasis && (
+                <section className="mb-20">
                   <ScientificContext scientificBasis={service.scientificBasis} />
-               </section>
-            )}
+                </section>
+              )}
 
-            {/* 6. METHODOLOGY TIMELINE */}
-            <section id="methodologie" className="mb-20 scroll-mt-32">
-              <MethodologySteps steps={service.methodology} />
-            </section>
+              {/* 6. METHODOLOGY TIMELINE */}
+              <section id="methodologie" className="mb-20 scroll-mt-32">
+                <MethodologySteps steps={service.methodology} />
+              </section>
 
-            {/* [NEW] CASE STUDY (If available) */}
-            {service.caseStudy && (
-               <section className="mb-20">
+              {/* [NEW] CASE STUDY (If available) */}
+              {service.caseStudy && (
+                <section className="mb-20">
                   <CaseStudy caseStudy={service.caseStudy} />
-               </section>
-            )}
+                </section>
+              )}
 
-            {/* 7. BIO FOCUS */}
-            <section className="mb-20">
-              <BioFocus text={service.bioFocus} />
-            </section>
+              {/* 7. BIO FOCUS */}
+              <section className="mb-20">
+                <BioFocus text={service.bioFocus} />
+              </section>
 
-            {/* 8. TESTIMONIALS */}
-            <section id="temoignages" className="mb-20 scroll-mt-32">
-              <ServiceTestimonials testimonials={service.testimonials} />
-            </section>
+              {/* 8. TESTIMONIALS */}
+              <section id="temoignages" className="mb-20 scroll-mt-32">
+                <ServiceTestimonials testimonials={service.testimonials} />
+              </section>
 
-            {/* 9. FAQ */}
-            <section id="faq" className="mb-20 scroll-mt-32">
-              <ServiceFAQ faq={service.faq} serviceTitle={service.title} />
-            </section>
+              {/* 9. FAQ */}
+              <section id="faq" className="mb-20 scroll-mt-32">
+                <ServiceFAQ faq={service.faq} serviceTitle={service.title} />
+              </section>
 
-            {/* 10. LOCAL SEO */}
-            <section className="mb-20">
-              <LocalSeoBlock />
-            </section>
-
+              {/* 10. LOCAL SEO */}
+              <section className="mb-20">
+                <LocalSeoBlock />
+              </section>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* 11. RELATED CONTENT (Full Width) */}
-      <div className="container mx-auto px-6 lg:px-8">
-         <RelatedContent 
-            relatedServices={related} 
-            relatedTests={service.relatedTests}
-         />
-      </div>
+        {/* 11. RELATED CONTENT (Full Width) */}
+        <div className="container mx-auto px-6 lg:px-8">
+          <RelatedContent relatedServices={related} relatedTests={service.relatedTests} />
+        </div>
 
-      {/* 12. CONTEXTUAL CTA */}
-      <AnimatedFinalCTA 
-         // Note: Expanding the component to accept props would be ideal, 
-         // but for now we rely on the generic premium one which is already very strong.
-         // If specific overrides are needed, we'd add props to AnimatedFinalCTA.
-         // We can wrap it or customize it here.
-         // For now, the generic one is "S-Tier" enough.
-      />
+        {/* 12. CONTEXTUAL CTA */}
+        <AnimatedFinalCTA
+        // Note: Expanding the component to accept props would be ideal,
+        // but for now we rely on the generic premium one which is already very strong.
+        // If specific overrides are needed, we'd add props to AnimatedFinalCTA.
+        // We can wrap it or customize it here.
+        // For now, the generic one is "S-Tier" enough.
+        />
       </main>
       <Footer />
     </div>

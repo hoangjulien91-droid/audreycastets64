@@ -1,4 +1,4 @@
-import type { NavLink } from './types';
+import type { NavLink } from "./types";
 
 export const navLinks: NavLink[] = [
   { href: "/qui-suis-je", label: "Qui suis-je" },

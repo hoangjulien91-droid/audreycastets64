@@ -1,5 +1,5 @@
 import { ChevronRight } from "lucide-react";
-import { Link } from 'next-view-transitions';
+import { Link } from "next-view-transitions";
 
 interface BreadcrumbItem {
   label: string;
@@ -12,15 +12,12 @@ interface BreadcrumbProps {
 
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
+    <nav className="text-muted-foreground flex items-center space-x-2 text-sm">
       {items.map((item, index) => (
         <div key={index} className="flex items-center">
-          {index > 0 && <ChevronRight className="w-4 h-4 mx-2" />}
+          {index > 0 && <ChevronRight className="mx-2 h-4 w-4" />}
           {item.href && index < items.length - 1 ? (
-            <Link
-              href={item.href}
-              className="hover:text-primary transition-colors duration-200"
-            >
+            <Link href={item.href} className="hover:text-primary transition-colors duration-200">
               {item.label}
             </Link>
           ) : (

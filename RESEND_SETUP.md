@@ -3,25 +3,30 @@
 ## ✅ Ce qui a été configuré
 
 ### 1. **Installation des dépendances**
+
 - ✅ Package `resend` installé
 - ✅ Templates d'email React créés
 
 ### 2. **Templates d'emails créés**
+
 Deux templates HTML modernes et responsive dans `src/lib/email-templates.tsx` :
 
 #### 📩 Email de confirmation (pour le visiteur)
+
 - Design moderne avec gradient rose/violet
 - Informations sur le délai de réponse (24h)
 - Rappel du premier entretien offert (15 min)
 - Coordonnées de contact cliquables
 
 #### 📨 Email de notification (pour vous)
+
 - Design professionnel avec badge d'alerte
 - Toutes les informations du formulaire
 - Email et téléphone cliquables pour réponse rapide
 - Horodatage précis de la soumission
 
 ### 3. **API Route améliorée** (`src/app/api/contact/route.ts`)
+
 - ✅ Validation renforcée des données
 - ✅ Enregistrement dans Supabase
 - ✅ Envoi automatique de 2 emails via Resend
@@ -29,6 +34,7 @@ Deux templates HTML modernes et responsive dans `src/lib/email-templates.tsx` :
 - ✅ Logging des envois dans Supabase
 
 ### 4. **Variables d'environnement** (`.env.local`)
+
 ```env
 RESEND_API_KEY=re_FTyHADma_Ngvm8NX1YzNj73NTq1EdQ5Nr
 ADMIN_EMAIL=contact@audrey-castets.fr
@@ -47,6 +53,7 @@ ADMIN_EMAIL=contact@audrey-castets.fr
 5. Exécutez la requête (bouton **Run**)
 
 Cela ajoutera 3 colonnes à votre table `contact_submissions` :
+
 - `email_sent_confirmation` (boolean)
 - `email_sent_notification` (boolean)
 - `email_sent_at` (timestamp)
@@ -65,28 +72,30 @@ Pour envoyer des emails en production à vos vrais visiteurs :
 
 ```typescript
 // AVANT (mode test - envoie seulement aux emails autorisés)
-from: 'Audrey Castets <onboarding@resend.dev>'
+from: "Audrey Castets <onboarding@resend.dev>";
 
 // APRÈS (production - envoie à tout le monde)
-from: 'Audrey Castets <contact@audrey-castets.fr>'
+from: "Audrey Castets <contact@audrey-castets.fr>";
 ```
 
 ```typescript
 // AVANT (mode test)
-from: 'Notifications <onboarding@resend.dev>'
+from: "Notifications <onboarding@resend.dev>";
 
 // APRÈS (production)
-from: 'Notifications <notifications@audrey-castets.fr>'
+from: "Notifications <notifications@audrey-castets.fr>";
 ```
 
 ### Étape 3 : Tester l'intégration
 
 #### En mode test (avec onboarding@resend.dev)
+
 1. Remplissez le formulaire de contact sur votre site
 2. Vérifiez dans [Resend Dashboard > Emails](https://resend.com/emails) que les emails sont envoyés
 3. ⚠️ Les emails n'arriveront QUE si l'adresse du destinataire est autorisée dans Resend
 
 #### En mode production (après vérification du domaine)
+
 1. Testez avec n'importe quelle adresse email
 2. Vérifiez que vous recevez bien les 2 emails
 3. Vérifiez dans Supabase que les colonnes de tracking sont bien remplies
@@ -114,6 +123,7 @@ from: 'Notifications <notifications@audrey-castets.fr>'
 ```
 
 ### Gestion d'erreurs robuste :
+
 - ✅ Si Supabase échoue → Erreur retournée, pas d'email envoyé
 - ✅ Si l'email de confirmation échoue → Pas de problème, l'email de notification est quand même envoyé
 - ✅ Si l'email de notification échoue → Pas de problème, le visiteur reçoit quand même sa confirmation
@@ -128,17 +138,20 @@ from: 'Notifications <notifications@audrey-castets.fr>'
 Éditez le fichier `src/lib/email-templates.tsx` :
 
 **Email de confirmation** : Lignes 9-105
+
 - Changez les couleurs dans le `<style>`
 - Modifiez les textes dans le `<body>`
 - Ajoutez votre logo si nécessaire
 
 **Email de notification** : Lignes 117-280
+
 - Changez le design selon vos préférences
 - Ajoutez/supprimez des champs affichés
 
 ### Modifier l'adresse admin
 
 Dans `.env.local`, changez :
+
 ```env
 ADMIN_EMAIL=votre-nouvelle-adresse@example.com
 ```
@@ -152,7 +165,7 @@ ADMIN_EMAIL=votre-nouvelle-adresse@example.com
 Requête SQL pour voir les statistiques :
 
 ```sql
-SELECT 
+SELECT
   COUNT(*) as total_submissions,
   SUM(CASE WHEN email_sent_confirmation THEN 1 ELSE 0 END) as confirmations_sent,
   SUM(CASE WHEN email_sent_notification THEN 1 ELSE 0 END) as notifications_sent
@@ -163,6 +176,7 @@ WHERE created_at > NOW() - INTERVAL '30 days';
 ### Dashboard Resend
 
 Consultez [Resend Dashboard](https://resend.com/emails) pour :
+
 - Voir tous les emails envoyés
 - Taux de délivrabilité
 - Erreurs d'envoi

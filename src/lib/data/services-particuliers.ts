@@ -1,5 +1,4 @@
-
-import { ServiceData } from "../types/service-types"; 
+import { ServiceData } from "../types/service-types";
 import { tcc } from "./definitions/services-particuliers/tcc";
 import { eft } from "./definitions/services-particuliers/eft";
 import { depression } from "./definitions/services-particuliers/depression";
@@ -19,5 +18,5 @@ export const servicesParticuliers: ServiceData[] = [
   stress,
   devPerso,
   bilan,
-  reconversion
+  reconversion,
 ];

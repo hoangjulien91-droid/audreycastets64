@@ -1,5 +1,5 @@
-import { getBreadcrumbSchema } from '@/lib/breadcrumbs';
-import type { BreadcrumbItem } from '@/lib/data/types';
+import { getBreadcrumbSchema } from "@/lib/breadcrumbs";
+import type { BreadcrumbItem } from "@/lib/data/types";
 
 interface BreadcrumbSchemaProps {
   items: BreadcrumbItem[];
@@ -7,7 +7,7 @@ interface BreadcrumbSchemaProps {
 
 export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
   const schema = getBreadcrumbSchema(items);
-  
+
   return (
     <script
       type="application/ld+json"

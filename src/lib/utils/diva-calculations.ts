@@ -9,11 +9,11 @@ export const calculateDivaResults = (
   const scores = {
     inattention: { adult: 0, child: 0 },
     hyperactivity: { adult: 0, child: 0 },
-    impact: { adult: 0, child: 0 }
+    impact: { adult: 0, child: 0 },
   };
 
   // 1. Calculate Symptom Scores
-  answers.forEach(answer => {
+  answers.forEach((answer) => {
     // Find which section this criterion belongs to
     // A1 = Inattention, A2 = Hyperactivity
     const isHyperactivity = answer.criterionId.startsWith("A2");
@@ -25,7 +25,7 @@ export const calculateDivaResults = (
 
   // 2. Calculate Impact Scores (Critère C)
   // We need to check if functioning is impaired in at least 2 domains
-  impactAnswers.forEach(answer => {
+  impactAnswers.forEach((answer) => {
     if (answer.presentAdult) scores.impact.adult++;
     if (answer.presentChild) scores.impact.child++;
   });
@@ -35,7 +35,7 @@ export const calculateDivaResults = (
   const hasInattentionAdult = scores.inattention.adult >= 6;
   const hasHyperactivityAdult = scores.hyperactivity.adult >= 6;
   const hasImpactAdult = scores.impact.adult >= 2;
-  
+
   const hasInattentionChild = scores.inattention.child >= 6;
   const hasHyperactivityChild = scores.hyperactivity.child >= 6;
   // Note: For a formal diagnosis, symptoms must be present in childhood too.
@@ -46,33 +46,41 @@ export const calculateDivaResults = (
   if (hasImpactAdult) {
     if (hasInattentionAdult && hasHyperactivityAdult) {
       if (hasInattentionChild && hasHyperactivityChild) {
-        globalAssessment = "Profil TDAH Mixte probable (Symptômes persistants depuis l'enfance). Consultation recommandée.";
+        globalAssessment =
+          "Profil TDAH Mixte probable (Symptômes persistants depuis l'enfance). Consultation recommandée.";
       } else {
-        globalAssessment = "Profil TDAH Mixte suggéré (Symptômes actuels significatifs). Une évaluation clinique est conseillée.";
+        globalAssessment =
+          "Profil TDAH Mixte suggéré (Symptômes actuels significatifs). Une évaluation clinique est conseillée.";
       }
     } else if (hasInattentionAdult) {
-       if (hasInattentionChild) {
-        globalAssessment = "Profil TDAH Inattentif probable (Symptômes persistants depuis l'enfance). Consultation recommandée.";
-       } else {
-        globalAssessment = "Profil TDAH Inattentif suggéré. Une évaluation clinique est conseillée.";
-       }
+      if (hasInattentionChild) {
+        globalAssessment =
+          "Profil TDAH Inattentif probable (Symptômes persistants depuis l'enfance). Consultation recommandée.";
+      } else {
+        globalAssessment =
+          "Profil TDAH Inattentif suggéré. Une évaluation clinique est conseillée.";
+      }
     } else if (hasHyperactivityAdult) {
-        if (hasHyperactivityChild) {
-            globalAssessment = "Profil TDAH Hyperactif/Impulsif probable (Symptômes persistants depuis l'enfance). Consultation recommandée.";
-        } else {
-            globalAssessment = "Profil TDAH Hyperactif/Impulsif suggéré. Une évaluation clinique est conseillée.";
-        }
+      if (hasHyperactivityChild) {
+        globalAssessment =
+          "Profil TDAH Hyperactif/Impulsif probable (Symptômes persistants depuis l'enfance). Consultation recommandée.";
+      } else {
+        globalAssessment =
+          "Profil TDAH Hyperactif/Impulsif suggéré. Une évaluation clinique est conseillée.";
+      }
     } else {
-        // Subthreshold but with impact
-        if (scores.inattention.adult >= 4 || scores.hyperactivity.adult >= 4) {
-            globalAssessment = "Quelques symptômes présents avec impact fonctionnel. Une surveillance ou un avis professionnel peut être utile.";
-        }
+      // Subthreshold but with impact
+      if (scores.inattention.adult >= 4 || scores.hyperactivity.adult >= 4) {
+        globalAssessment =
+          "Quelques symptômes présents avec impact fonctionnel. Une surveillance ou un avis professionnel peut être utile.";
+      }
     }
   } else {
-      // Symptoms but no impact
-      if (hasInattentionAdult || hasHyperactivityAdult) {
-          globalAssessment = "Symptômes présents mais sans impact fonctionnel majeur déclaré (Critère C non rempli).";
-      }
+    // Symptoms but no impact
+    if (hasInattentionAdult || hasHyperactivityAdult) {
+      globalAssessment =
+        "Symptômes présents mais sans impact fonctionnel majeur déclaré (Critère C non rempli).";
+    }
   }
 
   return {
@@ -80,6 +88,6 @@ export const calculateDivaResults = (
     hyperactivityScore: scores.hyperactivity,
     totalImpactScore: scores.impact,
     globalAssessment,
-    date: new Date().toISOString()
+    date: new Date().toISOString(),
   };
 };

@@ -16,7 +16,7 @@ export interface ServiceStep {
 
 export interface ServiceData {
   slug: string;
-  category: 'particuliers' | 'professionnels';
+  category: "particuliers" | "professionnels";
   title: string;
   shortDescription: string;
   fullDescription: string;
@@ -51,5 +51,5 @@ export interface ServiceData {
     source?: string;
   }[];
   relatedServices: string[];
-  relatedTests?: ('mbi' | 'diva')[];
+  relatedTests?: ("mbi" | "diva")[];
 }

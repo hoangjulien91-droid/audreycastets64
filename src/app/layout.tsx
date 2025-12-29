@@ -4,42 +4,42 @@ import Script from "next/script";
 import "./globals.css";
 import { AccessibilityProvider } from "@/components/providers/accessibility-provider";
 import { AccessibilityMenu } from "@/components/ui/accessibility-menu";
-import { ViewTransitions } from 'next-view-transitions';
-import { Toaster } from 'sonner';
-import StickyMobileCTA from '@/components/ui/sticky-mobile-cta';
+import { ViewTransitions } from "next-view-transitions";
+import { Toaster } from "sonner";
+import StickyMobileCTA from "@/components/ui/sticky-mobile-cta";
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Audrey Castets",
-  "url": "https://www.audrey-castets.fr",
-  "logo": "https://www.audrey-castets.fr/icons/icon-512.png", 
-  "contactPoint": {
+  name: "Audrey Castets",
+  url: "https://www.audrey-castets.fr",
+  logo: "https://www.audrey-castets.fr/icons/icon-512.png",
+  contactPoint: {
     "@type": "ContactPoint",
-    "telephone": "+33-7-43-68-72-97",
-    "contactType": "customer service"
-  }
+    telephone: "+33-7-43-68-72-97",
+    contactType: "customer service",
+  },
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Psychologist",
-  "name": "Audrey Castets - Psychologue du Travail",
-  "image": "https://www.audrey-castets.fr/og-image.jpg",
-  "telephone": "07 43 68 72 97",
-  "url": "https://www.audrey-castets.fr",
-  "address": {
+  name: "Audrey Castets - Psychologue du Travail",
+  image: "https://www.audrey-castets.fr/og-image.jpg",
+  telephone: "07 43 68 72 97",
+  url: "https://www.audrey-castets.fr",
+  address: {
     "@type": "PostalAddress",
-    "addressLocality": "Anglet",
-    "postalCode": "64600",
-    "addressCountry": "FR"
+    addressLocality: "Anglet",
+    postalCode: "64600",
+    addressCountry: "FR",
   },
-  "geo": {
+  geo: {
     "@type": "GeoCoordinates",
-    "latitude": 43.492949,
-    "longitude": -1.512688
+    latitude: 43.492949,
+    longitude: -1.512688,
   },
-  "priceRange": "$$"
+  priceRange: "$$",
 };
 
 const syne = Syne({
@@ -60,13 +60,26 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.audrey-castets.fr'),
+  metadataBase: new URL("https://www.audrey-castets.fr"),
   title: {
     default: "Audrey Castets - Psychologue du Travail | TCC & EFT",
-    template: "%s | Audrey Castets - Psychologue"
+    template: "%s | Audrey Castets - Psychologue",
   },
-  description: "Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé pour particuliers et professionnels. Gestion du stress, burn-out, reconversion. Consultations en cabinet ou visio.",
-  keywords: ["psychologue", "psychologue du travail", "TCC", "EFT", "thérapie cognitivo-comportementale", "burn-out", "stress", "anxiété", "reconversion professionnelle", "risques psychosociaux", "accompagnement professionnel"],
+  description:
+    "Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé pour particuliers et professionnels. Gestion du stress, burn-out, reconversion. Consultations en cabinet ou visio.",
+  keywords: [
+    "psychologue",
+    "psychologue du travail",
+    "TCC",
+    "EFT",
+    "thérapie cognitivo-comportementale",
+    "burn-out",
+    "stress",
+    "anxiété",
+    "reconversion professionnelle",
+    "risques psychosociaux",
+    "accompagnement professionnel",
+  ],
   authors: [{ name: "Audrey Castets" }],
   creator: "Audrey Castets",
   publisher: "Audrey Castets",
@@ -81,10 +94,10 @@ export const metadata: Metadata = {
     title: "Audrey Castets - Psychologue",
   },
   other: {
-    'geo.region': 'FR-64',
-    'geo.placename': 'Biarritz',
-    'geo.position': '43.4832; -1.5586', // Coordonnées approximatives Biarritz
-    'ICBM': '43.4832, -1.5586',
+    "geo.region": "FR-64",
+    "geo.placename": "Biarritz",
+    "geo.position": "43.4832; -1.5586", // Coordonnées approximatives Biarritz
+    ICBM: "43.4832, -1.5586",
   },
   openGraph: {
     type: "website",
@@ -92,7 +105,8 @@ export const metadata: Metadata = {
     url: "https://www.audrey-castets.fr",
     siteName: "Audrey Castets - Psychologue du Travail",
     title: "Audrey Castets - Psychologue du Travail | TCC & EFT",
-    description: "Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé pour particuliers et professionnels.",
+    description:
+      "Psychologue du Travail spécialisée en TCC et EFT. Accompagnement personnalisé pour particuliers et professionnels.",
     images: [
       {
         url: "/og-image.jpg",
@@ -115,14 +129,13 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-  icons: {
-  },
-  manifest: '/manifest.json',
+  icons: {},
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -132,7 +145,11 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html lang="fr" suppressHydrationWarning className={`${syne.variable} ${instrumentSerif.variable}`}>
+      <html
+        lang="fr"
+        suppressHydrationWarning
+        className={`${syne.variable} ${instrumentSerif.variable}`}
+      >
         <head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -155,7 +172,7 @@ export default function RootLayout({
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-title" content="Audrey Castets" />
         </head>
-        <body className="antialiased bg-background">
+        <body className="bg-background antialiased">
           <AccessibilityProvider>
             <a href="#main-content" className="skip-to-main">
               Aller au contenu principal

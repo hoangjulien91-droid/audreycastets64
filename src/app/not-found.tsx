@@ -1,13 +1,13 @@
-import { Link } from 'next-view-transitions';
-import { Metadata } from 'next';
-import { Home, Search, FileQuestion } from 'lucide-react';
-import Header from '@/components/sections/header';
-import Footer from '@/components/sections/footer';
-import { BackButton } from '@/components/ui/back-button';
+import { Link } from "next-view-transitions";
+import { Metadata } from "next";
+import { Home, Search, FileQuestion } from "lucide-react";
+import Header from "@/components/sections/header";
+import Footer from "@/components/sections/footer";
+import { BackButton } from "@/components/ui/back-button";
 
 export const metadata: Metadata = {
-  title: 'Page non trouvée - 404',
-  description: 'La page que vous recherchez n\'existe pas ou a été déplacée.',
+  title: "Page non trouvée - 404",
+  description: "La page que vous recherchez n'existe pas ou a été déplacée.",
   robots: {
     index: false,
     follow: false,
@@ -17,69 +17,69 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <div className="min-h-screen bg-linear-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background flex flex-col">
+      <div className="to-background flex min-h-screen flex-col bg-linear-to-br from-[#F3E8F0] via-[#E8DFF0]/30">
         <Header />
-        
-        <main className="flex-grow flex items-center justify-center px-6 py-20">
-          <div className="max-w-2xl mx-auto text-center">
+
+        <main className="flex flex-grow items-center justify-center px-6 py-20">
+          <div className="mx-auto max-w-2xl text-center">
             {/* Illustration */}
-            <div className="mb-8 relative">
+            <div className="relative mb-8">
               <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                <FileQuestion className="w-64 h-64 text-primary" />
+                <FileQuestion className="text-primary h-64 w-64" />
               </div>
               <div className="relative">
-                <h1 className="font-display text-9xl md:text-[12rem] font-bold text-transparent bg-clip-text bg-linear-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0] leading-none">
+                <h1 className="font-display bg-linear-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0] bg-clip-text text-9xl leading-none font-bold text-transparent md:text-[12rem]">
                   404
                 </h1>
               </div>
             </div>
 
             {/* Content */}
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+            <h2 className="font-display text-foreground mb-4 text-3xl font-bold md:text-4xl">
               Page non trouvée
             </h2>
-            
-            <p className="text-lg text-muted-foreground mb-8 max-w-md mx-auto">
-              Désolé, la page que vous recherchez n'existe pas ou a été déplacée. 
-              Peut-être pouvez-vous trouver ce que vous cherchez dans les liens ci-dessous.
+
+            <p className="text-muted-foreground mx-auto mb-8 max-w-md text-lg">
+              Désolé, la page que vous recherchez n'existe pas ou a été déplacée. Peut-être
+              pouvez-vous trouver ce que vous cherchez dans les liens ci-dessous.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="mb-12 flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-linear-to-r from-[#A594B3] to-[#8B7A98] text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#A594B3] to-[#8B7A98] px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
               >
-                <Home className="w-5 h-5" />
+                <Home className="h-5 w-5" />
                 Retour à l'accueil
               </Link>
-              
+
               <BackButton />
             </div>
 
             {/* Quick Links */}
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-[#D4C5D9]/30">
-              <h3 className="text-xl font-bold text-foreground mb-6 flex items-center justify-center gap-2">
-                <Search className="w-5 h-5 text-primary" />
+            <div className="rounded-3xl border border-[#D4C5D9]/30 bg-white p-8 shadow-xl">
+              <h3 className="text-foreground mb-6 flex items-center justify-center gap-2 text-xl font-bold">
+                <Search className="text-primary h-5 w-5" />
                 Pages populaires
               </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {[
-                  { href: '/services', label: 'Mes Services', icon: '💼' },
-                  { href: '/qui-suis-je', label: 'Qui suis-je', icon: '👋' },
-                  { href: '/mon-approche', label: 'Mon Approche', icon: '🎯' },
-                  { href: '/tarifs', label: 'Tarifs', icon: '💰' },
-                  { href: '/faq', label: 'FAQ', icon: '❓' },
-                  { href: '/contact', label: 'Contact', icon: '📧' },
+                  { href: "/services", label: "Mes Services", icon: "💼" },
+                  { href: "/qui-suis-je", label: "Qui suis-je", icon: "👋" },
+                  { href: "/mon-approche", label: "Mon Approche", icon: "🎯" },
+                  { href: "/tarifs", label: "Tarifs", icon: "💰" },
+                  { href: "/faq", label: "FAQ", icon: "❓" },
+                  { href: "/contact", label: "Contact", icon: "📧" },
                 ].map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="flex items-center gap-3 p-4 rounded-xl border border-[#D4C5D9]/30 hover:bg-[#F3E8F0] hover:border-primary/30 transition-all duration-300 group"
+                    className="hover:border-primary/30 group flex items-center gap-3 rounded-xl border border-[#D4C5D9]/30 p-4 transition-all duration-300 hover:bg-[#F3E8F0]"
                   >
                     <span className="text-2xl">{link.icon}</span>
-                    <span className="font-medium text-foreground group-hover:text-primary transition-colors">
+                    <span className="text-foreground group-hover:text-primary font-medium transition-colors">
                       {link.label}
                     </span>
                   </Link>
@@ -88,9 +88,9 @@ export default function NotFound() {
             </div>
 
             {/* Help Text */}
-            <p className="mt-8 text-sm text-muted-foreground">
-              Si vous pensez qu'il s'agit d'une erreur, n'hésitez pas à{' '}
-              <Link href="/contact" className="text-primary hover:underline font-medium">
+            <p className="text-muted-foreground mt-8 text-sm">
+              Si vous pensez qu'il s'agit d'une erreur, n'hésitez pas à{" "}
+              <Link href="/contact" className="text-primary font-medium hover:underline">
                 me contacter
               </Link>
               .
