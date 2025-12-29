@@ -10,6 +10,7 @@
         "typecheck": "tsc --noEmit",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
+        "quality": "npm run lint && npm run typecheck && npm run format:check",
         "verify": "npm run lint && npm run typecheck && npm run build"
     },
     "dependencies": {

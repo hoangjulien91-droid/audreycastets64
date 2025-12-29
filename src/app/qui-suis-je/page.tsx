@@ -1,45 +1,40 @@
 import { Link } from 'next-view-transitions';
 import Header from "@/components/sections/header";
-import { PageHero } from "@/components/ui/page-hero";
 import Footer from "@/components/sections/footer";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
-import Image from "next/image";
-import { BreadcrumbJsonLd, PersonJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import type { Metadata } from 'next';
+import { PageHero } from "@/components/ui/page-hero";
 import { 
+  GraduationCap, 
   Award, 
-  Heart, 
-  Target, 
   BookOpen, 
-  Briefcase, 
-  Globe, 
-  GraduationCap,
-  Users,
-  CheckCircle,
+  MapPin, 
+  Heart,
   Sparkles,
-  Star
-} from "lucide-react";
+  Quote,
+  Shield,
+  Lightbulb,
+  Briefcase,
+  Brain,
+  Target,
+  Users,
+  CheckCircle
+} from 'lucide-react';
 
 export const dynamic = 'force-static';
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: 'Qui suis-je ? Audrey Castets - Psychologue du Travail',
-  description: 'Découvrez mon parcours, mes formations et mon approche en psychologie du travail. Plus de 5 ans d\'expérience en TCC, EFT et accompagnement professionnel.',
+  title: 'Qui Suis-Je ? - Audrey Castets | Psychologue & Coach',
+  description: 'Découvrez mon parcours, mes diplômes et ma philosophie. Psychologue du travail et praticienne TCC, je vous accompagne avec bienveillance.',
   alternates: {
     canonical: 'https://www.audrey-castets.fr/qui-suis-je',
   },
   openGraph: {
-    title: 'Qui suis-je ? Audrey Castets - Psychologue du Travail',
-    description: 'Découvrez mon parcours, mes formations et mon approche en psychologie du travail.',
+    title: 'Qui Suis-Je ? - Audrey Castets | Psychologue & Coach',
+    description: 'Découvrez mon parcours et mon approche.',
     url: 'https://www.audrey-castets.fr/qui-suis-je',
     type: 'profile',
-    images: [{
-      url: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg',
-      width: 500,
-      height: 500,
-      alt: 'Audrey Castets - Psychologue du Travail'
-    }]
   },
 };
 
@@ -50,159 +45,54 @@ export default function QuiSuisJePage() {
         { name: 'Accueil', url: '/' },
         { name: 'Qui suis-je' }
       ]} />
-      <PersonJsonLd />
-      <div className="min-h-screen bg-background">
-      <Header />
       
-      <main className="pt-20" id="main-content">
-        {/* Hero Section with Breadcrumb */}
-        {/* Hero Section with Breadcrumb */}
-        <PageHero
-          title={null}
-          breadcrumbs={[
-            { label: "Accueil", href: "/" },
-            { label: "Qui suis-je" }
-          ]}
-          align="left"
-        >
-          {/* Hero Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
-                <Sparkles className="w-4 h-4 text-primary animate-pulse" aria-hidden="true" />
-                <span className="text-sm font-medium text-primary">
-                  Mon parcours & expertise
-                </span>
+      <div className="min-h-screen bg-background">
+        <Header />
+
+        <main className="pt-20" id="main-content">
+          <PageHero
+            badge={{
+              icon: <Sparkles className="w-4 h-4" />,
+              text: "Mon Parcours"
+            }}
+            title={
+              <>
+                Psychologue, mais <span className="bg-linear-to-r from-primary to-accent-violet bg-clip-text text-transparent">avant tout humaine</span>
+              </>
+            }
+            subtitle="Mon parcours est guidé par une passion : comprendre l'humain pour mieux l'accompagner vers son épanouissement."
+            breadcrumbs={[
+              { label: "Accueil", href: "/" },
+              { label: "Qui suis-je" }
+            ]}
+            align="left"
+          >
+             <div className="flex flex-wrap gap-3 mt-8">
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-border-soft/30 text-sm text-foreground">
+                <GraduationCap className="w-4 h-4 inline mr-2 text-primary" />
+                Diplômée d'État
               </div>
-
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Audrey <span className="text-primary">Castets</span>
-              </h1>
-
-              <div className="flex items-center gap-2.5 mb-6">
-                <Heart className="w-6 h-6 text-primary fill-primary animate-pulse" aria-hidden="true" />
-                <p className="text-xl md:text-2xl text-primary font-semibold font-display">
-                  Psychologue du Travail
-                </p>
-              </div>
-
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                Passionnée par l'accompagnement humain, j'ai construit mon expertise autour de la <strong className="text-foreground">psychologie du travail</strong>, des <strong className="text-foreground">thérapies cognitivo-comportementales (TCC)</strong> et de <strong className="text-foreground">l'EFT</strong>. Mon objectif : vous aider à retrouver un équilibre entre vie professionnelle et bien-être personnel.
-              </p>
-
-              {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-4" role="list" aria-label="Statistiques clés">
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                  <div className="flex items-center justify-center w-12 h-12 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 5 ans">+5 ans</p>
-                  <p className="text-xs text-muted-foreground text-center">Expérience</p>
-                </div>
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                  <div className="flex items-center justify-center w-12 h-12 bg-linear-to-br from-[#C5B8D0] to-[#A594B3] rounded-full mb-2 mx-auto" aria-hidden="true">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <p className="text-2xl font-bold text-primary text-center" aria-label="Plus de 200">200+</p>
-                  <p className="text-xs text-muted-foreground text-center">Accompagnements</p>
-                </div>
-                <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 border border-[#D4C5D9]/30 shadow-md" role="listitem">
-                  <div className="flex items-center justify-center w-12 h-12 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-full mb-2 mx-auto" aria-hidden="true">
-                    <Star className="w-6 h-6 text-white" />
-                  </div>
-                  <p className="text-2xl font-bold text-primary text-center" aria-label="95 pourcent">95%</p>
-                  <p className="text-xs text-muted-foreground text-center">Satisfaction</p>
-                </div>
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-accent-violet/30 text-sm text-foreground">
+                <Award className="w-4 h-4 inline mr-2 text-accent-violet" />
+                Spécialisée TCC & Travail
               </div>
             </div>
+          </PageHero>
 
-            {/* Right Image */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative group">
-                <div className="absolute -inset-6 bg-linear-to-r from-[#C5B8D0] via-[#A594B3] to-[#8B7A98] opacity-20 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700" aria-hidden="true"></div>
-                <div className="relative">
-                  <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/c38f5070-6b82-4e11-be55-a586c48aeec5-psychologue-portfolio-nextjs-supaba-vercel-app/assets/images/next-885887-next-992762-audrey-castets-BNy4GS-r-1.jpg"
-                    alt="Audrey Castets - Psychologue du Travail"
-                    width={500}
-                    height={500}
-                    sizes="(max-width: 768px) 288px, (max-width: 1024px) 384px, 400px"
-                    className="w-72 h-72 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] object-cover rounded-full shadow-2xl ring-8 ring-white/60 group-hover:ring-[#D4C5D9]/40 transition-all duration-500"
-                    priority
-                    quality={85}
+          {/* Section Histoire */}
+          <section className="py-20 bg-white relative overflow-hidden">
+             {/* Background decorative elements */}
+             <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-bg-soft/50 to-transparent pointer-events-none"></div>
+
+            <div className="container mx-auto px-4 relative z-10">
+              <div className="grid md:grid-cols-2 gap-16 items-center">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-linear-to-tr from-primary to-accent-violet rounded-3xl opacity-10 blur-xl group-hover:opacity-20 transition-opacity duration-500"></div>
+                  <img 
+                    src="/images/audrey-portrait-pro.jpg" 
+                    alt="Audrey Castets" 
+                    className="relative rounded-3xl shadow-2xl w-full h-auto object-cover transform transition-transform duration-500 hover:scale-[1.01]"
                   />
-                </div>
-              </div>
-            </div>
-          </div>
-        </PageHero>
-
-        {/* Mon Parcours Section */}
-        <section 
-          className="py-16 md:py-24 bg-white"
-          aria-labelledby="parcours-heading"
-        >
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <span className="text-primary text-sm font-semibold uppercase tracking-wide mb-3 block">
-                  Mon histoire
-                </span>
-                <h2 id="parcours-heading" className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Un parcours au service de <span className="text-primary">votre bien-être</span>
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  De mes études en psychologie à mon expertise internationale, découvrez le chemin qui m'a menée vers l'accompagnement professionnel et personnel.
-                </p>
-              </div>
-
-              {/* Timeline */}
-              <div className="space-y-8" role="list" aria-label="Parcours professionnel">
-                {/* Formation */}
-                <article className="flex gap-6 group" role="listitem">
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-                      <GraduationCap className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-foreground mb-2">Formation académique</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Master 2 en Psychologie du Travail et des Organisations, complété par des formations spécialisées en TCC (Thérapies Cognitivo-Comportementales) et EFT (Emotional Freedom Techniques).
-                    </p>
-                  </div>
-                </article>
-
-                {/* Expérience */}
-                <article className="flex gap-6 group" role="listitem">
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-linear-to-br from-[#C5B8D0] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-                      <Briefcase className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-foreground mb-2">+5 années d'expérience</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Plus de 5 ans d'accompagnement auprès de particuliers et d'entreprises, avec une expertise reconnue dans la gestion du stress, la prévention du burn-out et l'optimisation du bien-être au travail.
-                    </p>
-                  </div>
-                </article>
-
-                {/* International */}
-                <article className="flex gap-6 group" role="listitem">
-                  <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-                      <Globe className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-foreground mb-2">Expérience internationale</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Collaborations avec des organisations internationales, enrichissant ma pratique par une approche multiculturelle et des méthodologies variées d'accompagnement.
-                    </p>
-                  </div>
-                </article>
               </div>
             </div>
           </div>

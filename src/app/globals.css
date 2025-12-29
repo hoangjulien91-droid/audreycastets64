@@ -57,6 +57,14 @@
   --color-warm-rose: #FBF4F7;
   --color-soft-lavender: #F8F5FB;
 
+  /* S-Tier Semantic Tokens */
+  --color-accent-violet: #A594B3;
+  --color-accent-violet-dark: #8B7A98;
+  --color-accent-violet-light: #C5B8D0;
+  --color-border-soft: #D4C5D9;
+  --color-bg-soft: #F3E8F0;
+  --color-bg-subtle: #E8DFF0;
+
   --font-display: var(--font-display), "Syne", sans-serif;
   --font-body: var(--font-source-sans), "Inter", system-ui, -apple-system, sans-serif;
   --font-serif: var(--font-serif), "Instrument Serif", serif;
@@ -468,6 +476,11 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* S-Tier God Mode Strict Compliance */
+  .glass-ghost {
+    @apply bg-card/60 backdrop-blur-md border border-white/10 shadow-lg;
   }
 
   .gradient-text {

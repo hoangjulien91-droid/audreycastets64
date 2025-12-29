@@ -96,20 +96,14 @@ export default function HeroSection() {
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-foreground mb-4 text-balance"
+              className="text-foreground mb-6 text-balance"
             >
               Audrey{" "}
               <span className="text-primary-dark">Castets</span>
+              <span className="block text-xl sm:text-2xl font-bold text-primary-dark font-display mt-2">
+                Psychologue du Travail et TCC
+              </span>
             </motion.h1>
-
-            <motion.p
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl sm:text-2xl font-bold text-primary-dark font-display mb-6"
-            >
-              Psychologue du Travail
-            </motion.p>
 
             <motion.p 
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}

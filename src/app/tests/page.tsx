@@ -46,7 +46,7 @@ export default function TestsPage() {
                   Test Burnout
                 </h2>
                 <p className="text-muted-foreground mb-8 flex-1">
-                  Évaluez votre niveau d'épuisement professionnel (MBI). Ce test analyse la fatigue émotionnelle, la dépersonnalisation et l'accomplissement personnel.
+                  Test d'inventaire de burnout de Maslach - MBI. Ce test analyse la fatigue émotionnelle, la dépersonnalisation et l'accomplissement personnel.
                 </p>
                 
                 <Link 

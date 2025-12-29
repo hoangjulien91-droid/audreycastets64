@@ -63,7 +63,7 @@ export function AnimatedHeroSection() {
           initial="initial"
           animate="animate"
           transition={{ delay: 1 }}
-          className="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-96 h-96 bg-accent-violet/20 rounded-full blur-3xl"
         />
       </div>
 
@@ -73,7 +73,7 @@ export function AnimatedHeroSection() {
         variants={staggerContainer}
         className="max-w-5xl mx-auto text-center"
       >
-        <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 bg-pink-100 rounded-full border border-primary/20 shadow-sm mb-6">
+        <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 bg-bg-soft rounded-full border border-primary/20 shadow-sm mb-6">
           <motion.div
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 3, repeat: Infinity }}
@@ -87,7 +87,7 @@ export function AnimatedHeroSection() {
 
         <motion.h1 variants={fadeInUp} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
           Des accompagnements <motion.span 
-            className="text-transparent bg-clip-text bg-linear-to-r from-primary via-purple-500 to-primary"
+            className="text-transparent bg-clip-text bg-linear-to-r from-primary via-accent-violet to-primary"
             animate={{
               backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
             }}
@@ -111,8 +111,8 @@ export function AnimatedHeroSection() {
             <motion.div
               key={index}
               variants={fadeInUp}
-              whileHover={{ scale: 1.1, boxShadow: "0 10px 30px rgba(139, 122, 152, 0.3)" }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-pink-200/50 shadow-sm"
+              whileHover={{ scale: 1.1, boxShadow: "0 10px 30px rgba(165, 148, 179, 0.3)" }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-border-soft/50 shadow-sm"
             >
               <span className="text-primary">{item.icon}</span>
               <span className="text-sm font-medium text-foreground">

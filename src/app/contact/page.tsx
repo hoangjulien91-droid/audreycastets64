@@ -43,7 +43,7 @@ export default function ContactPage() {
             }}
             title={
               <>
-                Prenons <span className="bg-linear-to-r from-primary to-[#A594B3] bg-clip-text text-transparent">contact</span>
+                Prenons <span className="bg-linear-to-r from-primary to-accent-violet bg-clip-text text-transparent">contact</span>
               </>
             }
             subtitle="Prenons contact pour échanger sur vos besoins et voir comment je peux vous accompagner dans votre démarche."
@@ -54,20 +54,20 @@ export default function ContactPage() {
             align="left"
           >
             <div className="flex flex-wrap gap-3 mt-8" role="list" aria-label="Avantages">
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 text-sm text-foreground" role="listitem">
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-border-soft/30 text-sm text-foreground" role="listitem">
                 <CheckCircle className="w-4 h-4 inline mr-2 text-primary" aria-hidden="true" />
                 Réponse sous 24h
               </div>
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#A594B3]/30 text-sm text-foreground" role="listitem">
-                <CheckCircle className="w-4 h-4 inline mr-2 text-[#A594B3]" aria-hidden="true" />
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-accent-violet/30 text-sm text-foreground" role="listitem">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-accent-violet" aria-hidden="true" />
                 Premier entretien offert
               </div>
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 text-sm text-foreground" role="listitem">
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-border-soft/30 text-sm text-foreground" role="listitem">
                 <CheckCircle className="w-4 h-4 inline mr-2 text-primary" aria-hidden="true" />
                 Confidentialité absolue
               </div>
-              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#A594B3]/30 text-sm text-foreground" role="listitem">
-                <CheckCircle className="w-4 h-4 inline mr-2 text-[#A594B3]" aria-hidden="true" />
+              <div className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-accent-violet/30 text-sm text-foreground" role="listitem">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-accent-violet" aria-hidden="true" />
                 Sans engagement
               </div>
             </div>
@@ -86,9 +86,9 @@ export default function ContactPage() {
                   </p>
 
                   <div className="space-y-6 mb-12" role="list" aria-label="Coordonnées">
-                    <article className="bg-linear-to-br from-[#F3E8F0] to-white p-6 rounded-2xl border border-[#D4C5D9]/30 hover:shadow-lg transition-all duration-300" role="listitem">
+                    <article className="bg-linear-to-br from-bg-soft to-white p-6 rounded-2xl border border-border-soft/30 hover:shadow-lg transition-all duration-300" role="listitem">
                       <div className="flex items-start gap-4">
-                        <div className="bg-linear-to-br from-primary to-[#A594B3] p-3 rounded-xl shadow-lg" aria-hidden="true">
+                        <div className="bg-linear-to-br from-primary to-accent-violet p-3 rounded-xl shadow-lg" aria-hidden="true">
                           <Phone className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -105,16 +105,16 @@ export default function ContactPage() {
                       </div>
                     </article>
 
-                    <article className="bg-linear-to-br from-[#E8DFF0] to-white p-6 rounded-2xl border border-[#A594B3]/30 hover:shadow-lg transition-all duration-300" role="listitem">
+                    <article className="bg-linear-to-br from-bg-subtle to-white p-6 rounded-2xl border border-accent-violet/30 hover:shadow-lg transition-all duration-300" role="listitem">
                       <div className="flex items-start gap-4">
-                        <div className="bg-linear-to-br from-[#A594B3] to-[#8B7A98] p-3 rounded-xl shadow-lg" aria-hidden="true">
+                        <div className="bg-linear-to-br from-accent-violet to-accent-violet-dark p-3 rounded-xl shadow-lg" aria-hidden="true">
                           <Mail className="w-6 h-6 text-white" />
                         </div>
                         <div>
                           <h3 className="font-semibold text-foreground mb-1">
                             Email
                           </h3>
-                          <a href="mailto:contact@audrey-castets.fr" className="text-[#A594B3] hover:underline font-medium">
+                          <a href="mailto:contact@audrey-castets.fr" className="text-accent-violet hover:underline font-medium">
                             contact@audrey-castets.fr
                           </a>
                           <p className="text-sm text-muted-foreground mt-1">
@@ -124,9 +124,9 @@ export default function ContactPage() {
                       </div>
                     </article>
 
-                    <article className="bg-linear-to-br from-[#F3E8F0] to-white p-6 rounded-2xl border border-[#D4C5D9]/30 hover:shadow-lg transition-all duration-300" role="listitem">
+                    <article className="bg-linear-to-br from-bg-soft to-white p-6 rounded-2xl border border-border-soft/30 hover:shadow-lg transition-all duration-300" role="listitem">
                       <div className="flex items-start gap-4">
-                        <div className="bg-linear-to-br from-primary to-[#A594B3] p-3 rounded-xl shadow-lg" aria-hidden="true">
+                        <div className="bg-linear-to-br from-primary to-accent-violet p-3 rounded-xl shadow-lg" aria-hidden="true">
                           <MapPin className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -141,7 +141,7 @@ export default function ContactPage() {
                     </article>
                   </div>
 
-                  <div className="bg-linear-to-br from-[#E8DFF0] to-[#F3E8F0] p-8 rounded-3xl border border-[#D4C5D9]/30">
+                  <div className="bg-linear-to-br from-bg-subtle to-bg-soft p-8 rounded-3xl border border-border-soft/30">
                     <h3 className="text-xl font-bold mb-6 text-foreground">
                       Pourquoi me contacter ?
                     </h3>
@@ -162,7 +162,7 @@ export default function ContactPage() {
 
                       <div className="flex items-start gap-3" role="listitem">
                         <div className="bg-white p-2 rounded-lg mt-1" aria-hidden="true">
-                          <MessageCircle className="w-5 h-5 text-[#A594B3]" />
+                          <MessageCircle className="w-5 h-5 text-accent-violet" />
                         </div>
                         <div>
                           <h4 className="font-semibold text-foreground mb-1">
@@ -197,10 +197,10 @@ export default function ContactPage() {
           </section>
 
           <section 
-            className="py-20 bg-linear-to-br from-primary via-[#A594B3] to-primary relative overflow-hidden"
+            className="py-20 bg-linear-to-br from-primary via-accent-violet to-primary relative overflow-hidden"
             aria-labelledby="cta-heading"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-primary/90 to-[#A594B3]/90" aria-hidden="true" />
+            <div className="absolute inset-0 bg-linear-to-r from-primary/90 to-accent-violet/90" aria-hidden="true" />
             <div className="container mx-auto px-4 text-center relative z-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-white animate-pulse" aria-hidden="true" />

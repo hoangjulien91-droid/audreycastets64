@@ -57,13 +57,13 @@ export default function MonApprochePage() {
       <main className="pt-20" id="main-content">
         {/* Hero Section with Breadcrumb */}
         <section 
-          className="relative overflow-hidden bg-linear-to-br from-[#F3E8F0] via-[#E8DFF0]/30 to-background py-16 md:py-24"
+          className="relative overflow-hidden bg-linear-to-br from-bg-soft via-bg-subtle/30 to-background py-16 md:py-24"
           aria-labelledby="approche-heading"
         >
           {/* Background decorative elements */}
           <div className="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
-            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-[#D4C5D9]/40 rounded-full blur-3xl animate-blob"></div>
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#A594B3]/30 rounded-full blur-3xl animate-blob" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-border-soft/40 rounded-full blur-3xl animate-blob"></div>
+            <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent-violet/30 rounded-full blur-3xl animate-blob" style={{ animationDelay: '1s' }}></div>
           </div>
 
           <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -79,7 +79,7 @@ export default function MonApprochePage() {
 
             {/* Hero Content */}
             <div className="max-w-5xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-[#D4C5D9]/30 shadow-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/70 backdrop-blur-md rounded-full border border-border-soft/30 shadow-sm mb-6">
                 <Sparkles className="w-4 h-4 text-primary animate-pulse" aria-hidden="true" />
                 <span className="text-sm font-medium text-primary">
                   Méthodologie & Valeurs
@@ -87,7 +87,7 @@ export default function MonApprochePage() {
               </div>
 
               <h1 id="approche-heading" className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                Mon <span className="text-transparent bg-clip-text bg-linear-to-r from-[#A594B3] via-[#8B7A98] to-[#C5B8D0]">Approche</span>
+                Mon <span className="text-transparent bg-clip-text bg-linear-to-r from-accent-violet via-accent-violet-dark to-accent-violet-light">Approche</span>
               </h1>
 
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
@@ -104,7 +104,7 @@ export default function MonApprochePage() {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-[#D4C5D9]/30 shadow-sm"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-border-soft/30 shadow-sm"
                     role="listitem"
                   >
                     <span className="text-primary" aria-hidden="true">{item.icon}</span>
@@ -142,30 +142,30 @@ export default function MonApprochePage() {
                   icon: <Heart className="w-8 h-8" />,
                   title: "Écoute active et bienveillance",
                   description: "Un espace sécurisé, sans jugement, où vous pouvez vous exprimer librement. Je suis là pour vous écouter, vous comprendre et vous accompagner avec empathie.",
-                  color: "from-[#A594B3] to-[#8B7A98]"
+                  color: "from-primary to-accent-violet"
                 },
                 {
                   icon: <Target className="w-8 h-8" />,
                   title: "Approche orientée solutions",
                   description: "Nous travaillons ensemble sur des objectifs concrets et réalisables. Chaque séance vise à vous donner des outils pratiques pour avancer.",
-                  color: "from-[#C5B8D0] to-[#A594B3]"
+                  color: "from-accent-violet-light to-accent-violet"
                 },
                 {
                   icon: <Users className="w-8 h-8" />,
                   title: "Accompagnement personnalisé",
                   description: "Chaque personne est unique. J'adapte mes méthodes à votre personnalité, votre contexte et vos besoins spécifiques pour un accompagnement sur mesure.",
-                  color: "from-[#A594B3] to-[#8B7A98]"
+                  color: "from-primary to-accent-violet"
                 },
                 {
                   icon: <Shield className="w-8 h-8" />,
                   title: "Confidentialité absolue",
                   description: "Le secret professionnel est garanti. Tout ce qui se dit en séance reste strictement confidentiel, dans le respect du code de déontologie.",
-                  color: "from-[#C5B8D0] to-[#A594B3]"
+                  color: "from-accent-violet-light to-accent-violet"
                 }
               ].map((principle, index) => (
                 <div
                   key={index}
-                  className="group bg-white rounded-2xl p-8 border border-[#D4C5D9]/30 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-white rounded-2xl p-8 border border-border-soft/30 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className={`w-16 h-16 bg-linear-to-br ${principle.color} rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     {principle.icon}
@@ -184,7 +184,7 @@ export default function MonApprochePage() {
 
         {/* Méthodologies Section */}
         <section 
-          className="py-16 md:py-24 bg-linear-to-br from-[#F9F7F4] via-[#FDFCFB] to-white"
+          className="py-16 md:py-24 bg-linear-to-br from-bg-soft via-bg-subtle to-white"
           aria-labelledby="methodologies-heading"
         >
           <div className="container mx-auto px-6 lg:px-8">
@@ -205,7 +205,7 @@ export default function MonApprochePage() {
               <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-primary">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-linear-to-br from-primary to-accent-violet rounded-2xl flex items-center justify-center shadow-lg">
                       <Brain className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -241,10 +241,10 @@ export default function MonApprochePage() {
 
             {/* EFT Section */}
             <div className="max-w-5xl mx-auto mb-12">
-              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-[#8B7A98]">
+              <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-accent-violet">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-linear-to-br from-[#8B7A98] to-[#A594B3] rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-linear-to-br from-accent-violet to-primary rounded-2xl flex items-center justify-center shadow-lg">
                       <Zap className="w-10 h-10 text-white" />
                     </div>
                   </div>
@@ -283,7 +283,7 @@ export default function MonApprochePage() {
               <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-t-4 border-primary">
                 <div className="flex items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
-                    <div className="w-20 h-20 bg-linear-to-br from-[#A594B3] to-[#8B7A98] rounded-2xl flex items-center justify-center shadow-lg">
+                    <div className="w-20 h-20 bg-linear-to-br from-primary to-accent-violet rounded-2xl flex items-center justify-center shadow-lg">
                       <Lightbulb className="w-10 h-10 text-white" />
                     </div>
                   </div>

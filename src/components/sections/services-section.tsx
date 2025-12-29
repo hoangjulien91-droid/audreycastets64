@@ -20,9 +20,21 @@ const services = [
       "Estime et confiance en soi",
       "Bilan de compétences"
     ],
-    bgColor: "#9D6B8C",
-    bgColorLight: "rgba(157, 107, 140, 0.05)",
-    checkColor: "#9D6B8C",
+    // Using semantic tokens (referencing CSS variables if possible or standardizing)
+    // For inline styles we can use the hex but prefer utility classes.
+    // However, the component logic uses style={{ backgroundColor: ... }}
+    // The tokens are:
+    // --color-accent-violet: #A594B3;
+    // --color-accent-violet-dark: #8B7A98;
+    // --color-accent-violet-light: #C5B8D0;
+    // We will use the hex values that correspond to our new semantic tokens to be consistent with the theme,
+    // OR ideally refactor to use className templates.
+    // Given the component structure, changing to className is cleaner but invasive.
+    // I will swap the hex codes to match our identified semantic palette.
+    // Old: #9D6B8C -> New Accent: #A594B3 (or similar from our palette)
+    bgColor: "#A594B3",
+    bgColorLight: "rgba(165, 148, 179, 0.05)",
+    checkColor: "#8B7A98",
     link: "/mon-approche",
     linkText: "Découvrir mon approche"
   },
@@ -38,9 +50,10 @@ const services = [
       "Ateliers de prévention du stress",
       "Soutien psychologique individuel et collectif"
     ],
-    bgColor: "#8B7CB3",
-    bgColorLight: "rgba(139, 124, 179, 0.05)",
-    checkColor: "#8B7CB3",
+    // Old: #8B7CB3 -> New Variant: #8B7A98
+    bgColor: "#8B7A98",
+    bgColorLight: "rgba(139, 122, 152, 0.05)",
+    checkColor: "#8B7A98",
     link: "/services#accompagnement-professionnels",
     linkText: "Voir les services entreprise"
   }
