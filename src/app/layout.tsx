@@ -3,7 +3,7 @@ import { Syne, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { AccessibilityProvider } from "@/components/providers/accessibility-provider";
-import { AccessibilityMenu } from "@/components/ui/accessibility-menu";
+
 import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "sonner";
 import StickyMobileCTA from "@/components/ui/sticky-mobile-cta";
@@ -182,7 +182,7 @@ export default function RootLayout({
 
             {children}
             <StickyMobileCTA />
-            <AccessibilityMenu />
+
             <Toaster />
           </AccessibilityProvider>
         </body>
