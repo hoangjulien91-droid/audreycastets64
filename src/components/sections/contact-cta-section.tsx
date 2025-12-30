@@ -5,6 +5,7 @@ import { Phone, Clock, MessageCircle, Send, Loader2, Mail } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { SectionHeader } from "@/components/ui/section-header";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
@@ -21,19 +22,19 @@ const features = [
     icon: Phone,
     title: "Premier entretien offert",
     description: "15 minutes pour faire connaissance",
-    bgColor: "#9D6B8C",
+    bgColorVar: "var(--color-primary)",
   },
   {
     icon: Clock,
     title: "Réponse sous 24h",
     description: "Je réponds rapidement à toutes vos demandes",
-    bgColor: "#8B7CB3",
+    bgColorVar: "var(--color-violet)",
   },
   {
     icon: MessageCircle,
     title: "Sans engagement",
     description: "Échangeons en toute liberté",
-    bgColor: "#C27B9E",
+    bgColorVar: "var(--color-rose)",
   },
 ];
 
@@ -99,28 +100,27 @@ export default function ContactCtaSection() {
       <div className="relative z-10 container">
         <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="animate-in slide-in-left">
-            <div className="badge-premium mb-5 inline-flex">
-              <Mail className="h-4 w-4" aria-hidden="true" />
-              <span>Contact</span>
-            </div>
-            <h2 className="text-foreground mb-5">
-              Prêt(e) à franchir le <span className="text-primary">pas</span> ?
-            </h2>
-            <p className="text-muted-foreground mb-10 text-lg leading-relaxed">
-              Je vous accompagne avec bienveillance et professionnalisme dans votre parcours.
-              N'hésitez pas à me contacter pour échanger sur vos besoins.
-            </p>
+            <SectionHeader
+              badge="Contact"
+              title={
+                <>
+                  Prêt(e) à franchir le <span className="text-primary">pas</span> ?
+                </>
+              }
+              subtitle="Je vous accompagne avec bienveillance et professionnalisme dans votre parcours. N'hésitez pas à me contacter pour échanger sur vos besoins."
+              className="mb-10"
+            />
 
             <div className="space-y-5">
               {features.map((feature, index) => (
                 <div
                   key={index}
                   className="group flex items-start gap-4 animate-in slide-in-left"
-                  style={{ transitionDelay: `${index * 100 + 200}ms` }}
+                  style={{ animationDelay: `${index * 100 + 200}ms` }}
                 >
                   <div
                     className="flex-shrink-0 rounded-xl p-3 shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-                    style={{ backgroundColor: feature.bgColor }}
+                    style={{ backgroundColor: feature.bgColorVar }}
                   >
                     <feature.icon className="h-5 w-5 text-white" aria-hidden="true" />
                   </div>
@@ -144,18 +144,9 @@ export default function ContactCtaSection() {
               <div
                 className={`mb-6 rounded-xl p-4 text-sm animate-in fade-in-up ${
                   submitStatus.type === "success"
-                    ? "border"
+                    ? "border-sage/30 bg-sage/10 text-sage border"
                     : "bg-destructive/10 text-destructive border-destructive/20 border"
                 }`}
-                style={
-                  submitStatus.type === "success"
-                    ? {
-                        backgroundColor: "rgba(143, 174, 155, 0.2)",
-                        color: "#8FAE9B",
-                        borderColor: "rgba(143, 174, 155, 0.3)",
-                      }
-                    : undefined
-                }
                 role="alert"
               >
                 {submitStatus.message}

@@ -7,7 +7,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 
 export function AnimatedServicesCards() {
   return (
-    <section className="from-bg-soft to-background relative overflow-hidden bg-linear-to-br via-[#FDFCFB] py-16 md:py-24">
+    <section className="from-bg-soft to-background relative overflow-hidden bg-linear-to-br via-[var(--color-background)] py-16 md:py-24">
       <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
         <motion.div
           animate={{

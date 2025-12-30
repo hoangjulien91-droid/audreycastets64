@@ -2,13 +2,14 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { TrendingUp, Users, Award, Clock } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 interface Stat {
   icon: React.ElementType;
   value: number;
   suffix: string;
   label: string;
-  bgColor: string;
+  bgColorVar: string;
 }
 
 const stats: Stat[] = [
@@ -17,28 +18,28 @@ const stats: Stat[] = [
     value: 5,
     suffix: "+",
     label: "Années d'expérience",
-    bgColor: "#9D6B8C",
+    bgColorVar: "var(--color-primary)",
   },
   {
     icon: Users,
     value: 200,
     suffix: "+",
     label: "Patients accompagnés",
-    bgColor: "#8B7CB3",
+    bgColorVar: "var(--color-violet)",
   },
   {
     icon: Award,
     value: 95,
     suffix: "%",
     label: "Satisfaction client",
-    bgColor: "#C27B9E",
+    bgColorVar: "var(--color-rose)",
   },
   {
     icon: Clock,
     value: 24,
     suffix: "h",
     label: "Délai de réponse",
-    bgColor: "#9B8AA3",
+    bgColorVar: "var(--color-mauve)",
   },
 ];
 
@@ -109,34 +110,35 @@ export default function StatsSection() {
       </div>
 
       <div className="relative z-10 container">
-        <div className="mb-14 text-center animate-in fade-in-up">
-          <div className="badge-premium mb-5 inline-flex">
-            <Award className="h-4 w-4" aria-hidden="true" />
-            <span>Chiffres clés</span>
-          </div>
-          <h2 className="text-foreground">
-            Une expertise <span className="text-primary">reconnue</span>
-          </h2>
-        </div>
+        <SectionHeader
+          align="center"
+          badge="Chiffres clés"
+          title={
+            <>
+              Une expertise <span className="text-primary">reconnue</span>
+            </>
+          }
+          className="mb-14"
+        />
 
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}
               className="group animate-in fade-in-up"
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="card-premium relative overflow-hidden p-6 text-center lg:p-8">
                 <div
                   className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-5"
-                  style={{ backgroundColor: stat.bgColor }}
+                  style={{ backgroundColor: stat.bgColorVar }}
                   aria-hidden="true"
                 />
 
                 <div className="relative mx-auto mb-4 h-14 w-14 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                   <div
                     className="relative flex h-full w-full items-center justify-center rounded-xl shadow-md"
-                    style={{ backgroundColor: stat.bgColor }}
+                    style={{ backgroundColor: stat.bgColorVar }}
                   >
                     <stat.icon className="h-7 w-7 text-white" aria-hidden="true" />
                   </div>

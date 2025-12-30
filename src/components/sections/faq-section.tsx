@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 const faqData = [
   {
@@ -50,18 +51,17 @@ export default function FaqSection() {
       </div>
 
       <div className="relative z-10 container">
-        <div className="mb-14 text-center animate-in fade-in-up">
-          <div className="badge-premium mb-5 inline-flex">
-            <HelpCircle className="h-4 w-4" aria-hidden="true" />
-            <span>FAQ</span>
-          </div>
-          <h2 className="text-foreground mb-5">
-            Questions <span className="text-primary">Fréquentes</span>
-          </h2>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            Retrouvez les réponses aux questions les plus courantes
-          </p>
-        </div>
+        <SectionHeader
+          align="center"
+          badge="FAQ"
+          title={
+            <>
+              Questions <span className="text-primary">Fréquentes</span>
+            </>
+          }
+          subtitle="Retrouvez les réponses aux questions les plus courantes"
+          className="mb-14"
+        />
 
         <div className="mx-auto max-w-3xl">
           <Accordion type="single" collapsible className="space-y-4">
@@ -69,7 +69,7 @@ export default function FaqSection() {
               <div
                 key={index}
                 className="animate-in fade-in-up"
-                style={{ transitionDelay: `${index * 50}ms` }}
+                style={{ animationDelay: `${index * 50}ms` }}
               >
                 <AccordionItem
                   value={`item-${index}`}

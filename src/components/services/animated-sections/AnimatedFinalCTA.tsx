@@ -3,13 +3,17 @@
 import { motion } from "framer-motion";
 import { Link } from "next-view-transitions";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
+import { useHaptics } from "@/hooks/use-haptics";
 
 export function AnimatedFinalCTA() {
+  const { trigger } = useHaptics();
+
   return (
     <section className="relative overflow-hidden py-20 md:py-32">
       {/* Background Decor */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#FDFCFB] to-[#F9F7F4]/50" />
+        <div className="from-transparent via-background to-background/50 absolute inset-0 bg-linear-to-b" />
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
@@ -27,14 +31,20 @@ export function AnimatedFinalCTA() {
             <div className="from-primary/10 via-violet/10 to-rose/10 pointer-events-none absolute inset-0 bg-gradient-to-r opacity-50" />
 
             <div className="relative z-10">
-              <div className="animate-in zoom-in mx-auto mb-8 flex h-16 w-16 transform items-center justify-center rounded-2xl border border-white bg-linear-to-br from-[#F8F5F7] to-[#FFFFFF] shadow-sm transition-transform duration-500 hover:scale-110 [animation-delay:200ms]">
+              <div className="animate-in zoom-in mx-auto mb-8 flex h-16 w-16 transform items-center justify-center rounded-2xl border border-white bg-linear-to-br from-muted to-white shadow-sm transition-transform duration-500 hover:scale-110 [animation-delay:200ms]">
                 <Sparkles className="text-primary h-8 w-8" />
               </div>
 
-              <h2 className="font-display animate-in fade-in-up mb-6 text-4xl leading-tight font-bold md:text-5xl [animation-delay:300ms]">
-                Prêt(e) à démarrer <br className="hidden md:block" />
-                <span className="gradient-text">votre accompagnement ?</span>
-              </h2>
+              <SectionHeader
+                align="center"
+                title={
+                  <>
+                    Prêt(e) à démarrer <br className="hidden md:block" />
+                    <span className="gradient-text">votre accompagnement ?</span>
+                  </>
+                }
+                className="mb-6 [animation-delay:300ms]"
+              />
 
               <p className="text-muted-foreground animate-in fade-in-up mx-auto mb-10 max-w-2xl text-xl leading-relaxed [animation-delay:400ms]">
                 Prenons contact pour échanger sur vos besoins et trouver ensemble la solution la
@@ -42,14 +52,22 @@ export function AnimatedFinalCTA() {
               </p>
 
               <div className="animate-in fade-in-up flex flex-col items-center justify-center gap-4 sm:flex-row [animation-delay:500ms]">
-                <Link href="/contact" className="group w-full sm:w-auto">
+                <Link 
+                  href="/contact" 
+                  onClick={() => trigger("medium")}
+                  className="group w-full sm:w-auto"
+                >
                   <div className="btn-premium w-full min-w-[200px] sm:w-auto transition-transform duration-300 group-hover:scale-105 active:scale-95">
                     Prendre contact
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </div>
                 </Link>
 
-                <Link href="/mon-approche" className="group w-full sm:w-auto">
+                <Link 
+                  href="/mon-approche" 
+                  onClick={() => trigger("light")}
+                  className="group w-full sm:w-auto"
+                >
                   <div className="btn-secondary-premium w-full min-w-[200px] sm:w-auto transition-transform duration-300 group-hover:scale-105 active:scale-95">
                     Découvrir mon approche
                   </div>

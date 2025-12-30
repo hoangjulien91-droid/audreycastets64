@@ -16,7 +16,7 @@ const testimonials = [
     name: "Sophie M.",
     role: "Cadre en reconversion",
     initial: "S",
-    bgColor: "#9D6B8C",
+    bgColorVar: "var(--color-primary)",
   },
   {
     quote:
@@ -24,7 +24,7 @@ const testimonials = [
     name: "Thomas L.",
     role: "Manager",
     initial: "T",
-    bgColor: "#8B7CB3",
+    bgColorVar: "var(--color-violet)",
   },
   {
     quote:
@@ -32,7 +32,7 @@ const testimonials = [
     name: "Marie D.",
     role: "Entrepreneuse",
     initial: "M",
-    bgColor: "#C27B9E",
+    bgColorVar: "var(--color-rose)",
   },
   {
     quote:
@@ -40,7 +40,7 @@ const testimonials = [
     name: "Julien P.",
     role: "Consultant RH",
     initial: "J",
-    bgColor: "#9B8AA3",
+    bgColorVar: "var(--color-mauve)",
   },
   {
     quote:
@@ -48,7 +48,7 @@ const testimonials = [
     name: "Émilie R.",
     role: "Chef de projet",
     initial: "É",
-    bgColor: "#8FAE9B",
+    bgColorVar: "var(--color-sage)",
   },
   {
     quote:
@@ -56,7 +56,7 @@ const testimonials = [
     name: "Alexandre B.",
     role: "Directeur commercial",
     initial: "A",
-    bgColor: "#E8B4C8",
+    bgColorVar: "var(--color-blush)",
   },
 ];
 
@@ -102,7 +102,7 @@ export default function TestimonialsSection() {
         <Carousel
           setApi={setApi}
           opts={{ loop: true, align: "start" }}
-          className="mx-auto w-full max-w-6xl animate-in fade-in-up delay-200"
+          className="mx-auto w-full max-w-6xl animate-in fade-in-up [animation-delay:200ms]"
         >
           <CarouselContent className="-ml-4 md:-ml-6">
             {testimonials.map((testimonial, index) => (
@@ -114,7 +114,7 @@ export default function TestimonialsSection() {
                   <div className="card-premium group relative flex h-full flex-col overflow-hidden p-7">
                     <div
                       className="absolute top-0 right-0 left-0 h-1"
-                      style={{ backgroundColor: testimonial.bgColor }}
+                      style={{ backgroundColor: testimonial.bgColorVar }}
                       aria-hidden="true"
                     />
                     <div
@@ -143,7 +143,7 @@ export default function TestimonialsSection() {
                     <div className="border-border/50 flex items-center gap-4 border-t pt-5">
                       <div
                         className="flex h-12 w-12 items-center justify-center rounded-xl text-lg font-semibold text-white shadow-md"
-                        style={{ backgroundColor: testimonial.bgColor }}
+                        style={{ backgroundColor: testimonial.bgColorVar }}
                       >
                         {testimonial.initial}
                       </div>

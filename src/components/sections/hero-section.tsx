@@ -6,13 +6,11 @@ import {
   Sparkles,
   Heart,
   Star,
-  Shield,
-  Clock,
   CheckCircle2,
-  Award,
 } from "lucide-react";
 import { Link } from "next-view-transitions";
 import audreyHero from "@/assets/images/audrey-hero.jpg";
+import { useHaptics } from "@/hooks/use-haptics";
 
 const features = [
   "Thérapies Cognitivo-Comportementales (TCC)",
@@ -20,9 +18,9 @@ const features = [
   "Technique de libération émotionnelle (EFT)",
 ];
 
-// Floating badges removed - conflicted with sticky mobile CTA
-
 export default function HeroSection() {
+  const { trigger } = useHaptics();
+
   return (
     <section
       className="relative min-h-[100svh] overflow-hidden"
@@ -36,13 +34,11 @@ export default function HeroSection() {
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute right-1/4 bottom-0 h-[600px] w-[600px] animate-[blob-slow_30s_infinite] rounded-full blur-3xl"
-          style={{ backgroundColor: "rgba(139, 124, 179, 0.1)" }}
+          className="bg-violet/10 pointer-events-none absolute right-1/4 bottom-0 h-[600px] w-[600px] animate-[blob-slow_30s_infinite] rounded-full blur-3xl"
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute top-1/3 right-0 h-[400px] w-[400px] animate-[blob_20s_infinite] rounded-full blur-3xl"
-          style={{ backgroundColor: "rgba(194, 123, 158, 0.08)" }}
+          className="bg-rose/8 pointer-events-none absolute top-1/3 right-0 h-[400px] w-[400px] animate-[blob_20s_infinite] rounded-full blur-3xl"
           aria-hidden="true"
         />
 
@@ -77,7 +73,7 @@ export default function HeroSection() {
                 <li
                   key={idx}
                   className="text-foreground/80 flex items-center gap-3 text-sm sm:text-base animate-in slide-in-left"
-                  style={{ transitionDelay: `${idx * 100 + 400}ms` }}
+                  style={{ animationDelay: `${idx * 100 + 400}ms` }}
                 >
                   <div className="bg-primary/10 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full">
                     <CheckCircle2 className="text-primary-dark h-3.5 w-3.5" />
@@ -90,6 +86,7 @@ export default function HeroSection() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start animate-in fade-in-up delay-500">
               <Link
                 href="/contact"
+                onClick={() => trigger("medium")}
                 className="group bg-primary shadow-primary/25 hover:shadow-primary/30 relative flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-full px-8 py-4 font-semibold text-white shadow-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:w-auto"
               >
                 <span className="absolute inset-0 translate-x-[-100%] bg-white/20 transition-transform duration-700 group-hover:translate-x-[100%]" />
@@ -101,6 +98,7 @@ export default function HeroSection() {
               </Link>
               <Link
                 href="/services"
+                onClick={() => trigger("light")}
                 className="group border-primary/15 text-foreground hover:border-primary/30 shadow-primary/5 flex w-full items-center justify-center rounded-full border bg-white/80 px-8 py-4 font-semibold shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white sm:w-auto"
               >
                 Découvrir mes services
@@ -111,7 +109,7 @@ export default function HeroSection() {
               <div className="flex items-center justify-center gap-8 lg:justify-start">
                 <div className="flex -space-x-3">
                   <div className="flex -space-x-3">
-                    {/* Badges removed as per user request (confusing UI) */}
+                    {/* Badges removed as per user request */}
                   </div>
                 </div>
                 <div className="text-left">
@@ -169,8 +167,6 @@ export default function HeroSection() {
                     />
                   </div>
                 </div>
-
-                {/* Floating badges removed - conflicted with sticky mobile CTA */}
 
                 <div className="shadow-primary/15 border-primary/10 absolute -right-4 -bottom-4 rounded-2xl border bg-white/95 px-5 py-4 shadow-2xl backdrop-blur-xl sm:-right-8 sm:bottom-8 animate-in slide-in-right delay-500">
                   <div className="flex items-center gap-4">

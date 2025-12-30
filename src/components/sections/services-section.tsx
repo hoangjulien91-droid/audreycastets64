@@ -2,6 +2,8 @@
 
 import { ArrowRight, CircleCheck, Heart, Users, Sparkles } from "lucide-react";
 import { Link } from "next-view-transitions";
+import { SectionHeader } from "@/components/ui/section-header";
+import { useHaptics } from "@/hooks/use-haptics";
 
 const services = [
   {
@@ -20,9 +22,8 @@ const services = [
       "Estime et confiance en soi",
       "Bilan de compétences",
     ],
-    // Using semantic tokens
     bgColor: "var(--color-accent-violet)",
-    bgColorLight: "var(--color-accent-violet-light)", // or color-mix logic if needed, but for now referencing token
+    bgColorLight: "var(--color-accent-violet-light)",
     checkColor: "var(--color-accent-violet-dark)",
     link: "/mon-approche",
     linkText: "Découvrir mon approche",
@@ -40,7 +41,6 @@ const services = [
       "Ateliers de prévention du stress",
       "Soutien psychologique individuel et collectif",
     ],
-    // Semantic tokens
     bgColor: "var(--color-accent-violet-dark)",
     bgColorLight: "var(--color-bg-soft)",
     checkColor: "var(--color-accent-violet-dark)",
@@ -50,6 +50,8 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const { trigger } = useHaptics();
+
   return (
     <section id="services" className="section-spacing-lg bg-background relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -58,26 +60,24 @@ export default function ServicesSection() {
       </div>
 
       <div className="relative z-10 container">
-        <div className="mb-16 text-center lg:mb-20 animate-in fade-in-up">
-          <div className="badge-premium mb-6 inline-flex">
-            <Sparkles className="h-4 w-4" aria-hidden="true" />
-            <span>Services</span>
-          </div>
-          <h2 className="text-foreground mb-5">
-            Mes <span className="text-primary">Services</span>
-          </h2>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg leading-relaxed">
-            Un accompagnement professionnel adapté à vos besoins, que vous soyez particulier ou
-            professionnel.
-          </p>
-        </div>
+        <SectionHeader
+          align="center"
+          badge="Services"
+          title={
+            <>
+              Mes <span className="text-primary">Services</span>
+            </>
+          }
+          subtitle="Un accompagnement professionnel adapté à vos besoins, que vous soyez particulier ou professionnel."
+          className="mb-16 lg:mb-20"
+        />
 
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
           {services.map((service, index) => (
             <div
               key={service.id}
               className="group relative animate-in fade-in-up"
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ animationDelay: `${index * 150}ms` }}
             >
               <div
                 className="absolute inset-0 rounded-[2rem] opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
@@ -116,7 +116,7 @@ export default function ServicesSection() {
                     <li
                       key={idx}
                       className="flex items-start gap-3 animate-in slide-in-left"
-                      style={{ transitionDelay: `${idx * 50 + 300}ms` }}
+                      style={{ animationDelay: `${idx * 50 + 300}ms` }}
                     >
                       <CircleCheck
                         className="mt-0.5 h-5 w-5 flex-shrink-0"
@@ -130,7 +130,8 @@ export default function ServicesSection() {
 
                 <Link
                   href={service.link}
-                  className="group/btn inline-flex w-full items-center justify-center rounded-xl px-6 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  onClick={() => trigger("medium")}
+                  className="group/btn bg-primary inline-flex w-full items-center justify-center rounded-xl px-6 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   style={{ backgroundColor: service.bgColor }}
                 >
                   {service.linkText}
