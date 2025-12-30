@@ -1,47 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Brain, Search, Users, FileText, Shield as ShieldIcon, Target } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export default function ComplementaryApproachSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <section className="bg-white py-20 sm:py-24 lg:py-32">
       <div className="container">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="mx-auto max-w-5xl"
-        >
-          <motion.div variants={itemVariants} className="mb-16 text-center">
-            <h2 className="font-display text-foreground mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
-              Notre Approche <span className="text-primary">Complémentaire</span>
-            </h2>
-            <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
-              Une approche à 360° combinant soutien psychologique et investigation rigoureuse
-            </p>
-          </motion.div>
+        <div className="mx-auto max-w-5xl">
+          <SectionHeader
+            align="center"
+            title={
+              <>
+                Notre Approche <span className="text-primary">Complémentaire</span>
+              </>
+            }
+            subtitle="Une approche à 360° combinant soutien psychologique et investigation rigoureuse"
+            className="mb-16"
+          />
 
           {/* Schéma visuel de collaboration */}
-          <motion.div variants={itemVariants} className="mb-12 grid gap-8 md:grid-cols-2">
+          <div className="mb-12 grid gap-8 md:grid-cols-2">
             {/* Psychologue du travail */}
-            <div className="relative">
+            <div className="animate-in fade-in-up relative">
               <div className="from-primary/10 to-primary/5 border-primary/20 h-full rounded-3xl border-2 bg-linear-to-br p-8">
                 <div className="bg-primary mb-6 flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg">
                   <Brain className="h-8 w-8 text-white" />
@@ -64,7 +45,7 @@ export default function ComplementaryApproachSection() {
             </div>
 
             {/* Détective victimologue */}
-            <div className="relative">
+            <div className="animate-in fade-in-up relative [animation-delay:200ms]">
               <div className="from-accent-teal/10 to-accent-teal/5 border-accent-teal/20 h-full rounded-3xl border-2 bg-linear-to-br p-8">
                 <div className="bg-accent-teal mb-6 flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg">
                   <Search className="h-8 w-8 text-white" />
@@ -85,13 +66,10 @@ export default function ComplementaryApproachSection() {
                 </ul>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Synergie */}
-          <motion.div
-            variants={itemVariants}
-            className="from-primary/5 via-accent/5 to-accent-teal/5 border-primary/10 rounded-2xl border bg-linear-to-r p-8 text-center"
-          >
+          <div className="from-primary/5 via-accent/5 to-accent-teal/5 border-primary/10 animate-in fade-in-up rounded-2xl border bg-linear-to-r p-8 text-center [animation-delay:400ms]">
             <div className="mb-4 flex items-center justify-center gap-3">
               <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-full">
                 <Brain className="h-6 w-6 text-white" />
@@ -108,8 +86,8 @@ export default function ComplementaryApproachSection() {
               Une approche à 360° combinant soutien psychologique et investigation rigoureuse pour
               une reconstruction complète
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

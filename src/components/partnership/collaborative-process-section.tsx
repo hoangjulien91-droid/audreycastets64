@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ClipboardCheck, Users, Heart } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export default function CollaborativeProcessSection() {
   const steps = [
@@ -33,20 +33,16 @@ export default function CollaborativeProcessSection() {
   return (
     <section className="from-muted/30 bg-linear-to-b to-white py-20 sm:py-24 lg:py-32">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <h2 className="font-display text-foreground mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Notre Processus <span className="text-primary">Collaboratif</span>
-          </h2>
-          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
-            Un accompagnement structuré en 3 étapes pour votre reconstruction
-          </p>
-        </motion.div>
+        <SectionHeader
+          align="center"
+          title={
+            <>
+              Notre Processus <span className="text-primary">Collaboratif</span>
+            </>
+          }
+          subtitle="Un accompagnement structuré en 3 étapes pour votre reconstruction"
+          className="mb-16"
+        />
 
         <div className="mx-auto max-w-5xl">
           {/* Timeline */}
@@ -56,15 +52,12 @@ export default function CollaborativeProcessSection() {
 
             <div className="space-y-12 lg:space-y-24">
               {steps.map((step, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className={`relative grid items-center gap-8 lg:grid-cols-2 ${
-                    index % 2 === 0 ? "" : "lg:flex-row-reverse"
-                  }`}
+                  className={`animate-in relative grid items-center gap-8 lg:grid-cols-2 ${
+                    index % 2 === 0 ? "slide-in-left" : "slide-in-right"
+                  } ${index % 2 === 0 ? "" : "lg:flex-row-reverse"}`}
+                  style={{ animationDelay: `${index * 200}ms` }}
                 >
                   {/* Contenu gauche (desktop) */}
                   <div className={`${index % 2 === 0 ? "lg:text-right" : "lg:order-2"}`}>
@@ -111,7 +104,7 @@ export default function CollaborativeProcessSection() {
 
                   {/* Espace vide pour équilibrer la grille (desktop) */}
                   <div className="hidden lg:block" />
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

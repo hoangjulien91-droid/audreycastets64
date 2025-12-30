@@ -1,50 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "@/hooks/useInView";
 import { Link } from "next-view-transitions";
 import { Heart, Users, CircleCheck, ArrowRight } from "lucide-react";
-
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardHover = {
-  rest: { scale: 1, rotateY: 0 },
-  hover: {
-    scale: 1.03,
-    y: -8,
-    transition: { duration: 0.3 },
-  },
-};
+import { SectionHeader } from "@/components/ui/section-header";
 
 export function AnimatedServicesCards() {
-  const { ref, isInView } = useInView({ threshold: 0.2 });
-
   return (
-    <motion.section
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={staggerContainer}
-      className="from-bg-soft to-background relative overflow-hidden bg-linear-to-br via-[#FDFCFB] py-16 md:py-24"
-    >
+    <section className="from-bg-soft to-background relative overflow-hidden bg-linear-to-br via-[#FDFCFB] py-16 md:py-24">
       <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-20">
         <motion.div
           animate={{
@@ -67,47 +30,29 @@ export function AnimatedServicesCards() {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-8">
-        <motion.div variants={fadeInUp} className="mb-12 text-center">
-          <span className="text-primary mb-3 block text-sm font-semibold tracking-wide uppercase">
-            Deux approches complémentaires
-          </span>
-          <h2 className="font-display text-foreground mb-4 text-3xl font-bold md:text-4xl">
-            Choisissez l'accompagnement <span className="text-primary">qui vous correspond</span>
-          </h2>
-        </motion.div>
+        <SectionHeader
+          align="center"
+          badge="Deux approches complémentaires"
+          title={
+            <>
+              Choisissez l'accompagnement <span className="text-primary">qui vous correspond</span>
+            </>
+          }
+          className="mb-12"
+        />
 
-        <motion.div
-          variants={staggerContainer}
-          className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10"
-        >
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
           {/* Card 1 */}
-          <motion.div variants={fadeInUp} className="group relative">
-            <motion.div
-              className="from-bg-soft/40 to-bg-subtle/30 absolute inset-0 rounded-3xl bg-linear-to-br blur-xl"
-              animate={{
-                scale: [1, 1.05, 1],
-                opacity: [0.4, 0.6, 0.4],
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-            <motion.div
-              variants={cardHover}
-              initial="rest"
-              whileHover="hover"
-              className="glass-effect border-border-soft/30 relative h-full overflow-hidden rounded-3xl border shadow-lg"
-            >
-              <div className="from-accent-violet-light via-accent-violet to-accent-violet-dark h-2 bg-linear-to-r"></div>
+          <div className="group animate-in fade-in-up relative [animation-delay:200ms]">
+            <div className="glass-effect border-border-soft/30 relative h-full overflow-hidden rounded-3xl border shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+              <div className="bg-primary h-2 w-full opacity-50"></div>
               <div className="p-8 md:p-10">
-                <motion.div
-                  className="relative mb-6"
-                  whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="from-accent-violet to-accent-violet-dark absolute inset-0 h-16 w-16 rounded-2xl bg-linear-to-br opacity-40 blur-xl"></div>
-                  <div className="from-accent-violet to-accent-violet-dark relative flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br shadow-lg">
+                <div className="relative mb-6">
+                  <div className="bg-primary absolute inset-0 h-16 w-16 rounded-2xl opacity-20 blur-xl"></div>
+                  <div className="bg-primary relative flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg">
                     <Heart className="h-8 w-8 text-white" />
                   </div>
-                </motion.div>
+                </div>
                 <h3 className="font-display text-foreground group-hover:text-primary mb-4 text-2xl font-bold transition-colors md:text-3xl">
                   Pour les Particuliers
                 </h3>
@@ -123,61 +68,38 @@ export function AnimatedServicesCards() {
                     "EFT - Techniques de libération émotionnelle",
                     "Burn-out et épuisement professionnel",
                   ].map((item, i) => (
-                    <motion.li
+                    <li
                       key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3"
+                      className="flex items-start gap-3 animate-in slide-in-left"
+                      style={{ animationDelay: `${i * 100 + 600}ms` }}
                     >
                       <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
                       <span className="text-foreground/80 text-sm">{item}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-                <Link href="/mon-approche">
-                  <motion.div
-                    whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(165, 148, 179, 0.25)" }}
-                    whileTap={{ scale: 0.98 }}
-                    className="from-accent-violet to-accent-violet-dark inline-flex w-full cursor-pointer items-center justify-center rounded-2xl bg-linear-to-r px-6 py-6 font-semibold text-white shadow-md"
-                  >
-                    En savoir plus
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </motion.div>
+                <Link
+                  href="/mon-approche"
+                  className="bg-primary hover:bg-primary-dark inline-flex w-full items-center justify-center rounded-2xl px-6 py-6 font-semibold text-white shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  En savoir plus
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Card 2 */}
-          <motion.div variants={fadeInUp} className="group relative">
-            <motion.div
-              className="from-bg-subtle/40 to-bg-soft/30 absolute inset-0 rounded-3xl bg-linear-to-br blur-xl"
-              animate={{
-                scale: [1, 1.05, 1],
-                opacity: [0.4, 0.6, 0.4],
-              }}
-              transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-            />
-            <motion.div
-              variants={cardHover}
-              initial="rest"
-              whileHover="hover"
-              className="glass-effect border-border-soft/30 relative h-full overflow-hidden rounded-3xl border shadow-lg"
-            >
-              <div className="from-accent-violet-dark via-accent-violet to-accent-violet-light h-2 bg-linear-to-r"></div>
+          <div className="group animate-in fade-in-up relative [animation-delay:400ms]">
+            <div className="glass-effect border-border-soft/30 relative h-full overflow-hidden rounded-3xl border shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+              <div className="bg-primary/70 h-2 w-full opacity-50"></div>
               <div className="p-8 md:p-10">
-                <motion.div
-                  className="relative mb-6"
-                  whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="from-accent-violet-dark to-accent-violet absolute inset-0 h-16 w-16 rounded-2xl bg-linear-to-br opacity-40 blur-xl"></div>
-                  <div className="from-accent-violet-dark to-accent-violet relative flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br shadow-lg">
+                <div className="relative mb-6">
+                  <div className="bg-primary/70 absolute inset-0 h-16 w-16 rounded-2xl opacity-20 blur-xl"></div>
+                  <div className="bg-primary/70 relative flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg">
                     <Users className="h-8 w-8 text-white" />
                   </div>
-                </motion.div>
+                </div>
                 <h3 className="font-display text-foreground group-hover:text-primary mb-4 text-2xl font-bold transition-colors md:text-3xl">
                   Pour les Professionnels
                 </h3>
@@ -192,34 +114,28 @@ export function AnimatedServicesCards() {
                     "Recrutement et tests SOSIE",
                     "Ateliers de prévention du stress",
                   ].map((item, i) => (
-                    <motion.li
+                    <li
                       key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3"
+                      className="flex items-start gap-3 animate-in slide-in-left"
+                      style={{ animationDelay: `${i * 100 + 800}ms` }}
                     >
                       <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
                       <span className="text-foreground/80 text-sm">{item}</span>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-                <Link href="/contact">
-                  <motion.div
-                    whileHover={{ scale: 1.05, boxShadow: "0 20px 60px rgba(139, 122, 152, 0.25)" }}
-                    whileTap={{ scale: 0.98 }}
-                    className="from-accent-violet-dark to-accent-violet inline-flex w-full cursor-pointer items-center justify-center rounded-2xl bg-linear-to-r px-6 py-6 font-semibold text-white shadow-md"
-                  >
-                    Me contacter pour un devis
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </motion.div>
+                <Link
+                  href="/contact"
+                  className="border-primary text-primary hover:bg-primary/5 inline-flex w-full items-center justify-center rounded-2xl border-2 px-6 py-6 font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Me contacter pour un devis
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

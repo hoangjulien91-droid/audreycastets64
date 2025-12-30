@@ -6,12 +6,7 @@ import { Sparkles, ArrowRight } from "lucide-react";
 
 export function AnimatedFinalCTA() {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="relative overflow-hidden py-20 md:py-32"
-    >
+    <section className="relative overflow-hidden py-20 md:py-32">
       {/* Background Decor */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#FDFCFB] to-[#F9F7F4]/50" />
@@ -26,62 +21,44 @@ export function AnimatedFinalCTA() {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-8">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          className="mx-auto max-w-4xl text-center"
-        >
+        <div className="animate-in fade-in-up mx-auto max-w-4xl text-center">
           <div className="card-premium relative overflow-hidden p-10 md:p-14">
             {/* Gradient Border Glow */}
             <div className="from-primary/10 via-violet/10 to-rose/10 pointer-events-none absolute inset-0 bg-gradient-to-r opacity-50" />
 
             <div className="relative z-10">
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="mx-auto mb-8 flex h-16 w-16 transform items-center justify-center rounded-2xl border border-white bg-linear-to-br from-[#F8F5F7] to-[#FFFFFF] shadow-sm transition-transform duration-500 hover:scale-110"
-              >
+              <div className="animate-in zoom-in mx-auto mb-8 flex h-16 w-16 transform items-center justify-center rounded-2xl border border-white bg-linear-to-br from-[#F8F5F7] to-[#FFFFFF] shadow-sm transition-transform duration-500 hover:scale-110 [animation-delay:200ms]">
                 <Sparkles className="text-primary h-8 w-8" />
-              </motion.div>
+              </div>
 
-              <h2 className="font-display mb-6 text-4xl leading-tight font-bold md:text-5xl">
+              <h2 className="font-display animate-in fade-in-up mb-6 text-4xl leading-tight font-bold md:text-5xl [animation-delay:300ms]">
                 Prêt(e) à démarrer <br className="hidden md:block" />
                 <span className="gradient-text">votre accompagnement ?</span>
               </h2>
 
-              <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-xl leading-relaxed">
+              <p className="text-muted-foreground animate-in fade-in-up mx-auto mb-10 max-w-2xl text-xl leading-relaxed [animation-delay:400ms]">
                 Prenons contact pour échanger sur vos besoins et trouver ensemble la solution la
                 plus adaptée à votre situation.
               </p>
 
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Link href="/contact" className="w-full sm:w-auto">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="btn-premium w-full min-w-[200px] sm:w-auto"
-                  >
+              <div className="animate-in fade-in-up flex flex-col items-center justify-center gap-4 sm:flex-row [animation-delay:500ms]">
+                <Link href="/contact" className="group w-full sm:w-auto">
+                  <div className="btn-premium w-full min-w-[200px] sm:w-auto transition-transform duration-300 group-hover:scale-105 active:scale-95">
                     Prendre contact
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </motion.div>
+                  </div>
                 </Link>
 
-                <Link href="/mon-approche" className="w-full sm:w-auto">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="btn-secondary-premium w-full min-w-[200px] sm:w-auto"
-                  >
+                <Link href="/mon-approche" className="group w-full sm:w-auto">
+                  <div className="btn-secondary-premium w-full min-w-[200px] sm:w-auto transition-transform duration-300 group-hover:scale-105 active:scale-95">
                     Découvrir mon approche
-                  </motion.div>
+                  </div>
                 </Link>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

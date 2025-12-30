@@ -41,12 +41,12 @@ export async function GET() {
       message: "Connexion Supabase OK - La table existe",
       rowCount: tables?.length || 0,
     });
-  } catch (error: any) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
         message: "Erreur de connexion",
-        error: error.message,
+        error: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 }
     );

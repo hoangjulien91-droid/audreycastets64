@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Shield, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "next-view-transitions";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export default function PartnershipContactSection() {
   const contactInfo = [
@@ -29,24 +29,20 @@ export default function PartnershipContactSection() {
   return (
     <section className="from-muted/30 bg-linear-to-b to-white py-20 sm:py-24 lg:py-32">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-4xl"
-        >
-          <div className="mb-12 text-center">
-            <h2 className="font-display text-foreground mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
-              Nous <span className="text-primary">Contacter</span>
-            </h2>
-            <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-              Pour toute demande d'accompagnement interdisciplinaire, n'hésitez pas à nous joindre
-            </p>
-          </div>
+        <div className="mx-auto max-w-4xl">
+          <SectionHeader
+            align="center"
+            title={
+              <>
+                Nous <span className="text-primary">Contacter</span>
+              </>
+            }
+            subtitle="Pour toute demande d'accompagnement interdisciplinaire, n'hésitez pas à nous joindre"
+            className="mb-12"
+          />
 
           {/* Informations de contact */}
-          <div className="border-border mb-8 rounded-3xl border bg-white p-8 shadow-lg sm:p-10">
+          <div className="border-border animate-in fade-in-up mb-8 rounded-3xl border bg-white p-8 shadow-lg sm:p-10 [animation-delay:200ms]">
             <div className="mb-8 grid gap-6 sm:grid-cols-3">
               {contactInfo.map((info, index) => (
                 <div key={index} className="text-center">
@@ -82,13 +78,7 @@ export default function PartnershipContactSection() {
           </div>
 
           {/* Section Confidentialité et Déontologie */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="from-primary/5 to-accent-teal/5 border-primary/10 rounded-2xl border bg-linear-to-br p-8"
-          >
+          <div className="from-primary/5 to-accent-teal/5 border-primary/10 animate-in fade-in-up rounded-2xl border bg-linear-to-br p-8 [animation-delay:400ms]">
             <div className="mb-6 flex items-start gap-4">
               <div className="bg-primary flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl">
                 <Shield className="h-6 w-6 text-white" />
@@ -133,8 +123,8 @@ export default function PartnershipContactSection() {
                 </ul>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

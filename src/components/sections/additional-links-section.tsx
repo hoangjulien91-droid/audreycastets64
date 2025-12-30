@@ -2,6 +2,7 @@
 
 import { Link } from "next-view-transitions";
 import { Heart, Layers3, MessageCircle, Target, ArrowUpRight } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 const links = [
   {
@@ -42,7 +43,7 @@ const LinkCard = ({ href, Icon, title, subtitle, index }: LinkCardProps) => {
   return (
     <div
       className="animate-in fade-in-up"
-      style={{ transitionDelay: `${index * 100}ms` }}
+      style={{ animationDelay: `${index * 100}ms` }}
     >
       <Link
         href={href}
@@ -74,11 +75,15 @@ const AdditionalLinksSection = () => {
   return (
     <section className="bg-warm-rose/30 py-20 md:py-24">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="mb-16 text-center animate-in fade-in-up">
-          <h2 className="font-display text-foreground text-4xl font-bold md:text-5xl">
-            Pour aller <span className="text-primary">plus loin</span>
-          </h2>
-        </div>
+        <SectionHeader
+          align="center"
+          title={
+            <>
+              Pour aller <span className="text-primary">plus loin</span>
+            </>
+          }
+          className="mb-16"
+        />
 
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {links.map((link, index) => (

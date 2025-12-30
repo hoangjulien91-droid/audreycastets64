@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { AlertTriangle, HeartCrack, Scale, Briefcase } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export default function InterventionDomainsSection() {
   const domains = [
@@ -31,51 +31,26 @@ export default function InterventionDomainsSection() {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <section className="bg-white py-20 sm:py-24 lg:py-32">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <h2 className="font-display text-foreground mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Domaines d'Intervention <span className="text-primary">Communs</span>
-          </h2>
-          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
-            Une expertise partagée pour une prise en charge globale et efficace
-          </p>
-        </motion.div>
+        <SectionHeader
+          align="center"
+          title={
+            <>
+              Domaines d'Intervention <span className="text-primary">Communs</span>
+            </>
+          }
+          subtitle="Une expertise partagée pour une prise en charge globale et efficace"
+          className="mb-16"
+        />
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4"
-        >
+        <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {domains.map((domain, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
-              className="group border-border hover:border-primary/30 rounded-2xl border-2 bg-white p-6 transition-all duration-300 hover:shadow-lg"
+              className="group border-border hover:border-primary/30 animate-in fade-in-up rounded-2xl border-2 bg-white p-6 transition-all duration-300 hover:shadow-lg"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div
                 className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl ${
@@ -92,9 +67,9 @@ export default function InterventionDomainsSection() {
               </div>
               <h3 className="text-foreground mb-2 text-lg font-bold">{domain.title}</h3>
               <p className="text-muted-foreground text-sm">{domain.description}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

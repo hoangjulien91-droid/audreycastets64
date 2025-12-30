@@ -32,7 +32,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
               <time dateTime={post.date}>{formattedDate}</time>
             </div>
 
-            <h2 className="text-foreground group-hover:text-primary font-display mb-3 text-2xl font-bold transition-colors">
+            <h2 className="text-foreground group-hover:text-primary font-display mb-3 text-xl font-bold transition-colors md:text-2xl">
               {post.title}
             </h2>
 

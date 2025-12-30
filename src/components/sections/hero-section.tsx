@@ -52,17 +52,17 @@ export default function HeroSection() {
       <div className="relative z-10 container pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-44 lg:pb-32">
         <div className="grid min-h-[calc(100svh-14rem)] grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="order-2 text-center lg:order-1 lg:text-left">
-            <div className="bg-primary/10 border-primary/10 text-primary-dark mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-bold animate-in fade-in-up">
-              <Sparkles className="h-4 w-4" aria-hidden="true" />
+            <div className="glass-ghost text-primary-dark mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold animate-in fade-in-up transition-all hover:scale-105">
+              <Sparkles className="h-4 w-4 text-primary" aria-hidden="true" />
               <span>Votre espace de sérénité</span>
             </div>
 
             <h1
               id="hero-heading"
-              className="text-foreground mb-6 text-balance animate-in fade-in-up delay-100"
+              className="font-display text-foreground mb-6 text-4xl font-bold leading-tight tracking-tight text-balance animate-in fade-in-up delay-100 md:text-5xl lg:text-7xl"
             >
-              Audrey <span className="text-primary-dark">Castets</span>
-              <span className="text-primary-dark font-display mt-2 block text-xl font-bold sm:text-2xl">
+              Audrey <span className="text-primary">Castets</span>
+              <span className="text-primary/70 font-display mt-2 block text-xl font-bold sm:text-2xl">
                 Psychologue du Travail et TCC
               </span>
             </h1>

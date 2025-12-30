@@ -4,6 +4,7 @@ import { BlogPost } from "@/lib/blog-posts";
 import { motion } from "framer-motion";
 import { Link as LinkIcon } from "lucide-react";
 import { Link } from "next-view-transitions";
+import { SectionHeader } from "@/components/ui/section-header";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -29,19 +30,26 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
               <div key={index} className="mb-12">
                 {/* Section Heading with Link */}
                 <div className="group relative" id={section.id}>
-                  <h2 className="text-foreground font-display mb-4 flex items-center gap-2 text-2xl font-bold md:text-3xl">
-                    <Link href={`#${section.id}`} className="hover:text-primary transition-colors">
-                      {section.heading}
-                    </Link>
-                    <button
-                      onClick={() => copyHeadingLink(section.id)}
-                      className="opacity-0 transition-opacity group-hover:opacity-100"
-                      aria-label={`Copier le lien vers ${section.heading}`}
-                      title="Copier le lien"
-                    >
-                      <LinkIcon className="text-muted-foreground hover:text-primary h-5 w-5" />
-                    </button>
-                  </h2>
+                  <SectionHeader
+                    as="h2"
+                    size="subsection"
+                    title={
+                      <div className="flex items-center gap-2">
+                        <Link href={`#${section.id}`} className="hover:text-primary transition-colors">
+                          {section.heading}
+                        </Link>
+                        <button
+                          onClick={() => copyHeadingLink(section.id)}
+                          className="opacity-0 transition-opacity group-hover:opacity-100"
+                          aria-label={`Copier le lien vers ${section.heading}`}
+                          title="Copier le lien"
+                        >
+                          <LinkIcon className="text-muted-foreground hover:text-primary h-5 w-5" />
+                        </button>
+                      </div>
+                    }
+                    className="mb-4"
+                  />
                 </div>
 
                 {/* Paragraphs */}

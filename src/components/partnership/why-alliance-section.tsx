@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { CheckCircle, Clock, FileCheck } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export default function WhyAllianceSection() {
   const advantages = [
@@ -24,52 +24,27 @@ export default function WhyAllianceSection() {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <section className="bg-white py-20 sm:py-24 lg:py-32">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
-        >
-          <h2 className="font-display text-foreground mb-6 text-3xl font-bold sm:text-4xl lg:text-5xl">
-            Pourquoi Cette <span className="text-primary">Alliance ?</span>
-          </h2>
-          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
-            Des avantages concrets pour les victimes
-          </p>
-        </motion.div>
+        <SectionHeader
+          align="center"
+          title={
+            <>
+              Pourquoi Cette <span className="text-primary">Alliance ?</span>
+            </>
+          }
+          subtitle="Des avantages concrets pour les victimes"
+          className="mb-16"
+        />
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="mx-auto max-w-5xl"
-        >
+        <div className="mx-auto max-w-5xl">
           <div className="mb-12 grid gap-6 sm:grid-cols-3">
             {advantages.map((advantage, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={itemVariants}
-                className="to-muted/30 border-border hover:border-primary/30 rounded-2xl border bg-linear-to-br from-white p-6 transition-all duration-300 hover:shadow-lg sm:p-8"
+                className="to-muted/30 border-border hover:border-primary/30 animate-in fade-in-up rounded-2xl border bg-linear-to-br from-white p-6 transition-all duration-300 hover:shadow-lg sm:p-8"
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-xl">
                   <advantage.icon className="text-primary h-6 w-6" />
@@ -78,15 +53,12 @@ export default function WhyAllianceSection() {
                   {advantage.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">{advantage.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Citation en exergue */}
-          <motion.div
-            variants={itemVariants}
-            className="from-primary/5 via-accent/5 to-accent-teal/5 border-primary rounded-2xl border-l-4 bg-linear-to-r p-8 sm:p-10"
-          >
+          <div className="from-primary/5 via-accent/5 to-accent-teal/5 border-primary animate-in fade-in-up rounded-2xl border-l-4 bg-linear-to-r p-8 sm:p-10 [animation-delay:600ms]">
             <div className="flex items-start gap-4">
               <div className="text-primary/20 hidden font-serif text-6xl leading-none sm:block">
                 "
@@ -104,8 +76,8 @@ export default function WhyAllianceSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
