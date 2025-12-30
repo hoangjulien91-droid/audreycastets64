@@ -7,6 +7,7 @@ import { Menu, X, Phone, ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { navLinks } from "@/lib/data/navigation";
+import { useHaptics } from "@/hooks/use-haptics";
 
 const Logo = () => (
   <div className="relative">
@@ -26,6 +27,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const prefersReducedMotion = useReducedMotion();
+  const { trigger } = useHaptics();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -42,12 +44,9 @@ export default function Header() {
 
   return (
     <>
-      <motion.header
-        initial={prefersReducedMotion ? {} : { y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      <header
         className={cn(
-          "fixed top-0 right-0 left-0 z-50 transition-all duration-500",
+          "fixed top-0 right-0 left-0 z-50 transition-all duration-500 animate-in fade-in-down",
           scrolled
             ? "glass-effect-strong border-x-0 border-t-0 py-3 shadow-sm"
             : "border-b border-transparent bg-transparent py-6"
@@ -112,7 +111,11 @@ export default function Header() {
                   07 43 68 72 97
                 </span>
               </a>
-              <Link href="/contact" className="btn-premium px-6 py-2.5 text-[15px]">
+              <Link
+                href="/contact"
+                className="btn-premium px-6 py-2.5 text-[15px]"
+                onClick={() => trigger("medium")}
+              >
                 <span className="relative z-10 flex items-center gap-2">
                   Prendre RDV
                   <ArrowRight className="h-4 w-4" />
@@ -133,7 +136,7 @@ export default function Header() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {isMenuOpen && (
@@ -239,7 +242,10 @@ export default function Header() {
                   <Link
                     href="/contact"
                     className="btn-premium w-full !py-4"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => {
+                      trigger("medium");
+                      setIsMenuOpen(false);
+                    }}
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
                       Prendre RDV

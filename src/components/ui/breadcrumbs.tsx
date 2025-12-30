@@ -16,7 +16,10 @@ export function Breadcrumbs({ items, className }: BreadcrumbsProps) {
   return (
     <nav
       aria-label="Breadcrumb"
-      className={cn("text-muted-foreground mb-8 flex items-center text-sm", className)}
+      className={cn(
+        "text-muted-foreground mb-8 flex min-h-[40px] items-center text-sm transition-all",
+        className
+      )}
     >
       <ol className="flex flex-wrap items-center gap-2">
         {/* Home Link */}

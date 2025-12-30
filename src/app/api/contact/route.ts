@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
+  email: z.string().email("Format d'email invalide"),
+  phone: z.string().optional().nullable(),
+  message: z.string().min(10, "Le message doit contenir au moins 10 caractères"),
+  service_type: z.string().optional().nullable(),
+});
 
 // Create Supabase client with service_role key for server-side operations
 const supabaseAdmin = createClient(
@@ -153,21 +162,16 @@ const getAdminNotificationHtml = ({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, message, service_type } = body;
-
-    // Validation
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "Les champs nom, email et message sont requis" },
-        { status: 400 }
-      );
+    
+    // Zod Validation
+    const validation = contactSchema.safeParse(body);
+    
+    if (!validation.success) {
+      const errorMsg = validation.error.issues.map((issue) => issue.message).join(", ");
+      return NextResponse.json({ error: errorMsg }, { status: 400 });
     }
 
-    // Validation email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: "Format d'email invalide" }, { status: 400 });
-    }
+    const { name, email, phone, message, service_type } = validation.data;
 
     // Insert into Supabase database
     const { data: contactData, error: dbError } = await supabaseAdmin
@@ -224,8 +228,8 @@ export async function POST(request: NextRequest) {
       const adminHtml = getAdminNotificationHtml({
         name,
         email,
-        phone,
-        service_type,
+        phone: phone ?? undefined,
+        service_type: service_type ?? undefined,
         message,
         submittedAt,
       });
