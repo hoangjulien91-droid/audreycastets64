@@ -41,10 +41,7 @@ interface LinkCardProps {
 
 const LinkCard = ({ href, Icon, title, subtitle, index }: LinkCardProps) => {
   return (
-    <div
-      className="animate-in fade-in-up"
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
+    <div className="animate-in fade-in-up" style={{ animationDelay: `${index * 100}ms` }}>
       <Link
         href={href}
         className="group hover:border-primary/20 relative block rounded-3xl border border-transparent bg-white p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"

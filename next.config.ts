@@ -28,17 +28,19 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-dialog",
       "@radix-ui/react-slot",
     ],
-    reactCompiler: true,
   },
+  reactCompiler: true,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const withPWA = require("next-pwa")({
-  dest: "public",
-  disable: process.env.NODE_ENV === "development",
-  register: true,
-  skipWaiting: true,
-});
+// // @ts-expect-error Serwist typing issue
+// import withSerwistInit from "@serwist/next";
 
-export default withPWA(nextConfig);
+// const withSerwist = withSerwistInit({
+//   swSrc: "src/app/sw.ts",
+//   swDest: "public/sw.js",
+//   disable: true, // S-Tier Bible: Disable Serwist build due to Next.js 16 Canary incompatibility (WorkerError)
+// });
+
+// export default withSerwist(nextConfig);
+export default nextConfig;
 // Orchids restart: 1760612418323

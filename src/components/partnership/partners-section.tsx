@@ -21,13 +21,11 @@ export default function PartnersSection() {
         />
 
         <div className="mx-auto max-w-4xl">
-          <div
-            className="glass-ghost animate-in fade-in-up rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-10"
-          >
+          <div className="glass-ghost animate-in fade-in-up rounded-3xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-10">
             <div className="grid items-start gap-8 md:grid-cols-[200px_1fr]">
               {/* Photo professionnelle */}
               <div className="mx-auto md:mx-0">
-                <div className="relative h-48 w-48 overflow-hidden rounded-2xl shadow-lg ring-2 ring-primary/20">
+                <div className="ring-primary/20 relative h-48 w-48 overflow-hidden rounded-2xl shadow-lg ring-2">
                   <Image
                     src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/julien-hoang-detective-bayonne-1762105713740.jpg?width=8000&height=8000&resize=contain"
                     alt="Julien Hoang - Détective Privé Victimologue"
@@ -46,9 +44,7 @@ export default function PartnersSection() {
                   <h3 className="text-foreground mb-2 text-2xl font-bold sm:text-3xl">
                     Julien Hoang
                   </h3>
-                  <p className="text-primary text-lg font-semibold">
-                    Détective Privé Victimologue
-                  </p>
+                  <p className="text-primary text-lg font-semibold">Détective Privé Victimologue</p>
                 </div>
 
                 <div className="mb-6">

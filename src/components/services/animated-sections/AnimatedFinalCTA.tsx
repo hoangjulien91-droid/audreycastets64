@@ -13,7 +13,7 @@ export function AnimatedFinalCTA() {
     <section className="relative overflow-hidden py-20 md:py-32">
       {/* Background Decor */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="from-transparent via-background to-background/50 absolute inset-0 bg-linear-to-b" />
+        <div className="via-background to-background/50 absolute inset-0 bg-linear-to-b from-transparent" />
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
@@ -31,7 +31,7 @@ export function AnimatedFinalCTA() {
             <div className="from-primary/10 via-violet/10 to-rose/10 pointer-events-none absolute inset-0 bg-gradient-to-r opacity-50" />
 
             <div className="relative z-10">
-              <div className="animate-in zoom-in mx-auto mb-8 flex h-16 w-16 transform items-center justify-center rounded-2xl border border-white bg-linear-to-br from-muted to-white shadow-sm transition-transform duration-500 hover:scale-110 [animation-delay:200ms]">
+              <div className="animate-in zoom-in from-muted mx-auto mb-8 flex h-16 w-16 transform items-center justify-center rounded-2xl border border-white bg-linear-to-br to-white shadow-sm transition-transform duration-500 [animation-delay:200ms] hover:scale-110">
                 <Sparkles className="text-primary h-8 w-8" />
               </div>
 
@@ -51,24 +51,24 @@ export function AnimatedFinalCTA() {
                 plus adaptée à votre situation.
               </p>
 
-              <div className="animate-in fade-in-up flex flex-col items-center justify-center gap-4 sm:flex-row [animation-delay:500ms]">
-                <Link 
-                  href="/contact" 
+              <div className="animate-in fade-in-up flex flex-col items-center justify-center gap-4 [animation-delay:500ms] sm:flex-row">
+                <Link
+                  href="/contact"
                   onClick={() => trigger("medium")}
                   className="group w-full sm:w-auto"
                 >
-                  <div className="btn-premium w-full min-w-[200px] sm:w-auto transition-transform duration-300 group-hover:scale-105 active:scale-95">
+                  <div className="btn-premium w-full min-w-[200px] transition-transform duration-300 group-hover:scale-105 active:scale-95 sm:w-auto">
                     Prendre contact
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </div>
                 </Link>
 
-                <Link 
-                  href="/mon-approche" 
+                <Link
+                  href="/mon-approche"
                   onClick={() => trigger("light")}
                   className="group w-full sm:w-auto"
                 >
-                  <div className="btn-secondary-premium w-full min-w-[200px] sm:w-auto transition-transform duration-300 group-hover:scale-105 active:scale-95">
+                  <div className="btn-secondary-premium w-full min-w-[200px] transition-transform duration-300 group-hover:scale-105 active:scale-95 sm:w-auto">
                     Découvrir mon approche
                   </div>
                 </Link>

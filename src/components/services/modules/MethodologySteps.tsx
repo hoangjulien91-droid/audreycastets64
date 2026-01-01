@@ -33,21 +33,19 @@ export function MethodologySteps({ steps }: MethodologyStepsProps) {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="relative flex gap-6 animate-in slide-in-left"
+              className="animate-in slide-in-left relative flex gap-6"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Point de la timeline */}
-              <div className="relative z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border-4 border-primary/10 bg-card shadow-sm transition-all hover:scale-110">
+              <div className="border-primary/10 bg-card relative z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border-4 shadow-sm transition-all hover:scale-110">
                 <span className="font-display text-primary text-xl font-bold">{index + 1}</span>
               </div>
 
               {/* Contenu */}
-              <div className="card-premium flex-1 rounded-2xl p-6 pt-2 transition-transform duration-300 hover:translate-x-2 backdrop-blur-sm">
+              <div className="card-premium flex-1 rounded-2xl p-6 pt-2 backdrop-blur-sm transition-transform duration-300 hover:translate-x-2">
                 <h4 className="text-foreground mb-2 flex items-center gap-2 text-lg font-bold">
                   {step.title}
-                  {index === steps.length - 1 && (
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                  )}
+                  {index === steps.length - 1 && <CheckCircle2 className="text-primary h-5 w-5" />}
                 </h4>
                 <p className="text-muted-foreground leading-relaxed">{step.description}</p>
               </div>

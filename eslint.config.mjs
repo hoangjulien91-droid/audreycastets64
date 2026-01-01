@@ -1,30 +1,27 @@
 import { FlatCompat } from "@eslint/eslintrc";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
-  // import.meta.dirname is available after Node.js v20.11.0
-  baseDirectory: import.meta.dirname,
+  baseDirectory: __dirname,
 });
 
 const eslintConfig = [
-  ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript"],
+  {
+    ignores: ["**/next-env.d.ts", "**/*.d.ts"],
+  },
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
     rules: {
       "react/no-unescaped-entities": "off",
-      "@next/next/no-img-element": "off",
       "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/no-explicit-any": "off",
       "react-hooks/exhaustive-deps": "off",
-      "import/no-unresolved": "off",
-      "import/named": "off",
-      "import/default": "off",
-      "import/namespace": "off",
-      "import/no-absolute-path": "off",
-      "import/no-dynamic-require": "off",
-      "import/no-self-import": "off",
-      "import/no-cycle": "off",
-      "import/no-useless-path-segments": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
-  }),
+  },
 ];
 
 export default eslintConfig;

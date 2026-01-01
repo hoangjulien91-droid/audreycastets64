@@ -70,7 +70,7 @@ export function AnimatedServicesCards() {
                   ].map((item, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 animate-in slide-in-left"
+                      className="animate-in slide-in-left flex items-start gap-3"
                       style={{ animationDelay: `${i * 100 + 600}ms` }}
                     >
                       <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
@@ -116,7 +116,7 @@ export function AnimatedServicesCards() {
                   ].map((item, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 animate-in slide-in-left"
+                      className="animate-in slide-in-left flex items-start gap-3"
                       style={{ animationDelay: `${i * 100 + 800}ms` }}
                     >
                       <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />

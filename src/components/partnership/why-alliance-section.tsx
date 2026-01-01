@@ -58,7 +58,7 @@ export default function WhyAllianceSection() {
           </div>
 
           {/* Citation en exergue */}
-          <div className="from-primary/5 via-accent/5 to-accent-teal/5 border-primary animate-in fade-in-up rounded-2xl border-l-4 bg-linear-to-r p-8 sm:p-10 [animation-delay:600ms]">
+          <div className="from-primary/5 via-accent/5 to-accent-teal/5 border-primary animate-in fade-in-up rounded-2xl border-l-4 bg-linear-to-r p-8 [animation-delay:600ms] sm:p-10">
             <div className="flex items-start gap-4">
               <div className="text-primary/20 hidden font-serif text-6xl leading-none sm:block">
                 "

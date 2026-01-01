@@ -42,7 +42,7 @@ export default function PartnershipContactSection() {
           />
 
           {/* Informations de contact */}
-          <div className="border-border animate-in fade-in-up mb-8 rounded-3xl border bg-white p-8 shadow-lg sm:p-10 [animation-delay:200ms]">
+          <div className="border-border animate-in fade-in-up mb-8 rounded-3xl border bg-white p-8 shadow-lg [animation-delay:200ms] sm:p-10">
             <div className="mb-8 grid gap-6 sm:grid-cols-3">
               {contactInfo.map((info, index) => (
                 <div key={index} className="text-center">

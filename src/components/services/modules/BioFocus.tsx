@@ -10,9 +10,7 @@ interface BioFocusProps {
 
 export function BioFocus({ text }: BioFocusProps) {
   return (
-    <div
-      className="border-border my-12 flex flex-col items-center gap-8 rounded-3xl border bg-white p-8 shadow-sm md:flex-row animate-in scale-in"
-    >
+    <div className="border-border animate-in scale-in my-12 flex flex-col items-center gap-8 rounded-3xl border bg-white p-8 shadow-sm md:flex-row">
       <div className="relative h-32 w-32 flex-shrink-0">
         <div className="bg-primary/10 absolute inset-0 scale-110 rounded-full blur-xl" />
         {/* Placeholder pour l'instant, à remplacer par la vraie image d'Audrey si dispo dans assets */}

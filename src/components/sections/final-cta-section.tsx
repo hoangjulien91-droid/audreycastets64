@@ -23,14 +23,14 @@ export default function FinalCtaSection() {
       </div>
 
       <div className="relative z-10 container text-center text-white">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 backdrop-blur-sm animate-in fade-in-up">
+        <div className="animate-in fade-in-up mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 backdrop-blur-sm">
           <div className="animate-[spin_4s_linear_infinite]">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
           </div>
           <span className="text-sm font-medium">Commencez votre parcours dès aujourd'hui</span>
         </div>
 
-        <h2 className="font-display mb-6 text-4xl leading-tight font-semibold text-white sm:text-5xl lg:text-6xl animate-in fade-in-up delay-100">
+        <h2 className="font-display animate-in fade-in-up mb-6 text-4xl leading-tight font-semibold text-white delay-100 sm:text-5xl lg:text-6xl">
           Votre bien-être commence{" "}
           <span className="relative inline-block">
             aujourd'hui
@@ -41,12 +41,12 @@ export default function FinalCtaSection() {
           </span>
         </h2>
 
-        <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/90 animate-in fade-in-up delay-200">
+        <p className="animate-in fade-in-up mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-white/90 delay-200">
           Ne restez pas seul(e) face à vos difficultés. Ensemble, construisons votre chemin vers
           l'équilibre et l'épanouissement.
         </p>
 
-        <div className="mb-12 flex flex-col justify-center gap-4 sm:flex-row animate-in fade-in-up delay-300">
+        <div className="animate-in fade-in-up mb-12 flex flex-col justify-center gap-4 delay-300 sm:flex-row">
           <Link
             href="/contact"
             className="group text-primary inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
@@ -66,11 +66,11 @@ export default function FinalCtaSection() {
           </Link>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium animate-in fade-in-up delay-400">
+        <div className="animate-in fade-in-up flex flex-wrap items-center justify-center gap-6 text-sm font-medium delay-400">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 animate-in slide-in-left"
+              className="animate-in slide-in-left flex items-center gap-2"
               style={{ transitionDelay: `${index * 100 + 500}ms` }}
             >
               <div

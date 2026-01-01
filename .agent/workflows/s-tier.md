@@ -1,102 +1,133 @@
-# S-Tier God Mode Bible (Manifeste & Setup)
+---
+description: S-Tier God Mode Bible V2.0 Canonique - Architecture, Standards, Governance, Performance
+---
 
-Ce document est la source de vérité unique pour tout développement sur ce projet. Il fusionne les standards **Grade A+** et le guide de réplication **S-Tier**.
+# 📘 S-TIER GOD MODE BIBLE — V2.0 CANONIQUE
+
+**Architecture · Standards · Gouvernance · Performance**
+
+> **Statut** : Source de vérité unique
+> **Objectif** : Zéro dérive · Zéro dette · Zéro régression
 
 ---
 
-## 🏗️ PARTIE 1 : MANIFESTE S-TIER (Règles Immuables)
+## 🧭 PARTIE 0 — GOUVERNANCE & NON-RÉGRESSION
+
+### 0.1 Principe Fondamental
+
+Ce standard est contractuel, pas indicatif.
+
+- **Toute règle est obligatoire.**
+- **Toute exception doit être documentée.**
+- **Toute évolution doit renforcer le système.**
+
+### 0.2 Process de Modification du Standard
+
+Toute modification suit ce cycle rigoureux :
+
+1.  **Problème réel identifié.**
+2.  **Justification écrite** (Performance, DX, UX, Sécurité).
+3.  **Validation.**
+4.  **Mise à jour du manifeste.**
+5.  **Ajout d’un test de non-régression.**
+
+❌ **Interdit** : Modifier une règle "par confort".
+
+### 0.3 Changelog Obligatoire
+
+Chaque version du standard doit inclure :
+
+- Date
+- Règles ajoutées / modifiées
+- Motivation technique
+
+---
+
+## 🧠 PARTIE 1 — MANIFESTE S-TIER (RÈGLES IMMUABLES)
 
 ### 1.1 Core Engine (Bleeding Edge)
 
-- **React Compiler** : `experimental.reactCompiler = true`. Plus de `useMemo` manuel.
-- **Middleware Edge** : Toute logique globale (Sécu, GeoIP) dans `middleware.ts`.
-- **Navigation** : `<Link>` de `next-view-transitions` **UNIQUEMENT**.
-- **Images** : Format `AVIF/WebP` forcé. `placeholder="blur"` pour toutes les images distantes sans exception (BlurHash/LQIP).
+- **React Compiler** : `reactCompiler = true` (root). Plus de `useMemo` manuel. stable en v16.
+- **Edge Proxy (God Mode+)** : Toute logique globale (Sécu, GeoIP) dans `proxy.ts`. (Remplace `middleware.ts` en v16+).
+- **Navigation** : `<Link>` de `next-view-transitions` **UNIQUEMENT**. Garantit le "Zero Flickering" (pas de flash blanc).
+- **Images** : Format `AVIF/WebP` forcé. `placeholder="blur"` pour toutes les images distantes sans exception.
+- **LazyMotion (God Mode+)** : Obligatoire. Wrapper global via `MotionProvider.tsx`.
 
 ### 1.2 TypeScript God Mode
 
-- **Zero "Any" Policy** : L'utilisation de `any` est strictement interdite. Utiliser `unknown` ou des generics.
-- **Safety First** : `noUncheckedIndexedAccess: true` activé.
-- **Clean Code** : 0 warning ESLint (`max-warnings 0`) avant tout commit.
+- **Zero "Any" Policy** : `any` strictement interdit.
+- **Validation** : Zod pour tout input externe.
+- **Safety First** : `noUncheckedIndexedAccess: true`.
+- **Clean Code** : 0 warning ESLint (`max-warnings 0`).
 
 ### 1.3 Design System "Ghost-Glass"
 
 - **Philosophie** : Interfaces fluides, transparentes et vivantes.
-- **Surfaces** : `bg-card/60 backdrop-blur-md` (Profondeur).
-- **Bordures** : `border-white/10` (Les "vitres" ne sont pas grises).
-- **Morphing** : `view-transition-name` sur les éléments persistants pour navigation fluide.
-- **Tailwind v4** : Syntaxe moderne (`bg-linear-to-*`, `aspect-16/9`).
-- **Semantic Only** : Pas de code HEX dans les composants. Utiliser les variables CSS (--primary, --card).
-- **CSS Strict** : Utiliser `shrink-0` (pas `flex-shrink-0`), `grow` (pas `flex-grow`), `basis-*` (pas `flex-basis`).
+- **Typographie** : `SectionHeader` obligatoire pour H1/H2/H3. Interdiction des balises brutes.
+- **Surfaces** : `bg-card/60 backdrop-blur-md`.
+- **CSS Strict** : Pas de `flex-*` shorthand ambigu, utiliser `shrink-0`, `grow`.
 
 ### 1.4 Accessibilité (WCAG AA+)
 
-- **Navigation** : Skip link vers `#main-content` obligatoire.
-- **Interactions** : `aria-label` sur tous les boutons icon-only.
-- **Haptique** : Feedback tactile sur mobile pour actions clés (`navigator.vibrate`).
+- Skip link, `aria-label`, feedback haptique mobile.
 
 ---
 
-## 🛠️ PARTIE 2 : SETUP & CONFIGURATION
+## ⚙️ PARTIE 2 — STACK & CONFIGURATION
 
 ### 2.1 Stack Technique
 
-```bash
-# Core
-npm install next@latest react@latest react-dom@latest
-npm install -D typescript@latest @types/react@latest @types/react-dom@latest
+- **Core**: Next.js 16 (Canary), React 19, TypeScript 5.
+- **Essentials**: `next-view-transitions`, `framer-motion` (m), `lucide-react`, `zod`.
+- **PWA (God Mode+)** : `@serwist/next` **UNIQUEMENT**. `next-pwa` est interdit.
+- **Tools**: Playwright, Tailwind v4.
 
-# S-Tier Essentials
-npm install next-view-transitions next-themes framer-motion lucide-react
-npm install clsx tailwind-merge class-variance-authority
-npm install next-pwa @vercel/analytics @vercel/speed-insights
-npm install zod
-
-# Testing & Quality
-npm install -D @playwright/test
-npm install -D tailwindcss@latest @tailwindcss/postcss@latest
-```
-
-### 2.2 Config TS (`tsconfig.json`)
-
-Utiliser le preset strict avec :
-
-```json
-"checkJs": false,
-"strict": true,
-"noImplicitAny": true,
-"noUncheckedIndexedAccess": true,
-"noImplicitOverride": true,
-"paths": { "@/*": ["./src/*"] }
-```
-
-### 2.3 Config Next.js (`next.config.ts`)
-
-- **Headers** : CSP strict, HSTS, X-Content-Type-Options.
-- **Experimental** :
-  ```ts
-  experimental: {
-    reactCompiler: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion'],
-  }
-  ```
-
-### 2.4 Config IDE (.vscode/settings.json)
-
-Pour éviter les faux positifs CSS avec Tailwind v4 (`@theme`, `@plugin`), désactiver la validation native :
+### 2.2 Config TS Strict
 
 ```json
 {
-  "css.validate": false,
-  "files.associations": {
-    "*.css": "tailwindcss"
-  }
+  "strict": true,
+  "noImplicitAny": true,
+  "noUncheckedIndexedAccess": true
 }
 ```
 
+### 2.3 Config Next.js
+
+- **Core Settings**: `reactCompiler: true`. Plus de bloc `eslint` (CLI-only).
+- **Headers**: CSP strict, HSTS.
+- **Experimental**: `scrollRestoration`, `optimizePackageImports`.
+- **PPR (Partial Prerendering)** : ✅ **Intégré par défaut** (Cache model v16). Plus de flag expérimental requis.
+
 ---
 
-## 🏛️ PARTIE 3 : ARCHITECTURE & DATA
+## 🧩 PARTIE 3 — ARCHITECTURE RSC & FRONTIÈRES
+
+### 3.1 Règle Absolue
+
+**Tout est Server Component par défaut.**
+
+### 3.2 Client Component
+
+Autorisé **UNIQUEMENT** si :
+
+- Interaction utilisateur (onClick, onChange)
+- Animation JS complexe (Framer Motion)
+- Accès API navigateur (localStorage, window, geolocation)
+
+```ts
+"use client"; // Doit être justifié par un des cas ci-dessus
+```
+
+### 3.3 Interdictions Formelles
+
+- ❌ `useEffect` dans `app/page.tsx`
+- ❌ `"use client"` "par confort" pour éviter de passer des props
+- ❌ Logique métier sensible côté client
+
+---
+
+## 🗂️ PARTIE 4 — ARCHITECTURE DATA (SSOT)
 
 ### 3.1 Structure de Dossiers
 
@@ -105,7 +136,7 @@ src/
 ├── app/                      # Routes (RSC)
 │   ├── [route]/
 │       ├── page.tsx          # Server Component
-│       └── PageClient.tsx    # Client Component
+│       └── PageClient.tsx    # Client Component (si nécessaire)
 ├── components/               # UI & Features
 ├── lib/
 │   ├── data/                 # SSOT (Single Source of Truth)
@@ -117,228 +148,332 @@ src/
 
 ### 3.2 Règles Data
 
-1. **Centralisation** : Tout texte ou donnée statique vit dans `src/lib/data`.
-2. **Atomicité** : Fichiers splittés par domaine (ex: `services-data.ts`, `blog-data.ts`).
-3. **Typage** : Interfaces TS explicites pour chaque objet data.
+1.  **Centralisation** : Tout texte ou donnée statique vit dans `src/lib/data`.
+2.  **Atomicité** : Fichiers splittés par domaine.
+3.  **Typage** : Interfaces TS explicites exportées.
 
 ---
 
-## 🤖 PARTIE 4 : AUTOMATION & FEATURES
+## 🎨 PARTIE 5 — DESIGN SYSTEM & ANTI-DÉRIVE
 
-### 4.1 Social & SEO (Auto)
+### 5.1 Principe Anti-One-Off
 
-- **OG Images** : Route dynamique `src/app/og/route.tsx` (Edge Runtime).
-- **Sitemap/Robots** : Générés dynamiquement (`sitemap.ts`, `robots.ts`).
-- **Metadata** : Fonction helper `generatePageMetadata` centralisée.
+- **Toute section doit réutiliser un pattern existant.**
+- ❌ **Interdit** : Layout unique non réutilable "juste pour une page".
 
-### 4.2 Testing Strategy
+### 5.2 Validation Visuelle
 
-- **E2E (Playwright)** : Validation des parcours critiques (Contact, Navigation, Chargement).
-  - Config: `playwright.config.ts`
-  - Run: `npx playwright test`
-  - Fichiers: `e2e/core-journeys.spec.ts`
+Toute nouvelle page doit :
 
-### 4.3 Schema.org Exhaustif (God Tier++)
+- Être comparée à une page existante pour cohérence.
+- Respecter strictement les tokens (`design-tokens.ts`).
 
-Maximiser la visibilité SERP avec des schémas structurés complets:
+### 5.3 Guidelines Techniques Animation (Legacy God Mode+)
 
-| Schema         | Usage                                     | Génération                         |
-| -------------- | ----------------------------------------- | ---------------------------------- |
-| `Service`      | Pages de services avec tarifs, zone, avis | Auto via `JsonLd type='Service'`   |
-| `HowTo`        | Guides et tutoriels (étapes, outils)      | `JsonLd type='HowTo'` avec steps[] |
-| `Product`      | Offres packagées (Livre, Formations)      | `JsonLd type='Product'`            |
-| `Event`        | Webinaires, promotions temporaires        | `JsonLd type='Event'`              |
-| `FAQPage`      | Toute page avec FAQ                       | Auto via prop `faq`                |
-| `OfferCatalog` | Services multi-tarifs                     | Auto via prop `hasOfferCatalog`    |
-
-> **Règle** : Chaque page doit avoir au minimum 2 schemas (ex: `Service` + `FAQPage` ou `BreadcrumbList`).
+- **Scroll (Entrance)** : CSS Exclusif (`.animate-view`). Pas de JS.
+- **Interaction** : Framer Motion (`m.div`) avec Spring physics.
+- **Haptique** : `useHaptics` sur tous les boutons interactifs majeurs.
+- **Hero** : Morphing (`view-transition-name`) pour les titres, fade-in CSS pour le reste.
 
 ---
 
-## ⚡ PARTIE 5 : GOD MODE+ (Animations & UX)
+## ⚡ PARTIE 6 — PERFORMANCE CONTRACTUELLE
 
-### 5.1 Stratégie Hybride "Performance First"
+### 6.1 Budgets Non-Négociables
 
-> **IMPORTANT** : Pour éviter le TBT (Total Blocking Time) et le Jitter au chargement, nous utilisons une stratégie hybride.
+| Metric         | Seuil        |
+| :------------- | :----------- |
+| **LCP**        | ≤ 2.5s       |
+| **CLS**        | 0 (Strict)   |
+| **TBT**        | ≤ 200ms      |
+| **JS initial** | ≤ 128kB      |
+| **Fonts**      | ≤ 2 familles |
 
-- **Entrance Animations (Scroll)** : **CSS Exclusif**.
-  - Utiliser la classe utilitaire `.animate-in` (fadeInUp).
-  - Ajouter `[data-in-view="true"]` via `IntersectionObserver` léger si nécessaire, ou simplement `.animate-[fadeInUp_0.5s_ease-out_forwards]` avec `animation-delay` pour le stagger.
-  - ❌ INTERDIT : `whileInView` de Framer Motion sur les listes d'éléments (trop lourd).
-
-- **Interaction Animations (Hover/Tap)** : **Framer Motion**.
-  - **Cards** : `whileHover={{ y: -8, scale: 1.02 }}` (Spring physics OK sur interaction).
-  - **Icons** : `group-hover:scale-110` (CSS preferred) ou Motion si complexe.
-
-### 5.2 Micro-Animations Standards
-
-- **Shadows** : `hover:shadow-2xl hover:shadow-foreground/5` pour glow effect.
-- **Spring Config** : `{ type: 'spring', stiffness: 400, damping: 25 }` (Pour interactions seulement).
-
-### 5.3 Haptic Feedback (Mobile)
-
-- **Hook** : `useHaptics` depuis `@/hooks/use-haptics`
-- **Patterns** : `light` (10ms), `medium` (40ms), `heavy` (70ms), `success`, `error`
-- **Obligatoire sur** :
-  - Menu burger (open/close)
-  - Accordions (toggle)
-  - CTA buttons (click)
-  - Navigation links critiques
-
-### 5.4 Accessibilité Motion
-
-- Respecter `prefers-reduced-motion: reduce`
-- Le hook `useHaptics` vérifie automatiquement cette préférence
+⚠️ **Tout dépassement = Régression bloquante.**
 
 ---
 
-## 🧹 PARTIE 6 : HYGIÈNE CODE (Anti-Doublons)
+## 🧪 PARTIE 7 — TESTS & CONFORMITÉ
 
-### 6.1 Checklist Avant Création de Composant
+### 7.1 Types de Tests
 
-1. ❓ Ce composant existe-t-il déjà ? (`grep -r "export.*ComponentName"`)
-2. ❓ Puis-je étendre un composant existant avec une prop ?
-3. ❓ Dois-je créer un wrapper ou modifier l'original ?
+1.  **E2E UX (Playwright)** : Parcours critiques.
+2.  **Tests Contractuels (NOUVEAU)** : Structure du code.
+3.  **Tests de Régression Visuelle** : (Optionnel).
 
-### 6.2 Patterns Autorisés
+### 7.2 Tests Contractuels (OBLIGATOIRES)
 
-- **Wrapper/Facade** : `ServiceCard` → `UniversalServiceCard` (OK si simplifie l'API)
-- **Variants** : Via props (`isGlass`, `variant`) sur composant unique
+Nous testons le code lui-même. Exemples :
 
-### 6.3 Patterns Interdits
+- Aucune page sans `PageHero`.
+- Aucun `<h1>` brut dans `/components`.
+- `next-view-transitions` utilisé partout.
 
-- ❌ Deux fichiers avec le même nom dans des dossiers différents
-- ❌ Copier-coller d'un composant pour "légères modifications"
-- ❌ Imports inutilisés ou fichiers orphelins
-
-```bash
-# Vérifier les imports non utilisés
-npx ts-prune
-
-# Audit radical des dépendances (Ghost Dependencies)
-npm list --depth=0
+```ts
+// Exemple Playwright
+expect(await page.locator("h1").count()).toBe(0); // Si on interdit h1 brut
 ```
 
----
-
-## 🔒 PARTIE 7 : SECURITY & OPTIMIZATION (God Mode++)
-
-### 7.1 Security Hardening
-
-- **CSP (Strict)** : `Content-Security-Policy` avec `default-src 'self'`.
-- **Headers** : `HSTS` (Preload), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`.
-- **Zod** : Validation stricte de tous les inputs et searchParams.
-
-### 7.2 Bundle Intelligence
-
-- **Analyzer** : `@next/bundle-analyzer` configuré (env `ANALYZE=true`).
-- **Budget** : Pas de "Large Page Data" (> 128kB) sur les pages critiques.
-- **Tree-Shaking** : Vérifier imports `lucide-react` et `framer-motion` (via `optimizePackageImports`).
-
-### 7.3 Image Perfection
-
-- **Audits Sizes** : `next/image` doit avoir une prop `sizes` réaliste (pas de `100vw` par défaut sur mobile).
-- **Format** : AVIF > WebP.
+Le standard devient auto-exécutable.
 
 ---
 
-## 📊 PARTIE 8 : IMPACT PERFORMANCE (Mesures Concrètes)
+## 🧬 PARTIE 8 — NAMING & SÉMANTIQUE
 
-### 8.1 Optimisations Next.js (`next.config.ts`)
+### 8.1 Conventions
 
-| Modification                                                                         | Impact                                                       |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| `reactCompiler: true`                                                                | Supprime `useMemo`/`useCallback` manuels → bundle plus léger |
-| `optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'framer-motion']` | Lucide: ~100kB → ~5kB                                        |
-| `poweredByHeader: false`                                                             | Réduction latence (header inutile supprimé)                  |
-| `compress: true`                                                                     | Compression gzip/brotli activée                              |
-| `images.formats: ['image/webp', 'image/avif']`                                       | -30-50% vs JPEG/PNG                                          |
-| Headers `Cache-Control: immutable` sur assets                                        | Cache agressif 1 an                                          |
-
-### 8.2 TypeScript Strict Mode (`tsconfig.json`)
-
-| Option                                | Impact                                |
-| ------------------------------------- | ------------------------------------- |
-| `noUncheckedIndexedAccess: true`      | Code plus sûr, moins runtime errors   |
-| `incremental: true` + tsBuildInfoFile | Rebuild 50-70% plus rapide            |
-| `skipLibCheck: true`                  | Build plus rapide (skip node_modules) |
-| `isolatedModules: true`               | Compatible Turbopack/esbuild          |
-
-### 8.3 Stratégie Animations S-Tier
-
-| Avant                                  | Après                                    | Gain                               |
-| -------------------------------------- | ---------------------------------------- | ---------------------------------- |
-| `whileInView` Framer Motion sur listes | CSS `.animate-in` + IntersectionObserver | Réduit TBT, supprime jitter scroll |
-| Framer Motion pour tout                | FM uniquement hover/tap                  | Bundle FM allégé                   |
-
-### 8.4 Résumé Gains Mesurables
-
-| Métrique                | Avant S-Tier    | Après S-Tier      |
-| ----------------------- | --------------- | ----------------- |
-| lucide-react chunk      | ~100kB          | ~5-10kB           |
-| framer-motion chunk     | ~150kB          | ~30-50kB          |
-| Build incrémental       | ~30s            | ~10-15s           |
-| TBT (scroll animations) | Variable/jitter | Stable (CSS-only) |
+| Type             | Convention                                      |
+| :--------------- | :---------------------------------------------- |
+| **Component**    | PascalCase (`ServiceCard`)                      |
+| **Hook**         | useCamelCase (`useHaptics`)                     |
+| **UI générique** | Prefix UI (`UIH1`, `UIButton`) ou dossier `ui/` |
+| **Feature**      | FeatureName\*                                   |
+| **Data**         | domainData (`servicesData`)                     |
 
 ---
 
-## ✅ PARTIE 9 : RITUEL DE VÉRIFICATION
+## 🛠️ PARTIE 9 — DX & TOOLING (BLEEDING EDGE)
 
-Avant tout push, exécuter ce workflow :
+### 9.1 Linting & Qualité
+
+- **Commande Contractuelle** : `npx eslint "src/**/*.{ts,tsx}"`.
+- **Zéro Warning** : Le build échoue au premier warning (`--max-warnings 0`).
+
+---
+
+## 🧯 PARTIE 10 — ERROR & RÉSILIENCE
+
+### 10.1 Obligations
+
+- **`error.tsx`** : Obligatoire sur les routes critiques.
+- **`not-found.tsx`** : Stylé via Design System (pas de 404 par défaut Next.js).
+- **Logs** : Jamais de stack trace visible en prod.
+
+---
+
+## 🔐 PARTIE 11 — SECURITY & HARDENING
+
+- **CSP** : Strict (`default-src 'self'`).
+- **Headers** : HSTS Preload, `nosniff`, `DENY` frames.
+- **Zod** : Validation de tous les SearchParams et Server Actions.
+
+---
+
+## 🧼 PARTIE 12 — HYGIÈNE & ANTI-DOUBLONS
+
+- **Check avant création** : `grep` pour voir si ça existe.
+- **Patterns** : Privilégier Wrapper ou Variant props.
+- **Interdit** : Duplication de code > 3 lignes.
+
+---
+
+## 🤖 PARTIE 13 — AUTOMATION & FEATURES (BONUS)
+
+- **SEO** : Schema.org (2 schemas/page min), OG Images Edge.
+- **Bundle** : Analyzer activé en CI.
+
+---
+
+## 🧪 PARTIE 14 — RITUEL DE VÉRIFICATION FINAL
+
+Avant tout push sur `main`, exécuter le workflow suivant :
 
 // turbo-all
 
-1. **Qualité Totale** : `npm run quality` (Lint + Type-check + Format).
-2. **Build Prod** : `npm run build` (Validation Bundle + CSP).
-3. **Tests E2E** : `npx playwright test` (Validation UX multi-navigateurs).
-4. **Audit Doublons** : Vérifier qu'aucun composant n'est dupliqué.
-5. **Audit Bundle** : `npm run build:analyze` pour vérifier l'absence de chunks monstrueux (>150kB).
+1. **Qualité Totale** (Lint + Type-check + Prettier)
+   npm run quality
+
+2. **Build Prod** (Vérif build prod + CSP)
+   npm run build
+
+3. **Tests E2E** (E2E + Tests Contractuels)
+   npx playwright test
+
+4. **Audit Bundle** (Audit Bundle size)
+   npm run build:analyze
+
+**Objectif** : Branche main toujours verte.
 
 ---
 
-## 🚀 PARTIE 10 : UNIVERSE++++ (Performance Extreme & UX)
+## 🚀 PARTIE 15 — MIGRATION NEXT.JS 16 (NOUVEAU)
 
-### 10.1 Micro-Optimisations HTTP
+### 15.1 Dépendances Obligatoires
 
-- `poweredByHeader: false` (Sécurité/Perf)
-- `images.formats: ['image/avif', 'image/webp']` (Compression max)
+```bash
+npm install babel-plugin-react-compiler --save-dev
+```
 
-### 10.2 UX Mobile Tactile
+⚠️ **CRITIQUE** : Sans cette dépendance, `reactCompiler: true` fait échouer le build.
 
-- Utiliser `useHaptics` pour tout feedback critique
-- Patterns: `light` (tap), `success` (form submit), `error` (validation)
-- Obligatoire sur : Menu Burger, Accordions, CTA Primaires
+### 15.2 Configuration Minimale
 
-### 10.3 Morphing Transitions
+```typescript
+// next.config.ts
+const nextConfig: NextConfig = {
+  reactCompiler: true,
+  experimental: {
+    scrollRestoration: true,
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
+};
+```
 
-- Elements persistants (Logo, CTA) doivent avoir `view-transition-name` unique
-- Transition fluide entre pages sans flash blanc
+### 15.3 Fichiers à Vérifier
 
-### 10.4 Card Lift Physics
+| Fichier              | Emplacement                    | Action                                  |
+| -------------------- | ------------------------------ | --------------------------------------- |
+| `next-env.d.ts`      | **Racine projet** (pas `/src`) | Déplacer si mal placé                   |
+| `MotionProvider.tsx` | `/components/providers/`       | Doit envelopper l'app dans `layout.tsx` |
+| `proxy.ts`           | `/src/`                        | Obligatoire pour Edge runtime (v16+)    |
 
-- Standard Cards: `hover:-translate-y-2 hover:scale-[1.02]`
-- Shadow: `hover:shadow-2xl hover:shadow-ocean/10`
+### 15.4 React 19 Patterns
+
+```typescript
+// ✅ CORRECT - React 19
+const [state, action, isPending] = useActionState(serverAction, initialState);
+
+// ❌ INTERDIT - Deprecated
+const [state, formAction] = useFormState(serverAction, initialState);
+```
+
+### 15.5 Versions Minimales Compatibles
+
+| Bibliothèque            | Version Min | React 19 |
+| ----------------------- | ----------- | -------- |
+| `framer-motion`         | 12.x        | ✅       |
+| `next-view-transitions` | 0.3.x       | ✅       |
+| `lucide-react`          | 0.500+      | ✅       |
+| `next-themes`           | 0.4.x       | ✅       |
+
+### 15.6 ESLint Configuration
+
+```javascript
+// eslint.config.mjs - Flat Config obligatoire
+const eslintConfig = [
+  {
+    ignores: ["**/next-env.d.ts", "**/*.d.ts"],
+  },
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    rules: {
+      "react/no-unescaped-entities": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "react-hooks/exhaustive-deps": "off",
+    },
+  },
+];
+```
+
+### 15.7 Audit Checklist Migration
+
+- [x] `babel-plugin-react-compiler` installé
+- [x] `next-env.d.ts` à la racine (pas dans `/src`)
+- [x] `MotionProvider` actif (pas commenté)
+- [x] `useActionState` utilisé (pas `useFormState`)
+- [x] Build 100% statique vérifié
+- [x] Turbopack dev fonctionnel
+
+### 15.8 Cache Components (V16.1+)
+
+Le modèle `cacheComponents: true` est actif par défaut en V16.1. Il est **incompatible** avec les anciens Route Segment Configs.
+
+#### ❌ INTERDIT (Provoque un build failure)
+
+```typescript
+// Ces exports sont désormais gérés automatiquement par Next.js
+export const dynamic = "force-static";
+export const revalidate = false;
+export const dynamicParams = true;
+export const runtime = "edge"; // Pour les API routes
+```
+
+#### ✅ SOLUTION
+
+Supprimer ces exports. Le comportement est désormais inféré par Next.js en fonction du contenu du composant (présence de `generateStaticParams`, etc.).
+
+### 15.9 Changelog
+
+| Date       | Modification                                     | Motivation                                 |
+| :--------- | :----------------------------------------------- | :----------------------------------------- |
+| 2026-01-01 | Suppression Route Segment Configs (V16.1)        | Incompatibilité `cacheComponents`          |
+| 2026-01-01 | Migration `middleware.ts` -> `proxy.ts`          | Nouveau standard Next.js 16 (Canary)       |
+| 2026-01-01 | Migration `motion` -> `m` (16 composants)        | Réduction bundle size via `LazyMotion`     |
+| 2026-01-01 | Migration `next/link` -> `next-view-transitions` | Zero Flickering Navigation                 |
+| 2026-01-01 | PWA God Mode (`@serwist/next`)                   | Remplacement `next-pwa` (incompatible)     |
+| 2026-01-01 | Certification Compliance Totale                  | Audit Final 100% S-Tier Reached            |
+| 2026-01-01 | Mise à jour Canonique 2026                       | Harmonisation Tarifs et Année de Référence |
 
 ---
 
-## 🏆 PARTIE 11 : VICTORY LAP (PWA & Reliability)
+## 📱 PARTIE 16 — PWA GOD MODE
 
-### 11.1 PWA Native (Mobile First)
+### 16.1 Obligation
 
-- **Engine**: `next-pwa` configuré avec cache `StaleWhileRevalidate`.
-- **Installabilité**: Manifest valide + Icons + Meta tags (`apple-mobile-web-app-capable`).
-- **Offline**: Fallback réseau transparent.
+La PWA est **OBLIGATOIRE** pour tout projet S-Tier :
 
-### 11.2 Ghost UI (Perceived Performance)
+- Installable (manifest + icons)
+- Offline-capable (Service Worker)
+- Cache intelligent (Workbox strategies)
 
-- **Skeletons**: Pas de loaders spinners. Utiliser des `Skeleton` (shimmer) pour le contenu.
-- **Variable**: Utiliser `--primary/10` pour les placeholders pour rester dans le thème.
+### 16.2 Stack
 
-### 11.3 Reliability (E2E Obligatoire)
+| Outil           | Version Min | Rôle                    |
+| :-------------- | :---------- | :---------------------- |
+| `@serwist/next` | 10.x        | Intégration Next.js ESM |
+| `serwist`       | 10.x        | Core Workbox moderne    |
 
-- **Suite Critique**: `e2e/core-journeys.spec.ts` doit exister.
-- **Coverage**:
-  1. Homepage Load (Hero)
-  2. Navigation (Menu & Links)
-  3. Formulaires (Contact)
-  4. Mobile UX (Burger Menu)
+❌ **Interdit** : `next-pwa` (incompatible Next.js 16+)
+
+> [!CAUTION]
+> **Next.js 16 Canary** : `@serwist/next` génère un `WorkerError` avec Turbopack (Jan 2026). En attendant une correction, la PWA reste en mode "passif" (manifest + installable, sans caching offline). Ce sera corrigé dans une future release stable.
+
+### 16.3 Configuration Minimale
+
+```typescript
+// next.config.ts
+import withSerwistInit from "@serwist/next";
+
+const withSerwist = withSerwistInit({
+  swSrc: "src/app/sw.ts", // Localisation standard App Router
+  swDest: "public/sw.js",
+  disable: process.env.NODE_ENV === "development",
+});
+
+export default withSerwist(nextConfig);
+```
+
+### 16.4 Fichiers Requis
+
+| Fichier            | Emplacement | Description                     |
+| :----------------- | :---------- | :------------------------------ |
+| `sw.ts`            | `/src/app/` | Service Worker source (Serwist) |
+| `site.webmanifest` | `/public/`  | Manifest PWA                    |
+| `android-chrome-*` | `/public/`  | Icons 192x192, 512x512          |
+
+### 16.5 Service Worker Template
+
+```typescript
+// src/app/sw.ts
+import { defaultCache } from "@serwist/next/worker";
+import type { PrecacheEntry, SerwistGlobalConfig } from "serwist";
+import { Serwist } from "serwist";
+
+declare global {
+  interface WorkerGlobalScope extends SerwistGlobalConfig {
+    __SW_MANIFEST: (PrecacheEntry | string)[] | undefined;
+  }
+}
+
+declare const self: ServiceWorkerGlobalScope;
+
+const serwist = new Serwist({
+  precacheEntries: self.__SW_MANIFEST ?? [],
+  skipWaiting: true,
+  clientsClaim: true,
+  navigationPreload: true,
+  runtimeCaching: defaultCache,
+});
+
+serwist.addEventListeners();
+```

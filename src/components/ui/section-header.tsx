@@ -42,11 +42,11 @@ export function SectionHeader({
   };
 
   return (
-    <div className={cn("flex flex-col space-y-4 mb-8", alignmentClasses[align], className)}>
+    <div className={cn("mb-8 flex flex-col space-y-4", alignmentClasses[align], className)}>
       {badge && (
         <div
           className={cn(
-            "glass-ghost inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold tracking-wider text-primary uppercase shadow-sm transition-all hover:scale-105 animate-in fade-in-up",
+            "glass-ghost text-primary animate-in fade-in-up inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold tracking-wider uppercase shadow-sm transition-all hover:scale-105",
             badgeClassName
           )}
         >
@@ -69,9 +69,7 @@ export function SectionHeader({
 
       {subtitle && (
         <div className="animate-in fade-in-up [animation-delay:200ms]">
-          <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
-            {subtitle}
-          </p>
+          <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">{subtitle}</p>
         </div>
       )}
     </div>

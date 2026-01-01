@@ -1,13 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  ArrowRight,
-  Sparkles,
-  Heart,
-  Star,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowRight, Sparkles, Heart, Star, CheckCircle2 } from "lucide-react";
 import { Link } from "next-view-transitions";
 import audreyHero from "@/assets/images/audrey-hero.jpg";
 import { useHaptics } from "@/hooks/use-haptics";
@@ -22,10 +16,7 @@ export default function HeroSection() {
   const { trigger } = useHaptics();
 
   return (
-    <section
-      className="relative min-h-[100svh] overflow-hidden"
-      aria-labelledby="hero-heading"
-    >
+    <section className="relative min-h-[100svh] overflow-hidden" aria-labelledby="hero-heading">
       <div className="bg-warm-rose/30 absolute inset-0" aria-hidden="true" />
 
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -48,14 +39,14 @@ export default function HeroSection() {
       <div className="relative z-10 container pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-44 lg:pb-32">
         <div className="grid min-h-[calc(100svh-14rem)] grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="order-2 text-center lg:order-1 lg:text-left">
-            <div className="glass-ghost text-primary-dark mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold animate-in fade-in-up transition-all hover:scale-105">
-              <Sparkles className="h-4 w-4 text-primary" aria-hidden="true" />
+            <div className="glass-ghost text-primary-dark animate-in fade-in-up mb-8 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-all hover:scale-105">
+              <Sparkles className="text-primary h-4 w-4" aria-hidden="true" />
               <span>Votre espace de sérénité</span>
             </div>
 
             <h1
               id="hero-heading"
-              className="font-display text-foreground mb-6 text-4xl font-bold leading-tight tracking-tight text-balance animate-in fade-in-up delay-100 md:text-5xl lg:text-7xl"
+              className="font-display text-foreground animate-in fade-in-up mb-6 text-4xl leading-tight font-bold tracking-tight text-balance delay-100 md:text-5xl lg:text-7xl"
             >
               Audrey <span className="text-primary">Castets</span>
               <span className="text-primary/70 font-display mt-2 block text-xl font-bold sm:text-2xl">
@@ -63,16 +54,16 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="text-muted-foreground mx-auto mb-8 max-w-xl text-base leading-relaxed sm:text-lg lg:mx-0 animate-in fade-in-up delay-200">
+            <p className="text-muted-foreground animate-in fade-in-up mx-auto mb-8 max-w-xl text-base leading-relaxed delay-200 sm:text-lg lg:mx-0">
               Je vous accompagne avec bienveillance et professionnalisme vers un équilibre durable
               entre vie personnelle et professionnelle.
             </p>
 
-            <ul className="mb-10 flex flex-col items-center gap-3 lg:items-start animate-in fade-in-up delay-300">
+            <ul className="animate-in fade-in-up mb-10 flex flex-col items-center gap-3 delay-300 lg:items-start">
               {features.map((feature, idx) => (
                 <li
                   key={idx}
-                  className="text-foreground/80 flex items-center gap-3 text-sm sm:text-base animate-in slide-in-left"
+                  className="text-foreground/80 animate-in slide-in-left flex items-center gap-3 text-sm sm:text-base"
                   style={{ animationDelay: `${idx * 100 + 400}ms` }}
                 >
                   <div className="bg-primary/10 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full">
@@ -83,7 +74,7 @@ export default function HeroSection() {
               ))}
             </ul>
 
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start animate-in fade-in-up delay-500">
+            <div className="animate-in fade-in-up flex flex-col items-center justify-center gap-4 delay-500 sm:flex-row lg:justify-start">
               <Link
                 href="/contact"
                 onClick={() => trigger("medium")}
@@ -105,12 +96,10 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            <div className="border-primary/10 mt-12 border-t pt-8 animate-in fade-in-up delay-500">
+            <div className="border-primary/10 animate-in fade-in-up mt-12 border-t pt-8 delay-500">
               <div className="flex items-center justify-center gap-8 lg:justify-start">
                 <div className="flex -space-x-3">
-                  <div className="flex -space-x-3">
-                    {/* Badges removed as per user request */}
-                  </div>
+                  <div className="flex -space-x-3">{/* Badges removed as per user request */}</div>
                 </div>
                 <div className="text-left">
                   <div className="mb-1 flex items-center gap-1">
@@ -130,7 +119,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="relative order-1 lg:order-2 animate-in scale-in delay-200">
+          <div className="animate-in scale-in relative order-1 delay-200 lg:order-2">
             <div className="relative">
               <div
                 className="bg-primary/10 absolute -inset-4 rounded-[3rem] opacity-70 blur-3xl sm:-inset-8"
@@ -168,7 +157,7 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                <div className="shadow-primary/15 border-primary/10 absolute -right-4 -bottom-4 rounded-2xl border bg-white/95 px-5 py-4 shadow-2xl backdrop-blur-xl sm:-right-8 sm:bottom-8 animate-in slide-in-right delay-500">
+                <div className="shadow-primary/15 border-primary/10 animate-in slide-in-right absolute -right-4 -bottom-4 rounded-2xl border bg-white/95 px-5 py-4 shadow-2xl backdrop-blur-xl delay-500 sm:-right-8 sm:bottom-8">
                   <div className="flex items-center gap-4">
                     <div className="bg-primary shadow-primary/20 flex h-14 w-14 items-center justify-center rounded-2xl shadow-lg">
                       <Heart className="h-7 w-7 fill-white text-white" />

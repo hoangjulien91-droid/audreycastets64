@@ -28,18 +28,18 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
               title={caseStudy.title}
               subtitle={undefined}
             />
-            <p className="text-muted-foreground mb-8 border-l-4 border-primary/20 pl-4 text-lg italic">
+            <p className="text-muted-foreground border-primary/20 mb-8 border-l-4 pl-4 text-lg italic">
               "{caseStudy.context}"
             </p>
 
-            <div className="relative aspect-square overflow-hidden rounded-3xl border border-border-soft bg-muted/30 md:aspect-video backdrop-blur-sm">
-              <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-80" />
+            <div className="border-border-soft bg-muted/30 relative aspect-square overflow-hidden rounded-3xl border backdrop-blur-sm md:aspect-video">
+              <div className="from-primary/5 absolute inset-0 bg-linear-to-br to-transparent opacity-80" />
               {/* Abstract Illustration */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-32 w-32 animate-pulse rounded-full bg-primary/10 blur-3xl" />
-                <div className="relative z-10 flex flex-col items-center rounded-2xl border border-white/10 bg-card/60 p-6 shadow-xl backdrop-blur-md">
-                  <User className="mb-2 h-12 w-12 text-primary/60" />
-                  <span className="rounded-full bg-primary/10 px-2 py-1 text-xs font-bold text-primary">
+                <div className="bg-primary/10 h-32 w-32 animate-pulse rounded-full blur-3xl" />
+                <div className="bg-card/60 relative z-10 flex flex-col items-center rounded-2xl border border-white/10 p-6 shadow-xl backdrop-blur-md">
+                  <User className="text-primary/60 mb-2 h-12 w-12" />
+                  <span className="bg-primary/10 text-primary rounded-full px-2 py-1 text-xs font-bold">
                     Anonyme
                   </span>
                 </div>
@@ -49,12 +49,10 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
 
           <div className="space-y-8">
             {/* Problem */}
-            <div
-              className="group relative overflow-hidden rounded-2xl border border-border-soft bg-card/60 p-6 shadow-sm transition-all hover:bg-card/80 backdrop-blur-sm animate-in fade-in-up delay-200"
-            >
-              <div className="absolute top-0 right-0 -mt-8 -mr-8 h-24 w-24 rounded-bl-full bg-primary/5 opacity-50" />
-              <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-foreground">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
+            <div className="group border-border-soft bg-card/60 hover:bg-card/80 animate-in fade-in-up relative overflow-hidden rounded-2xl border p-6 shadow-sm backdrop-blur-sm transition-all delay-200">
+              <div className="bg-primary/5 absolute top-0 right-0 -mt-8 -mr-8 h-24 w-24 rounded-bl-full opacity-50" />
+              <h3 className="text-foreground mb-3 flex items-center gap-2 text-lg font-bold">
+                <span className="bg-primary/10 text-primary flex h-6 w-6 items-center justify-center rounded-full text-xs">
                   1
                 </span>
                 La Problématique
@@ -65,12 +63,10 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
             </div>
 
             {/* Approach */}
-            <div
-              className="group relative ml-4 overflow-hidden rounded-2xl border border-border-soft bg-card/60 p-6 shadow-sm transition-all hover:bg-card/80 backdrop-blur-sm md:ml-8 animate-in fade-in-up delay-300"
-            >
-              <div className="absolute top-0 right-0 -mt-8 -mr-8 h-24 w-24 rounded-bl-full bg-primary/5 opacity-50" />
-              <h3 className="mb-3 flex items-center gap-2 text-lg font-bold text-foreground">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs">
+            <div className="group border-border-soft bg-card/60 hover:bg-card/80 animate-in fade-in-up relative ml-4 overflow-hidden rounded-2xl border p-6 shadow-sm backdrop-blur-sm transition-all delay-300 md:ml-8">
+              <div className="bg-primary/5 absolute top-0 right-0 -mt-8 -mr-8 h-24 w-24 rounded-bl-full opacity-50" />
+              <h3 className="text-foreground mb-3 flex items-center gap-2 text-lg font-bold">
+                <span className="bg-primary/10 text-primary flex h-6 w-6 items-center justify-center rounded-full text-xs">
                   2
                 </span>
                 L'Approche
@@ -81,14 +77,12 @@ export function CaseStudy({ caseStudy }: CaseStudyProps) {
             </div>
 
             {/* Result */}
-            <div
-              className="relative overflow-hidden rounded-2xl border border-primary/20 bg-primary/5 p-8 shadow-md backdrop-blur-sm animate-in fade-in-up delay-400"
-            >
+            <div className="border-primary/20 bg-primary/5 animate-in fade-in-up relative overflow-hidden rounded-2xl border p-8 shadow-md backdrop-blur-sm delay-400">
               <div className="flex items-start gap-4">
-                <CheckCircle2 className="mt-1 h-8 w-8 flex-shrink-0 text-primary" />
+                <CheckCircle2 className="text-primary mt-1 h-8 w-8 flex-shrink-0" />
                 <div>
-                  <h3 className="mb-2 text-xl font-bold text-foreground">Le Résultat</h3>
-                  <p className="text-sm leading-relaxed font-medium text-foreground/80">
+                  <h3 className="text-foreground mb-2 text-xl font-bold">Le Résultat</h3>
+                  <p className="text-foreground/80 text-sm leading-relaxed font-medium">
                     {caseStudy.result}
                   </p>
                 </div>

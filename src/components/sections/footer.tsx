@@ -53,10 +53,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div
-            className="animate-in fade-in-up"
-            style={{ transitionDelay: "100ms" }}
-          >
+          <div className="animate-in fade-in-up" style={{ transitionDelay: "100ms" }}>
             <h3 className="text-foreground mb-5 text-sm font-semibold tracking-wider uppercase">
               Navigation
             </h3>
@@ -78,10 +75,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div
-            className="animate-in fade-in-up"
-            style={{ transitionDelay: "200ms" }}
-          >
+          <div className="animate-in fade-in-up" style={{ transitionDelay: "200ms" }}>
             <h3 className="text-foreground mb-5 text-sm font-semibold tracking-wider uppercase">
               Contact
             </h3>
@@ -115,10 +109,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div
-            className="animate-in fade-in-up"
-            style={{ transitionDelay: "300ms" }}
-          >
+          <div className="animate-in fade-in-up" style={{ transitionDelay: "300ms" }}>
             <h3 className="text-foreground mb-5 text-sm font-semibold tracking-wider uppercase">
               Déontologie
             </h3>
@@ -141,9 +132,7 @@ export default function Footer() {
 
         <div className="divider-gradient mb-8" aria-hidden="true" />
 
-        <div
-          className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left animate-in fade-in-up delay-400"
-        >
+        <div className="animate-in fade-in-up flex flex-col items-center justify-between gap-4 text-center delay-400 sm:flex-row sm:text-left">
           <p className="text-muted-foreground text-xs">
             © {new Date().getFullYear()} Audrey Castets - Psychologue du Travail. Tous droits
             réservés.

@@ -76,7 +76,7 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className="group relative animate-in fade-in-up"
+              className="group animate-in fade-in-up relative"
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <div
@@ -115,7 +115,7 @@ export default function ServicesSection() {
                   {service.features.map((feature, idx) => (
                     <li
                       key={idx}
-                      className="flex items-start gap-3 animate-in slide-in-left"
+                      className="animate-in slide-in-left flex items-start gap-3"
                       style={{ animationDelay: `${idx * 50 + 300}ms` }}
                     >
                       <CircleCheck

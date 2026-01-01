@@ -162,10 +162,10 @@ const getAdminNotificationHtml = ({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    
+
     // Zod Validation
     const validation = contactSchema.safeParse(body);
-    
+
     if (!validation.success) {
       const errorMsg = validation.error.issues.map((issue) => issue.message).join(", ");
       return NextResponse.json({ error: errorMsg }, { status: 400 });

@@ -46,7 +46,7 @@ export default function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 right-0 left-0 z-50 transition-all duration-500 animate-in fade-in-down",
+          "animate-in fade-in-down fixed top-0 right-0 left-0 z-50 transition-all duration-500",
           scrolled
             ? "glass-effect-strong border-x-0 border-t-0 py-3 shadow-sm"
             : "border-b border-transparent bg-transparent py-6"

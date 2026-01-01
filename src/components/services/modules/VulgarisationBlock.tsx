@@ -9,7 +9,7 @@ interface VulgarisationBlockProps {
 
 export function VulgarisationBlock({ title, description }: VulgarisationBlockProps) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-white/50 bg-linear-to-br from-purple-50 via-white to-pink-50 p-8 shadow-sm md:p-10 animate-in fade-in-up">
+    <div className="animate-in fade-in-up relative overflow-hidden rounded-3xl border border-white/50 bg-linear-to-br from-purple-50 via-white to-pink-50 p-8 shadow-sm md:p-10">
       <div className="bg-primary/5 absolute top-0 right-0 -mt-10 -mr-10 h-32 w-32 rounded-full blur-3xl" />
 
       <div className="relative z-10 flex flex-col items-start gap-6 md:flex-row">

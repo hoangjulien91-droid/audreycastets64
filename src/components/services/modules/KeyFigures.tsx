@@ -18,7 +18,7 @@ export function KeyFigures({ keyStats }: KeyFiguresProps) {
       {keyStats.map((stat, index) => (
         <div
           key={index}
-          className="border-border group hover:border-primary/30 rounded-2xl border bg-white p-6 text-center shadow-sm transition-colors animate-in scale-in"
+          className="border-border group hover:border-primary/30 animate-in scale-in rounded-2xl border bg-white p-6 text-center shadow-sm transition-colors"
           style={{ transitionDelay: `${index * 100}ms` }}
         >
           <div className="bg-primary/5 text-primary group-hover:bg-primary/10 mb-3 inline-flex items-center justify-center rounded-lg p-2 transition-colors">

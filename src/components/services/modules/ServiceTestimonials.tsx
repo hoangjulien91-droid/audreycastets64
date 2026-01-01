@@ -29,7 +29,7 @@ export function ServiceTestimonials({ testimonials }: ServiceTestimonialsProps) 
         {testimonials.map((t, index) => (
           <div
             key={index}
-            className="card-premium group relative p-8 animate-in fade-in-up"
+            className="card-premium group animate-in fade-in-up relative p-8"
             style={{ transitionDelay: `${index * 100}ms` }}
           >
             <Quote className="text-primary/10 group-hover:text-primary/20 absolute top-6 right-6 h-10 w-10 transition-colors" />

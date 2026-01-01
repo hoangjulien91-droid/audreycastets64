@@ -5,23 +5,23 @@ import { test, expect } from "@playwright/test";
  */
 
 test.describe("Navigation & Core Pages", () => {
-  test('homepage loads successfully', async ({ page, isMobile }) => {
-    await page.goto('/');
-    
+  test("homepage loads successfully", async ({ page, isMobile }) => {
+    await page.goto("/");
+
     // Check main heading
-    await expect(page.locator('h1')).toBeVisible();
-    
+    await expect(page.locator("h1")).toBeVisible();
+
     // Check navigation (desktop) or menu button (mobile)
     if (isMobile) {
       await expect(page.locator('button[aria-label*="Ouvrir le menu"]')).toBeVisible();
     } else {
-      await expect(page.locator('nav').first()).toBeVisible();
+      await expect(page.locator("nav").first()).toBeVisible();
     }
   });
 
-  test('navigation links work', async ({ page, isMobile }) => {
-    await page.goto('/');
-    
+  test("navigation links work", async ({ page, isMobile }) => {
+    await page.goto("/");
+
     if (isMobile) {
       // Open mobile menu
       await page.locator('button[aria-label*="Ouvrir le menu"]').click();
@@ -33,7 +33,7 @@ test.describe("Navigation & Core Pages", () => {
       const servicesLink = page.locator('nav a:has-text("Services")').first();
       await servicesLink.click();
     }
-    
+
     await expect(page).toHaveURL(/.*services.*/);
   });
 

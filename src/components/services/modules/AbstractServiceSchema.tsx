@@ -1,6 +1,5 @@
 "use client";
 
-
 export function AbstractServiceSchema() {
   return (
     <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-3xl border border-zinc-100 bg-zinc-50 md:aspect-[21/9]">
@@ -16,25 +15,24 @@ export function AbstractServiceSchema() {
 
         {/* Orbiting Elements - Using rotating container */}
         <div className="absolute inset-0 animate-[spin_20s_linear_infinite]">
-           {[0, 90, 180, 270].map((deg, i) => (
+          {[0, 90, 180, 270].map((deg, i) => (
             <div
               key={i}
               className="absolute top-1/2 left-1/2 h-0 w-0"
               style={{ transform: `rotate(${deg}deg)` }}
             >
-               <div
-                  className="border-primary absolute h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-white shadow-sm"
-                  style={{ transform: `translate(80px, 0) rotate(-${deg}deg)` }}
-               >
-                 <div className="h-full w-full animate-[spin_20s_linear_infinite_reverse]" />
-               </div>
+              <div
+                className="border-primary absolute h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-white shadow-sm"
+                style={{ transform: `translate(80px, 0) rotate(-${deg}deg)` }}
+              >
+                <div className="h-full w-full animate-[spin_20s_linear_infinite_reverse]" />
+              </div>
             </div>
-           ))}
+          ))}
         </div>
 
-
         {/* Connecting Lines (Conceptual) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center animate-in fade-in delay-1000">
+        <div className="animate-in fade-in absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center delay-1000">
           <div className="border-primary/10 rounded-full border bg-white/90 px-6 py-2 shadow-lg backdrop-blur-sm">
             <span className="gradient-text text-sm font-bold">Processus Structuré</span>
           </div>

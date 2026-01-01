@@ -35,7 +35,10 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
                     size="subsection"
                     title={
                       <div className="flex items-center gap-2">
-                        <Link href={`#${section.id}`} className="hover:text-primary transition-colors">
+                        <Link
+                          href={`#${section.id}`}
+                          className="hover:text-primary transition-colors"
+                        >
                           {section.heading}
                         </Link>
                         <button

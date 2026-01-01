@@ -115,7 +115,7 @@ export default function ContactCtaSection() {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="group flex items-start gap-4 animate-in slide-in-left"
+                  className="group animate-in slide-in-left flex items-start gap-4"
                   style={{ animationDelay: `${index * 100 + 200}ms` }}
                 >
                   <div
@@ -133,16 +133,14 @@ export default function ContactCtaSection() {
             </div>
           </div>
 
-          <div
-            className="card-premium p-8 lg:p-10 animate-in slide-in-right delay-200"
-          >
+          <div className="card-premium animate-in slide-in-right p-8 delay-200 lg:p-10">
             <h3 className="text-foreground mb-6 text-xl font-semibold">
               Demande de Contact Rapide
             </h3>
 
             {submitStatus.type && (
               <div
-                className={`mb-6 rounded-xl p-4 text-sm animate-in fade-in-up ${
+                className={`animate-in fade-in-up mb-6 rounded-xl p-4 text-sm ${
                   submitStatus.type === "success"
                     ? "border-sage/30 bg-sage/10 text-sage border"
                     : "bg-destructive/10 text-destructive border-destructive/20 border"

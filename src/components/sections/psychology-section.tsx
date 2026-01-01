@@ -75,7 +75,7 @@ export default function PsychologySection() {
           ))}
         </div>
 
-        <div className="mx-auto max-w-3xl animate-in fade-in-up [animation-delay:400ms]">
+        <div className="animate-in fade-in-up mx-auto max-w-3xl [animation-delay:400ms]">
           <div className="card-premium relative overflow-hidden p-8 text-center">
             <div
               className="absolute top-0 right-0 left-0 h-1"

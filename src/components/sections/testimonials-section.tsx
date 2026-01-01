@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
       </div>
 
       <div className="relative z-10 container">
-        <div className="mb-14 text-center animate-in fade-in-up">
+        <div className="animate-in fade-in-up mb-14 text-center">
           <div className="badge-premium mb-5 inline-flex">
             <MessageCircle className="h-4 w-4" aria-hidden="true" />
             <span>Témoignages</span>
@@ -102,7 +102,7 @@ export default function TestimonialsSection() {
         <Carousel
           setApi={setApi}
           opts={{ loop: true, align: "start" }}
-          className="mx-auto w-full max-w-6xl animate-in fade-in-up [animation-delay:200ms]"
+          className="animate-in fade-in-up mx-auto w-full max-w-6xl [animation-delay:200ms]"
         >
           <CarouselContent className="-ml-4 md:-ml-6">
             {testimonials.map((testimonial, index) => (

@@ -8,6 +8,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { Toaster } from "sonner";
 import StickyMobileCTA from "@/components/ui/sticky-mobile-cta";
 import { ScrollObserver } from "@/components/utils/scroll-observer";
+import { MotionProvider } from "@/components/providers/motion-provider";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -175,15 +176,17 @@ export default function RootLayout({
         </head>
         <body className="bg-background antialiased">
           <AccessibilityProvider>
-            <a href="#main-content" className="skip-to-main">
-              Aller au contenu principal
-            </a>
-            <ScrollObserver />
+            <MotionProvider>
+              <a href="#main-content" className="skip-to-main">
+                Aller au contenu principal
+              </a>
+              <ScrollObserver />
 
-            {children}
-            <StickyMobileCTA />
+              {children}
+              <StickyMobileCTA />
 
-            <Toaster />
+              <Toaster />
+            </MotionProvider>
           </AccessibilityProvider>
         </body>
       </html>
