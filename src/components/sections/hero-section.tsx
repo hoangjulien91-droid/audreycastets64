@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import Image from "next/image";
 import { ArrowRight, Sparkles, Heart, Star, CheckCircle2 } from "lucide-react";
