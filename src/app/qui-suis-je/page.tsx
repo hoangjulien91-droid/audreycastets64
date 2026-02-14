@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { Link } from "next-view-transitions";
+import audreyPortrait from "@/assets/images/audrey.webp";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
@@ -86,10 +88,14 @@ export default function QuiSuisJePage() {
               <div className="grid items-center gap-16 md:grid-cols-2">
                 <div className="group relative">
                   <div className="from-primary to-accent-violet absolute inset-0 rounded-3xl bg-linear-to-tr opacity-10 blur-xl transition-opacity duration-500 group-hover:opacity-20"></div>
-                  <img
-                    src="/images/audrey-portrait-pro.jpg"
-                    alt="Audrey Castets"
+                  <Image
+                    src={audreyPortrait}
+                    alt="Audrey Castets - Psychologue du Travail"
+                    width={600}
+                    height={750}
                     className="relative h-auto w-full transform rounded-3xl object-cover shadow-2xl transition-transform duration-500 hover:scale-[1.01]"
+                    placeholder="blur"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>
