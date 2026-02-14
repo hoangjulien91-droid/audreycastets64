@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ArrowRight, Sparkles, Heart, Star, CheckCircle2 } from "lucide-react";
 import { Link } from "next-view-transitions";
-
+import audreyHero from "@/assets/images/audrey.webp";
 
 import { useHaptics } from "@/hooks/use-haptics";
 
@@ -138,11 +138,12 @@ export default function HeroSection() {
                 <div className="shadow-primary/10 absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-white/80 via-white/20 to-white/60 p-[3px] shadow-2xl ring-1 ring-white/40">
                   <div className="relative isolate h-full w-full overflow-hidden rounded-[2.3rem] bg-white/50 backdrop-blur-sm">
                     <Image
-                      src="/audrey.webp"
+                      src={audreyHero}
                       alt="Audrey Castets - Psychologue du Travail spécialisée TCC et EFT"
                       fill
                       className="ease-out-expo object-cover object-top transition-transform duration-700 hover:scale-105"
                       priority
+                      placeholder="blur"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                     />
                     {/* Inner grain/overlay for texture */}
