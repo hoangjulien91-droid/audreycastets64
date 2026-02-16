@@ -154,10 +154,10 @@ export default function ContactPage() {
                         <div>
                           <h3 className="text-foreground mb-1 font-semibold">Email</h3>
                           <a
-                            href="mailto:contact@audrey-castets.fr"
+                            href="mailto:audrey.castets@gmail.com"
                             className="text-accent-violet font-medium hover:underline"
                           >
-                            contact@audrey-castets.fr
+                            audrey.castets@gmail.com
                           </a>
                           <p className="text-muted-foreground mt-1 text-sm">
                             Réponse garantie sous 24h
