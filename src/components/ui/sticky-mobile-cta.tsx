@@ -4,7 +4,7 @@ import { Phone, Calendar, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { BookingDialog } from "@/components/booking/booking-dialog";
+import { Link } from "next-view-transitions";
 import { useHaptics } from "@/hooks/use-haptics";
 
 export default function StickyMobileCTA() {
@@ -59,19 +59,17 @@ export default function StickyMobileCTA() {
               </div>
             </a>
 
-            {/* Book Button (Right) - Instant Zcal Modal */}
+            {/* Book Button (Right) - Direct Link to /prendre-rendez-vous */}
             <div className="flex-1">
-              <BookingDialog triggerLabel="Prendre RDV">
-                <button
-                  type="button"
-                  onClick={() => trigger("medium")}
-                  className="btn-premium flex h-12 w-full touch-manipulation items-center justify-center gap-2 rounded-2xl font-bold text-white shadow-lg transition-transform active:scale-95 !py-0"
-                >
-                  <Calendar className="h-4 w-4" />
-                  <span>Prendre RDV</span>
-                  <Sparkles className="text-accent-violet-light h-3.5 w-3.5 animate-pulse" />
-                </button>
-              </BookingDialog>
+              <Link
+                href="/prendre-rendez-vous"
+                onClick={() => trigger("medium")}
+                className="btn-premium flex h-12 w-full touch-manipulation items-center justify-center gap-2 rounded-2xl font-bold text-white shadow-lg transition-transform active:scale-95 !py-0"
+              >
+                <Calendar className="h-4 w-4" />
+                <span>Prendre RDV</span>
+                <Sparkles className="text-accent-violet-light h-3.5 w-3.5 animate-pulse" />
+              </Link>
             </div>
           </div>
         </motion.div>
