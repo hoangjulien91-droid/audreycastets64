@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Shield, Clock, ExternalLink, Calendar, CheckCircle } from "lucide-react";
+import { Shield, Clock, ExternalLink, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ZcalEmbedProps {
@@ -13,7 +13,7 @@ interface ZcalEmbedProps {
 
 export function ZcalEmbed({
   className,
-  minHeight = 565,
+  minHeight = 650,
   showCardWrapper = true,
   showReassuranceHeader = true,
 }: ZcalEmbedProps) {
@@ -58,22 +58,29 @@ export function ZcalEmbed({
         </div>
       )}
 
-      {/* Zcal Iframe Container */}
-      <div className="relative w-full overflow-hidden rounded-2xl bg-white shadow-inner">
+      {/* Zcal Iframe Container with scroll support and optimal height */}
+      <div 
+        className="relative w-full overflow-y-auto overflow-x-hidden rounded-2xl bg-white shadow-inner border border-primary/10"
+        style={{
+          WebkitOverflowScrolling: "touch",
+          maxHeight: "750px",
+        }}
+      >
         <iframe
           ref={iframeRef}
           id="zcal-iframe"
           src="https://zcal.co/emb/audrey-castets?embed=1&embedType=iframe"
           title="Agenda en ligne - Audrey Castets"
           loading="eager"
-          scrolling="no"
+          scrolling="auto"
           allow="camera; microphone; autoplay; fullscreen"
           className="w-full border-none transition-all duration-300"
           style={{
             border: "none",
             width: "100%",
-            height: "565px",
+            height: "650px",
             minHeight: `${minHeight}px`,
+            overflowY: "auto",
           }}
         />
       </div>
