@@ -7,14 +7,13 @@ export function proxy(request: NextRequest) {
   // Security Headers
   const securityHeaders = {
     "Content-Security-Policy":
-      "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://zcal.co https://*.zcal.co;",
+      "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https: blob:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: blob:; font-src 'self' data: https:; connect-src 'self' https: wss:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://zcal.co https://*.zcal.co https://static.zcal.co https://*.google.com; child-src 'self' https://zcal.co https://*.zcal.co https://static.zcal.co;",
     "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
-    "X-Frame-Options": "DENY",
+    "X-Frame-Options": "SAMEORIGIN",
     "X-Content-Type-Options": "nosniff",
     "Referrer-Policy": "strict-origin-when-cross-origin",
-    "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
-    "Cross-Origin-Opener-Policy": "same-origin",
-    "Cross-Origin-Resource-Policy": "same-origin",
+    "Permissions-Policy": "camera=(self 'https://zcal.co'), microphone=(self 'https://zcal.co')",
+    "Cross-Origin-Opener-Policy": "same-origin-allow-popups",
     "X-XSS-Protection": "1; mode=block",
   };
 
@@ -23,6 +22,10 @@ export function proxy(request: NextRequest) {
   });
 
   return response;
+}
+
+export function middleware(request: NextRequest) {
+  return proxy(request);
 }
 
 export default proxy;
