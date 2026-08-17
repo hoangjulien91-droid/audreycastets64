@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { MBIWizard } from "@/components/tests/mbi/mbi-wizard";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd, MedicalWebPageJsonLd } from "@/components/JsonLd";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
 
@@ -23,6 +23,11 @@ export default function BurnoutTestPage() {
           { name: "Tests", url: "/tests" },
           { name: "Test de Burnout (MBI)" },
         ]}
+      />
+      <MedicalWebPageJsonLd
+        name="Test de Burnout (Maslach Burnout Inventory - MBI)"
+        description="Auto-évaluation clinique du niveau d'épuisement professionnel (épuisement émotionnel, dépersonnalisation, accomplissement personnel)."
+        url="https://www.audrey-castets.fr/tests/burnout"
       />
       <div className="bg-background flex min-h-screen flex-col">
         <Header />

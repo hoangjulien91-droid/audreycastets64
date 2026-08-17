@@ -253,3 +253,36 @@ export const ArticleJsonLd = ({ title, description, datePublished, authors }: Ar
 
   return <JsonLd data={data} />;
 };
+
+// Medical / Diagnostic Evaluation Page Schema
+interface MedicalWebPageData {
+  name: string;
+  description: string;
+  url: string;
+}
+
+export const MedicalWebPageJsonLd = ({ name, description, url }: MedicalWebPageData) => {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name,
+    description,
+    url,
+    audience: {
+      "@type": "MedicalAudience",
+      audienceType: "Patient",
+    },
+    author: {
+      "@type": "Person",
+      name: "Audrey Castets",
+      jobTitle: "Psychologue du Travail",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Audrey Castets - Cabinet de Psychologie",
+      url: "https://www.audrey-castets.fr",
+    },
+  };
+
+  return <JsonLd data={data} />;
+};
