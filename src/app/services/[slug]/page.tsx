@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getServiceBySlug, getRelatedServices, servicesData } from "@/lib/data/services";
 import { PageHero } from "@/components/ui/page-hero";
 import { Sparkles, ArrowRight } from "lucide-react";
@@ -61,6 +61,11 @@ import Footer from "@/components/sections/footer";
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
+
+  if (slug === "bilan-de-competences") {
+    redirect("/bilan-de-competences");
+  }
+
   const service = getServiceBySlug(slug);
 
   if (!service) {

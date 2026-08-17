@@ -19,7 +19,13 @@ const Logo = () => (
 );
 
 const mainNavLinks = navLinks.filter((link) =>
-  ["/qui-suis-je", "/services", "/tests", "/tarifs", "/contact"].includes(link.href)
+  [
+    "/qui-suis-je",
+    "/bilan-de-competences",
+    "/services",
+    "/tarifs",
+    "/contact",
+  ].includes(link.href)
 );
 
 export default function Header() {

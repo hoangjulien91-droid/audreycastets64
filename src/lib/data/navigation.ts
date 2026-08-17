@@ -2,6 +2,7 @@ import type { NavLink } from "./types";
 
 export const navLinks: NavLink[] = [
   { href: "/qui-suis-je", label: "Qui suis-je" },
+  { href: "/bilan-de-competences", label: "Bilan de compétences" },
   { href: "/mon-approche", label: "Mon approche" },
   { href: "/services", label: "Services" },
   { href: "/tests", label: "Bilans Psychométriques" },

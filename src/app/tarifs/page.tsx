@@ -22,6 +22,7 @@ import {
   Handshake,
   Calendar,
   MapPin,
+  Award,
 } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -122,138 +123,205 @@ export default function TarifsPage() {
               </div>
 
               <div
-                className="mx-auto mb-12 grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10"
+                className="mx-auto mb-12 grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-8"
                 role="list"
                 aria-label="Offres tarifaires"
               >
                 {/* Card 1: Particuliers */}
                 <div className="group relative">
                   <div className="from-bg-soft/40 to-bg-soft/30 group-hover:from-bg-soft/60 group-hover:to-bg-soft/50 absolute inset-0 transform rounded-3xl bg-linear-to-br transition-all duration-500 group-hover:-translate-y-1"></div>
-                  <div className="border-border-soft/30 relative h-full transform overflow-hidden rounded-3xl border bg-white shadow-[0_4px_24px_var(--shadow-color-sm)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_8px_32px_var(--shadow-color-lg)]">
+                  <div className="border-border-soft/30 relative flex h-full flex-col justify-between transform overflow-hidden rounded-3xl border bg-white shadow-[0_4px_24px_var(--shadow-color-sm)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_8px_32px_var(--shadow-color-lg)]">
                     <div className="from-primary via-primary to-accent-violet h-2 bg-linear-to-r"></div>
-                    <div className="p-8 md:p-10">
+                    <div className="p-8">
                       <div className="relative mb-6">
                         <div className="from-primary to-primary absolute inset-0 h-16 w-16 rounded-2xl bg-linear-to-br opacity-30 blur-xl"></div>
                         <div className="from-primary to-primary relative flex h-16 w-16 transform items-center justify-center rounded-2xl bg-linear-to-br shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
                           <Heart className="h-8 w-8 text-white" />
                         </div>
                       </div>
-                      <h3 className="font-display text-foreground group-hover:text-primary mb-4 text-2xl font-bold transition-colors md:text-3xl">
+                      <h3 className="font-display text-foreground group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
                         Particuliers
                       </h3>
                       <div className="mb-6">
                         <div className="mb-2 flex items-baseline gap-2">
-                          <span className="text-primary text-5xl font-bold">55€</span>
-                          <span className="text-muted-foreground text-lg">/ séance</span>
+                          <span className="text-primary text-4xl font-bold">55€</span>
+                          <span className="text-muted-foreground text-sm">/ séance</span>
                         </div>
-                        <p className="text-muted-foreground text-sm">Séance d'environ 50 minutes</p>
+                        <p className="text-muted-foreground text-xs">Séance individuelle d'environ 50 min</p>
                       </div>
                       <ul className="mb-8 space-y-3">
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">Thérapies TCC et EFT</span>
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">Thérapies TCC et EFT</span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Consultation en cabinet ou en visio
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            En cabinet ou en visioconférence
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Déplacement à domicile dans les 20km
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Déplacement à domicile (rayon 20km)
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Premier entretien gratuit (15 min)
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Premier échange offert (15 min)
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Facture pour remboursement mutuelle
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Accompagnement personnalisé
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Facture avec n° ADELI pour mutuelle
                           </span>
                         </li>
                       </ul>
+                    </div>
+                    <div className="p-8 pt-0">
                       <Link
-                        href="/#contact"
-                        className="from-primary to-primary inline-flex w-full transform cursor-pointer items-center justify-center rounded-2xl bg-linear-to-r px-6 py-4 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                        href="/contact"
+                        className="from-primary to-primary inline-flex w-full transform cursor-pointer items-center justify-center rounded-2xl bg-linear-to-r px-5 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
                       >
                         Prendre rendez-vous
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                        <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </div>
                   </div>
                 </div>
 
-                {/* Card 2: Professionnels */}
+                {/* Card 2: Bilan de compétences (CPF) */}
+                <div className="group relative">
+                  <div className="from-primary/20 to-accent-violet/20 group-hover:from-primary/30 group-hover:to-accent-violet/30 absolute inset-0 transform rounded-3xl bg-linear-to-br transition-all duration-500 group-hover:-translate-y-1"></div>
+                  <div className="border-primary/40 relative flex h-full flex-col justify-between transform overflow-hidden rounded-3xl border-2 bg-white shadow-[0_8px_32px_var(--shadow-color-md)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_12px_40px_var(--shadow-color-lg)]">
+                    <div className="bg-primary absolute top-0 right-0 rounded-bl-xl px-3 py-1 text-xs font-bold text-white shadow-xs">
+                      100% Éligible CPF
+                    </div>
+                    <div className="from-primary via-accent-violet to-primary h-2 bg-linear-to-r"></div>
+                    <div className="p-8">
+                      <div className="relative mb-6">
+                        <div className="from-primary to-accent-violet absolute inset-0 h-16 w-16 rounded-2xl bg-linear-to-br opacity-30 blur-xl"></div>
+                        <div className="from-primary to-accent-violet relative flex h-16 w-16 transform items-center justify-center rounded-2xl bg-linear-to-br shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                          <FileText className="h-8 w-8 text-white" />
+                        </div>
+                      </div>
+                      <h3 className="font-display text-foreground group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
+                        Bilan de Compétences
+                      </h3>
+                      <div className="mb-6">
+                        <div className="mb-2 flex items-baseline gap-2">
+                          <span className="text-primary text-3xl font-bold">1 050€ - 1 886€</span>
+                        </div>
+                        <p className="text-muted-foreground text-xs">Formules de 15h, 20h ou 24h • Finançable CPF</p>
+                      </div>
+                      <ul className="mb-8 space-y-3">
+                        <li className="flex items-start gap-3">
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            <strong>Prise en charge CPF</strong> (Mon Compte Formation)
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Organisme partenaire certifié Qualiopi
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Parcours structuré en 3 phases légales
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Tests & questionnaires d'aide à la réflexion
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Document de synthèse officiel & suivi 6 mois
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="p-8 pt-0">
+                      <Link
+                        href="/bilan-de-competences"
+                        className="btn-premium inline-flex w-full transform cursor-pointer items-center justify-center rounded-2xl px-5 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                      >
+                        Découvrir le Bilan CPF
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3: Professionnels */}
                 <div className="group relative">
                   <div className="from-bg-soft/40 to-bg-soft/30 group-hover:from-bg-soft/60 group-hover:to-bg-soft/50 absolute inset-0 transform rounded-3xl bg-linear-to-br transition-all duration-500 group-hover:-translate-y-1"></div>
-                  <div className="border-border-soft/30 relative h-full transform overflow-hidden rounded-3xl border bg-white shadow-[0_4px_24px_var(--shadow-color-sm)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_8px_32px_var(--shadow-color-lg)]">
+                  <div className="border-border-soft/30 relative flex h-full flex-col justify-between transform overflow-hidden rounded-3xl border bg-white shadow-[0_4px_24px_var(--shadow-color-sm)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_8px_32px_var(--shadow-color-lg)]">
                     <div className="from-primary via-primary to-accent-violet h-2 bg-linear-to-r"></div>
-                    <div className="p-8 md:p-10">
+                    <div className="p-8">
                       <div className="relative mb-6">
                         <div className="from-primary to-primary absolute inset-0 h-16 w-16 rounded-2xl bg-linear-to-br opacity-30 blur-xl"></div>
                         <div className="from-primary to-primary relative flex h-16 w-16 transform items-center justify-center rounded-2xl bg-linear-to-br shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
                           <Building2 className="h-8 w-8 text-white" />
                         </div>
                       </div>
-                      <h3 className="font-display text-foreground group-hover:text-primary mb-4 text-2xl font-bold transition-colors md:text-3xl">
+                      <h3 className="font-display text-foreground group-hover:text-primary mb-3 text-2xl font-bold transition-colors">
                         Professionnels
                       </h3>
                       <div className="mb-6">
                         <div className="mb-2 flex items-baseline gap-2">
-                          <span className="text-primary text-4xl font-bold">Sur devis</span>
+                          <span className="text-primary text-3xl font-bold">Sur devis</span>
                         </div>
-                        <p className="text-muted-foreground text-sm">Tarif adapté à vos besoins</p>
+                        <p className="text-muted-foreground text-xs">Accompagnement sur-mesure pour entreprises</p>
                       </div>
                       <ul className="mb-8 space-y-3">
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
                             Audit RPS et diagnostic organisationnel
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Recrutement et tests SOSIE
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Recrutement et passation tests SOSIE
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Ateliers et formations sur mesure
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Ateliers prévention du stress & QVT
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Cellule d'écoute psychologique
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Cellule d'écoute et soutien psychologique
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <CircleCheck className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-                          <span className="text-foreground/80 text-sm">
-                            Suivi et accompagnement RH
+                          <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Conseil et accompagnement managérial RH
                           </span>
                         </li>
                       </ul>
+                    </div>
+                    <div className="p-8 pt-0">
                       <Link
-                        href="/#contact"
-                        className="from-primary to-primary inline-flex w-full transform cursor-pointer items-center justify-center rounded-2xl bg-linear-to-r px-6 py-4 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                        href="/contact"
+                        className="from-primary to-primary inline-flex w-full transform cursor-pointer items-center justify-center rounded-2xl bg-linear-to-r px-5 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
                       >
                         Demander un devis
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                        <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </div>
                   </div>
@@ -310,31 +378,31 @@ export default function TarifsPage() {
                 >
                   {[
                     {
-                      icon: <Shield className="h-6 w-6" />,
-                      title: "Mutuelles",
+                      icon: <Award className="h-6 w-6" />,
+                      title: "Compte Formation (CPF)",
                       description:
-                        "De nombreuses mutuelles proposent un remboursement partiel ou total des séances de psychologie. Je vous fournis une facture détaillée à transmettre à votre complémentaire santé.",
+                        "Financement possible jusqu'à 100% pour votre Bilan de compétences via notre organisme partenaire certifié Qualiopi sur Mon Compte Formation.",
                       color: "primary",
                     },
                     {
-                      icon: <Building2 className="h-6 w-6" />,
-                      title: "Comités d'entreprise",
+                      icon: <Shield className="h-6 w-6" />,
+                      title: "Mutuelles & Complémentaires",
                       description:
-                        "Certains CE prennent en charge tout ou partie des consultations psychologiques. N'hésitez pas à vous renseigner auprès de votre entreprise.",
+                        "De nombreuses mutuelles remboursent les séances de psychologie (forfait annuel ou par séance). Une facture avec n° ADELI vous est systématiquement remise.",
                       color: "secondary",
                     },
                     {
-                      icon: <FileText className="h-6 w-6" />,
-                      title: "Facturation",
+                      icon: <Building2 className="h-6 w-6" />,
+                      title: "Comités d'entreprise (CSE)",
                       description:
-                        "Vous recevrez systématiquement une facture avec mon numéro ADELI pour toute demande de remboursement auprès de votre mutuelle ou organisme.",
+                        "Certains CSE ou employeurs prennent en charge tout ou partie des consultations ou des bilans. Renseignez-vous auprès de votre entreprise.",
                       color: "primary",
                     },
                     {
                       icon: <Handshake className="h-6 w-6" />,
                       title: "Situations particulières",
                       description:
-                        "Si vous rencontrez des difficultés financières, n'hésitez pas à m'en parler. Des solutions peuvent être envisagées selon votre situation.",
+                        "Si vous rencontrez des difficultés financières, n'hésitez pas à m'en parler lors de notre premier échange pour adapter les modalités.",
                       color: "secondary",
                     },
                   ].map((item, index) => (

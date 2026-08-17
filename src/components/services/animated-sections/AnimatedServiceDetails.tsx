@@ -206,8 +206,13 @@ export function AnimatedServiceDetails({
           </motion.div>
 
           <motion.div variants={staggerContainer} className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {services.map((service, index) => (
-              <Link href={`/services/${service.slug}`} key={index} className="block h-full">
+            {services.map((service, index) => {
+              const href =
+                service.slug === "bilan-de-competences"
+                  ? "/bilan-de-competences"
+                  : `/services/${service.slug}`;
+              return (
+                <Link href={href} key={index} className="block h-full">
                 <motion.div
                   variants={fadeInUp}
                   whileHover={{
@@ -239,7 +244,8 @@ export function AnimatedServiceDetails({
                   </div>
                 </motion.div>
               </Link>
-            ))}
+            );
+          })}
           </motion.div>
         </div>
       </div>

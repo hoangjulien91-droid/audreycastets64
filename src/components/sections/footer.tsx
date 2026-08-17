@@ -5,11 +5,12 @@ import { Phone, Mail, MapPin, Shield, FileText, Heart } from "lucide-react";
 
 const footerLinks = [
   { href: "/qui-suis-je", label: "Qui suis-je" },
+  { href: "/bilan-de-competences", label: "Bilan de compétences (CPF)" },
   { href: "/services", label: "Services" },
   { href: "/mon-approche", label: "Mon approche" },
+  { href: "/tarifs", label: "Tarifs" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
-  { href: "/tarifs", label: "Tarifs" },
 ];
 
 export default function Footer() {
