@@ -122,6 +122,19 @@ export function ContactForm() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Honeypot field for bot protection */}
+        <div style={{ display: "none" }} aria-hidden="true">
+          <label htmlFor="website_url">Ne pas remplir ce champ si vous êtes humain</label>
+          <input
+            type="text"
+            id="website_url"
+            name="website_url"
+            tabIndex={-1}
+            autoComplete="off"
+            onChange={handleChange}
+          />
+        </div>
+
         {/* Name Field */}
         <div>
           <label

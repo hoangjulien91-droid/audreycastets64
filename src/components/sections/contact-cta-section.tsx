@@ -13,6 +13,7 @@ const contactFormSchema = z.object({
   phone: z.string().optional(),
   service_type: z.string().optional(),
   message: z.string().min(10, "Le message doit contenir au moins 10 caractères"),
+  website_url: z.string().optional(),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -152,6 +153,18 @@ export default function ContactCtaSection() {
             )}
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              {/* Honeypot anti-spam */}
+              <div style={{ display: "none" }} aria-hidden="true">
+                <label htmlFor="website_url_cta">Ne pas remplir ce champ si vous êtes humain</label>
+                <input
+                  type="text"
+                  id="website_url_cta"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  {...register("website_url")}
+                />
+              </div>
+
               <div>
                 <label htmlFor="name" className="text-foreground mb-2 block text-sm font-medium">
                   Nom complet <span className="text-primary">*</span>

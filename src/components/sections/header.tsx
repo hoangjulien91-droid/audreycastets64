@@ -19,7 +19,7 @@ const Logo = () => (
 );
 
 const mainNavLinks = navLinks.filter((link) =>
-  ["/qui-suis-je", "/bilan-de-competences", "/services", "/tarifs", "/contact"].includes(link.href)
+  ["/qui-suis-je", "/bilan-de-competences", "/services", "/tests", "/tarifs", "/contact"].includes(link.href)
 );
 
 export default function Header() {
@@ -56,7 +56,6 @@ export default function Header() {
           <div
             className={cn(
               "mx-auto flex items-center justify-between transition-all duration-500"
-              // Remove inner styling that conflicted
             )}
           >
             <Link href="/" className="group relative z-10 flex items-center gap-3">
@@ -76,26 +75,32 @@ export default function Header() {
               role="navigation"
               aria-label="Navigation principale"
             >
-              {mainNavLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "group hover:text-primary relative rounded-full px-4 py-2 text-[15px] font-medium transition-all duration-300",
-                    pathname === link.href ? "text-primary" : "text-muted-foreground"
-                  )}
-                >
-                  {link.label}
-                  {pathname === link.href && (
-                    <motion.div
-                      className="bg-primary/[0.06] border-primary/10 absolute inset-0 -z-10 rounded-full border"
-                      layoutId="nav-bg"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                  <div className="bg-primary/[0.03] absolute inset-0 -z-10 scale-90 rounded-full opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100" />
-                </Link>
-              ))}
+              {mainNavLinks.map((link) => {
+                const isActive =
+                  pathname === link.href ||
+                  (link.href !== "/" && pathname.startsWith(link.href));
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      "group hover:text-primary relative rounded-full px-3.5 py-2 text-[14.5px] font-medium transition-all duration-300 xl:px-4 xl:text-[15px]",
+                      isActive ? "text-primary font-semibold" : "text-muted-foreground"
+                    )}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <motion.div
+                        className="bg-primary/[0.08] border-primary/15 absolute inset-0 -z-10 rounded-full border"
+                        layoutId="nav-bg"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    <div className="bg-primary/[0.03] absolute inset-0 -z-10 scale-90 rounded-full opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100" />
+                  </Link>
+                );
+              })}
             </nav>
 
             <div className="relative z-10 hidden items-center gap-4 lg:flex">
@@ -197,37 +202,43 @@ export default function Header() {
                   aria-label="Menu mobile"
                 >
                   <div className="space-y-2">
-                    {navLinks.map((link, idx) => (
-                      <motion.div
-                        key={link.href}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: idx * 0.05 + 0.1 }}
-                      >
-                        <Link
-                          href={link.href}
-                          className={cn(
-                            "flex w-full items-center justify-between rounded-2xl border border-transparent px-5 py-4 text-base font-medium transition-all duration-300",
-                            pathname === link.href
-                              ? "bg-primary/10 text-primary border-primary/10 shadow-sm"
-                              : "text-foreground hover:border-white/40 hover:bg-white/50"
-                          )}
-                          onClick={() => setIsMenuOpen(false)}
+                    {navLinks.map((link, idx) => {
+                      const isActive =
+                        pathname === link.href ||
+                        (link.href !== "/" && pathname.startsWith(link.href));
+
+                      return (
+                        <motion.div
+                          key={link.href}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.05 + 0.1 }}
                         >
-                          <span
+                          <Link
+                            href={link.href}
                             className={cn(
-                              "transition-transform duration-300",
-                              pathname === link.href ? "translate-x-1" : "group-hover:translate-x-1"
+                              "flex w-full items-center justify-between rounded-2xl border border-transparent px-5 py-4 text-base font-medium transition-all duration-300",
+                              isActive
+                                ? "bg-primary/10 text-primary border-primary/10 shadow-sm font-semibold"
+                                : "text-foreground hover:border-white/40 hover:bg-white/50"
                             )}
+                            onClick={() => setIsMenuOpen(false)}
                           >
-                            {link.label}
-                          </span>
-                          {pathname === link.href && (
-                            <Sparkles className="text-primary h-4 w-4 animate-pulse" />
-                          )}
-                        </Link>
-                      </motion.div>
-                    ))}
+                            <span
+                              className={cn(
+                                "transition-transform duration-300",
+                                isActive ? "translate-x-1" : "group-hover:translate-x-1"
+                              )}
+                            >
+                              {link.label}
+                            </span>
+                            {isActive && (
+                              <Sparkles className="text-primary h-4 w-4 animate-pulse" />
+                            )}
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </nav>
 

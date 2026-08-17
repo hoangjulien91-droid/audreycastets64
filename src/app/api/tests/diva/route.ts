@@ -3,11 +3,18 @@ import { createClient } from "@supabase/supabase-js";
 import { calculateDivaResults } from "@/lib/utils/diva-calculations";
 import { DIVA_SECTIONS, DIVA_IMPACT_DOMAINS } from "@/lib/data/diva-questions";
 import { DivaAnswer, DivaImpactAnswer } from "@/types/diva";
+import {
+  sendEmail,
+  escapeHtml,
+  checkRateLimit,
+  DEFAULT_ADMIN_EMAIL,
+  DEFAULT_FROM_EMAIL,
+} from "@/lib/resend";
 
 // Init Supabase Admin
 const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+  process.env.SUPABASE_SERVICE_ROLE_KEY || "",
   {
     auth: {
       autoRefreshToken: false,
@@ -16,92 +23,60 @@ const supabaseAdmin = createClient(
   }
 );
 
-// Resend Email Helper
-async function sendEmail({
-  to,
-  subject,
-  html,
-  replyTo,
-}: {
-  to: string;
-  subject: string;
-  html: string;
-  replyTo?: string;
-}) {
-  try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: "Audrey Castets <contact@audreycastets.fr>",
-        to,
-        subject,
-        html,
-        ...(replyTo && { reply_to: replyTo }),
-      }),
-    });
+// Template Email Client (Synthèse pré-diagnostic TDAH)
+const getClientEmailHtml = (name: string, results: ReturnType<typeof calculateDivaResults>) => {
+  const safeName = escapeHtml(name);
+  const safeAssessment = escapeHtml(results.globalAssessment);
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Resend Error:", errorText);
-      throw new Error(`Resend API Error: ${errorText}`);
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error("Email sending failed:", error);
-    return null;
-  }
-}
-
-// Template Email Client (Concise/Ethical)
-const getClientEmailHtml = (name: string, results: ReturnType<typeof calculateDivaResults>) => `
+  return `
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+  <meta charset="utf-8">
   <style>
-    body { font-family: sans-serif; color: #333; line-height: 1.6; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: #eef2ff; padding: 20px; border-radius: 8px; text-align: center; }
-    .footer { font-size: 12px; color: #666; margin-top: 30px; text-align: center; border-top: 1px solid #eee; padding-top: 20px; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: #1F2937; line-height: 1.6; background-color: #FDF8F6; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 20px auto; background: #FFFFFF; border-radius: 12px; overflow: hidden; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .header { background: #EEF2FF; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
+    .header h1 { color: #3730A3; font-size: 22px; margin: 0; }
+    .score-card { background: #F8FAFC; border: 1px solid #E2E8F0; padding: 16px; border-radius: 8px; margin: 12px 0; }
+    .footer { font-size: 12px; color: #6B7280; margin-top: 30px; text-align: center; border-top: 1px solid #E5E7EB; padding-top: 16px; }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>Synthèse Pré-diagnostic TDAH</h1>
+      <h1>Synthèse Pré-diagnostic TDAH (DIVA 2.0)</h1>
     </div>
-    <p>Bonjour ${name},</p>
-    <p>Vous avez complété l'entretien DIVA 2.0 (Diagnostic Interview for ADHD in Adults).</p>
+    <p>Bonjour ${safeName},</p>
+    <p>Vous avez complété l'entretien de dépistage TDAH adulte (DIVA 2.0). Voici la synthèse générée :</p>
     
-    <h3>Votre profil suggère :</h3>
-    <p style="font-size: 18px; font-weight: bold; color: #4338ca; padding: 15px; background: #f5f3ff; border-radius: 8px;">
-        ${results.globalAssessment}
-    </p>
+    <div style="background: #F5F3FF; border-left: 4px solid #7C3AED; padding: 16px; border-radius: 6px; margin: 16px 0;">
+      <p style="margin:0; font-size: 15px; font-weight: bold; color: #4C1D95;">
+        ${safeAssessment}
+      </p>
+    </div>
 
-    <p><strong>Détail des scores cliniques :</strong></p>
-    <ul>
-        <li><strong>Inattention :</strong> ${results.inattentionScore.adult}/9 (Adulte) - ${results.inattentionScore.child}/9 (Enfance)</li>
-        <li><strong>Hyperactivité/Impulsivité :</strong> ${results.hyperactivityScore.adult}/9 (Adulte) - ${results.hyperactivityScore.child}/9 (Enfance)</li>
-    </ul>
+    <div class="score-card">
+      <p style="margin: 4px 0;"><strong>🧠 Déficit Attentionnel :</strong> ${results.inattentionScore.adult}/9 (Adulte) • ${results.inattentionScore.child}/9 (Enfance)</p>
+      <p style="margin: 4px 0;"><strong>⚡ Hyperactivité / Impulsivité :</strong> ${results.hyperactivityScore.adult}/9 (Adulte) • ${results.hyperactivityScore.child}/9 (Enfance)</p>
+      <p style="margin: 4px 0;"><strong>📉 Retentissement :</strong> ${results.totalImpactScore.adult} domaines de vie impactés (Adulte)</p>
+    </div>
 
-    <p>
-        Note : Ce document n'est pas un diagnostic médical formel. Il permet cependant d'orienter une consultation spécialisée.
-        Un rapport détaillé a été généré pour le professionnel de santé.
+    <p style="font-size: 13px; color: #6B7280; margin-top: 20px;">
+      <em>Note importante : Ce document constitue un outil de pré-dépistage standardisé pour orienter une consultation spécialisée et ne se substitue pas à une évaluation neuropsychologique ou psychiatrique complète.</em>
     </p>
 
     <div class="footer">
-      <p>Audrey Castets - Psychologue du Travail et TCC</p>
+      <p><strong>Audrey Castets</strong> — Psychologue du Travail (TCC & EFT)</p>
+      <p>📞 07 43 68 72 97 | ✉️ contact@audrey-castets.fr</p>
     </div>
   </div>
 </body>
 </html>
 `;
+};
 
-// Template Email Admin (Detailed for Clinical Analysis)
+// Template Email Admin (Détaillé pour analyse clinique)
 const getAdminEmailHtml = (
   data: {
     answers: DivaAnswer[];
@@ -114,7 +89,10 @@ const getAdminEmailHtml = (
   },
   results: ReturnType<typeof calculateDivaResults>
 ) => {
-  // Helper to generate list of checked examples
+  const safeName = escapeHtml(data.userData.name);
+  const safeEmail = escapeHtml(data.userData.email);
+  const safeBirth = escapeHtml(data.userData.birthDate);
+
   const generateCriteriaList = (sectionId: string) => {
     const section = DIVA_SECTIONS.find((s) => s.id === sectionId);
     if (!section) return "";
@@ -124,12 +102,12 @@ const getAdminEmailHtml = (
         const answer = data.answers.find((a) => a.criterionId === c.id);
         if (!answer) return "";
 
-        const adultExamples = answer.examplesAdultChecked.map((i) => c.examplesAdult[i]).join(", ");
-        const childExamples = answer.examplesChildChecked.map((i) => c.examplesChild[i]).join(", ");
+        const adultExamples = answer.examplesAdultChecked.map((i) => escapeHtml(c.examplesAdult[i])).join(", ");
+        const childExamples = answer.examplesChildChecked.map((i) => escapeHtml(c.examplesChild[i])).join(", ");
 
         return `
             <tr>
-                <td style="padding: 8px; border: 1px solid #ddd;"><strong>${c.label}</strong>: ${c.description}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;"><strong>${escapeHtml(c.label)}</strong>: ${escapeHtml(c.description)}</td>
                 <td style="padding: 8px; border: 1px solid #ddd; background: ${answer.presentAdult ? "#dcfce7" : "white"}">
                     <strong>${answer.presentAdult ? "OUI" : "Non"}</strong><br/>
                     <small>Ex: ${adultExamples}</small>
@@ -152,7 +130,7 @@ const getAdminEmailHtml = (
       const domain = DIVA_IMPACT_DOMAINS.find((d) => d.id === ia.domainId);
       return `
         <li>
-            <strong>${domain?.label}:</strong> 
+            <strong>${escapeHtml(domain?.label)}:</strong> 
             Adulte: ${ia.presentAdult ? "OUI" : "Non"} | Enfance: ${ia.presentChild ? "OUI" : "Non"}
         </li>
       `;
@@ -161,27 +139,28 @@ const getAdminEmailHtml = (
 
   return `
 <!DOCTYPE html>
-<html>
-<body style="font-family: Arial, sans-serif;">
-  <h2>Rapport Clinique DIVA 2.0 - ${data.userData.name}</h2>
-  <p><strong>Email:</strong> ${data.userData.email}</p>
-  <p><strong>Date Naissance:</strong> ${data.userData.birthDate}</p>
-  <p><strong>Date Test:</strong> ${new Date().toLocaleString("fr-FR")}</p>
+<html lang="fr">
+<head><meta charset="utf-8"></head>
+<body style="font-family: Arial, sans-serif; color: #1F2937; line-height: 1.5;">
+  <h2>🧠 Rapport Clinique TDAH (DIVA 2.0) - ${safeName}</h2>
+  <p><strong>Email :</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+  <p><strong>Date de Naissance :</strong> ${safeBirth}</p>
+  <p><strong>Date du Test :</strong> ${new Date().toLocaleString("fr-FR")}</p>
   
-  <div style="background: #fdf2f8; padding: 15px; border: 1px solid #db2777; margin-bottom: 20px;">
-    <h3>Synthèse Automatique</h3>
-    <p><strong>${results.globalAssessment}</strong></p>
+  <div style="background: #FDF2F8; padding: 15px; border: 1px solid #DB2777; border-radius: 8px; margin-bottom: 20px;">
+    <h3 style="margin-top:0; color:#831843;">Synthèse Automatique</h3>
+    <p><strong>${escapeHtml(results.globalAssessment)}</strong></p>
     <ul>
-        <li>Inattention: Adulte ${results.inattentionScore.adult}/9 - Enfant ${results.inattentionScore.child}/9</li>
-        <li>Hyperactivité: Adulte ${results.hyperactivityScore.adult}/9 - Enfant ${results.hyperactivityScore.child}/9</li>
-        <li>Impact Fonctionnel: ${results.totalImpactScore.adult} domaines (Adulte)</li>
+        <li>Inattention : Adulte ${results.inattentionScore.adult}/9 — Enfant ${results.inattentionScore.child}/9</li>
+        <li>Hyperactivité : Adulte ${results.hyperactivityScore.adult}/9 — Enfant ${results.hyperactivityScore.child}/9</li>
+        <li>Impact Fonctionnel : ${results.totalImpactScore.adult} domaines (Adulte)</li>
     </ul>
   </div>
 
   <h3>Section 1 : Déficit Attentionnel</h3>
-  <table style="width: 100%; border-collapse: collapse;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
     <thead>
-        <tr style="background: #f3f4f6;">
+        <tr style="background: #F3F4F6;">
             <th style="text-align:left; padding:8px; border:1px solid #ddd;">Critère</th>
             <th style="text-align:left; padding:8px; border:1px solid #ddd;">Adulte (6 mois)</th>
             <th style="text-align:left; padding:8px; border:1px solid #ddd;">Enfance (5-12 ans)</th>
@@ -191,9 +170,9 @@ const getAdminEmailHtml = (
   </table>
 
   <h3>Section 2 : Hyperactivité / Impulsivité</h3>
-  <table style="width: 100%; border-collapse: collapse;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 15px;">
     <thead>
-        <tr style="background: #f3f4f6;">
+        <tr style="background: #F3F4F6;">
             <th style="text-align:left; padding:8px; border:1px solid #ddd;">Critère</th>
             <th style="text-align:left; padding:8px; border:1px solid #ddd;">Adulte (6 mois)</th>
             <th style="text-align:left; padding:8px; border:1px solid #ddd;">Enfance (5-12 ans)</th>
@@ -202,7 +181,7 @@ const getAdminEmailHtml = (
     <tbody>${hyperactivityRows}</tbody>
   </table>
 
-  <h3>Impact Fonctionnel</h3>
+  <h3>Retentissement Fonctionnel</h3>
   <ul>${impactRows}</ul>
 </body>
 </html>
@@ -211,18 +190,34 @@ const getAdminEmailHtml = (
 
 export async function POST(request: NextRequest) {
   try {
+    const clientIp =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
+
+    const rateCheck = checkRateLimit("diva-test", clientIp);
+    if (!rateCheck.allowed) {
+      return NextResponse.json({ error: rateCheck.error }, { status: 429 });
+    }
+
     const body = await request.json();
     const { answers, impactAnswers, userData } = body;
+
+    // Honeypot check
+    if (userData?.website_url) {
+      console.warn("🤖 Bot detected via Honeypot in DIVA test");
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
 
     // 1. Calculate Results
     const results = calculateDivaResults(answers, impactAnswers);
 
-    // 2. Save to database (optional/resilient)
+    // 2. Save to database (optional / resilient)
     try {
       const { error } = await supabaseAdmin.from("diva_submissions").insert({
-        user_email: userData.email,
-        user_name: userData.name,
-        birth_date: userData.birthDate,
+        user_email: userData?.email || null,
+        user_name: userData?.name || null,
+        birth_date: userData?.birthDate || null,
         inattention_score_adult: results.inattentionScore.adult,
         inattention_score_child: results.inattentionScore.child,
         hyperactivity_score_adult: results.hyperactivityScore.adult,
@@ -231,34 +226,38 @@ export async function POST(request: NextRequest) {
         answers_json: { answers, impactAnswers },
         global_assessment: results.globalAssessment,
       });
-      if (error) console.warn("Supabase DB error:", error.message);
+      if (error) console.warn("Supabase DIVA DB warning:", error.message);
     } catch (dbError) {
-      console.warn("Supabase DB error:", dbError);
+      console.warn("Supabase DIVA DB error:", dbError);
     }
 
-    // 3. Send Emails
-    const adminEmail = process.env.ADMIN_EMAIL || "audrey.castets@gmail.com";
+    // 3. Send Emails via Resend
+    const adminEmail = process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
 
     // Email Admin (Full Report)
+    const adminSubject = `🧠 Rapport Clinique TDAH : ${userData?.name || "Visiteur"}`;
+    const adminHtml = getAdminEmailHtml({ answers, impactAnswers, userData }, results);
     await sendEmail({
       to: adminEmail,
-      subject: `🧠 Rapport Clinique TDAH : ${userData.name}`,
-      html: getAdminEmailHtml({ answers, impactAnswers, userData }, results),
-      replyTo: userData.email,
+      from: DEFAULT_FROM_EMAIL,
+      subject: adminSubject,
+      html: adminHtml,
+      replyTo: userData?.email || undefined,
     });
 
     // Email Client (Summary)
-    if (userData.email) {
+    if (userData?.email) {
       await sendEmail({
         to: userData.email,
+        from: DEFAULT_FROM_EMAIL,
         subject: "Votre Bilan Pré-diagnostic TDAH - Audrey Castets",
-        html: getClientEmailHtml(userData.name, results),
+        html: getClientEmailHtml(userData.name || "Visiteur", results),
       });
     }
 
     return NextResponse.json({ success: true, results });
   } catch (error) {
-    console.error("DIVA API Error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    console.error("❌ DIVA API Error:", error);
+    return NextResponse.json({ error: "Une erreur est survenue lors du traitement du test." }, { status: 500 });
   }
 }

@@ -36,8 +36,9 @@ Deux templates HTML modernes et responsive dans `src/lib/email-templates.tsx` :
 ### 4. **Variables d'environnement** (`.env.local`)
 
 ```env
-RESEND_API_KEY=re_FTyHADma_Ngvm8NX1YzNj73NTq1EdQ5Nr
-ADMIN_EMAIL=contact@audrey-castets.fr
+RESEND_API_KEY=re_votre_cle_api_resend
+ADMIN_EMAIL=audrey.castets@gmail.com
+CONTACT_FROM="Audrey Castets <contact@audreycastets.fr>"
 ```
 
 ---
