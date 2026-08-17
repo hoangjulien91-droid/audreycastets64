@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import {
   sendEmail,
@@ -17,18 +16,6 @@ const contactSchema = z.object({
   service_type: z.string().optional().nullable(),
   website_url: z.string().optional(), // Honeypot anti-spam
 });
-
-// Create Supabase client with service_role key for server-side operations
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-  process.env.SUPABASE_SERVICE_ROLE_KEY || "",
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
 
 // Template HTML pour l'email de confirmation au visiteur
 const getConfirmationEmailHtml = (name: string, message: string) => {
@@ -204,42 +191,12 @@ export async function POST(request: NextRequest) {
 
     const { name, email, phone, message, service_type } = validation.data;
 
-    // 4. Insert into Supabase database (resilient)
-    let contactData: { id?: string } | null = null;
-    try {
-      const { data, error: dbError } = await supabaseAdmin
-        .from("contact_submissions")
-        .insert({
-          name,
-          email,
-          phone: phone || null,
-          message,
-          service_type: service_type || null,
-          read: false,
-        })
-        .select()
-        .single();
-
-      if (dbError) {
-        console.warn("⚠️ Supabase DB insert error:", dbError.message);
-      } else {
-        contactData = data;
-      }
-    } catch (dbErr) {
-      console.warn("⚠️ Supabase DB exception:", dbErr);
-    }
-
     const submittedAt = new Date().toLocaleString("fr-FR", {
       dateStyle: "full",
       timeStyle: "short",
     });
 
-    const emailsSent = {
-      confirmation: false,
-      notification: false,
-    };
-
-    // 5. Send Notification Email to Admin (Audrey) via Resend
+    // 4. Send Notification Email to Admin (Audrey) via Resend
     const adminEmail = process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
     const adminSubject = `🔔 Nouveau message de ${name} (${service_type || "Contact"})`;
     const adminHtml = getAdminNotificationHtml({
@@ -260,13 +217,12 @@ export async function POST(request: NextRequest) {
     });
 
     if (adminResult.success) {
-      emailsSent.notification = true;
       console.log("✅ Email de notification envoyé à l'admin via Resend:", adminResult.id);
     } else {
       console.error("❌ Erreur envoi notification admin:", adminResult.error);
     }
 
-    // 6. Send Confirmation Email to Visitor via Resend
+    // 5. Send Confirmation Email to Visitor via Resend
     const visitorSubject = "✨ Confirmation de réception - Audrey Castets";
     const visitorHtml = getConfirmationEmailHtml(name, message);
 
@@ -278,37 +234,17 @@ export async function POST(request: NextRequest) {
     });
 
     if (visitorResult.success) {
-      emailsSent.confirmation = true;
       console.log("✅ Email de confirmation envoyé au visiteur via Resend:", visitorResult.id);
     } else {
       console.error("❌ Erreur envoi confirmation visiteur:", visitorResult.error);
     }
 
-    // 7. Update Supabase log with email delivery status if available
-    if (contactData?.id) {
-      try {
-        await supabaseAdmin
-          .from("contact_submissions")
-          .update({
-            email_sent_confirmation: emailsSent.confirmation,
-            email_sent_notification: emailsSent.notification,
-            email_sent_at: new Date().toISOString(),
-          })
-          .eq("id", contactData.id);
-      } catch (logError) {
-        console.warn("⚠️ Logging emails in Supabase failed:", logError);
-      }
-    }
-
-    // If at least one email was sent or DB succeeded, we consider it successful
     return NextResponse.json(
       {
         success: true,
-        message: emailsSent.confirmation
+        message: visitorResult.success
           ? "Votre message a bien été envoyé ! Un email de confirmation vient de vous être adressé."
           : "Votre message a bien été envoyé. Je vous répondrai sous 24h.",
-        data: contactData,
-        emailsSent,
       },
       { status: 200 }
     );

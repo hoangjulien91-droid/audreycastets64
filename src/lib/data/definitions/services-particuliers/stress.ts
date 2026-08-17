@@ -50,4 +50,5 @@ export const stress: ServiceData = {
   bioFocus:
     "Mon approche est très pragmatique : vous repartez de chaque séance avec des outils concrets à tester.",
   relatedServices: ["eft-emotional-freedom-techniques", "therapies-cognitivo-comportementales-tcc"],
+  relatedTests: ["mbi"],
 };

@@ -1,33 +1,33 @@
 "use client";
 
 import { Link } from "next-view-transitions";
-import { Heart, Layers3, MessageCircle, Target, ArrowUpRight } from "lucide-react";
+import { Heart, Layers3, Brain, Target, ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 
 const links = [
   {
+    href: "/bilan-de-competences",
+    Icon: Target,
+    title: "Bilan de Compétences",
+    subtitle: "Éligible CPF & Certifié",
+  },
+  {
+    href: "/tests",
+    Icon: Brain,
+    title: "Tests & Auto-évaluation",
+    subtitle: "Burnout MBI & TDAH DIVA",
+  },
+  {
     href: "/mon-approche",
     Icon: Heart,
     title: "Mon Approche",
-    subtitle: "Découvrez ma méthode",
+    subtitle: "TCC, EFT & Écoute active",
   },
   {
     href: "/services",
     Icon: Layers3,
-    title: "Services",
-    subtitle: "Particuliers et pros",
-  },
-  {
-    href: "/faq",
-    Icon: MessageCircle,
-    title: "FAQ",
-    subtitle: "Questions fréquentes",
-  },
-  {
-    href: "/qui-suis-je",
-    Icon: Target,
-    title: "Qui suis-je",
-    subtitle: "Mon parcours & expertise",
+    title: "Tous les Services",
+    subtitle: "Particuliers & Entreprises",
   },
 ];
 

@@ -104,4 +104,5 @@ export const tcc: ServiceData = {
     { value: "1er", label: "Traitement Recommandé", source: "HAS" },
   ],
   relatedServices: ["gestion-stress-anxiete", "depression", "confiance-estime-de-soi"],
+  relatedTests: ["mbi", "diva"],
 };

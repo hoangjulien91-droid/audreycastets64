@@ -507,19 +507,20 @@ export default function MonApprochePage() {
                 </p>
                 <div className="flex flex-col justify-center gap-4 sm:flex-row">
                   <Link
-                    href="/#contact"
+                    href="/prendre-rendez-vous"
                     className="text-primary inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                     aria-label="Réserver un premier entretien gratuit"
                   >
-                    Premier entretien gratuit
+                    Premier entretien offert (15 min)
                     <ArrowRight className="h-5 w-5" aria-hidden="true" />
                   </Link>
                   <Link
-                    href="/qui-suis-je"
-                    className="inline-flex items-center justify-center rounded-full border-2 border-white bg-white/20 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/30"
-                    aria-label="En savoir plus sur mon parcours"
+                    href="/tests"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white bg-white/20 px-8 py-4 text-lg font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/30"
+                    aria-label="Passer un bilan psychométrique en ligne"
                   >
-                    En savoir plus sur moi
+                    <Brain className="h-5 w-5" />
+                    Auto-évaluation en ligne
                   </Link>
                 </div>
               </div>

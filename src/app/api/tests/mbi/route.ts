@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import { MBIAnswer } from "@/types/mbi";
 import { calculateMBIResults } from "@/lib/utils/mbi-calculations";
 import { MBI_QUESTIONS } from "@/lib/data/mbi-questions";
@@ -10,18 +9,6 @@ import {
   DEFAULT_ADMIN_EMAIL,
   DEFAULT_FROM_EMAIL,
 } from "@/lib/resend";
-
-// Init Supabase Admin
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-  process.env.SUPABASE_SERVICE_ROLE_KEY || "",
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
 
 // Template Email Client (Simplifié / Pédagogique)
 const getClientEmailHtml = (name: string, results: ReturnType<typeof calculateMBIResults>) => {
@@ -167,28 +154,7 @@ export async function POST(request: NextRequest) {
     // 1. Calculate Results Server-Side
     const results = calculateMBIResults(answers);
 
-    // 2. Save to Supabase (if table exists, non-blocking)
-    try {
-      const { error } = await supabaseAdmin
-        .from("mbi_submissions")
-        .insert({
-          user_email: userData?.email || null,
-          user_name: userData?.name || null,
-          sep_score: results.dimensions.SEP.score,
-          sd_score: results.dimensions.SD.score,
-          sap_score: results.dimensions.SAP.score,
-          answers_json: answers,
-          global_assessment: results.globalAssessment,
-        });
-
-      if (error) {
-        console.warn("Supabase MBI insert warning:", error.message);
-      }
-    } catch (dbError) {
-      console.warn("Supabase MBI DB error:", dbError);
-    }
-
-    // 3. Send Emails via Resend
+    // 2. Send Emails via Resend directly
     const adminEmail = process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
 
     // Email Admin (Audrey)

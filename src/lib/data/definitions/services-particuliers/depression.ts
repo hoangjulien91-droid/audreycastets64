@@ -54,4 +54,5 @@ export const depression: ServiceData = {
   bioFocus:
     "Avec une grande douceur, je vous accompagne à votre rythme pour dissiper le brouillard et retrouver vos couleurs.",
   relatedServices: ["therapies-cognitivo-comportementales-tcc", "confiance-estime-de-soi"],
+  relatedTests: ["mbi"],
 };

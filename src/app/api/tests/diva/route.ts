@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 import { calculateDivaResults } from "@/lib/utils/diva-calculations";
 import { DIVA_SECTIONS, DIVA_IMPACT_DOMAINS } from "@/lib/data/diva-questions";
 import { DivaAnswer, DivaImpactAnswer } from "@/types/diva";
@@ -10,18 +9,6 @@ import {
   DEFAULT_ADMIN_EMAIL,
   DEFAULT_FROM_EMAIL,
 } from "@/lib/resend";
-
-// Init Supabase Admin
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-  process.env.SUPABASE_SERVICE_ROLE_KEY || "",
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  }
-);
 
 // Template Email Client (Synthèse pré-diagnostic TDAH)
 const getClientEmailHtml = (name: string, results: ReturnType<typeof calculateDivaResults>) => {
@@ -212,26 +199,7 @@ export async function POST(request: NextRequest) {
     // 1. Calculate Results
     const results = calculateDivaResults(answers, impactAnswers);
 
-    // 2. Save to database (optional / resilient)
-    try {
-      const { error } = await supabaseAdmin.from("diva_submissions").insert({
-        user_email: userData?.email || null,
-        user_name: userData?.name || null,
-        birth_date: userData?.birthDate || null,
-        inattention_score_adult: results.inattentionScore.adult,
-        inattention_score_child: results.inattentionScore.child,
-        hyperactivity_score_adult: results.hyperactivityScore.adult,
-        hyperactivity_score_child: results.hyperactivityScore.child,
-        impact_score_adult: results.totalImpactScore.adult,
-        answers_json: { answers, impactAnswers },
-        global_assessment: results.globalAssessment,
-      });
-      if (error) console.warn("Supabase DIVA DB warning:", error.message);
-    } catch (dbError) {
-      console.warn("Supabase DIVA DB error:", dbError);
-    }
-
-    // 3. Send Emails via Resend
+    // 2. Send Emails via Resend directly
     const adminEmail = process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
 
     // Email Admin (Full Report)
