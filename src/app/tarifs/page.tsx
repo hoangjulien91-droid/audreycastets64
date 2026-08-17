@@ -28,13 +28,13 @@ import {
 export const metadata: Metadata = {
   title: "Tarifs - Consultations & Services Psychologie du Travail",
   description:
-    "Tarifs transparents : 55€ la séance pour particuliers. Devis personnalisé pour professionnels. Premier entretien gratuit. Possibilité de remboursement mutuelle.",
+    "Tarifs transparents : 60€ la séance pour particuliers. Devis personnalisé pour professionnels. Premier entretien gratuit. Possibilité de remboursement mutuelle.",
   alternates: {
     canonical: "https://www.audrey-castets.fr/tarifs",
   },
   openGraph: {
     title: "Tarifs - Consultations & Services Psychologie du Travail",
-    description: "Tarifs transparents : 55€ la séance. Premier entretien gratuit.",
+    description: "Tarifs transparents : 60€ la séance. Premier entretien gratuit.",
     url: "https://www.audrey-castets.fr/tarifs",
     type: "website",
   },
@@ -141,7 +141,7 @@ export default function TarifsPage() {
                       </h3>
                       <div className="mb-6">
                         <div className="mb-2 flex items-baseline gap-2">
-                          <span className="text-primary text-4xl font-bold">55€</span>
+                          <span className="text-primary text-4xl font-bold">60€</span>
                           <span className="text-muted-foreground text-sm">/ séance</span>
                         </div>
                         <p className="text-muted-foreground text-xs">

@@ -43,7 +43,7 @@ const faqData = [
   {
     question: "Quels sont vos tarifs ?",
     answer:
-      "Les tarifs sont de 65€ pour une séance individuelle de 60 minutes. Les consultations pour les professionnels (bilan de compétences, coaching, audit, etc.) font l'objet d'un devis personnalisé. Le premier entretien téléphonique de 15 minutes est offert.",
+      "Les tarifs sont de 60€ pour une séance individuelle de 60 minutes. Les consultations pour les professionnels (bilan de compétences, coaching, audit, etc.) font l'objet d'un devis personnalisé. Le premier entretien téléphonique de 15 minutes est offert.",
     category: "Tarifs",
   },
   {

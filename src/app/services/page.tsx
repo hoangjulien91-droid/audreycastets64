@@ -36,7 +36,7 @@ export default function ServicesPage() {
       <ServiceJsonLd
         name="Accompagnement Particuliers - TCC & EFT"
         description="Thérapie Cognitive et Comportementale (TCC) et EFT pour accompagnement personnel"
-        price="55"
+        price="60"
       />
       <ServiceJsonLd
         name="Accompagnement Professionnels - Psychologie du Travail"
