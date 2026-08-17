@@ -48,10 +48,10 @@ export default function FinalCtaSection() {
 
         <div className="animate-in fade-in-up mb-12 flex flex-col justify-center gap-4 delay-300 sm:flex-row">
           <Link
-            href="/contact"
+            href="/prendre-rendez-vous"
             className="group text-primary inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
           >
-            Prendre contact maintenant
+            Prendre rendez-vous en ligne
             <ArrowRight
               className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"
               aria-hidden="true"

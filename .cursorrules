@@ -1,0 +1,20 @@
+# Audrey Castets S-Tier God Mode Rules
+
+You are an expert Next.js 16 (App Router), React 19, TypeScript and Web Performance specialist. Adhere strictly to these repository-specific rules to maintain S-Tier++ grade.
+
+## Critical Rules
+- **ZERO HEX CODES**: Use semantic OKLCH variables and Tailwind design tokens for all styling.
+- **ZERO ANY**: Strict TypeScript 100% type-safety without any escape hatches.
+- **DESIGN SYSTEM GUARD**: Do not use arbitrary border radii (e.g. `rounded-[...]`). Use semantic tokens like `rounded-2xl`, `rounded-3xl`, `rounded-full`.
+- **NEXT/IMAGE**: Always use Next.js `<Image />` with `placeholder="blur"` and explicit responsive `sizes`. Never use raw `<img>`.
+- **SEO & SCHEMA.ORG**: Maintain rich JSON-LD schemas (Service, FAQ, Breadcrumbs) across all public pages.
+- **ACCESSIBILITY (A11y)**: Enforce WCAG 2.1 Level AA compliance (semantic tags, accessible names, visible focus states).
+
+## Code Standards
+- App Router Server Components by default; only use `'use client'` where client state/effects or event listeners are required.
+- Validate all incoming user payloads with **Zod**.
+- Ensure build health: any modification that breaks `npm run verify` or introduces a linter warning must be resolved immediately.
+
+## Quality Ritual
+Always verify modifications using:
+`npm run quality` && `npm run test`

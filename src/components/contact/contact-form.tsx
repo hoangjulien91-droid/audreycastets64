@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Send, Loader2, CheckCircle } from "lucide-react";
 
 export function ContactForm() {
@@ -13,6 +13,28 @@ export function ContactForm() {
     service_type: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const motif = params.get("motif") || params.get("service");
+      const type = params.get("type");
+
+      if (type && ["particulier", "professionnel", "entreprise", "autre"].includes(type)) {
+        setFormData((prev) => ({ ...prev, service_type: type }));
+      }
+
+      if (motif) {
+        const formattedMotif = motif.replace(/-/g, " ");
+        setFormData((prev) => ({
+          ...prev,
+          message:
+            prev.message ||
+            `Bonjour Audrey,\n\nJe souhaite me renseigner concernant : ${formattedMotif}.\n`,
+        }));
+      }
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

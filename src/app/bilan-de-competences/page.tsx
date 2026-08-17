@@ -37,9 +37,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export const dynamic = "force-static";
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Bilan de Compétences Finançable CPF - Psychologue du Travail (Visio, Anglet, Ondres)",
   description:
@@ -212,7 +209,8 @@ const faqList = [
       "Pas du tout ! C'est même l'un des rôles majeurs du bilan : accueillir votre sentiment de doute, de perte de sens ou de flou pour clarifier pas à pas ce qui vous correspond. Vous pouvez démarrer le bilan avec pour seule certitude que votre situation actuelle ne vous convient plus.",
   },
   {
-    question: "Quelle est la différence entre un bilan avec une psychologue du travail et un coach ?",
+    question:
+      "Quelle est la différence entre un bilan avec une psychologue du travail et un coach ?",
     answer:
       "En tant que psychologue du travail (titre protégé d'État, Master 2 avec 15 ans d'expérience dans l'accompagnement et l'insertion), j'apporte une compréhension profonde des dynamiques psychologiques, des freins émotionnels et de la santé au travail (stress, burn-out), tout en maîtrisant la réalité concrète des recrutements et des métiers.",
   },
@@ -281,7 +279,10 @@ export default function BilanDeCompetencesPage() {
               {[
                 { icon: <ShieldCheck className="h-4 w-4" />, label: "Finançable CPF" },
                 { icon: <Award className="h-4 w-4" />, label: "15 ans d'expérience" },
-                { icon: <Laptop className="h-4 w-4" />, label: "En Visioconférence (Partout en France)" },
+                {
+                  icon: <Laptop className="h-4 w-4" />,
+                  label: "En Visioconférence (Partout en France)",
+                },
                 { icon: <MapPin className="h-4 w-4" />, label: "Présentiel (Anglet & Ondres)" },
                 { icon: <Lock className="h-4 w-4" />, label: "100% Confidentiel & Neutre" },
               ].map((item, index) => (
@@ -364,8 +365,8 @@ export default function BilanDeCompetencesPage() {
                   À qui s'adresse ce <span className="text-primary">bilan de compétences</span> ?
                 </h2>
                 <p className="text-muted-foreground text-lg">
-                  Il n'y a pas de &ldquo;bon moment&rdquo; universel. Il y a le moment où vous ressentez
-                  le besoin de clarifier où vous en êtes avant de choisir où aller.
+                  Il n'y a pas de &ldquo;bon moment&rdquo; universel. Il y a le moment où vous
+                  ressentez le besoin de clarifier où vous en êtes avant de choisir où aller.
                 </p>
               </div>
 
@@ -387,7 +388,7 @@ export default function BilanDeCompetencesPage() {
               </div>
 
               {/* Clarification Box */}
-              <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-primary/20 bg-primary/[0.04] p-6 text-center">
+              <div className="border-primary/20 bg-primary/[0.04] mx-auto mt-10 max-w-3xl rounded-2xl border p-6 text-center">
                 <p className="text-foreground text-base leading-relaxed">
                   💡 <strong>Pas d'idée précise ? Aucun problème.</strong> Vous pouvez venir avec
                   une simple question, une envie de changement ou l'impression de tourner en rond.
@@ -431,12 +432,12 @@ export default function BilanDeCompetencesPage() {
                   ].map((benefit, i) => (
                     <div
                       key={i}
-                      className="flex items-start gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-xs transition-colors hover:border-primary/30"
+                      className="hover:border-primary/30 flex items-start gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-xs transition-colors"
                     >
                       <div className="bg-primary/10 text-primary mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full">
                         <CheckCircle2 className="h-4 w-4" />
                       </div>
-                      <span className="text-foreground/90 text-sm font-medium leading-relaxed">
+                      <span className="text-foreground/90 text-sm leading-relaxed font-medium">
                         {benefit}
                       </span>
                     </div>
@@ -462,7 +463,8 @@ export default function BilanDeCompetencesPage() {
                   Je suis psychologue du travail et j'ai développé mon expérience professionnelle
                   pendant <strong>15 années</strong> dans le domaine de l'insertion et de
                   l'accompagnement professionnel. Cette double approche me permet d'allier{" "}
-                  <strong>connaissance fine de soi</strong> et <strong>réalité du marché de l'emploi</strong>.
+                  <strong>connaissance fine de soi</strong> et{" "}
+                  <strong>réalité du marché de l'emploi</strong>.
                 </p>
               </div>
 
@@ -494,10 +496,12 @@ export default function BilanDeCompetencesPage() {
                       Des outils au service de la réflexion, pas des étiquettes
                     </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed md:text-base">
-                      Le bilan repose d'abord sur des échanges personnalisés et approfondis. Selon vos
-                      besoins, des questionnaires et outils d'évaluation (intérêts, motivations, aptitudes)
-                      viennent enrichir l'analyse. <strong>L'objectif n'est jamais de vous enfermer dans une case</strong> :
-                      les tests sont des leviers d'aide à la réflexion et d'ouverture, jamais des verdicts.
+                      Le bilan repose d'abord sur des échanges personnalisés et approfondis. Selon
+                      vos besoins, des questionnaires et outils d'évaluation (intérêts, motivations,
+                      aptitudes) viennent enrichir l'analyse.{" "}
+                      <strong>L'objectif n'est jamais de vous enfermer dans une case</strong> : les
+                      tests sont des leviers d'aide à la réflexion et d'ouverture, jamais des
+                      verdicts.
                     </p>
                   </div>
                 </div>
@@ -516,8 +520,8 @@ export default function BilanDeCompetencesPage() {
                   Comment se déroule le <span className="text-primary">bilan</span> ?
                 </h2>
                 <p className="text-muted-foreground text-lg">
-                  Le cadre légal du Code du travail prévoit une démarche structurée en 3 grandes phases
-                  pour une durée maximale de 24 heures.
+                  Le cadre légal du Code du travail prévoit une démarche structurée en 3 grandes
+                  phases pour une durée maximale de 24 heures.
                 </p>
               </div>
 
@@ -594,7 +598,7 @@ export default function BilanDeCompetencesPage() {
                     key={idx}
                     className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
                       plan.highlight
-                        ? "border-primary bg-white shadow-xl ring-2 ring-primary/20 lg:-translate-y-2"
+                        ? "border-primary ring-primary/20 bg-white shadow-xl ring-2 lg:-translate-y-2"
                         : "border border-[#D4C5D9]/40 bg-white/80 shadow-sm hover:shadow-md"
                     }`}
                   >
@@ -658,7 +662,8 @@ export default function BilanDeCompetencesPage() {
               {/* Explanatory callout */}
               <div className="mx-auto mt-12 max-w-3xl text-center">
                 <p className="text-muted-foreground text-sm">
-                  💬 Le format idéal est déterminé avec vous lors d'un <strong>entretien téléphonique préalable gratuit</strong> de 15 minutes.
+                  💬 Le format idéal est déterminé avec vous lors d'un{" "}
+                  <strong>entretien téléphonique préalable gratuit</strong> de 15 minutes.
                 </p>
               </div>
             </div>
@@ -684,12 +689,19 @@ export default function BilanDeCompetencesPage() {
                     </p>
                     <p className="text-muted-foreground mt-3 text-base leading-relaxed">
                       Les bilans que je réalise sont portés via un{" "}
-                      <strong>organisme de formation partenaire référencé sur Mon Compte Formation et certifié Qualiopi</strong>.
-                      Vous pouvez donc mobiliser vos droits CPF en toute sérénité.
+                      <strong>
+                        organisme de formation partenaire référencé sur Mon Compte Formation et
+                        certifié Qualiopi
+                      </strong>
+                      . Vous pouvez donc mobiliser vos droits CPF en toute sérénité.
                     </p>
 
-                    <div className="mt-6 rounded-2xl border border-primary/20 bg-white/90 p-4 text-xs text-gray-600">
-                      ℹ️ <em>Important : la certification Qualiopi concerne l'organisme partenaire qui porte l'action de formation.</em>
+                    <div className="border-primary/20 mt-6 rounded-2xl border bg-white/90 p-4 text-xs text-gray-600">
+                      ℹ️{" "}
+                      <em>
+                        Important : la certification Qualiopi concerne l'organisme partenaire qui
+                        porte l'action de formation.
+                      </em>
                     </div>
                   </div>
 
@@ -700,25 +712,25 @@ export default function BilanDeCompetencesPage() {
                       </h4>
                       <ol className="text-muted-foreground space-y-3 text-sm">
                         <li className="flex items-start gap-3">
-                          <span className="bg-primary text-white flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                          <span className="bg-primary flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                             1
                           </span>
                           <span>Entretien téléphonique gratuit préalable avec Audrey</span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <span className="bg-primary text-white flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                          <span className="bg-primary flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                             2
                           </span>
                           <span>Validation du format retenu (15h, 20h ou 24h)</span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <span className="bg-primary text-white flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                          <span className="bg-primary flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                             3
                           </span>
                           <span>Inscription directe sur Mon Compte Formation</span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <span className="bg-primary text-white flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                          <span className="bg-primary flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-white">
                             4
                           </span>
                           <span>Démarrage de vos séances à votre rythme</span>
@@ -742,7 +754,8 @@ export default function BilanDeCompetencesPage() {
                   Un accompagnement souple, <span className="text-primary">à votre rythme</span>
                 </h2>
                 <p className="text-muted-foreground text-lg">
-                  Choisissez la modalité la plus confortable et compatible avec votre emploi du temps.
+                  Choisissez la modalité la plus confortable et compatible avec votre emploi du
+                  temps.
                 </p>
               </div>
 
@@ -821,7 +834,7 @@ export default function BilanDeCompetencesPage() {
 
           {/* 11. CTA FINAL & ENTRETIEN PRÉALABLE */}
           <section
-            className="from-primary via-[#A594B3] to-[#8B7A98] bg-linear-to-r py-16 md:py-24 text-white"
+            className="from-primary bg-linear-to-r via-[#A594B3] to-[#8B7A98] py-16 text-white md:py-24"
             id="entretien-gratuit"
           >
             <div className="container mx-auto px-6 text-center lg:px-8">
@@ -839,20 +852,20 @@ export default function BilanDeCompetencesPage() {
                 </p>
 
                 <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-                  <a
-                    href="tel:0743687297"
+                  <Link
+                    href="/prendre-rendez-vous"
                     className="text-primary inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
                   >
-                    <Phone className="h-5 w-5" />
-                    <span>M'appeler au 07 43 68 72 97</span>
-                  </a>
-                  <Link
-                    href="/contact"
+                    <Calendar className="h-5 w-5" />
+                    <span>Prendre rendez-vous en ligne</span>
+                  </Link>
+                  <a
+                    href="tel:0743687297"
                     className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
                   >
-                    <span>Formulaire de contact</span>
-                    <ArrowRight className="h-5 w-5" />
-                  </Link>
+                    <Phone className="h-5 w-5" />
+                    <span>07 43 68 72 97</span>
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,7 +1,6 @@
 import { Link } from "next-view-transitions";
-import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import type { Metadata } from "next";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { PageHero } from "@/components/ui/page-hero";
 import {
   Sparkles,
@@ -12,24 +11,23 @@ import {
   MessageCircle,
   CheckCircle,
   ChevronRight,
+  Calendar,
 } from "lucide-react";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
-import { ContactForm } from "@/components/contact/contact-form";
-
-export const dynamic = "force-static";
-export const revalidate = 3600;
+import { ContactBookingTabs } from "@/components/contact/contact-booking-tabs";
 
 export const metadata: Metadata = {
-  title: "Contact - Prendre Rendez-vous avec Audrey Castets",
+  title: "Contact & Rendez-vous - Audrey Castets Psychologue du Travail",
   description:
-    "Contactez-moi pour un premier entretien gratuit. Réponse sous 24h. Consultations en cabinet, visio ou en entreprise. Tel: 07 43 68 72 97",
+    "Prenez rendez-vous en ligne ou contactez Audrey Castets. Premier entretien de 15 min offert. Consultations en cabinet, visio ou en entreprise. Tél: 07 43 68 72 97",
   alternates: {
     canonical: "https://www.audrey-castets.fr/contact",
   },
   openGraph: {
-    title: "Contact - Prendre Rendez-vous avec Audrey Castets",
-    description: "Contactez-moi pour un premier entretien gratuit. Réponse sous 24h.",
+    title: "Contact & Rendez-vous - Audrey Castets Psychologue",
+    description:
+      "Prenez rendez-vous en ligne ou envoyez un message. Premier entretien de 15 min gratuit.",
     url: "https://www.audrey-castets.fr/contact",
     type: "website",
   },
@@ -39,6 +37,10 @@ export default function ContactPage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Accueil", url: "/" }, { name: "Contact" }]} />
+      <ServiceJsonLd
+        name="Prise de contact & Rendez-vous Psychologue"
+        description="Contact et prise de rendez-vous avec Audrey Castets, Psychologue du Travail."
+      />
       <div className="bg-background min-h-screen">
         <Header />
 
@@ -46,7 +48,7 @@ export default function ContactPage() {
           <PageHero
             badge={{
               icon: <Sparkles className="h-4 w-4" />,
-              text: "Contact",
+              text: "Contact & Rendez-vous",
             }}
             title={
               <>
@@ -56,37 +58,37 @@ export default function ContactPage() {
                 </span>
               </>
             }
-            subtitle="Prenons contact pour échanger sur vos besoins et voir comment je peux vous accompagner dans votre démarche."
+            subtitle="Réservez directement votre créneau en ligne ou envoyez-moi un message pour échanger sur vos besoins."
             breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
             align="left"
           >
             <div className="mt-8 flex flex-wrap gap-3" role="list" aria-label="Avantages">
               <div
-                className="border-border-soft/30 text-foreground rounded-full border bg-white/80 px-4 py-2 text-sm backdrop-blur-sm"
+                className="border-border-soft/30 text-foreground rounded-full border bg-white/80 px-4 py-2 text-sm shadow-sm backdrop-blur-sm"
                 role="listitem"
               >
                 <CheckCircle className="text-primary mr-2 inline h-4 w-4" aria-hidden="true" />
-                Réponse sous 24h
+                Premier entretien de 15 min offert
               </div>
               <div
-                className="border-accent-violet/30 text-foreground rounded-full border bg-white/80 px-4 py-2 text-sm backdrop-blur-sm"
+                className="border-accent-violet/30 text-foreground rounded-full border bg-white/80 px-4 py-2 text-sm shadow-sm backdrop-blur-sm"
                 role="listitem"
               >
                 <CheckCircle
                   className="text-accent-violet mr-2 inline h-4 w-4"
                   aria-hidden="true"
                 />
-                Premier entretien offert
+                Réservation instantanée
               </div>
               <div
-                className="border-border-soft/30 text-foreground rounded-full border bg-white/80 px-4 py-2 text-sm backdrop-blur-sm"
+                className="border-border-soft/30 text-foreground rounded-full border bg-white/80 px-4 py-2 text-sm shadow-sm backdrop-blur-sm"
                 role="listitem"
               >
                 <CheckCircle className="text-primary mr-2 inline h-4 w-4" aria-hidden="true" />
                 Confidentialité absolue
               </div>
               <div
-                className="border-accent-violet/30 text-foreground rounded-full border bg-white/80 px-4 py-2 text-sm backdrop-blur-sm"
+                className="border-accent-violet/30 text-foreground rounded-full border bg-white/80 px-4 py-2 text-sm shadow-sm backdrop-blur-sm"
                 role="listitem"
               >
                 <CheckCircle
@@ -98,68 +100,69 @@ export default function ContactPage() {
             </div>
           </PageHero>
 
-          <section className="bg-white py-20" aria-labelledby="contact-info-heading">
-            <div className="container mx-auto px-4">
-              <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-                <div>
+          <section className="bg-white py-16 md:py-24" aria-labelledby="contact-info-heading">
+            <div className="container mx-auto px-4 sm:px-6">
+              <div className="mb-14 grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+                {/* Left Side: Contact coordinates */}
+                <div className="lg:col-span-4">
                   <h2
                     id="contact-info-heading"
-                    className="text-foreground font-display mb-6 text-4xl font-bold md:text-5xl"
+                    className="text-foreground font-display mb-4 text-3xl font-bold md:text-4xl"
                   >
                     Prêt(e) à franchir le pas ?
                   </h2>
-                  <p className="text-muted-foreground mb-10 text-lg">
+                  <p className="text-muted-foreground mb-8 text-base leading-relaxed">
                     Je vous accompagne avec bienveillance et professionnalisme dans votre parcours.
-                    N'hésitez pas à me contacter pour échanger sur vos besoins.
+                    N'hésitez pas à me contacter ou à réserver directement ci-contre.
                   </p>
 
-                  <div className="mb-12 space-y-6" role="list" aria-label="Coordonnées">
+                  <div className="mb-8 space-y-4" role="list" aria-label="Coordonnées">
                     <article
-                      className="from-bg-soft border-border-soft/30 rounded-2xl border bg-linear-to-br to-white p-6 transition-all duration-300 hover:shadow-lg"
+                      className="from-bg-soft border-border-soft/30 rounded-2xl border bg-linear-to-br to-white p-5 transition-all duration-300 hover:shadow-md"
                       role="listitem"
                     >
                       <div className="flex items-start gap-4">
                         <div
-                          className="from-primary to-accent-violet rounded-xl bg-linear-to-br p-3 shadow-lg"
+                          className="from-primary to-accent-violet rounded-xl bg-linear-to-br p-3 shadow-md"
                           aria-hidden="true"
                         >
-                          <Phone className="h-6 w-6 text-white" />
+                          <Phone className="h-5 w-5 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-foreground mb-1 font-semibold">Téléphone</h3>
+                          <h3 className="text-foreground mb-0.5 font-semibold">Téléphone</h3>
                           <a
                             href="tel:0743687297"
-                            className="text-primary font-medium hover:underline"
+                            className="text-primary font-bold hover:underline"
                           >
                             07 43 68 72 97
                           </a>
-                          <p className="text-muted-foreground mt-1 text-sm">
-                            Premier entretien de 15 min offert
+                          <p className="text-muted-foreground mt-0.5 text-xs">
+                            Premier échange offert (15 min)
                           </p>
                         </div>
                       </div>
                     </article>
 
                     <article
-                      className="from-bg-subtle border-accent-violet/30 rounded-2xl border bg-linear-to-br to-white p-6 transition-all duration-300 hover:shadow-lg"
+                      className="from-bg-subtle border-accent-violet/30 rounded-2xl border bg-linear-to-br to-white p-5 transition-all duration-300 hover:shadow-md"
                       role="listitem"
                     >
                       <div className="flex items-start gap-4">
                         <div
-                          className="from-accent-violet to-accent-violet-dark rounded-xl bg-linear-to-br p-3 shadow-lg"
+                          className="from-accent-violet to-accent-violet-dark rounded-xl bg-linear-to-br p-3 shadow-md"
                           aria-hidden="true"
                         >
-                          <Mail className="h-6 w-6 text-white" />
+                          <Mail className="h-5 w-5 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-foreground mb-1 font-semibold">Email</h3>
+                          <h3 className="text-foreground mb-0.5 font-semibold">Email</h3>
                           <a
                             href="mailto:audrey.castets@gmail.com"
-                            className="text-accent-violet font-medium hover:underline"
+                            className="text-accent-violet font-bold hover:underline"
                           >
                             audrey.castets@gmail.com
                           </a>
-                          <p className="text-muted-foreground mt-1 text-sm">
+                          <p className="text-muted-foreground mt-0.5 text-xs">
                             Réponse garantie sous 24h
                           </p>
                         </div>
@@ -167,64 +170,76 @@ export default function ContactPage() {
                     </article>
 
                     <article
-                      className="from-bg-soft border-border-soft/30 rounded-2xl border bg-linear-to-br to-white p-6 transition-all duration-300 hover:shadow-lg"
+                      className="from-bg-soft border-border-soft/30 rounded-2xl border bg-linear-to-br to-white p-5 transition-all duration-300 hover:shadow-md"
                       role="listitem"
                     >
                       <div className="flex items-start gap-4">
                         <div
-                          className="from-primary to-accent-violet rounded-xl bg-linear-to-br p-3 shadow-lg"
+                          className="from-primary to-accent-violet rounded-xl bg-linear-to-br p-3 shadow-md"
                           aria-hidden="true"
                         >
-                          <MapPin className="h-6 w-6 text-white" />
+                          <MapPin className="h-5 w-5 text-white" />
                         </div>
                         <div>
-                          <h3 className="text-foreground mb-1 font-semibold">Consultations</h3>
-                          <p className="text-muted-foreground">
-                            Cabinet, Visioconférence, ou en entreprise selon vos besoins
+                          <h3 className="text-foreground mb-0.5 font-semibold">Consultations</h3>
+                          <p className="text-muted-foreground text-xs leading-relaxed">
+                            Cabinet à Anglet & Ondres, Visioconférence sécurisée partout en France,
+                            ou en entreprise
                           </p>
                         </div>
                       </div>
                     </article>
                   </div>
 
-                  <div className="from-bg-subtle to-bg-soft border-border-soft/30 rounded-3xl border bg-linear-to-br p-8">
-                    <h3 className="text-foreground mb-6 text-xl font-bold">
+                  <div className="from-bg-subtle to-bg-soft border-border-soft/30 rounded-3xl border bg-linear-to-br p-6 sm:p-7">
+                    <h3 className="text-foreground mb-5 text-lg font-bold">
                       Pourquoi me contacter ?
                     </h3>
                     <div className="space-y-4" role="list">
                       <div className="flex items-start gap-3" role="listitem">
-                        <div className="mt-1 rounded-lg bg-white p-2" aria-hidden="true">
-                          <Clock className="text-primary h-5 w-5" />
+                        <div
+                          className="mt-0.5 rounded-lg bg-white p-2 shadow-xs"
+                          aria-hidden="true"
+                        >
+                          <Clock className="text-primary h-4 w-4" />
                         </div>
                         <div>
-                          <h4 className="text-foreground mb-1 font-semibold">Réponse sous 24h</h4>
-                          <p className="text-muted-foreground text-sm">
+                          <h4 className="text-foreground text-sm font-semibold">
+                            Réponse sous 24h
+                          </h4>
+                          <p className="text-muted-foreground text-xs">
                             Je réponds rapidement à toutes vos demandes
                           </p>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-3" role="listitem">
-                        <div className="mt-1 rounded-lg bg-white p-2" aria-hidden="true">
-                          <MessageCircle className="text-accent-violet h-5 w-5" />
+                        <div
+                          className="mt-0.5 rounded-lg bg-white p-2 shadow-xs"
+                          aria-hidden="true"
+                        >
+                          <MessageCircle className="text-accent-violet h-4 w-4" />
                         </div>
                         <div>
-                          <h4 className="text-foreground mb-1 font-semibold">Sans engagement</h4>
-                          <p className="text-muted-foreground text-sm">
+                          <h4 className="text-foreground text-sm font-semibold">Sans engagement</h4>
+                          <p className="text-muted-foreground text-xs">
                             Échangeons en toute liberté sur vos besoins
                           </p>
                         </div>
                       </div>
 
                       <div className="flex items-start gap-3" role="listitem">
-                        <div className="mt-1 rounded-lg bg-white p-2" aria-hidden="true">
-                          <CheckCircle className="text-primary h-5 w-5" />
+                        <div
+                          className="mt-0.5 rounded-lg bg-white p-2 shadow-xs"
+                          aria-hidden="true"
+                        >
+                          <CheckCircle className="text-primary h-4 w-4" />
                         </div>
                         <div>
-                          <h4 className="text-foreground mb-1 font-semibold">
+                          <h4 className="text-foreground text-sm font-semibold">
                             Confidentialité assurée
                           </h4>
-                          <p className="text-muted-foreground text-sm">
+                          <p className="text-muted-foreground text-xs">
                             Vos informations sont strictement confidentielles
                           </p>
                         </div>
@@ -233,7 +248,10 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <ContactForm />
+                {/* Right Side: Interactive Booking Tabs (Zcal / Message Form) */}
+                <div className="lg:col-span-8" id="rdv">
+                  <ContactBookingTabs />
+                </div>
               </div>
             </div>
           </section>

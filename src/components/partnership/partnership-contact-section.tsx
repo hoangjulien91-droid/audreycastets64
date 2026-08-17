@@ -66,7 +66,7 @@ export default function PartnershipContactSection() {
 
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Button asChild size="lg" className="shadow-lg">
-                <Link href="/contact">Prendre rendez-vous</Link>
+                <Link href="/prendre-rendez-vous">Prendre rendez-vous</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-2">
                 <a href="tel:0743687297" className="inline-flex items-center gap-2">

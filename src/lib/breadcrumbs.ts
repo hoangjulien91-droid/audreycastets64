@@ -10,6 +10,7 @@ const routeLabels: Record<string, string> = {
   blog: "Blog",
   faq: "FAQ",
   contact: "Contact",
+  "prendre-rendez-vous": "Prendre Rendez-vous",
   ressources: "Ressources",
   "mentions-legales": "Mentions légales",
   "politique-confidentialite": "Politique de confidentialité",

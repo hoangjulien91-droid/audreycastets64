@@ -25,9 +25,6 @@ import {
   Award,
 } from "lucide-react";
 
-export const dynamic = "force-static";
-export const revalidate = 3600; // Revalidate every hour
-
 export const metadata: Metadata = {
   title: "Tarifs - Consultations & Services Psychologie du Travail",
   description:
@@ -130,7 +127,7 @@ export default function TarifsPage() {
                 {/* Card 1: Particuliers */}
                 <div className="group relative">
                   <div className="from-bg-soft/40 to-bg-soft/30 group-hover:from-bg-soft/60 group-hover:to-bg-soft/50 absolute inset-0 transform rounded-3xl bg-linear-to-br transition-all duration-500 group-hover:-translate-y-1"></div>
-                  <div className="border-border-soft/30 relative flex h-full flex-col justify-between transform overflow-hidden rounded-3xl border bg-white shadow-[0_4px_24px_var(--shadow-color-sm)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_8px_32px_var(--shadow-color-lg)]">
+                  <div className="border-border-soft/30 relative flex h-full transform flex-col justify-between overflow-hidden rounded-3xl border bg-white shadow-[0_4px_24px_var(--shadow-color-sm)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_8px_32px_var(--shadow-color-lg)]">
                     <div className="from-primary via-primary to-accent-violet h-2 bg-linear-to-r"></div>
                     <div className="p-8">
                       <div className="relative mb-6">
@@ -147,12 +144,16 @@ export default function TarifsPage() {
                           <span className="text-primary text-4xl font-bold">55€</span>
                           <span className="text-muted-foreground text-sm">/ séance</span>
                         </div>
-                        <p className="text-muted-foreground text-xs">Séance individuelle d'environ 50 min</p>
+                        <p className="text-muted-foreground text-xs">
+                          Séance individuelle d'environ 50 min
+                        </p>
                       </div>
                       <ul className="mb-8 space-y-3">
                         <li className="flex items-start gap-3">
                           <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
-                          <span className="text-foreground/80 text-xs sm:text-sm">Thérapies TCC et EFT</span>
+                          <span className="text-foreground/80 text-xs sm:text-sm">
+                            Thérapies TCC et EFT
+                          </span>
                         </li>
                         <li className="flex items-start gap-3">
                           <CircleCheck className="text-primary mt-0.5 h-4 w-4 flex-shrink-0" />
@@ -182,7 +183,7 @@ export default function TarifsPage() {
                     </div>
                     <div className="p-8 pt-0">
                       <Link
-                        href="/contact"
+                        href="/prendre-rendez-vous"
                         className="from-primary to-primary inline-flex w-full transform cursor-pointer items-center justify-center rounded-2xl bg-linear-to-r px-5 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl"
                       >
                         Prendre rendez-vous
@@ -195,7 +196,7 @@ export default function TarifsPage() {
                 {/* Card 2: Bilan de compétences (CPF) */}
                 <div className="group relative">
                   <div className="from-primary/20 to-accent-violet/20 group-hover:from-primary/30 group-hover:to-accent-violet/30 absolute inset-0 transform rounded-3xl bg-linear-to-br transition-all duration-500 group-hover:-translate-y-1"></div>
-                  <div className="border-primary/40 relative flex h-full flex-col justify-between transform overflow-hidden rounded-3xl border-2 bg-white shadow-[0_8px_32px_var(--shadow-color-md)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_12px_40px_var(--shadow-color-lg)]">
+                  <div className="border-primary/40 relative flex h-full transform flex-col justify-between overflow-hidden rounded-3xl border-2 bg-white shadow-[0_8px_32px_var(--shadow-color-md)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_12px_40px_var(--shadow-color-lg)]">
                     <div className="bg-primary absolute top-0 right-0 rounded-bl-xl px-3 py-1 text-xs font-bold text-white shadow-xs">
                       100% Éligible CPF
                     </div>
@@ -214,7 +215,9 @@ export default function TarifsPage() {
                         <div className="mb-2 flex items-baseline gap-2">
                           <span className="text-primary text-3xl font-bold">1 050€ - 1 886€</span>
                         </div>
-                        <p className="text-muted-foreground text-xs">Formules de 15h, 20h ou 24h • Finançable CPF</p>
+                        <p className="text-muted-foreground text-xs">
+                          Formules de 15h, 20h ou 24h • Finançable CPF
+                        </p>
                       </div>
                       <ul className="mb-8 space-y-3">
                         <li className="flex items-start gap-3">
@@ -264,7 +267,7 @@ export default function TarifsPage() {
                 {/* Card 3: Professionnels */}
                 <div className="group relative">
                   <div className="from-bg-soft/40 to-bg-soft/30 group-hover:from-bg-soft/60 group-hover:to-bg-soft/50 absolute inset-0 transform rounded-3xl bg-linear-to-br transition-all duration-500 group-hover:-translate-y-1"></div>
-                  <div className="border-border-soft/30 relative flex h-full flex-col justify-between transform overflow-hidden rounded-3xl border bg-white shadow-[0_4px_24px_var(--shadow-color-sm)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_8px_32px_var(--shadow-color-lg)]">
+                  <div className="border-border-soft/30 relative flex h-full transform flex-col justify-between overflow-hidden rounded-3xl border bg-white shadow-[0_4px_24px_var(--shadow-color-sm)] transition-all duration-500 group-hover:-translate-y-2 hover:shadow-[0_8px_32px_var(--shadow-color-lg)]">
                     <div className="from-primary via-primary to-accent-violet h-2 bg-linear-to-r"></div>
                     <div className="p-8">
                       <div className="relative mb-6">
@@ -280,7 +283,9 @@ export default function TarifsPage() {
                         <div className="mb-2 flex items-baseline gap-2">
                           <span className="text-primary text-3xl font-bold">Sur devis</span>
                         </div>
-                        <p className="text-muted-foreground text-xs">Accompagnement sur-mesure pour entreprises</p>
+                        <p className="text-muted-foreground text-xs">
+                          Accompagnement sur-mesure pour entreprises
+                        </p>
                       </div>
                       <ul className="mb-8 space-y-3">
                         <li className="flex items-start gap-3">

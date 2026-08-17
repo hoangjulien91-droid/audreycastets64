@@ -19,13 +19,7 @@ const Logo = () => (
 );
 
 const mainNavLinks = navLinks.filter((link) =>
-  [
-    "/qui-suis-je",
-    "/bilan-de-competences",
-    "/services",
-    "/tarifs",
-    "/contact",
-  ].includes(link.href)
+  ["/qui-suis-je", "/bilan-de-competences", "/services", "/tarifs", "/contact"].includes(link.href)
 );
 
 export default function Header() {
@@ -118,7 +112,7 @@ export default function Header() {
                 </span>
               </a>
               <Link
-                href="/contact"
+                href="/prendre-rendez-vous"
                 className="btn-premium px-6 py-2.5 text-[15px]"
                 onClick={() => trigger("medium")}
               >
@@ -246,7 +240,7 @@ export default function Header() {
                     07 43 68 72 97
                   </a>
                   <Link
-                    href="/contact"
+                    href="/prendre-rendez-vous"
                     className="btn-premium w-full !py-4"
                     onClick={() => {
                       trigger("medium");

@@ -213,39 +213,39 @@ export function AnimatedServiceDetails({
                   : `/services/${service.slug}`;
               return (
                 <Link href={href} key={index} className="block h-full">
-                <motion.div
-                  variants={fadeInUp}
-                  whileHover={{
-                    y: -8,
-                    boxShadow: "0 20px 60px rgba(139, 122, 152, 0.2)",
-                  }}
-                  className="group border-border interact-hover h-full rounded-2xl border bg-white p-6 shadow-md transition-all duration-300"
-                >
                   <motion.div
-                    className={`h-12 w-12 bg-linear-to-br ${
-                      service.color === "primary"
-                        ? "from-primary to-pink-400"
-                        : "from-purple-500 to-purple-600"
-                    } mb-4 flex items-center justify-center rounded-xl text-white`}
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
+                    variants={fadeInUp}
+                    whileHover={{
+                      y: -8,
+                      boxShadow: "0 20px 60px rgba(139, 122, 152, 0.2)",
+                    }}
+                    className="group border-border interact-hover h-full rounded-2xl border bg-white p-6 shadow-md transition-all duration-300"
                   >
-                    {service.icon}
-                  </motion.div>
-                  <h3 className="text-foreground group-hover:text-primary mb-2 text-lg font-bold transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {service.description}
-                  </p>
+                    <motion.div
+                      className={`h-12 w-12 bg-linear-to-br ${
+                        service.color === "primary"
+                          ? "from-primary to-pink-400"
+                          : "from-purple-500 to-purple-600"
+                      } mb-4 flex items-center justify-center rounded-xl text-white`}
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      {service.icon}
+                    </motion.div>
+                    <h3 className="text-foreground group-hover:text-primary mb-2 text-lg font-bold transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {service.description}
+                    </p>
 
-                  <div className="text-primary mt-4 flex translate-y-2 transform items-center text-sm font-semibold opacity-0 transition-opacity group-hover:translate-y-0 group-hover:opacity-100">
-                    En savoir plus <ArrowRight className="ml-1 h-4 w-4" />
-                  </div>
-                </motion.div>
-              </Link>
-            );
-          })}
+                    <div className="text-primary mt-4 flex translate-y-2 transform items-center text-sm font-semibold opacity-0 transition-opacity group-hover:translate-y-0 group-hover:opacity-100">
+                      En savoir plus <ArrowRight className="ml-1 h-4 w-4" />
+                    </div>
+                  </motion.div>
+                </Link>
+              );
+            })}
           </motion.div>
         </div>
       </div>

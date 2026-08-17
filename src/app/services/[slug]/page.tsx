@@ -4,7 +4,7 @@ import { getServiceBySlug, getRelatedServices, servicesData } from "@/lib/data/s
 import { PageHero } from "@/components/ui/page-hero";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { AnimatedFinalCTA } from "@/components/services/animated-services-content";
-import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd, ServiceJsonLd, FaqJsonLd } from "@/components/JsonLd";
 
 // S-Tier Modules
 import { VulgarisationBlock } from "@/components/services/modules/VulgarisationBlock";
@@ -86,6 +86,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           ]}
         />
         <ServiceJsonLd name={service.title} description={service.shortDescription} />
+        {service.faq && service.faq.length > 0 && <FaqJsonLd faqs={service.faq} />}
         {/* 1. HERO SECTION (Glass & Light) */}
         <PageHero
           badge={{

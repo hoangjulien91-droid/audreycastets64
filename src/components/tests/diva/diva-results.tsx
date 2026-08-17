@@ -2,7 +2,7 @@
 
 import { DivaResult } from "@/types/diva";
 import { motion } from "framer-motion";
-import { Info, Brain, Activity, Target } from "lucide-react";
+import { Info, Brain, Activity, Target, Printer } from "lucide-react";
 import { Link } from "next-view-transitions";
 
 interface DivaResultsProps {
@@ -10,6 +10,12 @@ interface DivaResultsProps {
 }
 
 export function DivaResults({ results }: DivaResultsProps) {
+  const handlePrint = () => {
+    if (typeof window !== "undefined") {
+      window.print();
+    }
+  };
+
   const container = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -26,29 +32,29 @@ export function DivaResults({ results }: DivaResultsProps) {
 
   return (
     <motion.div
-      className="mx-auto w-full max-w-4xl space-y-8"
+      className="mx-auto w-full max-w-4xl space-y-8 print:space-y-4 print:p-0"
       variants={container}
       initial="hidden"
       animate="show"
     >
       <motion.div variants={item} className="space-y-4 text-center">
         <h2 className="font-display text-foreground text-3xl font-bold">
-          Bilan Pré-diagnostic TDAH
+          Synthèse de votre pré-évaluation
         </h2>
         <div className="from-primary/5 to-secondary/5 border-primary/10 rounded-2xl border bg-gradient-to-br p-6">
-          <h3 className="mb-2 text-xl font-semibold">Synthèse</h3>
+          <h3 className="mb-2 text-xl font-semibold">Analyse Clinique Indicative</h3>
           <p className="text-foreground/80 text-lg font-medium">{results.globalAssessment}</p>
         </div>
       </motion.div>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         {/* Inattention */}
         <motion.div variants={item} className="card-premium p-6">
           <div className="mb-6 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-violet-100">
-              <Brain className="h-5 w-5 text-violet-600" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+              <Brain className="h-5 w-5 text-blue-600" />
             </div>
-            <h3 className="text-xl font-bold text-violet-900">Inattention</h3>
+            <h3 className="text-xl font-bold text-blue-900">Déficit de l'Attention</h3>
           </div>
 
           <div className="space-y-4">
@@ -141,7 +147,7 @@ export function DivaResults({ results }: DivaResultsProps) {
 
       <motion.div
         variants={item}
-        className="border-border/50 space-y-4 rounded-2xl border bg-white/50 p-6 text-center backdrop-blur-sm"
+        className="border-border/50 space-y-4 rounded-2xl border bg-white/50 p-6 text-center backdrop-blur-sm print:hidden"
       >
         <div className="mb-2 flex items-center justify-center gap-2 font-bold text-rose-600">
           <Target className="h-5 w-5" />
@@ -156,7 +162,15 @@ export function DivaResults({ results }: DivaResultsProps) {
         </p>
 
         <div className="flex flex-col justify-center gap-4 pt-4 sm:flex-row">
-          <Link href="/contact" className="btn-premium">
+          <button
+            type="button"
+            onClick={handlePrint}
+            className="border-primary/20 text-primary hover:bg-primary/5 hover:border-primary/40 inline-flex items-center justify-center gap-2 rounded-full border bg-white px-6 py-3 font-semibold shadow-sm transition-all duration-300"
+          >
+            <Printer className="h-4 w-4" />
+            Imprimer ma synthèse
+          </button>
+          <Link href="/contact?motif=evaluation-tdah" className="btn-premium">
             Prendre rendez-vous
           </Link>
           <Link

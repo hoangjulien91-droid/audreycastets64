@@ -89,6 +89,10 @@ export const bilan: ServiceData = {
   ],
   bioFocus:
     "Psychologue du travail avec 15 années d'expérience en insertion et accompagnement professionnel, j'allie analyse psychologique bienveillante et connaissance pointue de l'écosystème de l'emploi.",
-  relatedServices: ["reconversion-professionnelle", "burn-out-epuisement-professionnel", "developpement-personnel"],
+  relatedServices: [
+    "reconversion-professionnelle",
+    "burn-out-epuisement-professionnel",
+    "developpement-personnel",
+  ],
   relatedTests: ["mbi"],
 };

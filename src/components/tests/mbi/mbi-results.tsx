@@ -2,7 +2,7 @@
 
 import { MBIResult } from "@/types/mbi";
 import { motion } from "framer-motion";
-import { CheckCircle, AlertTriangle, Info } from "lucide-react";
+import { CheckCircle, AlertTriangle, Info, Printer } from "lucide-react";
 import { Link } from "next-view-transitions";
 
 interface MBIResultsProps {
@@ -10,6 +10,12 @@ interface MBIResultsProps {
 }
 
 export function MBIResults({ results }: MBIResultsProps) {
+  const handlePrint = () => {
+    if (typeof window !== "undefined") {
+      window.print();
+    }
+  };
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -27,7 +33,7 @@ export function MBIResults({ results }: MBIResultsProps) {
 
   return (
     <motion.div
-      className="mx-auto w-full max-w-4xl space-y-8"
+      className="mx-auto w-full max-w-4xl space-y-8 print:space-y-4 print:p-0"
       variants={container}
       initial="hidden"
       animate="show"
@@ -127,7 +133,7 @@ export function MBIResults({ results }: MBIResultsProps) {
 
       <motion.div
         variants={item}
-        className="border-border/50 space-y-4 rounded-2xl border bg-white/50 p-6 text-center backdrop-blur-sm"
+        className="border-border/50 space-y-4 rounded-2xl border bg-white/50 p-6 text-center backdrop-blur-sm print:hidden"
       >
         <p className="text-muted-foreground mx-auto max-w-2xl text-sm">
           Un email contenant le détail de vos résultats vous a été envoyé. Si vos résultats
@@ -136,7 +142,15 @@ export function MBIResults({ results }: MBIResultsProps) {
         </p>
 
         <div className="flex flex-col justify-center gap-4 pt-4 sm:flex-row">
-          <Link href="/contact" className="btn-premium">
+          <button
+            type="button"
+            onClick={handlePrint}
+            className="border-primary/20 text-primary hover:bg-primary/5 hover:border-primary/40 inline-flex items-center justify-center gap-2 rounded-full border bg-white px-6 py-3 font-semibold shadow-sm transition-all duration-300"
+          >
+            <Printer className="h-4 w-4" />
+            Imprimer ma synthèse
+          </button>
+          <Link href="/contact?motif=evaluation-burnout" className="btn-premium">
             Prendre rendez-vous
           </Link>
           <Link

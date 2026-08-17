@@ -8,8 +8,6 @@ import type { Metadata } from "next";
 import { Sparkles, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "FAQ - Questions Fréquentes sur la Psychologie du Travail",
   description:

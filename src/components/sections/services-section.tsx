@@ -80,7 +80,7 @@ export default function ServicesSection() {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               <div
-                className="absolute inset-0 rounded-[2rem] opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
+                className="absolute inset-0 rounded-3xl opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
                 style={{ backgroundColor: service.bgColorLight }}
                 aria-hidden="true"
               />

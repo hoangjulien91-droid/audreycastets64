@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import Image from "next/image";
 import { ArrowRight, Sparkles, Heart, Star, CheckCircle2 } from "lucide-react";
@@ -77,7 +77,7 @@ export default function HeroSection() {
 
             <div className="animate-in fade-in-up flex flex-col items-center justify-center gap-4 delay-500 sm:flex-row lg:justify-start">
               <Link
-                href="/contact"
+                href="/prendre-rendez-vous"
                 onClick={() => trigger("medium")}
                 className="group bg-primary shadow-primary/25 hover:shadow-primary/30 relative flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-full px-8 py-4 font-semibold text-white shadow-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:w-auto"
               >
@@ -123,20 +123,20 @@ export default function HeroSection() {
           <div className="animate-in scale-in relative order-1 delay-200 lg:order-2">
             <div className="relative">
               <div
-                className="bg-primary/10 absolute -inset-4 rounded-[3rem] opacity-70 blur-3xl sm:-inset-8"
+                className="bg-primary/10 absolute -inset-4 rounded-3xl opacity-70 blur-3xl sm:-inset-8"
                 aria-hidden="true"
               />
 
               <div className="relative mx-auto aspect-[4/5] max-w-sm sm:max-w-md lg:max-w-md">
                 {/* Soft ambient glow behind the image */}
                 <div
-                  className="from-primary/20 via-rose/20 to-violet/20 absolute -inset-4 rounded-[3rem] bg-gradient-to-tr opacity-60 blur-2xl"
+                  className="from-primary/20 via-rose/20 to-violet/20 absolute -inset-4 rounded-3xl bg-gradient-to-tr opacity-60 blur-2xl"
                   aria-hidden="true"
                 />
 
                 {/* Main container with gradient border */}
-                <div className="shadow-primary/10 absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-white/80 via-white/20 to-white/60 p-[3px] shadow-2xl ring-1 ring-white/40">
-                  <div className="relative isolate h-full w-full overflow-hidden rounded-[2.3rem] bg-white/50 backdrop-blur-sm">
+                <div className="shadow-primary/10 absolute inset-0 rounded-3xl bg-gradient-to-br from-white/80 via-white/20 to-white/60 p-[3px] shadow-2xl ring-1 ring-white/40">
+                  <div className="relative isolate h-full w-full overflow-hidden rounded-2xl bg-white/50 backdrop-blur-sm">
                     <Image
                       src={audreyHero}
                       alt="Audrey Castets - Psychologue du Travail spécialisée TCC et EFT"
@@ -152,7 +152,7 @@ export default function HeroSection() {
                       aria-hidden="true"
                     />
                     <div
-                      className="pointer-events-none absolute inset-0 rounded-[2.3rem] ring-1 ring-black/5 ring-inset"
+                      className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-black/5 ring-inset"
                       aria-hidden="true"
                     />
                   </div>

@@ -127,6 +127,22 @@ export default function Footer() {
                   <p>RPPS: 10009709337</p>
                 </div>
               </li>
+              <li className="pt-2">
+                <div className="flex flex-col gap-2 text-xs">
+                  <Link
+                    href="/mentions-legales"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Mentions Légales
+                  </Link>
+                  <Link
+                    href="/politique-confidentialite"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    Politique de Confidentialité (RGPD)
+                  </Link>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -138,17 +154,30 @@ export default function Footer() {
             © {new Date().getFullYear()} Audrey Castets - Psychologue du Travail. Tous droits
             réservés.
           </p>
-          <p className="text-muted-foreground/60 text-xs">
-            Créé en collaboration avec{" "}
-            <a
-              href="https://ikerketa.fr"
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="text-muted-foreground/80 flex items-center gap-4 text-xs">
+            <Link href="/mentions-legales" className="hover:text-primary transition-colors">
+              Mentions Légales
+            </Link>
+            <span>•</span>
+            <Link
+              href="/politique-confidentialite"
               className="hover:text-primary transition-colors"
             >
-              IKERKETA
-            </a>
-          </p>
+              Confidentialité
+            </Link>
+            <span>•</span>
+            <span className="text-muted-foreground/60">
+              Créé en collaboration avec{" "}
+              <a
+                href="https://ikerketa.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                IKERKETA
+              </a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

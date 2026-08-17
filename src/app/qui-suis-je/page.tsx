@@ -3,7 +3,7 @@ import { Link } from "next-view-transitions";
 import audreyPortrait from "@/assets/images/audrey.webp";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
-import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { BreadcrumbJsonLd, PersonJsonLd } from "@/components/JsonLd";
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/page-hero";
 import {
@@ -22,9 +22,6 @@ import {
   Users,
   CheckCircle,
 } from "lucide-react";
-
-export const dynamic = "force-static";
-export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Qui Suis-Je ? - Audrey Castets | Psychologue & Coach",
@@ -45,6 +42,7 @@ export default function QuiSuisJePage() {
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Accueil", url: "/" }, { name: "Qui suis-je" }]} />
+      <PersonJsonLd />
 
       <div className="bg-background min-h-screen">
         <Header />

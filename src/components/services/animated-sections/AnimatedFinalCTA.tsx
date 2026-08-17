@@ -53,12 +53,12 @@ export function AnimatedFinalCTA() {
 
               <div className="animate-in fade-in-up flex flex-col items-center justify-center gap-4 [animation-delay:500ms] sm:flex-row">
                 <Link
-                  href="/contact"
+                  href="/prendre-rendez-vous"
                   onClick={() => trigger("medium")}
                   className="group w-full sm:w-auto"
                 >
                   <div className="btn-premium w-full min-w-[200px] transition-transform duration-300 group-hover:scale-105 active:scale-95 sm:w-auto">
-                    Prendre contact
+                    Prendre rendez-vous
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </div>
                 </Link>
