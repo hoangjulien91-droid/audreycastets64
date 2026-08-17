@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { ZcalEmbed } from "@/components/booking/zcal-embed";
-import { Calendar, Sparkles, Phone, Shield, ArrowRight } from "lucide-react";
+import { Calendar, Sparkles, Phone, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useHaptics } from "@/hooks/use-haptics";
 
@@ -60,26 +60,16 @@ export function BookingDialog({
         </DialogTrigger>
       )}
 
-      <DialogContent className="max-w-4xl overflow-hidden rounded-3xl border border-border/80 bg-white/98 p-0 shadow-2xl backdrop-blur-2xl sm:max-h-[94vh]">
-        {/* Subtle decorative brand glow in corners */}
-        <div
-          className="pointer-events-none absolute -top-16 -right-16 -z-10 h-48 w-48 rounded-full bg-primary/10 blur-3xl"
-          aria-hidden="true"
-        />
-        <div
-          className="pointer-events-none absolute -bottom-16 -left-16 -z-10 h-48 w-48 rounded-full bg-rose/10 blur-3xl"
-          aria-hidden="true"
-        />
-
-        <div className="max-h-[90vh] overflow-y-auto p-5 sm:p-8">
+      <DialogContent className="max-w-4xl overflow-hidden rounded-3xl border border-border bg-white p-0 shadow-2xl sm:max-h-[94vh]">
+        <div className="max-h-[90vh] overflow-y-auto bg-white p-5 sm:p-8">
           <DialogHeader className="mb-5 text-left">
             <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-semibold text-primary">
-              <Sparkles className="h-3.5 w-3.5 animate-pulse" />
+              <Sparkles className="h-3.5 w-3.5 text-primary" />
               <span>Réservation en ligne instantanée</span>
             </div>
             <DialogTitle className="font-display text-2xl font-bold text-foreground sm:text-3xl">
               Choisissez votre créneau avec{" "}
-              <span className="bg-linear-to-r from-primary to-rose-dark bg-clip-text text-transparent">
+              <span className="text-primary">
                 Audrey Castets
               </span>
             </DialogTitle>
@@ -93,8 +83,8 @@ export function BookingDialog({
           <ZcalEmbed minHeight={640} showCardWrapper={false} showReassuranceHeader={true} />
 
           {/* Help notice */}
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border/70 bg-muted/50 p-4 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1.5 font-medium">
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-muted/40 p-4 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5 font-medium text-foreground">
               <Shield className="h-3.5 w-3.5 text-primary" />
               Vous préférez convenir d'un horaire par téléphone ?
             </span>
