@@ -33,10 +33,10 @@ export function ZcalEmbed({
   }, []);
 
   const content = (
-    <div className="relative w-full bg-white">
-      {/* Reassurance top bar */}
+    <div className="relative w-full">
+      {/* Reassurance top bar in Design System style */}
       {showReassuranceHeader && (
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-3 text-xs sm:text-sm">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-primary/10 pb-3.5 text-xs sm:text-sm">
           <div className="flex items-center gap-2 font-medium text-foreground">
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -46,11 +46,11 @@ export function ZcalEmbed({
           </div>
 
           <div className="flex flex-wrap items-center gap-3 text-xs">
-            <span className="inline-flex items-center gap-1 font-semibold text-primary">
-              <Clock className="h-3.5 w-3.5" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 font-semibold text-primary-dark shadow-2xs">
+              <Clock className="h-3.5 w-3.5 text-primary" />
               15 min offertes
             </span>
-            <span className="inline-flex items-center gap-1 font-medium text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/60 px-3 py-1 font-medium text-muted-foreground">
               <Shield className="h-3.5 w-3.5 text-primary" />
               Sans engagement
             </span>
@@ -58,9 +58,9 @@ export function ZcalEmbed({
         </div>
       )}
 
-      {/* Zcal Iframe Container with scroll support and solid clean white background */}
+      {/* Zcal Iframe Container with scroll support and Design System shadow/border */}
       <div 
-        className="relative w-full overflow-y-auto overflow-x-hidden rounded-2xl bg-white shadow-xs border border-border"
+        className="relative w-full overflow-y-auto overflow-x-hidden rounded-2xl bg-white shadow-inner border border-primary/10"
         style={{
           WebkitOverflowScrolling: "touch",
           maxHeight: "750px",
@@ -87,8 +87,8 @@ export function ZcalEmbed({
       </div>
 
       {/* Footer reassurance */}
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-3 text-xs text-muted-foreground">
-        <span className="flex items-center gap-1.5">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-primary/10 pt-3 text-xs text-muted-foreground">
+        <span className="flex items-center gap-1.5 font-medium">
           <CheckCircle className="h-3.5 w-3.5 text-primary" />
           Confirmation instantanée par email
         </span>
@@ -96,7 +96,7 @@ export function ZcalEmbed({
           href="https://zcal.co/audrey-castets"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1 font-semibold text-primary hover:underline"
         >
           <span>Ouvrir dans un nouvel onglet</span>
           <ExternalLink className="h-3 w-3" />
@@ -112,7 +112,8 @@ export function ZcalEmbed({
   return (
     <div
       className={cn(
-        "relative rounded-3xl border border-border bg-white p-5 shadow-xl transition-all duration-300 sm:p-7",
+        "relative rounded-3xl border border-primary/15 bg-white/90 p-5 shadow-xl backdrop-blur-md transition-all duration-300 sm:p-7",
+        "ring-1 ring-primary/5 hover:border-primary/25 hover:shadow-2xl",
         className
       )}
     >
