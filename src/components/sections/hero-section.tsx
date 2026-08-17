@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowRight, Sparkles, Heart, Star, CheckCircle2 } from "lucide-react";
 import { Link } from "next-view-transitions";
 import audreyHero from "@/assets/images/audrey.webp";
+import { BookingDialog } from "@/components/booking/booking-dialog";
 
 import { useHaptics } from "@/hooks/use-haptics";
 
@@ -76,18 +77,19 @@ export default function HeroSection() {
             </ul>
 
             <div className="animate-in fade-in-up flex flex-col items-center justify-center gap-4 delay-500 sm:flex-row lg:justify-start">
-              <Link
-                href="/prendre-rendez-vous"
-                onClick={() => trigger("medium")}
-                className="group bg-primary shadow-primary/25 hover:shadow-primary/30 relative flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-full px-8 py-4 font-semibold text-white shadow-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:w-auto"
-              >
-                <span className="absolute inset-0 translate-x-[-100%] bg-white/20 transition-transform duration-700 group-hover:translate-x-[100%]" />
-                <span className="relative">Prendre rendez-vous</span>
-                <ArrowRight
-                  className="relative h-4 w-4 transition-transform group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </Link>
+              <BookingDialog>
+                <button
+                  type="button"
+                  className="group bg-primary shadow-primary/25 hover:shadow-primary/30 relative flex w-full cursor-pointer items-center justify-center gap-2.5 overflow-hidden rounded-full px-8 py-4 font-semibold text-white shadow-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl sm:w-auto"
+                >
+                  <span className="absolute inset-0 translate-x-[-100%] bg-white/20 transition-transform duration-700 group-hover:translate-x-[100%]" />
+                  <span className="relative">Prendre rendez-vous</span>
+                  <ArrowRight
+                    className="relative h-4 w-4 transition-transform group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </button>
+              </BookingDialog>
               <Link
                 href="/services"
                 onClick={() => trigger("light")}
